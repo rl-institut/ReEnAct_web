@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=reenact
+POSTGRES_USER=sQKAFATucCukzXwvTvYuHgLjWlMmAxVP
+POSTGRES_PASSWORD=i92wuvRvqGDjpHN1eY6Dq7EjCpcSNnChSfMKNxl2LJvlBwk9MnksBH4aRY7tyqtz
