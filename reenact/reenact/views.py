@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+
 def scenario(request):
     id = request.GET.get("id")
     # get scenario texts according to ID
@@ -27,7 +28,7 @@ def scenario(request):
             "contra": [
                 "Komplexere Infrastruktur und Verwaltung aufgrund der Vielfalt der Energiequellen.",
                 "Höhere Anfangskosten und logistische Herausforderungen beim Aufbau diverser erneuerbarer Projekte.",
-            ]
+            ],
         },
         "2": {
             "name": "Zubau Wind und PV",
@@ -52,7 +53,7 @@ def scenario(request):
             "contra": [
                 "Hoher Flächenverbrauch für Photovoltaikanlagen könnte zu Konflikten mit Naturschutzbelangen führen.",
                 "Erhöhte Investitionskosten aufgrund der umfangreichen Infrastrukturmaßnahmen.",
-            ]
+            ],
         },
         "3": {
             "name": "Zubau PV",
@@ -77,7 +78,7 @@ def scenario(request):
             "contra": [
                 "Hoher Flächenverbrauch für PV-Anlagen auf Freiflächen.",
                 "Saisonale Schwankungen bei der Energieproduktion, abhängig von Sonneneinstrahlung.",
-            ]
+            ],
         },
         "4": {
             "name": "Moorbewirtschaftung",
@@ -102,7 +103,7 @@ def scenario(request):
             "contra": [
                 "Geringere Gesamtenergieproduktion im Vergleich zu anderen Szenarien.",
                 "Hohe Investitionskosten für Renaturierungsmaßnahmen.",
-            ]
+            ],
         },
         "5": {
             "name": "Wasserstoff",
@@ -127,7 +128,7 @@ def scenario(request):
             "contra": [
                 "Hohe Kosten für die Infrastruktur zur Wasserstofferzeugung und -verteilung.",
                 "Geringe Effizienz bei der Umwandlung von Strom in Wasserstoff und zurück.",
-            ]
+            ],
         },
         "6": {
             "name": "Kostenoptimierung",
@@ -152,7 +153,7 @@ def scenario(request):
             "contra": [
                 "Möglicherweise geringere Innovationskraft bei der Einführung neuer Technologien.",
                 "Längere Amortisationszeiten bei bestimmten Investitionen.",
-            ]
+            ],
         },
         "7": {
             "name": "Hohe CO2-Preise",
@@ -177,7 +178,7 @@ def scenario(request):
             "contra": [
                 "Erhebliche Kostensteigerungen für Verbraucher und Unternehmen durch hohe CO2-Preise.",
                 "Mögliche soziale Ungleichheiten durch ungleiche Belastung.",
-            ]
+            ],
         },
         "8": {
             "name": "Suffizienz",
@@ -202,7 +203,7 @@ def scenario(request):
             "contra": [
                 "Möglicherweise geringere Energieproduktion im Vergleich zu Szenarien mit starkem Ausbau erneuerbarer Energien.",
                 "Hohe Abhängigkeit von Verhaltensänderungen der Bevölkerung, die schwer umsetzbar sind.",
-            ]
+            ],
         },
     }
     return render(request, "reenact/scenario.html", {"info": infos[id]})
