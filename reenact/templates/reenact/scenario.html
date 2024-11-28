@@ -1,232 +1,133 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="de">
-  <head>
-    <meta charSet="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="{% static 'css/tailwind.css' %}" rel="stylesheet" />
-    <title>ReEnAct Prototype</title>
-    <meta name="description" content="ReEnAct Prototype" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16" />
-    <meta name="next-size-adjust" />
-  </head>
-  <body class="__className_32aa65 text-slate-800 overflow-auto">
-    <div class="flex flex-col h-full min-h-screen">
-      <nav class="__className_b1da2a bg-white shadow" data-headlessui-state="">
-        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-          <div class="relative flex h-16 items-center justify-between">
-            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-              <button class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"
-                      id="headlessui-disclosure-button-:R5cq:"
-                      type="button"
-                      aria-expanded="false"
-                      data-headlessui-state="">
-                <span class="absolute -inset-0.5"></span><span class="sr-only">Open main menu</span>
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     fill="none"
-                     viewBox="0 0 24 24"
-                     stroke-width="1.5"
-                     stroke="currentColor"
-                     aria-hidden="true"
-                     data-slot="icon"
-                     class="block h-6 w-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
-                </svg>
-              </button>
+{% extends "base.html" %}
+
+{% block main %}
+  <nav class="flex items-center justify-center px-6 py-2 border border-b-slate-200">
+    <div class="flex relative w-full max-w-7xl px-2 sm:px-6 lg:px-8">
+      <span class="text-sky-800 font-semibold"><a href="/">Startseite</a></span>
+      <svg xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           viewBox="0 0 24 24"
+           stroke-width="1.5"
+           stroke="currentColor"
+           aria-hidden="true"
+           data-slot="icon"
+           class="w-6 h-6 ms-2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+      </svg>
+      <span class="text-sky-800 font-semibold"><a href="/questionsDefault/challenges">Herausforderungen und Chancen</a></span>
+      <svg xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           viewBox="0 0 24 24"
+           stroke-width="1.5"
+           stroke="currentColor"
+           aria-hidden="true"
+           data-slot="icon"
+           class="w-6 h-6 ms-2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+      </svg>
+      <span class="text-sky-800 font-semibold"><a href="/questionsDefault/regionToday">Region heute</a></span>
+      <svg xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           viewBox="0 0 24 24"
+           stroke-width="1.5"
+           stroke="currentColor"
+           aria-hidden="true"
+           data-slot="icon"
+           class="w-6 h-6 ms-2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+      </svg>
+      <span class="text-sky-800 font-semibold"><a href="/questionsDefault/scenariosOverview">Szenarienübersicht</a></span>
+      <svg xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           viewBox="0 0 24 24"
+           stroke-width="1.5"
+           stroke="currentColor"
+           aria-hidden="true"
+           data-slot="icon"
+           class="w-6 h-6 ms-2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+      </svg>
+      <span>Szenario Details</span>
+    </div>
+  </nav>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-32">
+    <div class="relative flex justify-center pb-8">
+      <h1 class="text-xl font-semibold pe-4">{{ info.name }}</h1>
+    </div>
+    <div class="flex flex-wrap -mx-2 mb-10">
+      <c-scenario-kpi title="Gesamtenergie-Produktion" kpi="{{ info.kpi.total_production.0 }} GWh" percent="+{{ info.kpi.total_production.1 }}"></c-scenario-kpi>
+      <c-scenario-kpi title="Anteil Flächennutzung" kpi="{{ info.kpi.landuse.0 }} GWh" percent="+{{ info.kpi.landuse.1 }}"></c-scenario-kpi>
+      <c-scenario-kpi title="Windkraft" kpi="{{ info.kpi.wind.0 }} GWh" percent="+{{ info.kpi.wind.1 }}"></c-scenario-kpi>
+      <c-scenario-kpi title="Photovoltaik" kpi="{{ info.kpi.pv.0 }} GWh" percent="+{{ info.kpi.pv.1 }}"></c-scenario-kpi><c-scenario-kpi title="Biomasse" kpi="{{ info.kpi.biomass.0 }} GWh" percent="+{{ info.kpi.biomass.1 }}"></c-scenario-kpi><c-scenario-kpi title="Wasserstoff" kpi="{{ info.kpi.h2.0 }} GWh" percent="+{{ info.kpi.h2.1 }}"></c-scenario-kpi>
+    </div>
+    <div class="columns-2">
+      <div class="bg-white pe-6 mb-10">
+        {% for paragraph in info.description %}
+          <p class="mb-6">
+            {{ paragraph }}
+          {% endfor %}
+        </div>
+        <div class="p-6 bg-slate-100">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold mb-2">Vorteile</h4>
+              <ul class="list-disc list-inside space-y-1">
+                {% for pro in info.pro %}<li>{{ pro }}</li>{% endfor %}
+              </ul>
             </div>
-            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-between">
-              <div class="flex flex-shrink-0 items-center">
-                <a href="/">
-                  <img class="h-8 w-auto"
-                       src="/logo-reenact_cmyk300-farbe-1024x426.jpg"
-                       alt="Your Company" />
-                </a>
-              </div>
-              <div class="hidden sm:ml-6 sm:block">
-                <div class="flex space-x-4">
-                  <a href="/"
-                     class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-base font-medium text-slate-800">Startseite</a><a href="https://www.energieregion-peenetal.de/"
-   target="_blank"
-   rel="noopener noreferrer"
-   class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-base font-medium text-slate-800">Projektinfos
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                         width="16"
-                         height="16"
-                         fill="currentColor"
-                         class="bi bi-box-arrow-up-right ml-2"
-                         viewBox="0 0 16 16">
-                      <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5">
-                      </path>
-                      <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z">
-                      </path>
-                    </svg>
-                  </a><a href="/pages/source"
-   class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-base font-medium text-slate-800">Quellen</a><a href="/pages/help"
-   class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-base font-medium text-slate-800">Hilfe</a>
-                </div>
-              </div>
+            <div>
+              <h4 class="font-semibold mb-2">Nachteile</h4>
+              <ul class="list-disc list-inside space-y-1">
+                {% for contra in info.contra %}{{ contra }}{% endfor %}
+              </ul>
             </div>
           </div>
         </div>
-      </nav>
-      <nav class="flex items-center justify-center px-6 py-2 border border-b-slate-200">
-        <div class="flex relative w-full max-w-7xl px-2 sm:px-6 lg:px-8">
-          <span class="text-sky-800 font-semibold"><a href="/">Startseite</a></span>
-          <svg xmlns="http://www.w3.org/2000/svg"
-               fill="none"
-               viewBox="0 0 24 24"
-               stroke-width="1.5"
-               stroke="currentColor"
-               aria-hidden="true"
-               data-slot="icon"
-               class="w-6 h-6 ms-2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
-          </svg>
-          <span class="text-sky-800 font-semibold"><a href="/questionsDefault/challenges">Herausforderungen und Chancen</a></span>
-          <svg xmlns="http://www.w3.org/2000/svg"
-               fill="none"
-               viewBox="0 0 24 24"
-               stroke-width="1.5"
-               stroke="currentColor"
-               aria-hidden="true"
-               data-slot="icon"
-               class="w-6 h-6 ms-2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
-          </svg>
-          <span class="text-sky-800 font-semibold"><a href="/questionsDefault/regionToday">Region heute</a></span>
-          <svg xmlns="http://www.w3.org/2000/svg"
-               fill="none"
-               viewBox="0 0 24 24"
-               stroke-width="1.5"
-               stroke="currentColor"
-               aria-hidden="true"
-               data-slot="icon"
-               class="w-6 h-6 ms-2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
-          </svg>
-          <span class="text-sky-800 font-semibold"><a href="/questionsDefault/scenariosOverview">Szenarienübersicht</a></span>
-          <svg xmlns="http://www.w3.org/2000/svg"
-               fill="none"
-               viewBox="0 0 24 24"
-               stroke-width="1.5"
-               stroke="currentColor"
-               aria-hidden="true"
-               data-slot="icon"
-               class="w-6 h-6 ms-2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
-          </svg>
-          <span>Szenario Details</span>
-        </div>
-      </nav>
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-32">
-        <div class="relative flex justify-center pb-8">
-          <h1 class="text-xl font-semibold pe-4">{{ info.name }}</h1>
-        </div>
-        <div class="flex flex-wrap -mx-2 mb-10">
-          <c-scenario-kpi
-            title="Gesamtenergie-Produktion"
-            kpi="{{ info.kpi.total_production.0 }} GWh"
-            percent="+{{ info.kpi.total_production.1 }}"
-          ></c-scenario-kpi>
-          <c-scenario-kpi
-            title="Anteil Flächennutzung"
-            kpi="{{ info.kpi.landuse.0 }} GWh"
-            percent="+{{ info.kpi.landuse.1 }}"
-          ></c-scenario-kpi>
-          <c-scenario-kpi
-            title="Windkraft"
-            kpi="{{ info.kpi.wind.0 }} GWh"
-            percent="+{{ info.kpi.wind.1 }}"
-          ></c-scenario-kpi>
-          <c-scenario-kpi
-            title="Photovoltaik"
-            kpi="{{ info.kpi.pv.0 }} GWh"
-            percent="+{{ info.kpi.pv.1 }}"
-          ></c-scenario-kpi><c-scenario-kpi
-            title="Biomasse"
-            kpi="{{ info.kpi.biomass.0 }} GWh"
-            percent="+{{ info.kpi.biomass.1 }}"
-          ></c-scenario-kpi><c-scenario-kpi
-            title="Wasserstoff"
-            kpi="{{ info.kpi.h2.0 }} GWh"
-            percent="+{{ info.kpi.h2.1 }}"
-          ></c-scenario-kpi>
-        </div>
-        <div class="columns-2">
-          <div class="bg-white pe-6 mb-10">
-            {% for paragraph in info.description %}
-              <p class="mb-6">
-                {{ paragraph }}
-              {% endfor %}
-            </div>
-            <div class="p-6 bg-slate-100">
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h4 class="font-semibold mb-2">Vorteile</h4>
-                  <ul class="list-disc list-inside space-y-1">
-                    {% for pro in info.pro %}<li>{{ pro }}</li>{% endfor %}
-                  </ul>
-                </div>
-                <div>
-                  <h4 class="font-semibold mb-2">Nachteile</h4>
-                  <ul class="list-disc list-inside space-y-1">
-                    {% for contra in info.contra %}{{ contra }}{% endfor %}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="pt-16 pb-16">
-            <img loading="lazy"
-                 width="1216"
-                 height="724"
-                 decoding="async"
-                 data-nimg="1"
-                 style="color: transparent"
-                 src="/images/details_graphs.svg" />
-          </div>
-        </div>
-        <nav class="fixed bottom-[37px] left-0 w-full bg-white py-2 px-6 border-t border-slate-200">
-          <div class="flex justify-center">
-            <div class="flex">
-              <div class="pe-2">
-                <a class="block rounded-full min-w-[100px] border-2 border-sky-800 bg-transparent px-2.5 py-1.5 text-base text-center font-semibold text-sky-800 shadow-sm hover:bg-sky-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
-                   href="/questionsDefault/scenariosOverview"><span class="flex justify-center items-center"><span class="me-2">
-                  <svg xmlns="http://www.w3.org/2000/svg"
-                       fill="none"
-                       viewBox="0 0 24 24"
-                       stroke-width="1.5"
-                       stroke="currentColor"
-                       aria-hidden="true"
-                       data-slot="icon"
-                       class="h-4 w-4">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"></path>
-                  </svg>
-                </span>Szenarienübersicht</span></a>
-              </div>
-              <div class="pe-2">
-                <a class="block rounded-full min-w-[100px] border-2 border-sky-800 bg-sky-800 px-2.5 py-1.5 text-base text-center font-semibold text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
-                   href="/pages/comparison"><span class="flex justify-center items-center"><span class="me-2">
-                  <svg xmlns="http://www.w3.org/2000/svg"
-                       fill="none"
-                       viewBox="0 0 24 24"
-                       stroke-width="1.5"
-                       stroke="currentColor"
-                       aria-hidden="true"
-                       data-slot="icon"
-                       class="h-4 w-4">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
-                  </svg>
-                </span>Szenarien vergleichen</span></a>
-              </div>
-            </div>
-          </div>
-        </nav>
-        <footer class="fixed bottom-0 left-0 w-full bg-white py-2 px-6 border-t border-slate-200">
-          <div class="flex justify-end text-sm">
-            <a href="#" class="me-4">Impressum</a><a href="#">Datenschutz</a>
-          </div>
-        </footer>
       </div>
-    </body>
-  </html>
+      <div class="pt-16 pb-16">
+        <img loading="lazy"
+             width="1216"
+             height="724"
+             decoding="async"
+             data-nimg="1"
+             style="color: transparent"
+             src="/images/details_graphs.svg" />
+      </div>
+    </div>
+    <nav class="fixed bottom-[37px] left-0 w-full bg-white py-2 px-6 border-t border-slate-200">
+      <div class="flex justify-center">
+        <div class="flex">
+          <div class="pe-2">
+            <a class="block rounded-full min-w-[100px] border-2 border-sky-800 bg-transparent px-2.5 py-1.5 text-base text-center font-semibold text-sky-800 shadow-sm hover:bg-sky-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+               href="/questionsDefault/scenariosOverview"><span class="flex justify-center items-center"><span class="me-2">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   fill="none"
+                   viewBox="0 0 24 24"
+                   stroke-width="1.5"
+                   stroke="currentColor"
+                   aria-hidden="true"
+                   data-slot="icon"
+                   class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"></path>
+              </svg>
+            </span>Szenarienübersicht</span></a>
+          </div>
+          <div class="pe-2">
+            <a class="block rounded-full min-w-[100px] border-2 border-sky-800 bg-sky-800 px-2.5 py-1.5 text-base text-center font-semibold text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+               href="/pages/comparison"><span class="flex justify-center items-center"><span class="me-2">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   fill="none"
+                   viewBox="0 0 24 24"
+                   stroke-width="1.5"
+                   stroke="currentColor"
+                   aria-hidden="true"
+                   data-slot="icon"
+                   class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+              </svg>
+            </span>Szenarien vergleichen</span></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+{% endblock %}
