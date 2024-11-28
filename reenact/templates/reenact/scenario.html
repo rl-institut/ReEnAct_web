@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="de">
   <head>
     <meta charSet="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="{% static 'css/tailwind.css' %}" rel="stylesheet" />
     <title>ReEnAct Prototype</title>
     <meta name="description" content="ReEnAct Prototype" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16" />
@@ -121,48 +123,34 @@
           <h1 class="text-xl font-semibold pe-4">{{ info.name }}</h1>
         </div>
         <div class="flex flex-wrap -mx-2 mb-10">
-          <div class="w-full md:w-1/6 px-2 mb-4 md:mb-0 flex">
-            <div class="bg-white p-6 border rounded-lg shadow flex flex-col w-full">
-              <h3 class="text-lg font-medium flex-grow">Gesamtenergie-produktion</h3>
-              <p class="text-3xl font-bold">{{ info.kpi.total_production.0 }} GWh</p>
-              <p class="text-sm">+{{ info.kpi.total_production.1 }}%</p>
-            </div>
-          </div>
-          <div class="w-full md:w-1/6 px-2 mb-4 md:mb-0 flex">
-            <div class="bg-white p-6 border rounded-lg shadow flex flex-col w-full">
-              <h3 class="text-lg font-medium flex-grow">Anteil Flächennutzung</h3>
-              <p class="text-3xl font-bold">{{ info.kpi.landuse.0 }}%</p>
-              <p class="text-sm">+{{ info.kpi.landuse.1 }}%</p>
-            </div>
-          </div>
-          <div class="w-full md:w-1/6 px-2 mb-4 md:mb-0 flex">
-            <div class="bg-white p-6 border rounded-lg shadow flex flex-col w-full">
-              <h3 class="text-lg font-medium flex-grow">Windkraft</h3>
-              <p class="text-3xl font-bold">{{ info.kpi.wind.0 }} GWh</p>
-              <p class="text-sm">+{{ info.kpi.wind.1 }}%</p>
-            </div>
-          </div>
-          <div class="w-full md:w-1/6 px-2 mb-4 md:mb-0 flex">
-            <div class="bg-white p-6 border rounded-lg shadow flex flex-col w-full">
-              <h3 class="text-lg font-medium flex-grow">Photovoltaik</h3>
-              <p class="text-3xl font-bold">{{ info.kpi.pv.0 }} GWh</p>
-              <p class="text-sm">+{{ info.kpi.pv.1 }}%</p>
-            </div>
-          </div>
-          <div class="w-full md:w-1/6 px-2 mb-4 md:mb-0 flex">
-            <div class="bg-white p-6 border rounded-lg shadow flex flex-col w-full">
-              <h3 class="text-lg font-medium flex-grow">Biomasse</h3>
-              <p class="text-3xl font-bold">{{ info.kpi.biomass.0 }} GWh</p>
-              <p class="text-sm">+{{ info.kpi.biomass.1 }}%</p>
-            </div>
-          </div>
-          <div class="w-full md:w-1/6 px-2 mb-4 md:mb-0 flex">
-            <div class="bg-white p-6 border rounded-lg shadow flex flex-col w-full">
-              <h3 class="text-lg font-medium flex-grow">Wasserstoff</h3>
-              <p class="text-3xl font-bold">{{ info.kpi.h2.0 }} GWh</p>
-              <p class="text-sm">+{{ info.kpi.h2.1 }}%</p>
-            </div>
-          </div>
+          <c-scenario-kpi
+            title="Gesamtenergie-Produktion"
+            kpi="{{ info.kpi.total_production.0 }} GWh"
+            percent="+{{ info.kpi.total_production.1 }}"
+          ></c-scenario-kpi>
+          <c-scenario-kpi
+            title="Anteil Flächennutzung"
+            kpi="{{ info.kpi.landuse.0 }} GWh"
+            percent="+{{ info.kpi.landuse.1 }}"
+          ></c-scenario-kpi>
+          <c-scenario-kpi
+            title="Windkraft"
+            kpi="{{ info.kpi.wind.0 }} GWh"
+            percent="+{{ info.kpi.wind.1 }}"
+          ></c-scenario-kpi>
+          <c-scenario-kpi
+            title="Photovoltaik"
+            kpi="{{ info.kpi.pv.0 }} GWh"
+            percent="+{{ info.kpi.pv.1 }}"
+          ></c-scenario-kpi><c-scenario-kpi
+            title="Biomasse"
+            kpi="{{ info.kpi.biomass.0 }} GWh"
+            percent="+{{ info.kpi.biomass.1 }}"
+          ></c-scenario-kpi><c-scenario-kpi
+            title="Wasserstoff"
+            kpi="{{ info.kpi.h2.0 }} GWh"
+            percent="+{{ info.kpi.h2.1 }}"
+          ></c-scenario-kpi>
         </div>
         <div class="columns-2">
           <div class="bg-white pe-6 mb-10">
