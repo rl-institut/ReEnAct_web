@@ -6,7 +6,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="preload" as="image" href="/logo-reenact_cmyk300-farbe-1024x426.jpg" />
+    <link rel="preload"
+          as="image"
+          href="/logo-reenact_cmyk300-farbe-1024x426.jpg" />
     <meta name="description" content="Regionale Energiewende aktiv gestalten" />
     <meta name="next-size-adjust" />
     <meta name="author" content="Reiner Lemoine Institut" />
@@ -16,11 +18,13 @@
       {% endblock title %}
     </title>
     <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}" />
-    {% block sources %}{% endblock %}
+    {% block sources %}
+    {% endblock sources %}
     {% block css %}
       <link href="{% static 'css/tailwind.css' %}" rel="stylesheet" />
     {% endblock css %}
-    {% block javascript %}{% endblock javascript %}
+    {% block javascript %}
+    {% endblock javascript %}
   </head>
   <body class="{% block bodyclass %}__className_32aa65 text-slate-800 overflow-auto{% endblock bodyclass %}">
     <div class="flex flex-col h-full min-h-screen">
@@ -39,14 +43,14 @@
       {% endif %}
       {% block navigation %}
         {% include "navigation.html" %}
-      {% endblock %}
+      {% endblock navigation %}
       {% block main %}
         {% block content %}
         {% endblock content %}
       {% endblock main %}
       {% block footer %}
         {% include "footer.html" %}
-      {% endblock %}
+      {% endblock footer %}
     </div>
   </body>
 </html>

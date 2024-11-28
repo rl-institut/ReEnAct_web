@@ -3,7 +3,7 @@
 {% block main %}
   <nav class="flex items-center justify-center px-6 py-2 border border-b-slate-200">
     <div class="flex relative w-full max-w-7xl px-2 sm:px-6 lg:px-8">
-      <span class="text-sky-800 font-semibold"><a href="/">Startseite</a></span>
+      <span class="text-sky-800 font-semibold"><a href="{% url 'reenact:index' %}">Startseite</a></span>
       <svg xmlns="http://www.w3.org/2000/svg"
            fill="none"
            viewBox="0 0 24 24"
@@ -12,9 +12,9 @@
            aria-hidden="true"
            data-slot="icon"
            class="w-6 h-6 ms-2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
       </svg>
-      <span class="text-sky-800 font-semibold"><a href="/questionsDefault/challenges">Herausforderungen und Chancen</a></span>
+      <span class="text-sky-800 font-semibold"><a href="{% url 'reenact:challenges' %}">Herausforderungen und Chancen</a></span>
       <svg xmlns="http://www.w3.org/2000/svg"
            fill="none"
            viewBox="0 0 24 24"
@@ -23,9 +23,9 @@
            aria-hidden="true"
            data-slot="icon"
            class="w-6 h-6 ms-2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
       </svg>
-      <span class="text-sky-800 font-semibold"><a href="/questionsDefault/regionToday">Region heute</a></span>
+      <span class="text-sky-800 font-semibold"><a href="{% url 'reenact:region_today' %}">Region heute</a></span>
       <svg xmlns="http://www.w3.org/2000/svg"
            fill="none"
            viewBox="0 0 24 24"
@@ -34,9 +34,9 @@
            aria-hidden="true"
            data-slot="icon"
            class="w-6 h-6 ms-2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
       </svg>
-      <span class="text-sky-800 font-semibold"><a href="/questionsDefault/scenariosOverview">Szenarienübersicht</a></span>
+      <span class="text-sky-800 font-semibold"><a href="{% url 'reenact:scenarios_overview' %}">Szenarienübersicht</a></span>
       <svg xmlns="http://www.w3.org/2000/svg"
            fill="none"
            viewBox="0 0 24 24"
@@ -45,7 +45,7 @@
            aria-hidden="true"
            data-slot="icon"
            class="w-6 h-6 ms-2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
       </svg>
       <span>Szenario Details</span>
     </div>
@@ -62,72 +62,73 @@
     </div>
     <div class="columns-2">
       <div class="bg-white pe-6 mb-10">
-        {% for paragraph in info.description %}
-          <p class="mb-6">
-            {{ paragraph }}
-          {% endfor %}
-        </div>
-        <div class="p-6 bg-slate-100">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h4 class="font-semibold mb-2">Vorteile</h4>
-              <ul class="list-disc list-inside space-y-1">
-                {% for pro in info.pro %}<li>{{ pro }}</li>{% endfor %}
-              </ul>
-            </div>
-            <div>
-              <h4 class="font-semibold mb-2">Nachteile</h4>
-              <ul class="list-disc list-inside space-y-1">
-                {% for contra in info.contra %}{{ contra }}{% endfor %}
-              </ul>
-            </div>
+        {% for paragraph in info.description %}<p class="mb-6">{{ paragraph }}</p>{% endfor %}
+      </div>
+      <div class="p-6 bg-slate-100">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="font-semibold mb-2">Vorteile</h4>
+            <ul class="list-disc list-inside space-y-1">
+              {% for pro in info.pro %}<li>{{ pro }}</li>{% endfor %}
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-2">Nachteile</h4>
+            <ul class="list-disc list-inside space-y-1">
+              {% for contra in info.contra %}{{ contra }}{% endfor %}
+            </ul>
           </div>
         </div>
-      </div>
-      <div class="pt-16 pb-16">
-        <img loading="lazy"
-             width="1216"
-             height="724"
-             decoding="async"
-             data-nimg="1"
-             style="color: transparent"
-             src="/images/details_graphs.svg" />
       </div>
     </div>
-    <nav class="fixed bottom-[37px] left-0 w-full bg-white py-2 px-6 border-t border-slate-200">
-      <div class="flex justify-center">
-        <div class="flex">
-          <div class="pe-2">
-            <a class="block rounded-full min-w-[100px] border-2 border-sky-800 bg-transparent px-2.5 py-1.5 text-base text-center font-semibold text-sky-800 shadow-sm hover:bg-sky-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
-               href="/questionsDefault/scenariosOverview"><span class="flex justify-center items-center"><span class="me-2">
-              <svg xmlns="http://www.w3.org/2000/svg"
-                   fill="none"
-                   viewBox="0 0 24 24"
-                   stroke-width="1.5"
-                   stroke="currentColor"
-                   aria-hidden="true"
-                   data-slot="icon"
-                   class="h-4 w-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"></path>
-              </svg>
-            </span>Szenarienübersicht</span></a>
-          </div>
-          <div class="pe-2">
-            <a class="block rounded-full min-w-[100px] border-2 border-sky-800 bg-sky-800 px-2.5 py-1.5 text-base text-center font-semibold text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
-               href="/pages/comparison"><span class="flex justify-center items-center"><span class="me-2">
-              <svg xmlns="http://www.w3.org/2000/svg"
-                   fill="none"
-                   viewBox="0 0 24 24"
-                   stroke-width="1.5"
-                   stroke="currentColor"
-                   aria-hidden="true"
-                   data-slot="icon"
-                   class="h-4 w-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
-              </svg>
-            </span>Szenarien vergleichen</span></a>
-          </div>
+    <div class="pt-16 pb-16">
+      <img loading="lazy"
+           width="1216"
+           height="724"
+           decoding="async"
+           data-nimg="1"
+           alt="details"
+           src="/images/details_graphs.svg" />
+    </div>
+  </div>
+  <nav class="fixed bottom-[37px] left-0 w-full bg-white py-2 px-6 border-t border-slate-200">
+    <div class="flex justify-center">
+      <div class="flex">
+        <div class="pe-2">
+          <a class="block rounded-full min-w-[100px] border-2 border-sky-800 bg-transparent px-2.5 py-1.5 text-base text-center font-semibold text-sky-800 shadow-sm hover:bg-sky-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+             href="{% url 'reenact:scenarios_overview' %}">
+            <span class="flex justify-center items-center">
+              <span class="me-2">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     fill="none"
+                     viewBox="0 0 24 24"
+                     stroke-width="1.5"
+                     stroke="currentColor"
+                     aria-hidden="true"
+                     data-slot="icon"
+                     class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                </svg>
+              </span>Szenarienübersicht
+            </span>
+          </a>
+        </div>
+        <div class="pe-2">
+          <a class="block rounded-full min-w-[100px] border-2 border-sky-800 bg-sky-800 px-2.5 py-1.5 text-base text-center font-semibold text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+             href="{% url 'reenact:comparison' %}"><span class="flex justify-center items-center"><span class="me-2">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke-width="1.5"
+                 stroke="currentColor"
+                 aria-hidden="true"
+                 data-slot="icon"
+                 class="h-4 w-4">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>
+          </span>Szenarien vergleichen</span></a>
         </div>
       </div>
-    </nav>
-{% endblock %}
+    </div>
+  </nav>
+{% endblock main %}
