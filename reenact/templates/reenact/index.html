@@ -1,0 +1,341 @@
+{% extends "base.html" %}
+
+{% block main %}
+  <main class="grow">
+    <div class="bg-sky-400 py-20 mb-28">
+      <div class="mx-auto max-w-7xl px-8">
+        <h1 class="text-4xl font-bold pb-8">Welches Zukunftsszenario passt zu Peenetal/Loitz?</h1>
+        <p class="text-2xl max-w-[48rem] pb-4">
+          Diese App hilft der Region, die Energiewende voranzutreiben und die Klimaziele Deutschlands zu erreichen.
+        </p>
+        <p class="text-2xl max-w-[48rem]">
+          Visualisieren und vergleichen Sie vorgefertigte Szenarien oder erstellen Sie Ihr eigenes, um die nachhaltige Zukunft der Region mitzugestalten.
+        </p>
+      </div>
+      <div class="mx-auto max-w-7xl px-8">
+        <div class="w-[16rem] pt-8 pb-24">
+          <a class="block rounded-full min-w-[100px] bg-slate-800 px-3 py-4 text-lg text-center font-semibold text-white shadow-sm hover:bg-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-300"
+             href="{% url 'reenact:challenges' %}"><span class="flex justify-center items-center">Szenario finden</span></a>
+        </div>
+      </div>
+      <div class="mx-auto max-w-7xl px-8">
+        <div class="columns-3">
+          <a class="block rounded-full min-w-[100px] bg-sky-500 px-2.5 py-1.5 text-base text-center text-slate-800 shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-300"
+             href="{% url 'reenact:scenarios_overview' %}"><span class="flex justify-center items-center">Vorgefertigtes Szenario auswählen</span></a><a class="block rounded-full min-w-[100px] bg-sky-500 px-2.5 py-1.5 text-base text-center text-slate-800 shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-300"
+   href="{% url 'reenact:comparison' %}"><span class="flex justify-center items-center">Vorgefertigte Szenarien vergleichen</span></a><a class="block rounded-full min-w-[100px] bg-sky-500 px-2.5 py-1.5 text-base text-center text-slate-800 shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-300"
+   href="{% url 'reenact:create_scenario' %}"><span class="flex justify-center items-center">Eigenes Szenario erstellen</span></a>
+        </div>
+      </div>
+    </div>
+    <main class="grow flex flex-col h-full">
+      <div class="grow flex flex-col h-full">
+        <div class="grow flex columns-2 h-full w-full mx-auto max-w-7xl sm:px-6 lg:px-8 pb-32">
+          <div class="flex-1 overflow-auto w-full">
+            <div class="pe-12">
+              <div class="flex justify-between pb-8">
+                <h1 class="text-2xl font-semibold" id="region">Peenetal/Loitz heute</h1>
+              </div>
+              <div class="pb-8">
+                Diese Region zeichnet sich durch ihren wachsenden Einsatz erneuerbarer Energien aus und leistet einen wichtigen Beitrag zur Energiewende. Trotz der überschaubaren Größe entwickelt sich die Region dynamisch, indem sie innovative Lösungen zur nachhaltigen Energiegewinnung umsetzt. Besonders der Energiesektor bietet neue Investitionsmöglichkeiten, während die Landschaft durch Windkraft und Solaranlagen zunehmend für die Energieerzeugung genutzt wird. Die Region zeigt eindrucksvoll, wie ländliche Gebiete zur Erreichung der Klimaziele beitragen können, und bietet gleichzeitig Chancen für lokale Unternehmen und Gemeinden.
+              </div>
+              <div class="pb-8">
+                <div class="flex items-center pb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                       fill="none"
+                       viewBox="0 0 24 24"
+                       stroke-width="1.5"
+                       stroke="currentColor"
+                       aria-hidden="true"
+                       data-slot="icon"
+                       class="h-8 w-8 me-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 3.75H6A2.25 2.25 0 0 0 3.75 6v1.5M16.5 3.75H18A2.25 2.25 0 0 1 20.25 6v1.5m0 9V18A2.25 2.25 0 0 1 18 20.25h-1.5m-9 0H6A2.25 2.25 0 0 1 3.75 18v-1.5M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                  </svg>
+                  <span class="font-semibold">Überblick</span>
+                </div>
+                <table class="table-auto w-full">
+                  <tbody>
+                    <tr>
+                      <td class="border px-4 py-2">Bevölkerung</td>
+                      <td class="border px-4 py-2">5.998</td>
+                    </tr>
+                    <tr>
+                      <td class="border px-4 py-2">Fläche</td>
+                      <td class="border px-4 py-2">
+                        170,46 km<sup>2</sup>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="border px-4 py-2">Fläche Erneuerbare Energien</td>
+                      <td class="border px-4 py-2">
+                        20,85 km<sup>2</sup>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="w-[15rem] pt-8">
+                <a class="block rounded-full min-w-[100px] border-2 border-sky-800 bg-sky-800 px-2.5 py-1.5 text-base text-center font-semibold text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+                   href="{% url 'reenact:region_today' %}"><span class="flex justify-center items-center">Details sehen</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="flex-1 overflow-auto w-full">
+            <div class="relative w-full h-[32rem] overflow-hidden">
+              <img alt="Map"
+                   loading="lazy"
+                   decoding="async"
+                   data-nimg="fill"
+                   class="absolute inset-0 w-full h-[32rem] object-cover"
+                   sizes="100vw" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="bg-white pb-32">
+      <div class="mx-auto max-w-7xl px-8">
+        <div class="flex gap-x-12" id="energy-transition">
+          <div>
+            <p class="max-w-xl mb-8 p-8 bg-slate-100 font-semibold mt-20">
+              Hauptziel ist es, bis 2040 eine CO2-Emission von 0% zu erreichen. Gemeinsam können wir unsere Region zu einem Vorreiter der Energiezukunft machen und damit auch einen wichtigen Beitrag zu den nationalen Energiezielen leisten.
+            </p>
+          </div>
+          <div>
+            <h1 class="text-2xl font-semibold pb-8">Chancen der Energiewende</h1>
+            <p class="max-w-xl mb-8">
+              Die Energiewende bringt Herausforderungen mit sich. Veränderungen in der Infrastruktur, wirtschaftliche Auswirkungen und Anpassungen im Lebensstil können Unsicherheiten auslösen. Eine nachhaltige und gerechte Lösung stellt sicher, dass der Übergang zu sauberer Energie der gesamten Gemeinschaft zugutekommt.
+            </p>
+            <p class="max-w-xl mb-8">
+              Es gibt mehrere Wege, das Hauptziel zu erreichen. Diese Wege werden durch verschiedene Zukunftsszenarien dargestellt. Mithilfe einiger Fragen können Sie das beste Zukunftsszenario und damit die optimale Lösung für die Region finden.
+            </p>
+            <div class="w-[15rem] pt-8">
+              <a class="block rounded-full min-w-[100px] border-2 border-sky-800 bg-sky-800 px-2.5 py-1.5 text-base text-center font-semibold text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+                 href="{% url 'reenact:challenges' %}"><span class="flex justify-center items-center">Details sehen</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-white pb-32">
+      <div class="mx-auto max-w-7xl px-8">
+        <div class="flex flex-col gap-x-12" id="glossar-help">
+          <h1 class="text-2xl font-semibold pb-8">Häufige Fragen &amp; Ressourcen</h1>
+          <div data-orientation="vertical">
+            <div data-state="closed" data-orientation="vertical" class="border-b">
+              <h3 data-orientation="vertical" data-state="closed" class="flex">
+                <button type="button"
+                        aria-controls="radix-:R1aifkq:"
+                        aria-expanded="false"
+                        data-state="closed"
+                        data-orientation="vertical"
+                        id="radix-:Raifkq:"
+                        class="flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&amp;[data-state=open]&gt;svg]:rotate-180"
+                        data-radix-collection-item="">
+                  Was ist das Ziel der App?
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                       width="24"
+                       height="24"
+                       viewBox="0 0 24 24"
+                       fill="none"
+                       stroke="currentColor"
+                       stroke-width="2"
+                       stroke-linecap="round"
+                       stroke-linejoin="round"
+                       class="lucide lucide-chevron-down h-4 w-4 shrink-0 transition-transform duration-200">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+              </h3>
+              <div data-state="closed"
+                   id="radix-:R1aifkq:"
+                   hidden=""
+                   role="region"
+                   aria-labelledby="radix-:Raifkq:"
+                   data-orientation="vertical"
+                   class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+              </div>
+            </div>
+            <div data-state="closed" data-orientation="vertical" class="border-b">
+              <h3 data-orientation="vertical" data-state="closed" class="flex">
+                <button type="button"
+                        aria-controls="radix-:R1iifkq:"
+                        aria-expanded="false"
+                        data-state="closed"
+                        data-orientation="vertical"
+                        id="radix-:Riifkq:"
+                        class="flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&amp;[data-state=open]&gt;svg]:rotate-180"
+                        data-radix-collection-item="">
+                  Welche Szenarien werden in der App angeboten?
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                       width="24"
+                       height="24"
+                       viewBox="0 0 24 24"
+                       fill="none"
+                       stroke="currentColor"
+                       stroke-width="2"
+                       stroke-linecap="round"
+                       stroke-linejoin="round"
+                       class="lucide lucide-chevron-down h-4 w-4 shrink-0 transition-transform duration-200">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+              </h3>
+              <div data-state="closed"
+                   id="radix-:R1iifkq:"
+                   hidden=""
+                   role="region"
+                   aria-labelledby="radix-:Riifkq:"
+                   data-orientation="vertical"
+                   class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+              </div>
+            </div>
+          </div>
+          <div data-orientation="vertical">
+            <div data-state="closed" data-orientation="vertical" class="border-b">
+              <h3 data-orientation="vertical" data-state="closed" class="flex">
+                <button type="button"
+                        aria-controls="radix-:R1bifkq:"
+                        aria-expanded="false"
+                        data-state="closed"
+                        data-orientation="vertical"
+                        id="radix-:Rbifkq:"
+                        class="flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&amp;[data-state=open]&gt;svg]:rotate-180"
+                        data-radix-collection-item="">
+                  Wie wird ein passendes Szenario für die Region ausgewählt?
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                       width="24"
+                       height="24"
+                       viewBox="0 0 24 24"
+                       fill="none"
+                       stroke="currentColor"
+                       stroke-width="2"
+                       stroke-linecap="round"
+                       stroke-linejoin="round"
+                       class="lucide lucide-chevron-down h-4 w-4 shrink-0 transition-transform duration-200">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+              </h3>
+              <div data-state="closed"
+                   id="radix-:R1bifkq:"
+                   hidden=""
+                   role="region"
+                   aria-labelledby="radix-:Rbifkq:"
+                   data-orientation="vertical"
+                   class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+              </div>
+            </div>
+            <div data-state="closed" data-orientation="vertical" class="border-b">
+              <h3 data-orientation="vertical" data-state="closed" class="flex">
+                <button type="button"
+                        aria-controls="radix-:R1jifkq:"
+                        aria-expanded="false"
+                        data-state="closed"
+                        data-orientation="vertical"
+                        id="radix-:Rjifkq:"
+                        class="flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&amp;[data-state=open]&gt;svg]:rotate-180"
+                        data-radix-collection-item="">
+                  Welche Informationen erhalte ich durch die Nutzung der App?
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                       width="24"
+                       height="24"
+                       viewBox="0 0 24 24"
+                       fill="none"
+                       stroke="currentColor"
+                       stroke-width="2"
+                       stroke-linecap="round"
+                       stroke-linejoin="round"
+                       class="lucide lucide-chevron-down h-4 w-4 shrink-0 transition-transform duration-200">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+              </h3>
+              <div data-state="closed"
+                   id="radix-:R1jifkq:"
+                   hidden=""
+                   role="region"
+                   aria-labelledby="radix-:Rjifkq:"
+                   data-orientation="vertical"
+                   class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+              </div>
+            </div>
+          </div>
+          <div data-orientation="vertical">
+            <div data-state="closed" data-orientation="vertical" class="border-b">
+              <h3 data-orientation="vertical" data-state="closed" class="flex">
+                <button type="button"
+                        aria-controls="radix-:R1cifkq:"
+                        aria-expanded="false"
+                        data-state="closed"
+                        data-orientation="vertical"
+                        id="radix-:Rcifkq:"
+                        class="flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&amp;[data-state=open]&gt;svg]:rotate-180"
+                        data-radix-collection-item="">
+                  Wer kann die App nutzen?
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                       width="24"
+                       height="24"
+                       viewBox="0 0 24 24"
+                       fill="none"
+                       stroke="currentColor"
+                       stroke-width="2"
+                       stroke-linecap="round"
+                       stroke-linejoin="round"
+                       class="lucide lucide-chevron-down h-4 w-4 shrink-0 transition-transform duration-200">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+              </h3>
+              <div data-state="closed"
+                   id="radix-:R1cifkq:"
+                   hidden=""
+                   role="region"
+                   aria-labelledby="radix-:Rcifkq:"
+                   data-orientation="vertical"
+                   class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+              </div>
+            </div>
+            <div data-state="closed" data-orientation="vertical" class="border-b">
+              <h3 data-orientation="vertical" data-state="closed" class="flex">
+                <button type="button"
+                        aria-controls="radix-:R1kifkq:"
+                        aria-expanded="false"
+                        data-state="closed"
+                        data-orientation="vertical"
+                        id="radix-:Rkifkq:"
+                        class="flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&amp;[data-state=open]&gt;svg]:rotate-180"
+                        data-radix-collection-item="">
+                  Wie unterstützt die App die CO₂-Neutralität?
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                       width="24"
+                       height="24"
+                       viewBox="0 0 24 24"
+                       fill="none"
+                       stroke="currentColor"
+                       stroke-width="2"
+                       stroke-linecap="round"
+                       stroke-linejoin="round"
+                       class="lucide lucide-chevron-down h-4 w-4 shrink-0 transition-transform duration-200">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+              </h3>
+              <div data-state="closed"
+                   id="radix-:R1kifkq:"
+                   hidden=""
+                   role="region"
+                   aria-labelledby="radix-:Rkifkq:"
+                   data-orientation="vertical"
+                   class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+              </div>
+            </div>
+          </div>
+          <div class="w-[15rem] pt-8">
+            <a class="block rounded-full min-w-[100px] border-2 border-sky-800 bg-sky-800 px-2.5 py-1.5 text-base text-center font-semibold text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+               href=""><span class="flex justify-center items-center">Glossar und FAQ sehen</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock main %}
