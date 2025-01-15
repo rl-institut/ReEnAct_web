@@ -42,14 +42,10 @@
         </div>
       {% endif %}
       {% block navigation %}
-        {% include "navigation.html" %}
       {% endblock navigation %}
-      {% block main %}
-        {% block content %}
-        {% endblock content %}
-      {% endblock main %}
+      {% block content %}
+      {% endblock content %}
       {% block footer %}
-        {% include "footer.html" %}
       {% endblock footer %}
     </div>
   </body>
