@@ -1,4 +1,46 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
+{% block title %}
+  {% block super %}{% endblock %} - main view
+{% endblock %}
 
 {% block content %}
-{% endblock content %}
+ <div class="grid grid-cols-1 gap-4">
+        <!-- Section B -->
+        <section>
+            <!-- Subsection B1 -->
+            <div>
+                <nav class="py-4 text-center">
+                    <ul class="flex justify-center space-x-4">
+                        <li><a href="#">Link 1</a></li>
+                        <li><a href="#">Link 2</a></li>
+                        <li><a href="#">Link 3</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- Subsection B2 -->
+            <div class="grid grid-cols-2 gap-4">
+                <!-- B2a -->
+                <div class="p-4">
+                    <p>Content B2a</p>
+                </div>
+                <!-- B2b -->
+                <div class="p-4">
+                    <p>Content B2b</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section C -->
+        <section class="grid grid-cols-2 gap-4">
+            <!-- C1 -->
+            <div class="p-4">
+                <p>Content C1</p>
+            </div>
+            <!-- C2 -->
+            <div class="p-4">
+                <p>Content C2</p>
+            </div>
+        </section>
+    </div>
+{% endblock %}
