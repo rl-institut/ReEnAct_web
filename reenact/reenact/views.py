@@ -1,8 +1,19 @@
 from django.views.generic.base import TemplateView
+from django import template
 
+register = template.Library()
+
+@register.filter
+def thousand_dot(value):
+    try:
+        number = int(value)
+        return f"{number:,}".replace(",", ".")
+    except (ValueError, TypeError):
+        return value
 
 class MainView(TemplateView):
     template_name = "reenact/index.html"
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -13,7 +24,7 @@ class MainView(TemplateView):
                   "unit1": "Tonnen",
                   "subtitle1": "Ausstoß",
                   "info_hover1": "Hier steht Info über Ausstoß",
-                  "value2":4042,
+                  "value2":thousand_dot(4042),
                   "unit2":"€",
                   "subtitle2":"Kosten",
                   "info_hover2":"Hier steht Info über Kosten",
@@ -24,7 +35,7 @@ class MainView(TemplateView):
                   "unit1": "€/kWh",
                   "subtitle1": "Erzeugungspreis",
                   "info_hover1": "Hier steht Info über Erzeugungspreis",
-                  "value2":100000,
+                  "value2":thousand_dot(100000),
                   "unit2":"€",
                   "subtitle2":"Investitionsbedarf",
                   "info_hover2":"Hier steht Info über Investitionsbedarf",
