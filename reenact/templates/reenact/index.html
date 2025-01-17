@@ -6,7 +6,7 @@
 
 {% block content %}
  <div class="grid grid-cols-1 gap-4">
-        <section>
+        <section class="h-[60vh]">
             <div>
                 <nav class="py-4 text-center">
                     <ul class="flex justify-center space-x-4">
@@ -30,8 +30,45 @@
             <div class="p-4">
                 <p>Content bottom left</p>
             </div>
-            <div class="p-4">
-                <p>Content bottom right</p>
+            <div class="grid grid-cols-3 gap-4">
+                <c-result_component_box
+                  title= "{{ co2_emissions.title }}"
+                  value1= "{{ co2_emissions.value1 }}"
+                  unit1= "{{ co2_emissions.unit1 }}"
+                  subtitle1= "{{ co2_emissions.subtitle1 }}"
+                  info_hover1="{{ co2_emissions.info_hover1 }}"
+                  value2="{{ co2_emissions.value2 }}"
+                  unit2="{{ co2_emissions.unit2 }}"
+                  subtitle2="{{ co2_emissions.subtitle2 }}"
+                  info_hover2="{{ co2_emissions.info_hover2 }}"
+                  scale="">
+                </c-result_component_box>
+
+               <c-result_component_box
+                  title= "{{ energy_costs.title }}"
+                  value1= "{{ energy_costs.value1 }}"
+                  unit1= "{{ energy_costs.unit1 }}"
+                  subtitle1= "{{ energy_costs.subtitle1 }}"
+                  info_hover1="{{ energy_costs.info_hover1 }}"
+                  value2="{{ energy_costs.value2 }}"
+                  unit2="{{ energy_costs.unit2 }}"
+                  subtitle2="{{ energy_costs.subtitle2 }}"
+                  info_hover2="{{ energy_costs.info_hover2 }}"
+                  scale="">
+                  </c-result_component_box>
+
+                <c-result_component_box
+                  title= "{{ self_sufficiency.title }}"
+                  value1= "{{ self_sufficiency.value1 }}"
+                  unit1= "{{ self_sufficiency.unit1 }}"
+                  subtitle1= "{{ self_sufficiency.subtitle1 }}"
+                  info_hover1="{{ self_sufficiency.info_hover1 }}"
+                  value2="{{ self_sufficiency.value2 }}"
+                  unit2="{{ self_sufficiency.unit2 }}"
+                  subtitle2="{{ self_sufficiency.subtitle2 }}"
+                  info_hover2="{{ self_sufficiency.info_hover2 }}"
+                  scale="">
+                </c-result_component_box>
             </div>
         </section>
     </div>
