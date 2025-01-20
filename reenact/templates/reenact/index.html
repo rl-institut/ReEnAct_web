@@ -9,10 +9,10 @@
 {% block content %}
 <link href="{% static 'css/main_layout.css' %}" rel="stylesheet" />
  <div class="grid grid-cols-1 gap-4">
-        <section class="h-[60vh]">
+        <section>
             <div>
                 <nav class="py-4 text-center">
-                    <ul class="flex justify-center space-x-4">
+                    <ul class="flex justify-center space-x-8">
                         <li><a href="#">2024</a></li>
                         <li><a href="#">Szenarien 2040</a></li>
                         <li><a href="#">Mein Plan 2040</a></li>
@@ -20,7 +20,7 @@
                     </ul>
                 </nav>
             </div>
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-2 gap-4 h-[60vh]">
                 <div class="p-4">
                     <p>Content mid left</p>
                 </div>
@@ -29,46 +29,33 @@
                 </div>
             </div>
         </section>
-        <section class="grid grid-cols-2 gap-4">
-            <div class="p-4">
-                <p>Content bottom left</p>
-            </div>
+        <section class="grid grid-cols-2 gap-4 h-[30vh]">
+          <div class="grid grid-cols-5 gap-4 w-full">
+           {% for potential in potentials %}
+            <c-potentials
+              title="{{ potential.title }}"
+              percentage="{{ potential.percentage }}"
+              value="{{ potential.value }}"
+              unit="{{ potential.unit }}"
+              stroke_dashoffset="{{ potential.stroke_dashoffset }}"
+              color="{{ potential.color }}">
+            </c-potentials>
+          {% endfor %}
+          </div>
             <div class="grid grid-cols-3 gap-4">
+              {% for result in results %}
                 <c-result_component_box
-                  title= "{{ co2_emissions.title }}"
-                  value1= "{{ co2_emissions.value1 }}"
-                  unit1= "{{ co2_emissions.unit1 }}"
-                  subtitle1= "{{ co2_emissions.subtitle1 }}"
-                  info_hover1="{{ co2_emissions.info_hover1 }}"
-                  value2="{{ co2_emissions.value2 }}"
-                  unit2="{{ co2_emissions.unit2 }}"
-                  subtitle2="{{ co2_emissions.subtitle2 }}"
-                  info_hover2="{{ co2_emissions.info_hover2 }}">
+                  title= "{{ result.title }}"
+                  value1= "{{ result.value1 }}"
+                  unit1= "{{ result.unit1 }}"
+                  subtitle1= "{{ result.subtitle1 }}"
+                  info_hover1="{{ result.info_hover1 }}"
+                  value2="{{ result.value2 }}"
+                  unit2="{{ result.unit2 }}"
+                  subtitle2="{{ result.subtitle2 }}"
+                  info_hover2="{{ result.info_hover2 }}">
                 </c-result_component_box>
-
-               <c-result_component_box
-                  title= "{{ energy_costs.title }}"
-                  value1= "{{ energy_costs.value1 }}"
-                  unit1= "{{ energy_costs.unit1 }}"
-                  subtitle1= "{{ energy_costs.subtitle1 }}"
-                  info_hover1="{{ energy_costs.info_hover1 }}"
-                  value2="{{ energy_costs.value2 }}"
-                  unit2="{{ energy_costs.unit2 }}"
-                  subtitle2="{{ energy_costs.subtitle2 }}"
-                  info_hover2="{{ energy_costs.info_hover2 }}">
-                  </c-result_component_box>
-
-                <c-result_component_box
-                  title= "{{ self_sufficiency.title }}"
-                  value1= "{{ self_sufficiency.value1 }}"
-                  unit1= "{{ self_sufficiency.unit1 }}"
-                  subtitle1= "{{ self_sufficiency.subtitle1 }}"
-                  info_hover1="{{ self_sufficiency.info_hover1 }}"
-                  value2="{{ self_sufficiency.value2 }}"
-                  unit2="{{ self_sufficiency.unit2 }}"
-                  subtitle2="{{ self_sufficiency.subtitle2 }}"
-                  info_hover2="{{ self_sufficiency.info_hover2 }}">
-                </c-result_component_box>
+             {% endfor %}
             </div>
         </section>
     </div>

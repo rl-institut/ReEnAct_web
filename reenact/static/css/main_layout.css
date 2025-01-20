@@ -36,3 +36,19 @@
 .info-icon:hover::after {
   opacity: 1;
 }
+.potential {
+  position: relative;
+}
+.potential svg {
+  position:relative;
+}
+.percentage {
+  position: absolute;
+  top: 25%; /* Zentriert vertikal */
+  left: 6%; /* Zentriert horizontal */
+  transform: translate(-50%, -50%); /* Exakte Zentrierung */
+  font-size: 15px; /* Passe die Textgröße an */
+  font-weight: bold; /* Optional */
+  color: black; /* Textfarbe */
+}
+
