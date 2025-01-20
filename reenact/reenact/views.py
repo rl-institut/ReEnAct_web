@@ -28,7 +28,7 @@ class MainView(TemplateView):
                   "unit2":"€",
                   "subtitle2":"Kosten",
                   "info_hover2":"Hier steht Info über Kosten",
-                  "scale":""}
+                  "slider":"20"}
         energy_costs = {
                 "title": "ENERGIEKOSTEN",
                   "value1": 0.16,
@@ -39,7 +39,7 @@ class MainView(TemplateView):
                   "unit2":"€",
                   "subtitle2":"Investitionsbedarf",
                   "info_hover2":"Hier steht Info über Investitionsbedarf",
-                  "scale":""}
+                  "slider":"50"}
         self_sufficiency = {
                 "title": "SELBSTVERSORGUNG",
                   "value1": 114,
@@ -50,7 +50,7 @@ class MainView(TemplateView):
                   "unit2":"%",
                   "subtitle2":"Zeitgleich",
                   "info_hover2":"Hier steht Info über Zeitgleich",
-                  "scale":""}
+                  "slider":"70"}
 
         context["co2_emissions"] = co2_emissions
         context["energy_costs"] = energy_costs
