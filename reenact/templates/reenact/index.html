@@ -9,7 +9,7 @@
 {% block content %}
 <link href="{% static 'css/main_layout.css' %}" rel="stylesheet" />
  <div class="grid grid-cols-1 gap-4">
-        <section>
+        <section class="h-[60vh]">
             <div>
                 <nav class="py-4 text-center">
                     <ul class="flex justify-center space-x-8">
@@ -20,7 +20,7 @@
                     </ul>
                 </nav>
             </div>
-            <div class="grid grid-cols-2 gap-4 h-[60vh]">
+            <div class="grid grid-cols-2 gap-4">
                 <div class="p-4">
                     <p>Content mid left</p>
                 </div>
@@ -29,8 +29,9 @@
                 </div>
             </div>
         </section>
-        <section class="grid grid-cols-2 gap-4 h-[30vh]">
-          <div class="grid grid-cols-5 gap-4 w-full">
+        <section class="grid grid-cols-2 gap-4">
+          <div class="p-4">
+          <div class="grid grid-cols-5 gap-4">
            {% for potential in potentials %}
             <c-potentials
               title="{{ potential.title }}"
@@ -41,6 +42,7 @@
               color="{{ potential.color }}">
             </c-potentials>
           {% endfor %}
+          </div>
           </div>
             <div class="grid grid-cols-3 gap-4">
               {% for result in results %}
