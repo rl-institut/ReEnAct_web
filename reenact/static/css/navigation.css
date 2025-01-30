@@ -1,0 +1,39 @@
+.nav-tab ul {
+  list-style: none;
+  padding-left: 0;
+  z-index: 1000;
+}
+
+.nav-tab ul li {
+  display: inline-block;
+  text-align: left;
+}
+
+.nav-tab a {
+  display: block;
+  text-decoration: none;
+}
+
+.nav-tab ul ul {
+  display: none;
+  position: absolute;
+  padding: 8px 0 8px 0;
+}
+.nav-tab ul ul li {
+  display: list-item;
+  position: relative;
+}
+
+.nav-tab ul li:focus > ul,
+.nav-tab ul li:active > ul {
+  display: inherit;
+}
+
+.nav-tab a:focus + ul,
+.nav-tab a:active + ul {
+  display: inherit;
+}
+
+#hdr-img {
+  width: 10em;
+}

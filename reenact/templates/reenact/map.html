@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static i18n compress %}
+
+{% block title %}
+  Karte
+{% endblock title %}
+{% block sources %}
+  {% block super %}
+  {% endblock super %}
+  <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@latest/dist/leaflet.css" />
+  <link rel="stylesheet" href="{% static 'css/map.css' %}" />
+{% endblock sources %}
+{% block javascript %}
+  <script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
+{% endblock javascript %}
+{% block content %}
+  <div id="mapframe"></div>
+  <script>
+    var map = L.map('mapframe').setView([54, 13.8], 10);
+    // various links
+    const osmLink = '<a href="https://openstreetmap.org">OpenStreetMap</a>';
+
+    // base layers
+    L.tileLayer(
+      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Tiles &copy; ' + osmLink + ' Contributors',
+        maxZoom: 19,
+      }).addTo(map);
+
+    //const gisLink = 'Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
+    //L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    //attribution: 'Tiles &copy; ' + gisLink,
+    //maxZoom: 19,
+    //}).addTo(map);
+  </script>
+{% endblock content %}

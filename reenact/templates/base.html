@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preload"
           as="image"
-          href="/logo-reenact_cmyk300-farbe-1024x426.jpg" />
+          href="{% static 'images/logo-reenact.jpg' %}" />
     <meta name="description" content="Regionale Energiewende aktiv gestalten" />
     <meta name="next-size-adjust" />
     <meta name="author" content="Reiner Lemoine Institut" />
@@ -21,7 +21,9 @@
     {% block sources %}
     {% endblock sources %}
     {% block css %}
-      <link href="{% static 'css/tailwind.css' %}" rel="stylesheet" />
+      <link rel="stylesheet" href="{% static 'css/tailwind.css' %}" />
+      <link rel="stylesheet" href="{% static 'css/project.css' %}" />
+      <link rel="stylesheet" href="{% static 'css/navigation.css' %}" />
     {% endblock css %}
     {% block javascript %}
     {% endblock javascript %}
@@ -41,17 +43,11 @@
           {% endfor %}
         </div>
       {% endif %}
-      <header class="w-full">
-        <div class="container mx-auto py-4">
-            <h1 class="text-center text-2xl">ENERGIEREGION PEENETAL</h1>
-        </div>
-      </header>
       {% block navigation %}
+        {% include "navigation.html" %}
       {% endblock navigation %}
       {% block content %}
       {% endblock content %}
-      {% block footer %}
-      {% endblock footer %}
     </div>
   </body>
 </html>

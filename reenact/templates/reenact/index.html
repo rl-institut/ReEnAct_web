@@ -1,38 +1,45 @@
 {% extends 'base.html' %}
 
 {% block title %}
-  {% block super %}{% endblock %} - main view
-{% endblock %}
-
+  ReEnAct
+{% endblock title %}
 {% block content %}
- <div class="grid grid-cols-1 gap-4">
-        <section>
-            <div>
-                <nav class="py-4 text-center">
-                    <ul class="flex justify-center space-x-4">
-                        <li><a href="#">2024</a></li>
-                        <li><a href="#">Szenarien 2040</a></li>
-                        <li><a href="#">Mein Plan 2040</a></li>
-                      <li><a href="#">Szenarienvergleich</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="p-4">
-                    <p>Content mid left</p>
-                </div>
-                <div class="p-4">
-                    <p>Content mid right</p>
-                </div>
-            </div>
-        </section>
-        <section class="grid grid-cols-2 gap-4">
-            <div class="p-4">
-                <p>Content bottom left</p>
-            </div>
-            <div class="p-4">
-                <p>Content bottom right</p>
-            </div>
-        </section>
-    </div>
-{% endblock %}
+  <div class="grid grid-cols-1 gap-4">
+    <section>
+      <div>
+        <nav class="py-4 text-center">
+          <ul class="flex justify-center space-x-4">
+            <li>
+              <a href="#">2024</a>
+            </li>
+            <li>
+              <a href="#">Szenarien 2040</a>
+            </li>
+            <li>
+              <a href="#">Mein Plan 2040</a>
+            </li>
+            <li>
+              <a href="#">Szenarienvergleich</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="p-4">
+          <p>Content mid left</p>
+        </div>
+        <div class="p-4">
+          <p>Content mid right</p>
+        </div>
+      </div>
+    </section>
+    <section class="grid grid-cols-2 gap-4">
+      <div class="p-4">
+        <p>Content bottom left</p>
+      </div>
+      <div class="p-4">
+        <p>Content bottom right</p>
+      </div>
+    </section>
+  </div>
+{% endblock content %}
