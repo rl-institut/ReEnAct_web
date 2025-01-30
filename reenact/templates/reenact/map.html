@@ -1,13 +1,20 @@
 {% extends 'base.html' %}
 
+{% load static i18n compress %}
+
 {% block title %}
   Karte
 {% endblock title %}
 {% block sources %}
+  {% block super %}
+  {% endblock super %}
   <link rel="stylesheet"
         href="https://unpkg.com/leaflet@latest/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="{% static 'css/map.css' %}" />
 {% endblock sources %}
+{% block javascript %}
+  <script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
+{% endblock javascript %}
 {% block content %}
   <div id="mapframe"></div>
   <script>

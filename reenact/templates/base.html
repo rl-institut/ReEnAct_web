@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preload"
           as="image"
-          href="/logo-reenact_cmyk300-farbe-1024x426.jpg" />
+          href="{% static 'images/logo-reenact.jpg' %}" />
     <meta name="description" content="Regionale Energiewende aktiv gestalten" />
     <meta name="next-size-adjust" />
     <meta name="author" content="Reiner Lemoine Institut" />
@@ -20,9 +20,10 @@
     <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}" />
     {% block sources %}
     {% endblock sources %}
-    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/project.css' %}" />
     {% block css %}
+      <link rel="stylesheet" href="{% static 'css/tailwind.css' %}" />
+      <link rel="stylesheet" href="{% static 'css/project.css' %}" />
+      <link rel="stylesheet" href="{% static 'css/navigation.css' %}" />
     {% endblock css %}
     {% block javascript %}
     {% endblock javascript %}
