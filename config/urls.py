@@ -17,8 +17,6 @@ urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
-    path("users/", include("reenact.users.urls", namespace="users")),
-    path("accounts/", include("allauth.urls")),
     path("", include("reenact.reenact.urls")),
     # Media files
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
