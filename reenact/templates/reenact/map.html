@@ -5,13 +5,12 @@
 {% block title %}
   Karte
 {% endblock title %}
-{% block sources %}
-  {% block super %}
-  {% endblock super %}
+{% block css %}
+  {{ block.super }}
   <link rel="stylesheet"
         href="https://unpkg.com/leaflet@latest/dist/leaflet.css" />
   <link rel="stylesheet" href="{% static 'css/map.css' %}" />
-{% endblock sources %}
+{% endblock css %}
 {% block javascript %}
   <script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
 {% endblock javascript %}
