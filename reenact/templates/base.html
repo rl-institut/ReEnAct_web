@@ -20,8 +20,9 @@
     <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}" />
     {% block sources %}
     {% endblock sources %}
+    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/project.css' %}" />
     {% block css %}
-      <link href="{% static 'css/tailwind.css' %}" rel="stylesheet" />
     {% endblock css %}
     {% block javascript %}
     {% endblock javascript %}
@@ -41,17 +42,11 @@
           {% endfor %}
         </div>
       {% endif %}
-      <header class="w-full">
-        <div class="container mx-auto py-4">
-            <h1 class="text-center text-2xl">ENERGIEREGION PEENETAL</h1>
-        </div>
-      </header>
       {% block navigation %}
+        {% include "navigation.html" %}
       {% endblock navigation %}
       {% block content %}
       {% endblock content %}
-      {% block footer %}
-      {% endblock footer %}
     </div>
   </body>
 </html>
