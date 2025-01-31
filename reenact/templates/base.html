@@ -22,8 +22,12 @@
       <link rel="stylesheet" href="{% static 'css/tailwind.css' %}" />
       <link rel="stylesheet" href="{% static 'css/project.css' %}" />
       <link rel="stylesheet" href="{% static 'css/navigation.css' %}" />
+      <link rel="stylesheet"
+            href="{% static 'vendors/ionrangeslider/ion.rangeSlider.min.css' %}" />
     {% endblock css %}
     {% block javascript %}
+      <script src="{% static 'vendors/jquery/jquery.slim.min.js' %}"></script>
+      <script src="{% static 'vendors/ionrangeslider/ion.rangeSlider.min.js' %}"></script>
     {% endblock javascript %}
   </head>
   <body class="{% block bodyclass %}__className_32aa65 text-slate-800 overflow-auto{% endblock bodyclass %}">
@@ -47,5 +51,7 @@
       {% block content %}
       {% endblock content %}
     </div>
+    {% block javascript_inline %}
+    {% endblock javascript_inline %}
   </body>
 </html>
