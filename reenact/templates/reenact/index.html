@@ -38,6 +38,9 @@
         </script>
         <div class="p-4">
           <p>Content mid right</p>
+          <form>
+            {{ capacities.as_div }}
+          </form>
         </div>
       </div>
     </section>
@@ -51,4 +54,7 @@
     </section>
   </div>
 {% endblock content %}
+{% block javascript_inline %}
+  <script src="{% static 'js/sliders.js' %}"></script>
+{% endblock javascript_inline %}
 

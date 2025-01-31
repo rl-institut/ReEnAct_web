@@ -2,6 +2,9 @@ from django.views.generic.base import TemplateView
 from . import chart
 import json
 
+from . import settings
+from .forms import CapacitiesForm
+
 
 class MainView(TemplateView):
     template_name = "reenact/index.html"
@@ -11,4 +14,5 @@ class MainView(TemplateView):
 
         echarts_option = chart.generate_vertical_echarts_code(chart.production_data, chart.demand_data)
         context["production_demand_chart"]= json.dumps(echarts_option, indent=2)
+        context["capacities"] = CapacitiesForm(sliders=settings.SLIDERS)
         return context
