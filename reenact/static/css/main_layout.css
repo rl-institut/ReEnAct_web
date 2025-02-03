@@ -11,10 +11,9 @@
   color: #fff;
   margin-left: 6px;
   cursor: pointer;
-  position: relative; /* for tooltip positioning */
+  position: relative;
 }
 
-/* Tooltip styling */
 .info-icon::after {
   content: attr(data-tooltip);
   position: absolute;
@@ -29,26 +28,37 @@
   font-size: 12px;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
-  pointer-events: none; /* so the mouse can hover over the icon without flickering */
+  pointer-events: none;
 }
 
-/* Show the tooltip on hover */
 .info-icon:hover::after {
   opacity: 1;
 }
+
+.center-container {
+  text-align: center
+}
+
+.center-svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .potential {
   position: relative;
 }
+
 .potential svg {
   position:relative;
 }
+
 .percentage {
-  position: absolute;
-  top: 25%; /* Zentriert vertikal */
-  left: 6%; /* Zentriert horizontal */
+  position: relative;
+  top: -20%; /* Zentriert vertikal */
+  left: 50%; /* Zentriert horizontal */
   transform: translate(-50%, -50%); /* Exakte Zentrierung */
   font-size: 15px; /* Passe die Textgröße an */
   font-weight: bold; /* Optional */
   color: black; /* Textfarbe */
 }
-

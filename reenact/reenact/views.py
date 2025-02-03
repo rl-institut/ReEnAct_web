@@ -56,13 +56,12 @@ class MainView(TemplateView):
                 ]
 
         def circle_view(arc_percentage):
-            arc_percent = arc_percentage
             radius = 27
             stroke = 2 * math.pi * radius
-            stroke_dashoffset = stroke * (1 - arc_percent / 100)
-            return stroke_dashoffset
+            stroke_dashoffset = stroke * (1 - arc_percentage / 100)
+            return f"{stroke_dashoffset:.5f}"
 
-        def set_stroke_dahoffset():
+        def set_stroke_dashoffset():
             for pot in potentials:
                 pot["stroke_dashoffset"] = circle_view(pot["percentage"])
 
@@ -96,14 +95,14 @@ class MainView(TemplateView):
                 "color": "#fb8072",
             },
             {
-                "title": "Nasse Morrbewirtschaftung",
+                "title": "Nasse Moorbewirtschaftung",
                 "percentage": 100,
                 "value": 19.5,
                 "unit": "km²",
                 "color": "#b3de69",
             },
         ]
-        set_stroke_dahoffset()
+        set_stroke_dashoffset()
 
         context["results"] = results
         context["potentials"] = potentials

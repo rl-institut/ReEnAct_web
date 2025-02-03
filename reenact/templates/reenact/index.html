@@ -8,9 +8,8 @@
 
 {% block content %}
 <link href="{% static 'css/main_layout.css' %}" rel="stylesheet" />
- <div class="grid grid-cols-1 gap-4">
+ <div class="grid grid-cols-1 gap-4 h-screen">
         <section class="h-[60vh]">
-            <div>
                 <nav class="py-4 text-center">
                     <ul class="flex justify-center space-x-8">
                         <li><a href="#">2024</a></li>
@@ -19,7 +18,6 @@
                       <li><a href="#">Szenarienvergleich</a></li>
                     </ul>
                 </nav>
-            </div>
             <div class="grid grid-cols-2 gap-4">
                 <div class="p-4">
                     <p>Content mid left</p>
@@ -29,22 +27,23 @@
                 </div>
             </div>
         </section>
-        <section class="grid grid-cols-2 gap-4">
-          <div class="p-4">
-          <div class="grid grid-cols-5 gap-4">
-           {% for potential in potentials %}
-            <c-potentials
-              title="{{ potential.title }}"
-              percentage="{{ potential.percentage }}"
-              value="{{ potential.value }}"
-              unit="{{ potential.unit }}"
-              stroke_dashoffset="{{ potential.stroke_dashoffset }}"
-              color="{{ potential.color }}">
-            </c-potentials>
-          {% endfor %}
-          </div>
-          </div>
-            <div class="grid grid-cols-3 gap-4">
+        <section class="grid grid-cols-2 gap-4 h-[40vh]">
+          <div>
+            <p>GENUTZTE ENERGIEERZEUGUNGSFLÄCHEN <span class="info-icon" data-tooltip="Hier steht Info">i</span></p>
+            <div class="p-4 flex lex-wrap gap-4">
+             {% for potential in potentials %}
+              <c-potentials
+                title="{{ potential.title }}"
+                percentage="{{ potential.percentage }}"
+                value="{{ potential.value }}"
+                unit="{{ potential.unit }}"
+                stroke_dashoffset="{{ potential.stroke_dashoffset }}"
+                color="{{ potential.color }}">
+              </c-potentials>
+            {% endfor %}
+            </div>
+            </div>
+            <div class="p-4 flex flex-wrap gap-4">
               {% for result in results %}
                 <c-result_component_box
                   title= "{{ result.title }}"
