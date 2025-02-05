@@ -1,27 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
-  <div class="bg-white shadow rounded border p-4">
-      <h2>{{ title }}</h2>
-      <div>
-        {{ value1 }} {{unit1}}
-        <h3>{{ subtitle1 }}
-          <span class="info-icon" data-tooltip="{{ info_hover1 }}">i</span>
-        </h3>
-      </div>
-      <div>
-        {{ value2 }} {{unit2}}
-      <h3>{{ subtitle2 }}
-      <span class="info-icon" data-tooltip="{{ info_hover2 }}">i</span>
+<div class="bg-white shadow rounded border p-4">
+    <h2>{{ title }}</h2>
+    <div>
+      {{ value1 }} {{unit1}}
+      <h3>{{ subtitle1 }}
+        <span class="info-icon" data-tooltip="{{ info_hover1 }}">i</span>
       </h3>
-      </div>
-      <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
+    </div>
+    <div>
+      {{ value2 }} {{unit2}}
+    <h3>{{ subtitle2 }}
+    <span class="info-icon" data-tooltip="{{ info_hover2 }}">i</span>
+    </h3>
+    </div>
 <svg
    width="107.32486mm"
    height="9.5mm"
@@ -151,65 +141,10 @@
     <circle
        style="fill:#ffffff;fill-opacity:1;stroke-width:0.260294;-inkscape-stroke:none;filter:url(#filter8809);stop-color:#000000"
        id="path6145"
-       cx="77.707169"
+       cx="{{ slider }}"
        cy="139.16257"
        r="4.1774998"
        inkscape:label="slider" />
   </g>
 </svg>
 </div>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const svg = document.getElementById('svg5');
-  const slider = document.getElementById('path6145');
-  let isDragging = false;
-
-  // Hilfsfunktion: Berechnet "lokale" SVG-Koordinaten anhand der Mausposition
-  function getSVGCoords(evt) {
-    const pt = svg.createSVGPoint();
-    pt.x = evt.clientX;
-    pt.y = evt.clientY;
-    // Nun in SVG-Koordinaten umrechnen
-    const screenCTM = svg.getScreenCTM();
-    return pt.matrixTransform(screenCTM.inverse());
-  }
-
-  // Wenn man den Slider anklickt, beginnen wir zu “draggen”
-  slider.addEventListener('mousedown', (evt) => {
-    isDragging = true;
-  });
-
-  // Mausbewegung: Falls isDragging = true, Slider bewegen
-  document.addEventListener('mousemove', (evt) => {
-    if (!isDragging) return;
-    evt.preventDefault();
-
-    const loc = getSVGCoords(evt);
-    let newX = loc.x; // x-Koordinate in SVG
-
-    // Bereich begrenzen (0 bis 100, da das SVG 0..100 in der Breite hat)
-    if (newX < 0) newX = 0;
-    if (newX > 100) newX = 100;
-
-    slider.setAttribute('cx', newX);
-  });
-
-  // Beim Loslassen der Maus Dragging beenden
-  document.addEventListener('mouseup', (evt) => {
-    isDragging = false;
-  });
-
-  // Optional: Bei Klick auf die Skala, direkt an die Stelle springen
-  const scale = document.getElementById('scale');
-  scale.addEventListener('mousedown', (evt) => {
-    const loc = getSVGCoords(evt);
-    let newX = loc.x;
-    // clamp
-    if (newX < 0) newX = 0;
-    if (newX > 100) newX = 100;
-    slider.setAttribute('cx', newX);
-  });
-});
-</script>
-</body>
-</html>

@@ -19,41 +19,47 @@ class MainView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
+        def set_slider(slider):
+            return 29.86 + slider * (97.83 / 100)
+
         results = [
-                {
-                "title": "CO2-AUSSTOß",
-                  "value1": 14.7,
-                  "unit1": "Tonnen",
-                  "subtitle1": "Ausstoß",
-                  "info_hover1": "Hier steht Info über Ausstoß",
-                  "value2":thousand_dot(4042),
-                  "unit2":"€",
-                  "subtitle2":"Kosten",
-                  "info_hover2":"Hier steht Info über Kosten",
-                },
-                {
-                "title": "ENERGIEKOSTEN",
-                  "value1": 0.16,
-                  "unit1": "€/kWh",
-                  "subtitle1": "Erzeugungspreis",
-                  "info_hover1": "Hier steht Info über Erzeugungspreis",
-                  "value2":thousand_dot(100000),
-                  "unit2":"€",
-                  "subtitle2":"Investitionsbedarf",
-                  "info_hover2":"Hier steht Info über Investitionsbedarf",
-                },
-                {
-                "title": "SELBSTVERSORGUNG",
-                  "value1": 114,
-                  "unit1": "%",
-                  "subtitle1": "Bilanziell",
-                  "info_hover1": "Hier steht Info über Bilanziell",
-                  "value2": 75,
-                  "unit2":"%",
-                  "subtitle2":"Zeitgleich",
-                  "info_hover2":"Hier steht Info über Zeitgleich",
-                }
-                ]
+        {
+          "title": "CO2-AUSSTOß",
+          "value1": 14.7,
+          "unit1": "Tonnen",
+          "subtitle1": "Ausstoß",
+          "info_hover1": "Hier steht Info über Ausstoß",
+          "value2":thousand_dot(4042),
+          "unit2":"€",
+          "subtitle2":"Kosten",
+          "info_hover2":"Hier steht Info über Kosten",
+          "slider": set_slider(1),
+        },
+        {
+          "title": "ENERGIEKOSTEN",
+          "value1": 0.16,
+          "unit1": "€/kWh",
+          "subtitle1": "Erzeugungspreis",
+          "info_hover1": "Hier steht Info über Erzeugungspreis",
+          "value2":thousand_dot(100000),
+          "unit2":"€",
+          "subtitle2":"Investitionsbedarf",
+          "info_hover2":"Hier steht Info über Investitionsbedarf",
+          "slider": set_slider(50),
+        },
+        {
+        "title": "SELBSTVERSORGUNG",
+          "value1": 114,
+          "unit1": "%",
+          "subtitle1": "Bilanziell",
+          "info_hover1": "Hier steht Info über Bilanziell",
+          "value2": 75,
+          "unit2":"%",
+          "subtitle2":"Zeitgleich",
+          "info_hover2":"Hier steht Info über Zeitgleich",
+          "slider": set_slider(100),
+        }
+        ]
 
         def circle_view(arc_percentage):
             radius = 27

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load l10n %}
 {% load static %}
 
 {% block title %}
@@ -56,7 +56,8 @@
                   value2="{{ result.value2 }}"
                   unit2="{{ result.unit2 }}"
                   subtitle2="{{ result.subtitle2 }}"
-                  info_hover2="{{ result.info_hover2 }}">
+                  info_hover2="{{ result.info_hover2 }}"
+                  slider = "{{ result.slider|unlocalize }}">
                 </c-result_component_box>
              {% endfor %}
             </div>
