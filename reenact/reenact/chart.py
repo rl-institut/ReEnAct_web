@@ -1,6 +1,6 @@
 import json
 
-def generate_vertical_echarts_code(production, demand):
+def generate_echarts_code(production, demand):
     total_production = sum(item["value"] for item in production)
     total_demand = sum(item["value"] for item in demand)
 
@@ -123,18 +123,5 @@ def generate_vertical_echarts_code(production, demand):
     }
 
     return option
-
-production_data = [
-    {"label": "Windenergie",  "value": 204.5, "color": "#1E90FF"},
-    {"label": "Solarenergie", "value": 80.6,  "color": "#FF7F00"},
-    {"label": "Wasserstoff",  "value": 20,    "color": "#00008B"},
-    {"label": "Biogas",       "value": 40.5,  "color": "#2E8B57"},
-]
-
-demand_data = [
-    {"label": "Wirtschaft",   "value": 204.5, "color": "#708090"},
-    {"label": "Wärmebedarf",  "value": 80.6,  "color": "#808080"},
-    {"label": "Mobilität",    "value": 20,    "color": "#A9A9A9"},
-]
 
 
