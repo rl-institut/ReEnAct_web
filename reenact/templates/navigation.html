@@ -1,0 +1,59 @@
+{% load static i18n %}
+
+<nav class="bg-white shadow" data-headlessui-state="">
+  <div>
+    <div class="relative flex items-center justify-between">
+      <div class="flex flex-shrink-0">
+        <a href="{% url 'reenact:index' %}">
+          <img id="hdr-img"
+               class="h-8 w-auto"
+               src="{% static 'images/logo-reenact.jpg' %}"
+               alt="ReEnAct homepage" />
+        </a>
+      </div>
+      <div class="container">
+        <h1 class="text-center text-2xl">ENERGIEREGION PEENETAL</h1>
+      </div>
+      <div class="flex">
+        <div class="nav-tab">
+          <ul>
+            <li>
+              <a href="{% url 'reenact:index' %}">Startseite</a>
+            </li>
+            <li>
+              <a href="#">Infos</a>
+              <ul>
+                <li>
+                  <a href="{% url 'reenact:challenges' %}">Chancen und Herausforderungen</a>
+                </li>
+                <li>
+                  <a href="{% url 'reenact:faq' %}">Häufige Fragen</a>
+                </li>
+                <li>
+                  <a href="{% url 'reenact:glossary' %}">Glossar</a>
+                </li>
+                <li>
+                  <a href="{% url 'reenact:sources' %}">Quellen</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="{% url 'reenact:map' %}">Karte</a>
+            </li>
+            <li>
+              <a href="#">Rechtliches</a>
+              <ul>
+                <li>
+                  <a href="{% url 'reenact:impressum' %}">Impressum</a>
+                </li>
+                <li>
+                  <a href="{% url 'reenact:dsgvo' %}">Datenschutzerklärunng</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
