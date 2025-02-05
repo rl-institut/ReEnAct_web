@@ -40,6 +40,7 @@
 }
 
 .center-svg {
+  width:auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,7 +56,7 @@
 
 .percentage {
   position: relative;
-  top: -20%; /* Zentriert vertikal */
+  top: -28%; /* Zentriert vertikal */
   left: 50%; /* Zentriert horizontal */
   transform: translate(-50%, -50%); /* Exakte Zentrierung */
   font-size: 15px; /* Passe die Textgröße an */
