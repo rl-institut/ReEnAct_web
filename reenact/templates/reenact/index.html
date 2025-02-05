@@ -28,17 +28,13 @@
         </nav>
       </div>
       <div class="grid grid-cols-2 gap-4">
-        <div id="chart" class="p-4 w-full h-96"></div>
-          <script>
-          var myChart = echarts.init(document.getElementById('chart'));
-          var option = {{ production_demand_chart|safe }};
-          option.xAxis.axisLabel.formatter = eval("(" + option.xAxis.axisLabel.formatter + ")");
-          option.legend.tooltip.formatter = eval("(" + option.legend.tooltip.formatter + ")");
-          myChart.setOption(option);
-        </script>
+        <div class="p-4">
+          <p>Content mid left</p>
+          <div id="mainChart"></div>
+        </div>
         <div class="p-4">
           <p>Content mid right</p>
-          <form>
+          <form id="capacityForm" onchange="create_main_chart()">
             {{ capacities.as_div }}
           </form>
         </div>
@@ -54,7 +50,18 @@
     </section>
   </div>
 {% endblock content %}
+{% block css %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/charts.css' %}" />
+{% endblock css %}
+{% block javascript %}
+  <script type="text/javascript"
+          src="{% static 'vendors/echarts/echarts.min.js' %}"></script>
+  <script src="{% static 'vendors/jquery/jquery.slim.min.js' %}"></script>
+  <script src="{% static 'vendors/ionrangeslider/ion.rangeSlider.min.js' %}"></script>
+{% endblock javascript %}
 {% block javascript_inline %}
   <script src="{% static 'js/sliders.js' %}"></script>
+  <script src="{% static 'js/charts.js' %}"></script>
 {% endblock javascript_inline %}
 

@@ -34,4 +34,5 @@ urlpatterns = [
         name="sources",
     ),
     path("", views.MainView.as_view(), name="index"),
+    path("chart/<str:chart_name>/", views.chart, name="chart"),
 ]
