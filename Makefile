@@ -1,4 +1,6 @@
 
+.PHONY : update_vendor_assets, tailwind
+
 tailwind:
 	npx tailwindcss -i reenact/static/css/tailwind_input.css -o reenact/static/css/tailwind.css
 
@@ -23,3 +25,7 @@ update_vendor_assets:
 	# jQuery https://github.com/jquery/jquery
 	rm -r reenact/static/vendors/jquery/*
 	cp node_modules/jquery/dist/jquery.slim.min.* reenact/static/vendors/jquery/
+
+# eCharts https://echarts.apache.org/en/index.html
+	rm -r reenact/static/vendors/echarts/*
+	cp node_modules/echarts/dist/echarts.min.js reenact/static/vendors/echarts/

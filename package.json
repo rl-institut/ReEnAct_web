@@ -4,6 +4,7 @@
   },
   "dependencies": {
     "ion-rangeslider": "^2.3.1",
-    "jquery": "^3.7.1"
+    "jquery": "^3.7.1",
+    "echarts": "^5.6.0"
   }
 }
