@@ -17,7 +17,7 @@
 .info-icon::after {
   content: attr(data-tooltip);
   position: absolute;
-  top: -40px; /* adjust as needed */
+  top: -40px;
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
@@ -35,11 +35,21 @@
   opacity: 1;
 }
 
-.center-container {
+#component_box {
   text-align: center
 }
 
-.center-svg {
+.center-container {
+  text-align: center;
+}
+
+.center-scale {
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.center-ring {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,10 +65,12 @@
 
 .percentage {
   position: relative;
-  top: -20%; /* Zentriert vertikal */
-  left: 50%; /* Zentriert horizontal */
-  transform: translate(-50%, -50%); /* Exakte Zentrierung */
-  font-size: 15px; /* Passe die Textgröße an */
-  font-weight: bold; /* Optional */
-  color: black; /* Textfarbe */
+  top: -20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 15px;/
+  font-weight: bold;
+  color: black;
 }
+
+
