@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
   ReEnAct
 {% endblock title %}
 {% block content %}
+<script src="{% static 'js/echarts.js' %}"></script>
   <div class="grid grid-cols-1 gap-4">
     <section>
       <div>
@@ -25,9 +28,14 @@
         </nav>
       </div>
       <div class="grid grid-cols-2 gap-4">
-        <div class="p-4">
-          <p>Content mid left</p>
-        </div>
+        <div id="chart" class="p-4 w-full h-96"></div>
+          <script>
+          var myChart = echarts.init(document.getElementById('chart'));
+          var option = {{ production_demand_chart|safe }};
+          option.xAxis.axisLabel.formatter = eval("(" + option.xAxis.axisLabel.formatter + ")");
+          option.legend.tooltip.formatter = eval("(" + option.legend.tooltip.formatter + ")");
+          myChart.setOption(option);
+        </script>
         <div class="p-4">
           <p>Content mid right</p>
         </div>
@@ -43,3 +51,4 @@
     </section>
   </div>
 {% endblock content %}
+

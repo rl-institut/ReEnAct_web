@@ -48,8 +48,8 @@ def generate_vertical_echarts_code(production, demand):
     axis_label_formatter = (
         "function (value, index) { "
         f"  return index === 0 "
-        f"    ? '{{bold|{total_production:.1f} MWh}}\n{{small|Jahreserzeugung}}' "
-        f"    : '{{bold|{total_demand:.1f} MWh}}\n{{small|Jahresverbrauch}}'; "
+        f"    ? '{{bold|{total_production:.1f} MWh}}\\n{{small|Jahreserzeugung}}' "
+        f"    : '{{bold|{total_demand:.1f} MWh}}\\n{{small|Jahresverbrauch}}'; "
         "}"
     )
 
@@ -137,5 +137,4 @@ demand_data = [
     {"label": "Mobilität",    "value": 20,    "color": "#A9A9A9"},
 ]
 
-echarts_option = generate_vertical_echarts_code(production_data, demand_data)
-print(json.dumps(echarts_option, indent=2))
+
