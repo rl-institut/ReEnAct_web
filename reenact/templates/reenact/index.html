@@ -51,7 +51,7 @@
           {% endfor %}
         </div>
       </div>
-      <div class="p-4 flex flex-wrap gap-4 w-1/2">
+      <div class="p-4 flex flex-nowrap gap-4">
         {% for result in results %}
           <c-result_component_box title="{{ result.title }}" value1="{{ result.value1 }}" unit1="{{ result.unit1 }}" subtitle1="{{ result.subtitle1 }}" info_hover1="{{ result.info_hover1 }}" value2="{{ result.value2 }}" unit2="{{ result.unit2 }}" subtitle2="{{ result.subtitle2 }}" info_hover2="{{ result.info_hover2 }}" slider="{{ result.slider|unlocalize }}" />
         {% endfor %}
