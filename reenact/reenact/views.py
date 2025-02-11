@@ -17,16 +17,17 @@ def thousand_dot(value):
 
 
 production = [
-    {"label": "Windenergie", "value": 204.5, "color": "#1E90FF"},
-    {"label": "Solarenergie", "value": 80.6, "color": "#FF7F00"},
-    {"label": "Wasserstoff", "value": 20, "color": "#00008B"},
-    {"label": "Biogas", "value": 40.5, "color": "#2E8B57"},
+    {"label": "Windenergie", "value": 204.5, "color": "#8dd3c7"},
+    {"label": "Solarenergie", "value": 80.6, "color": "#eeee6c"},
+    {"label": "Wasserstoff", "value": 20, "color": "#80b1d3"},
+    {"label": "Biogas", "value": 40.5, "color": "#bc80bd"},
 ]
 
 demand = [
-    {"label": "Wirtschaft", "value": 204.5, "color": "#708090"},
-    {"label": "Wärmebedarf", "value": 80.6, "color": "#808080"},
-    {"label": "Mobilität", "value": 20, "color": "#A9A9A9"},
+    {"label": "Wirtschaft", "value": 204.5, "color": "#f1f5f9"},
+    {"label": "Wärmebedarf", "value": 80.6, "color": "#cbd5e1"},
+    {"label": "Elektrolyseur", "value": 80.6, "color": "#64748b"},
+    {"label": "Mobilität", "value": 20, "color": "#334155"},
 ]
 
 
