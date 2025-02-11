@@ -30,10 +30,12 @@
       </div>
       <div class="grid grid-cols-2 gap-4">
         <div class="p-4">
-          <p>Content mid left</p>
+          <div id="mainChart"></div>
         </div>
         <div class="p-4">
-          <p>Content mid right</p>
+          <form id="capacityForm" onchange="create_main_chart()">
+            {{ capacities.as_div }}
+          </form>
         </div>
       </div>
     </section>
@@ -49,7 +51,7 @@
           {% endfor %}
         </div>
       </div>
-      <div class="p-4 flex flex-wrap gap-4 w-1/2">
+      <div class="p-4 flex flex-nowrap gap-4">
         {% for result in results %}
           <c-result_component_box title="{{ result.title }}" value1="{{ result.value1 }}" unit1="{{ result.unit1 }}" subtitle1="{{ result.subtitle1 }}" info_hover1="{{ result.info_hover1 }}" value2="{{ result.value2 }}" unit2="{{ result.unit2 }}" subtitle2="{{ result.subtitle2 }}" info_hover2="{{ result.info_hover2 }}" slider="{{ result.slider|unlocalize }}" />
         {% endfor %}
@@ -57,3 +59,17 @@
     </section>
   </div>
 {% endblock content %}
+{% block css %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/charts.css' %}" />
+{% endblock css %}
+{% block javascript %}
+  <script type="text/javascript"
+          src="{% static 'vendors/echarts/echarts.min.js' %}"></script>
+  <script src="{% static 'vendors/jquery/jquery.slim.min.js' %}"></script>
+  <script src="{% static 'vendors/ionrangeslider/ion.rangeSlider.min.js' %}"></script>
+{% endblock javascript %}
+{% block javascript_inline %}
+  <script src="{% static 'js/sliders.js' %}"></script>
+  <script src="{% static 'js/charts.js' %}"></script>
+{% endblock javascript_inline %}

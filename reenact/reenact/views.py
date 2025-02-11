@@ -1,8 +1,15 @@
-from django.views.generic.base import TemplateView
-from django import template
 import math
 
+from django import template
+from django.http import JsonResponse
+from django.views.generic.base import TemplateView
+
+from . import settings
+from .chart import generate_echarts_code
+from .forms import CapacitiesForm
+
 register = template.Library()
+
 
 @register.filter
 def thousand_dot(value):
@@ -12,53 +19,54 @@ def thousand_dot(value):
     except (ValueError, TypeError):
         return value
 
+
 class MainView(TemplateView):
     template_name = "reenact/index.html"
 
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["capacities"] = CapacitiesForm(sliders=settings.SLIDERS)
 
         def set_slider(slider):
             return 29.86 + slider * (97.83 / 100)
 
         results = [
-        {
-          "title": "CO2-AUSSTOß",
-          "value1": 14.7,
-          "unit1": "Tonnen",
-          "subtitle1": "Ausstoß",
-          "info_hover1": "Hier steht Info über Ausstoß",
-          "value2":thousand_dot(4042),
-          "unit2":"€",
-          "subtitle2":"Kosten",
-          "info_hover2":"Hier steht Info über Kosten",
-          "slider": set_slider(1),
-        },
-        {
-          "title": "ENERGIEKOSTEN",
-          "value1": 0.16,
-          "unit1": "€/kWh",
-          "subtitle1": "Erzeugungspreis",
-          "info_hover1": "Hier steht Info über Erzeugungspreis",
-          "value2":thousand_dot(100000),
-          "unit2":"€",
-          "subtitle2":"Investitionsbedarf",
-          "info_hover2":"Hier steht Info über Investitionsbedarf",
-          "slider": set_slider(50),
-        },
-        {
-        "title": "SELBSTVERSORGUNG",
-          "value1": 114,
-          "unit1": "%",
-          "subtitle1": "Bilanziell",
-          "info_hover1": "Hier steht Info über Bilanziell",
-          "value2": 75,
-          "unit2":"%",
-          "subtitle2":"Zeitgleich",
-          "info_hover2":"Hier steht Info über Zeitgleich",
-          "slider": set_slider(100),
-        }
+            {
+                "title": "CO2-AUSSTOß",
+                "value1": 14.7,
+                "unit1": "Tonnen",
+                "subtitle1": "Ausstoß",
+                "info_hover1": "Hier steht Info über Ausstoß",
+                "value2": thousand_dot(4042),
+                "unit2": "€",
+                "subtitle2": "Kosten",
+                "info_hover2": "Hier steht Info über Kosten",
+                "slider": set_slider(1),
+            },
+            {
+                "title": "ENERGIEKOSTEN",
+                "value1": 0.16,
+                "unit1": "€/kWh",
+                "subtitle1": "Erzeugungspreis",
+                "info_hover1": "Hier steht Info über Erzeugungspreis",
+                "value2": thousand_dot(100000),
+                "unit2": "€",
+                "subtitle2": "Investitionsbedarf",
+                "info_hover2": "Hier steht Info über Investitionsbedarf",
+                "slider": set_slider(50),
+            },
+            {
+                "title": "SELBSTVERSORGUNG",
+                "value1": 114,
+                "unit1": "%",
+                "subtitle1": "Bilanziell",
+                "info_hover1": "Hier steht Info über Bilanziell",
+                "value2": 75,
+                "unit2": "%",
+                "subtitle2": "Zeitgleich",
+                "info_hover2": "Hier steht Info über Zeitgleich",
+                "slider": set_slider(100),
+            },
         ]
 
         def circle_view(arc_percentage):
@@ -114,3 +122,32 @@ class MainView(TemplateView):
         context["potentials"] = potentials
 
         return context
+
+
+def chart(request, chart_name: str) -> JsonResponse:
+    """Return echart options as JSON."""
+
+    production = [
+        {"label": "Windenergie", "value": 204.5, "color": "#1E90FF"},
+        {"label": "Solarenergie", "value": 80.6, "color": "#FF7F00"},
+        {"label": "Wasserstoff", "value": 20, "color": "#00008B"},
+        {"label": "Biogas", "value": 40.5, "color": "#2E8B57"},
+    ]
+
+    demand = [
+        {"label": "Wirtschaft", "value": 204.5, "color": "#708090"},
+        {"label": "Wärmebedarf", "value": 80.6, "color": "#808080"},
+        {"label": "Mobilität", "value": 20, "color": "#A9A9A9"},
+    ]
+
+    wind = request.GET.get("wind", 0.0)
+    pv = request.GET.get("pv", 0.0)
+
+    for item in production:
+        if item["label"] == "Windenergie":
+            item["value"] = float(wind)
+        elif item["label"] == "Solarenergie":
+            item["value"] = float(pv)
+
+    echarts_option = generate_echarts_code(production, demand)
+    return JsonResponse(echarts_option)
