@@ -1,6 +1,5 @@
 import math
 
-from django import template
 from django.http import JsonResponse
 from django.views.generic.base import TemplateView
 
@@ -8,10 +7,7 @@ from . import settings
 from .chart import generate_echarts_code
 from .forms import CapacitiesForm
 
-register = template.Library()
 
-
-@register.filter
 def thousand_dot(value):
     try:
         number = int(value)
