@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
 
+{% load l10n %}
 {% load static %}
 
 {% block title %}
   ReEnAct
 {% endblock title %}
 {% block content %}
-<script src="{% static 'js/echarts.js' %}"></script>
-  <div class="grid grid-cols-1 gap-4">
-    <section>
+  <link href="{% static 'css/main_layout.css' %}" rel="stylesheet" />
+  <div class="grid grid-cols-1 gap-4 h-screen w-full">
+    <section class="h-[60vh]">
       <div>
         <nav class="py-4 text-center">
-          <ul class="flex justify-center space-x-4">
+          <ul class="flex justify-center space-x-8">
             <li>
               <a href="#">2024</a>
             </li>
@@ -38,12 +39,22 @@
         </div>
       </div>
     </section>
-    <section class="grid grid-cols-2 gap-4">
-      <div class="p-4">
-        <p>Content bottom left</p>
+    <section class="grid grid-cols-2 gap-4 h-[40vh]">
+      <div>
+        <p>
+          GENUTZTE ENERGIEERZEUGUNGSFLÄCHEN <span class="info-icon" data-tooltip="Hier steht Info">i</span>
+        </p>
+        <div class="p-4 flex lex-wrap gap-4">
+          {% for potential in potentials %}
+            <c-potentials title="{{ potential.title }}" percentage="{{ potential.percentage }}" value="{{ potential.value }}" unit="{{ potential.unit }}" stroke_dashoffset="{{ potential.stroke_dashoffset }}" color="{{ potential.color }}">
+            </c-potentials>
+          {% endfor %}
+        </div>
       </div>
-      <div class="p-4">
-        <p>Content bottom right</p>
+      <div class="p-4 flex flex-wrap gap-4 w-1/2">
+        {% for result in results %}
+          <c-result_component_box title="{{ result.title }}" value1="{{ result.value1 }}" unit1="{{ result.unit1 }}" subtitle1="{{ result.subtitle1 }}" info_hover1="{{ result.info_hover1 }}" value2="{{ result.value2 }}" unit2="{{ result.unit2 }}" subtitle2="{{ result.subtitle2 }}" info_hover2="{{ result.info_hover2 }}" slider="{{ result.slider|unlocalize }}" />
+        {% endfor %}
       </div>
     </section>
   </div>
@@ -62,4 +73,3 @@
   <script src="{% static 'js/sliders.js' %}"></script>
   <script src="{% static 'js/charts.js' %}"></script>
 {% endblock javascript_inline %}
-
