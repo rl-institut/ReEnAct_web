@@ -1,5 +1,7 @@
 const capacityForm = document.getElementById("capacityForm");
 
+create_main_chart_on_startup();
+
 function createChart(div_id, options) {
   const chartElement = document.getElementById(div_id);
   let chart;
@@ -25,4 +27,9 @@ function create_main_chart() {
     get_echart_options("main_chart", params).then(
         chartOptions => {createChart("mainChart", chartOptions);},
     );
+}
+
+function create_main_chart_on_startup() {
+  const productionDemandChartOptions = JSON.parse(document.getElementById("productionDemandChart").textContent);
+  createChart("mainChart", productionDemandChartOptions);
 }

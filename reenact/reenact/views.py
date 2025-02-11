@@ -16,6 +16,20 @@ def thousand_dot(value):
         return value
 
 
+production = [
+    {"label": "Windenergie", "value": 204.5, "color": "#1E90FF"},
+    {"label": "Solarenergie", "value": 80.6, "color": "#FF7F00"},
+    {"label": "Wasserstoff", "value": 20, "color": "#00008B"},
+    {"label": "Biogas", "value": 40.5, "color": "#2E8B57"},
+]
+
+demand = [
+    {"label": "Wirtschaft", "value": 204.5, "color": "#708090"},
+    {"label": "Wärmebedarf", "value": 80.6, "color": "#808080"},
+    {"label": "Mobilität", "value": 20, "color": "#A9A9A9"},
+]
+
+
 class MainView(TemplateView):
     template_name = "reenact/index.html"
 
@@ -113,7 +127,7 @@ class MainView(TemplateView):
             },
         ]
         set_stroke_dashoffset()
-
+        context["production_demand_chart"] = generate_echarts_code(production, demand)
         context["results"] = results
         context["potentials"] = potentials
 
@@ -122,19 +136,6 @@ class MainView(TemplateView):
 
 def chart(request, chart_name: str) -> JsonResponse:
     """Return echart options as JSON."""
-
-    production = [
-        {"label": "Windenergie", "value": 204.5, "color": "#1E90FF"},
-        {"label": "Solarenergie", "value": 80.6, "color": "#FF7F00"},
-        {"label": "Wasserstoff", "value": 20, "color": "#00008B"},
-        {"label": "Biogas", "value": 40.5, "color": "#2E8B57"},
-    ]
-
-    demand = [
-        {"label": "Wirtschaft", "value": 204.5, "color": "#708090"},
-        {"label": "Wärmebedarf", "value": 80.6, "color": "#808080"},
-        {"label": "Mobilität", "value": 20, "color": "#A9A9A9"},
-    ]
 
     wind = request.GET.get("wind", 0.0)
     pv = request.GET.get("pv", 0.0)
