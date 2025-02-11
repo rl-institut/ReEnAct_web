@@ -50,6 +50,7 @@
 }
 
 .center-ring {
+    width:auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,12 +66,10 @@
 
 .percentage {
   position: relative;
-  top: -20%;
+  top: -28%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 15px;/
   font-weight: bold;
   color: black;
 }
-
-
