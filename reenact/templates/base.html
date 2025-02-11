@@ -19,11 +19,13 @@
     </title>
     <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}" />
     {% block css %}
-      <link rel="stylesheet" href="{% static 'css/tailwind.css' %}" />
-      <link rel="stylesheet" href="{% static 'css/project.css' %}" />
-      <link rel="stylesheet" href="{% static 'css/navigation.css' %}" />
-      <link rel="stylesheet"
-            href="{% static 'vendors/ionrangeslider/ion.rangeSlider.min.css' %}" />
+      {% compress css %}
+        <link rel="stylesheet" href="{% static 'css/tailwind.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/project.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/navigation.css' %}" />
+        <link rel="stylesheet"
+              href="{% static 'vendors/ionrangeslider/ion.rangeSlider.min.css' %}" />
+      {% endcompress %}
     {% endblock css %}
     {% block javascript %}
     {% endblock javascript %}
