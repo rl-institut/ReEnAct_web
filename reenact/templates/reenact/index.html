@@ -8,54 +8,121 @@
 {% endblock title %}
 {% block content %}
   <div class="grid grid-cols-1 gap-4 h-screen w-full">
-    <section class="h-[60vh]">
+    <section class="h-[10vh]">
       <div>
         <nav class="py-4 text-center">
-          <ul class="flex justify-center space-x-8">
-            <li>
-              <a href="#">2024</a>
-            </li>
-            <li>
-              <a href="#">Szenarien 2040</a>
-            </li>
-            <li>
-              <a href="#">Mein Plan 2040</a>
-            </li>
-            <li>
-              <a href="#">Szenarienvergleich</a>
-            </li>
-          </ul>
+          <div class="flex justify-center space-x-8">
+            <a id="tablink-index"
+               class="tablink tablink-active"
+               href="#"
+               onclick="openTab('index');">2024</a>
+            <a id="tablink-scenarios"
+               class="tablink"
+               href="#"
+               onclick="openTab('scenarios');">Szenarien 2040</a>
+            <a id="tablink-myplan"
+               class="tablink"
+               href="#"
+               onclick="openTab('myplan');">Mein Plan 2040</a>
+            <a id="tablink-comparison"
+               class="tablink"
+               href="#"
+               onclick="openTab('comparison'); reload_chart('total');">Szenarienvergleich</a>
+          </div>
         </nav>
       </div>
-      <div class="grid grid-cols-2 gap-4">
-        <div class="p-4">
-          <div id="mainChart"></div>
-        </div>
-        <div class="p-4">
-          <form id="capacityForm" onchange="create_main_chart()">
-            {{ capacities.as_div }}
-          </form>
-        </div>
-      </div>
     </section>
-    <section class="grid grid-cols-2 gap-4 h-[40vh]">
-      <div>
-        <p>
-          GENUTZTE ENERGIEERZEUGUNGSFLÄCHEN <span class="info-icon" data-tooltip="Hier steht Info">i</span>
-        </p>
-        <div class="p-4 flex lex-wrap gap-4">
-          {% for potential in potentials %}
-            <c-potentials title="{{ potential.title }}" percentage="{{ potential.percentage }}" value="{{ potential.value }}" unit="{{ potential.unit }}" stroke_dashoffset="{{ potential.stroke_dashoffset }}" color="{{ potential.color }}">
-            </c-potentials>
+    <div id="tabcontent-index" class="tabcontent tabcontent-active">
+      <section class="h-[50vh]">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="p-4">
+            <div id="mainChart" class="index-chart"></div>
+          </div>
+          <div class="p-4">
+            <form id="capacityForm" onchange="create_main_chart()">
+              {{ capacities.as_div }}
+            </form>
+          </div>
+        </div>
+      </section>
+      <section class="grid grid-cols-2 gap-4 h-[40vh]">
+        <div>
+          <p>
+            GENUTZTE ENERGIEERZEUGUNGSFLÄCHEN <span class="info-icon" data-tooltip="Hier steht Info">i</span>
+          </p>
+          <div class="p-4 flex lex-wrap gap-4">
+            {% for potential in potentials %}
+              <c-potentials title="{{ potential.title }}" percentage="{{ potential.percentage }}" value="{{ potential.value }}" unit="{{ potential.unit }}" stroke_dashoffset="{{ potential.stroke_dashoffset }}" color="{{ potential.color }}">
+              </c-potentials>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="p-4 flex flex-nowrap gap-4">
+          {% for result in results %}
+            <c-result_component_box title="{{ result.title }}" value1="{{ result.value1 }}" unit1="{{ result.unit1 }}" subtitle1="{{ result.subtitle1 }}" info_hover1="{{ result.info_hover1 }}" value2="{{ result.value2 }}" unit2="{{ result.unit2 }}" subtitle2="{{ result.subtitle2 }}" info_hover2="{{ result.info_hover2 }}" slider="{{ result.slider|unlocalize }}" />
           {% endfor %}
         </div>
+      </section>
+    </div>
+    <div id="tabcontent-scenarios" class="tabcontent tabcontent-hidden"></div>
+    <div id="tabcontent-myplan" class="tabcontent tabcontent-hidden"></div>
+    <div id="tabcontent-comparison" class="tabcontent tabcontent-hidden">
+      <div class="flex">
+        <div class="tmp2">
+          <div class="flex justify-center space-x-8">
+            <a id="tablink-chart-total"
+               class="tablink-chart tablink-active"
+               href="#"
+               onclick="openTab('total', 'chart'); reload_chart('total');">Gesamt</a>
+            <a id="tablink-chart-tech"
+               class="tablink-chart"
+               href="#"
+               onclick="openTab('tech', 'chart'); reload_chart('tech');">Pro Technologie</a>
+            <a id="tablink-chart-analysis"
+               class="tablink-chart"
+               href="#"
+               onclick="openTab('analysis', 'chart'); reload_chart('analysis');">Analyse</a>
+          </div>
+          <div id="tabcontent-chart-total"
+               class="tabcontent-chart tabcontent-active">
+            <h2>Erzeugung und Verbrauch</h2>
+            <div id="chart-total" class="index-chart"></div>
+          </div>
+          <div id="tabcontent-chart-tech" class="tabcontent-chart tabcontent-hidden">
+            <h2>Installierte Leistung</h2>
+            <select id="select-tech" onchange="reload_chart('tech');">
+              <option value="wind">Windkraft</option>
+            </select>
+            <div id="chart-tech" class="index-chart"></div>
+          </div>
+          <div id="tabcontent-chart-analysis"
+               class="tabcontent-chart tabcontent-hidden">
+            <select id="select-analysis" onchange="reload_chart('analysis');">
+              <option value="production">Produktion 2040</option>
+              <option value="consumption">Verbrauch 2040</option>
+              <option value="area">Flächenverbrauch</option>
+            </select>
+            <div id="chart-analysis" class="index-chart"></div>
+          </div>
+        </div>
+        <div class="tmp5">
+          <h2>Hier können Sie verschiedene Szenarien miteinander vergleichen</h2>
+          <p class="justify">
+            So können sehen, wie unterschiedliche Entscheidungen die Energieversorgung und -kosten bis 2040 beeinflussen würden.
+          </p>
+          <p class="justify">
+            Sie können genau analysieren, wie sich Investitionen in Erneuerbare Energien, der Rückbau fossiler Anlagen oder Effizienzmaßnahmen auf CO2-Emissionen, Energiekosten und den Investitionsbedarf auswirken.
+          </p>
+          <p class="justify">
+            Ziel des Vergleiches ist es, die beste Balance zwischen Klimaschutz, Kosten und Versorgungssicherheit zu identifizieren.
+          </p>
+          <p>
+            <a class="btn" onclick="openTab('scenarios');">Szenarien sehen</a>
+            <a class="btn" onclick="openTab('myplan');">Meinen Plan sehen</a>
+          </p>
+        </div>
       </div>
-      <div class="p-4 flex flex-nowrap gap-4">
-        {% for result in results %}
-          <c-result_component_box title="{{ result.title }}" value1="{{ result.value1 }}" unit1="{{ result.unit1 }}" subtitle1="{{ result.subtitle1 }}" info_hover1="{{ result.info_hover1 }}" value2="{{ result.value2 }}" unit2="{{ result.unit2 }}" subtitle2="{{ result.subtitle2 }}" info_hover2="{{ result.info_hover2 }}" slider="{{ result.slider|unlocalize }}" />
-        {% endfor %}
-      </div>
-    </section>
+    </div>
   </div>
 {% endblock content %}
 {% block css %}
@@ -68,6 +135,35 @@
           src="{% static 'vendors/echarts/echarts.min.js' %}"></script>
   <script src="{% static 'vendors/jquery/jquery.slim.min.js' %}"></script>
   <script src="{% static 'vendors/ionrangeslider/ion.rangeSlider.min.js' %}"></script>
+  <script>
+    // open navigation tab
+    function openTab(tabname, filter) {
+      filter = filter ? '-' + filter : '';
+      // move link
+      let tablink_classname = 'tablink' + filter;
+      let tablinks = document.getElementsByClassName(tablink_classname);
+      for (let tablink of tablinks)
+        tablink.classList.remove('tablink-active');
+      let active_tablink = document.getElementById('tablink' + filter + '-' + tabname);
+      if (active_tablink)
+        active_tablink.classList.add('tablink-active');
+
+      // hide all contents, except target by tabname
+      let content_classname = 'tabcontent' + filter;
+      let contents = document.getElementsByClassName(content_classname);
+      for (let content of contents) {
+        if (content.id === content_classname + '-' + tabname) {
+          // target content: show
+          content.classList.remove('tabcontent-hidden');
+          content.classList.add('tabcontent-active');
+        } else {
+          // other content: hide
+          content.classList.remove('tabcontent-active');
+          content.classList.add('tabcontent-hidden');
+        }
+      }
+    }
+  </script>
 {% endblock javascript %}
 {% block javascript_inline %}
   {{ production_demand_chart|json_script:"productionDemandChart" }}
