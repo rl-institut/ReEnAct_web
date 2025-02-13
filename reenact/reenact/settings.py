@@ -4,7 +4,9 @@ import json
 import pathlib
 from dataclasses import dataclass
 
-CONFIG_DIR = pathlib.Path(__file__).parent / "config"
+APP_DIR = pathlib.Path(__file__).parent
+CONFIG_DIR = APP_DIR / "config"
+SCENARIO_DIR = APP_DIR / "scenarios"
 
 
 @dataclass
@@ -24,3 +26,13 @@ with (CONFIG_DIR / "sliders.json").open("r", encoding="utf-8") as f:
     SLIDERS = [
         SliderConfig(name=name, **values) for name, values in slider_data.items()
     ]
+
+
+SCENARIOS = []
+for filename in sorted(SCENARIO_DIR.iterdir()):
+    if filename.suffix == ".json":
+        scenario_number = filename.name.split("_")[0]
+        with filename.open("r", encoding="utf-8") as file:
+            data = json.load(file)
+            data["number"] = int(scenario_number)
+            SCENARIOS.append(data)

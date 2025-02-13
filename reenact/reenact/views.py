@@ -1,6 +1,6 @@
+from __future__ import annotations
+
 import math
-import json
-import os
 
 from django.http import HttpResponse, JsonResponse
 from django.views.generic.base import TemplateView
@@ -39,6 +39,7 @@ class MainView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["capacities"] = CapacitiesForm(sliders=settings.SLIDERS)
+        context["scenarios"] = settings.SCENARIOS
 
         def set_slider(slider):
             return 29.86 + slider * (97.83 / 100)
@@ -137,7 +138,7 @@ class MainView(TemplateView):
         return context
 
 
-def chart(request, chart_name: str) -> JsonResponse:  # noqa: C901 PLR0911
+def chart(request, chart_name: str) -> JsonResponse | HttpResponse:  # noqa: C901 PLR0911
     """Return echart options as JSON."""
     if request.method != "GET":
         return HttpResponse(status=405)  # wrong method
@@ -274,25 +275,3 @@ def chart(request, chart_name: str) -> JsonResponse:  # noqa: C901 PLR0911
         )
 
     return HttpResponse(status=406)  # not acceptable: unknown chart
-
-
-class ScenarioTabs(TemplateView):
-    template_name = "reenact/scenario_tabs.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        scenarios = []
-
-        scenario_dir = os.path.join(os.path.dirname(__file__), "scenarios")
-        if os.path.exists(scenario_dir):
-            for filename in sorted(os.listdir(scenario_dir)):
-                if filename.endswith(".json"):
-                    scenario_number = filename.split("_")[0]
-                    with open(os.path.join(scenario_dir, filename), "r", encoding="utf-8") as file:
-                        data = json.load(file)
-                        data["number"] = int(scenario_number)
-                        scenarios.append(data)
-        else:
-            print(f"Scenario directory not found: {scenario_dir}")
-        context["scenarios"] = scenarios
-        return context

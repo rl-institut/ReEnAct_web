@@ -64,7 +64,25 @@
         </div>
       </section>
     </div>
-    <div id="tabcontent-scenarios" class="tabcontent tabcontent-hidden"></div>
+    <div id="tabcontent-scenarios" class="tabcontent tabcontent-hidden">
+      <div class="grid grid-cols-2 gap-4 h-screen p-6">
+        <div class="p-4 border rounded-lg shadow-md bg-white">
+          <h2 class="text-lg font-bold mb-4">Wählen Sie ein Szenario aus</h2>
+          <div id="scenarioTabs" class="flex flex-col gap-4">
+            {% for scenario in scenarios %}
+              <button class="scenario-button {% if forloop.first %}selected{% endif %}"
+                      onclick="updateScenario('{{ scenario.title }}', '{{ scenario.description }}', this)">
+                {{ scenario.number }}: {{ scenario.name }}
+              </button>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="p-4">
+          <h2 id="scenarioTitle" class="text-lg font-bold mb-2">{{ scenarios.0.title }}</h2>
+          <p id="scenarioDescription" class="text-gray-700 mb-4">{{ scenarios.0.description }}</p>
+        </div>
+      </div>
+    </div>
     <div id="tabcontent-myplan" class="tabcontent tabcontent-hidden"></div>
     <div id="tabcontent-comparison" class="tabcontent tabcontent-hidden">
       <div class="flex">
@@ -129,6 +147,7 @@
   {{ block.super }}
   <link rel="stylesheet" href="{% static 'css/main_layout.css' %}" />
   <link rel="stylesheet" href="{% static 'css/charts.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/scenario_tabs.css' %}" />
 {% endblock css %}
 {% block javascript %}
   <script type="text/javascript"
@@ -169,4 +188,5 @@
   {{ production_demand_chart|json_script:"productionDemandChart" }}
   <script src="{% static 'js/sliders.js' %}"></script>
   <script src="{% static 'js/charts.js' %}"></script>
+  <script src="{% static 'js/scenarios.js' %}"></script>
 {% endblock javascript_inline %}

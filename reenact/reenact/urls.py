@@ -35,5 +35,4 @@ urlpatterns = [
     ),
     path("", views.MainView.as_view(), name="index"),
     path("chart/<str:chart_name>/", views.chart, name="chart"),
-    path("scenario_tabs", views.ScenarioTabs.as_view(), name="scenario_tabs"),
 ]
