@@ -28,7 +28,7 @@ production = [
 demand = [
     {"label": "Wirtschaft", "value": 204.5, "color": "#f1f5f9"},
     {"label": "Wärmebedarf", "value": 80.6, "color": "#cbd5e1"},
-    {"label": "Elektrolyseur", "value": 80.6, "color": "#64748b"},
+    {"label": "Elektrizität", "value": 80.6, "color": "#64748b"},
     {"label": "Mobilität", "value": 20, "color": "#334155"},
 ]
 

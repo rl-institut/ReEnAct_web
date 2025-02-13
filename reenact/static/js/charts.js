@@ -1,4 +1,5 @@
 const capacityForm = document.getElementById("capacityForm");
+const scenariosData = JSON.parse(document.getElementById('scenarios-data').textContent);
 
 create_main_chart_on_startup();
 
@@ -109,3 +110,142 @@ function reload_chart(name) {
         console.log(error);
     });
 }
+function generate_main_chart_option(production, demand) {
+  let totalProduction = production.reduce((sum, item) => sum + item.value, 0);
+  let totalDemand = demand.reduce((sum, item) => sum + item.value, 0);
+
+  let seriesList = production.map(prod_item => ({
+    name: prod_item.label,
+    type: 'bar',
+    stack: 'Production',
+    data: [prod_item.value, 0],
+    itemStyle: { color: prod_item.color }
+  }));
+  // Beispiel: Anpassen des ersten Balkens
+  if (seriesList.length > 0) {
+    seriesList[0].barCategoryGap = '10%';
+    seriesList[0].barWidth = '40%';
+  }
+
+  let demandList = demand.map(dem_item => ({
+    name: dem_item.label,
+    type: 'bar',
+    stack: 'Demand',
+    data: [0, dem_item.value],
+    itemStyle: { color: dem_item.color }
+  }));
+  if (demandList.length > 0) {
+    demandList[0].barGap = '-100%';
+    demandList[0].barWidth = '40%';
+  }
+  seriesList = seriesList.concat(demandList);
+
+  let xaxis_labels = [
+    `${totalProduction.toFixed(1)} MWh \n Jahreserzeugung`,
+    `${totalDemand.toFixed(1)} MWh \n Jahresverbrauch`
+  ];
+
+  let legendTooltipFormatter = function(params) {
+    let chart = echarts.getInstanceByDom(document.getElementById('main_chart'));
+    let seriesData = chart.getOption().series;
+    let value = 0;
+    seriesData.forEach(series => {
+      if (series.name === params.name) {
+        value = series.data.find(val => val > 0);
+      }
+    });
+    return `${params.name}: ${value} MWh`;
+  };
+
+  let option = {
+    tooltip: { show: true },
+    grid: { top: '10%', left: '10%', right: '30%', bottom: '15%' },
+    xAxis: {
+      type: 'category',
+      data: xaxis_labels,
+      axisLabel: {
+        show: true,
+        align: 'center'
+      },
+      axisTick: { show: false }
+    },
+    yAxis: {
+      type: 'value',
+      splitLine: { show: false },
+      axisLabel: { show: false }
+    },
+    series: seriesList,
+    legend: {
+      right: '5%',
+      orient: 'vertical',
+      icon: 'circle',
+      textStyle: { fontSize: 12 },
+      tooltip: { show: true, formatter: legendTooltipFormatter }
+    }
+  };
+
+  return option;
+}
+function reload_main_chart(scenarioNumber) {
+  // Szenario anhand der Nummer finden
+  let scenario = scenariosData.find(s => s.number == scenarioNumber);
+  if (!scenario) {
+    console.error("Szenario nicht gefunden:", scenarioNumber);
+    return;
+  }
+
+  // Mapping für production und demand definieren
+  const productionMapping = {
+    "wind": { label: "Windenergie", color: "#8dd3c7" },
+    "pv": { label: "Solarenergie", color: "#eeee6c" }
+    // Weitere Zuordnungen können hier ergänzt werden
+  };
+  const demandMapping = {
+    "mobility": { label: "Mobilität", color: "#334155" },
+    "heat": { label: "Wärmebedarf", color: "#cbd5e1" },
+    "electricity": { label: "Elektrizität", color: "#64748b" }
+    // Weitere Zuordnungen können hier ergänzt werden
+  };
+
+  // Standardfarben für Keys ohne Mapping
+  const defaultProductionColor = "#bc80bd";
+  const defaultDemandColor = "#f1f5f9";
+
+  // Produktionsdaten transformieren
+  let production = [];
+  for (let key in scenario.production) {
+    let mapping = productionMapping[key] || {
+      label: key.charAt(0).toUpperCase() + key.slice(1),
+      color: defaultProductionColor
+    };
+    production.push({ label: mapping.label, value: scenario.production[key], color: mapping.color });
+  }
+
+  // Verbrauchsdaten transformieren
+  let demand = [];
+  for (let key in scenario.demand) {
+    let mapping = demandMapping[key] || {
+      label: key.charAt(0).toUpperCase() + key.slice(1),
+      color: defaultDemandColor
+    };
+    demand.push({ label: mapping.label, value: scenario.demand[key], color: mapping.color });
+  }
+
+  // Chart-Optionen erstellen (verwenden Sie hier Ihre bereits vorhandene Funktion)
+  let options = generate_main_chart_option(production, demand);
+
+  // Chart neu rendern
+  // Angenommen, das Chart-Container-Element hat die ID "main_chart"
+  let chartElement = document.getElementById('mainChart');
+  if (!chartElement) {
+    console.error("Chart-Element nicht gefunden");
+    return;
+  }
+  let chart = echarts.getInstanceByDom(chartElement);
+  if (!chart) {
+    chart = echarts.init(chartElement);
+  }
+  chart.setOption(options);
+  chart.resize();
+}
+

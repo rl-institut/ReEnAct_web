@@ -1,4 +1,3 @@
-
 function updateScenario(title, description, button) {
     // Alle Buttons deselektieren
     document.querySelectorAll('#scenarioTabs button').forEach(btn => {

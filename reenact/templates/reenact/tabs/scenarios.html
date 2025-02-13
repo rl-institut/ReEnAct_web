@@ -2,9 +2,10 @@
   <div class="p-4 border rounded-lg shadow-md bg-white">
     <h2 class="text-lg font-bold mb-4">Wählen Sie ein Szenario aus</h2>
     <div id="scenarioTabs" class="flex flex-col gap-4">
+      {{ scenarios|json_script:"scenarios-data" }}
       {% for scenario in scenarios %}
         <button class="scenario-button {% if forloop.first %}selected{% endif %}"
-                onclick="updateScenario('{{ scenario.title }}', '{{ scenario.description }}', this)">
+                onclick="updateScenario('{{ scenario.title }}', '{{ scenario.description }}', this); reload_main_chart('{{ scenario.number }}');">
           {{ scenario.number }}: {{ scenario.name }}
         </button>
       {% endfor %}
