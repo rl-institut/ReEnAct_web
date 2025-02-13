@@ -1,6 +1,6 @@
 import math
 
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.generic.base import TemplateView
 
 from . import settings
@@ -135,17 +135,140 @@ class MainView(TemplateView):
         return context
 
 
-def chart(request, chart_name: str) -> JsonResponse:
+def chart(request, chart_name: str) -> JsonResponse:  # noqa: C901 PLR0911
     """Return echart options as JSON."""
+    if request.method != "GET":
+        return HttpResponse(status=405)  # wrong method
 
-    wind = request.GET.get("wind", 0.0)
-    pv = request.GET.get("pv", 0.0)
+    if chart_name == "main_chart":
+        wind = request.GET.get("wind", 0.0)
+        pv = request.GET.get("pv", 0.0)
 
-    for item in production:
-        if item["label"] == "Windenergie":
-            item["value"] = float(wind)
-        elif item["label"] == "Solarenergie":
-            item["value"] = float(pv)
+        for item in production:
+            if item["label"] == "Windenergie":
+                item["value"] = float(wind)
+            elif item["label"] == "Solarenergie":
+                item["value"] = float(pv)
 
-    echarts_option = generate_echarts_code(production, demand)
-    return JsonResponse(echarts_option)
+        echarts_option = generate_echarts_code(production, demand)
+        return JsonResponse(echarts_option)
+
+    # dummy values for charts, get from DB later
+    # structure: scenario name -> scenario data
+    data = {
+        "Weiter wie bisher": {
+            "area": 70,
+            "wind": 40,
+            "production": 2000,
+            "consumption": 7000,
+        },
+        "Wind-Repowering": {
+            "area": 140,
+            "wind": 160,
+            "production": 8000,
+            "consumption": 6000,
+        },
+        "Zubau PV": {
+            "area": 90,
+            "wind": 90,
+            "production": 5000,
+            "consumption": 4000,
+        },
+        "Zubau Wind und PV": {
+            "area": 160,
+            "wind": 140,
+            "production": 7000,
+            "consumption": 5000,
+        },
+        "Moorbewirtschaftung": {
+            "area": 110,
+            "wind": 30,
+            "production": 1000,
+            "consumption": 1000,
+        },
+        "Wasserstoff": {
+            "area": 70,
+            "wind": 20,
+            "production": 1000,
+            "consumption": 1000,
+        },
+        "Kostenoptimierung": {
+            "area": 70,
+            "wind": 40,
+            "production": 2000,
+            "consumption": 1000,
+        },
+        "Hohe CO2-Preise": {
+            "area": 100,
+            "wind": 70,
+            "production": 3000,
+            "consumption": 3000,
+        },
+        "Suffizienz": {
+            "area": 150,
+            "wind": 150,
+            "production": 7000,
+            "consumption": 6000,
+        },
+        "Autarkie": {"area": 140, "wind": 100, "production": 5000, "consumption": 6000},
+        "⭐️ Mein Plan 2040": {
+            "area": 130,
+            "wind": 100,
+            "production": 5000,
+            "consumption": 6000,
+        },
+    }
+
+    if chart_name == "total_chart":
+        return JsonResponse(
+            {
+                "x_data": list(data.keys()),
+                "y_data": {  # production and consumption for each scenario
+                    "Jahreserzeugung 2040": [
+                        v.get("production") for v in data.values()
+                    ],
+                    "Jahresverbrauch 2040": [
+                        v.get("consumption") for v in data.values()
+                    ],
+                },
+                "y_label": "Energieerzeugung und -verbrauch [kWh]",
+            },
+        )
+
+    if chart_name == "tech_chart":
+        technology = request.GET.get("q")
+        if technology is None:
+            return HttpResponse(status=406)  # not acceptable: technology needed
+
+        return JsonResponse(
+            {
+                "x_data": list(data.keys()),
+                "y_data": {
+                    "Installierte Leistung 2040": [
+                        v.get(technology) for v in data.values()
+                    ],
+                },
+                "target": {"Ziel 2040": 70},
+                "y_label": "Installierte Leistung [MW]",
+            },
+        )
+
+    if chart_name == "analysis_chart":
+        kpi = request.GET.get("q")
+        if kpi is None:
+            return HttpResponse(status=406)  # not acceptable: KPI needed
+
+        # get label
+        labels = {
+            "area": "Fläche [km²]",
+            "production": "Erzeugung 2040 [MWh]",
+            "consumption": "Verbrauch 2040 [MWh]",
+        }
+        return JsonResponse(
+            {
+                "x_data": list(data.keys()),
+                "y_data": {labels.get(kpi): [v.get(kpi) for v in data.values()]},
+            },
+        )
+
+    return HttpResponse(status=406)  # not acceptable: unknown chart

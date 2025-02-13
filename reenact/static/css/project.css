@@ -21,3 +21,31 @@ h2 {
   font-size: 1em;
   display: block;
 }
+
+.justify {
+  text-align: justify;
+}
+
+.btn {
+  cursor: pointer;
+  background: lightblue;
+  padding-inline: 10px;
+  border-radius: 10px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.flex {
+  display: flex;
+}
+
+.tmp2 {
+  width: 70%;
+}
+
+.tmp5 {
+  width: 25%;
+}

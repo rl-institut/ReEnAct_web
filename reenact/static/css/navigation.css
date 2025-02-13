@@ -37,3 +37,16 @@
 #hdr-img {
   width: 10em;
 }
+
+.tablink-active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.tabcontent-hidden {
+  display: none;
+}
+
+.tabcontent-active {
+  display: block;
+}
