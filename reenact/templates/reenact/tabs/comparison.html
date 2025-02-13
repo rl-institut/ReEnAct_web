@@ -1,0 +1,55 @@
+<div class="flex">
+  <div class="tmp2">
+    <div class="flex justify-center space-x-8">
+      <a id="tablink-chart-total"
+         class="tablink-chart tablink-active"
+         href="#"
+         onclick="openTab('total', 'chart'); reload_chart('total');">Gesamt</a>
+      <a id="tablink-chart-tech"
+         class="tablink-chart"
+         href="#"
+         onclick="openTab('tech', 'chart'); reload_chart('tech');">Pro Technologie</a>
+      <a id="tablink-chart-analysis"
+         class="tablink-chart"
+         href="#"
+         onclick="openTab('analysis', 'chart'); reload_chart('analysis');">Analyse</a>
+    </div>
+    <div id="tabcontent-chart-total"
+         class="tabcontent-chart tabcontent-active">
+      <h2>Erzeugung und Verbrauch</h2>
+      <div id="chart-total" class="index-chart"></div>
+    </div>
+    <div id="tabcontent-chart-tech" class="tabcontent-chart tabcontent-hidden">
+      <h2>Installierte Leistung</h2>
+      <select id="select-tech" onchange="reload_chart('tech');">
+        <option value="wind">Windkraft</option>
+      </select>
+      <div id="chart-tech" class="index-chart"></div>
+    </div>
+    <div id="tabcontent-chart-analysis"
+         class="tabcontent-chart tabcontent-hidden">
+      <select id="select-analysis" onchange="reload_chart('analysis');">
+        <option value="production">Produktion 2040</option>
+        <option value="consumption">Verbrauch 2040</option>
+        <option value="area">Flächenverbrauch</option>
+      </select>
+      <div id="chart-analysis" class="index-chart"></div>
+    </div>
+  </div>
+  <div class="tmp5">
+    <h2>Hier können Sie verschiedene Szenarien miteinander vergleichen</h2>
+    <p class="justify">
+      So können sehen, wie unterschiedliche Entscheidungen die Energieversorgung und -kosten bis 2040 beeinflussen würden.
+    </p>
+    <p class="justify">
+      Sie können genau analysieren, wie sich Investitionen in Erneuerbare Energien, der Rückbau fossiler Anlagen oder Effizienzmaßnahmen auf CO2-Emissionen, Energiekosten und den Investitionsbedarf auswirken.
+    </p>
+    <p class="justify">
+      Ziel des Vergleiches ist es, die beste Balance zwischen Klimaschutz, Kosten und Versorgungssicherheit zu identifizieren.
+    </p>
+    <p>
+      <a class="btn" onclick="openTab('scenarios');">Szenarien sehen</a>
+      <a class="btn" onclick="openTab('myplan');">Meinen Plan sehen</a>
+    </p>
+  </div>
+</div>
