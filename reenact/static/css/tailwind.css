@@ -608,16 +608,24 @@ video {
   display: grid;
 }
 
+.contents {
+  display: contents;
+}
+
 .h-8 {
   height: 2rem;
+}
+
+.h-\[10vh\] {
+  height: 10vh;
 }
 
 .h-\[40vh\] {
   height: 40vh;
 }
 
-.h-\[60vh\] {
-  height: 60vh;
+.h-\[50vh\] {
+  height: 50vh;
 }
 
 .h-full {

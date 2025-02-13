@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import math
 
 from django.http import HttpResponse, JsonResponse
@@ -37,6 +39,7 @@ class MainView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["capacities"] = CapacitiesForm(sliders=settings.SLIDERS)
+        context["scenarios"] = settings.SCENARIOS
 
         def set_slider(slider):
             return 29.86 + slider * (97.83 / 100)
@@ -135,7 +138,7 @@ class MainView(TemplateView):
         return context
 
 
-def chart(request, chart_name: str) -> JsonResponse:  # noqa: C901 PLR0911
+def chart(request, chart_name: str) -> JsonResponse | HttpResponse:  # noqa: C901 PLR0911
     """Return echart options as JSON."""
     if request.method != "GET":
         return HttpResponse(status=405)  # wrong method

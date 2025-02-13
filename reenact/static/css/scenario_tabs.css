@@ -1,0 +1,21 @@
+#scenarioTabs button {
+    background-color: #fff;
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid #e5e7eb;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    text-align: center
+}
+
+#scenarioTabs button:hover {
+    background-color: #d1d5db;
+}
+
+#scenarioTabs button.selected {
+    background-color: #334155;
+    color: white;
+}
