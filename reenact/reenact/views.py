@@ -1,22 +1,14 @@
 from __future__ import annotations
 
 import math
+import random
 
 from django.http import HttpResponse, JsonResponse
 from django.views.generic.base import TemplateView
 
 from . import settings
-from .chart import generate_echarts_code
 from .forms import CapacitiesForm
-
-
-def thousand_dot(value):
-    try:
-        number = int(value)
-        return f"{number:,}".replace(",", ".")
-    except (ValueError, TypeError):
-        return value
-
+from .settings import SCENARIOS
 
 production = [
     {"label": "Windenergie", "value": 204.5, "color": "#8dd3c7"},
@@ -31,6 +23,28 @@ demand = [
     {"label": "Elektrizität", "value": 80.6, "color": "#64748b"},
     {"label": "Mobilität", "value": 20, "color": "#334155"},
 ]
+
+def thousand_dot(value):
+    try:
+        number = int(value)
+        return f"{number:,}".replace(",", ".")
+    except (ValueError, TypeError):
+        return value
+
+def random_production_color(used_colors):
+    """Erzeugt eine zufällige Farbe, die noch nicht in used_colors vorkommt."""
+    while True:
+        color = "#{:06x}".format(random.randint(0, 0xFFFFFF))
+        if color.lower() not in used_colors:
+            return color
+
+def random_gray_color(used_colors):
+    """Erzeugt eine zufällige Graufarbe aus einem moderaten Spektrum, die noch nicht verwendet wurde."""
+    while True:
+        gray_val = random.randint(0x33, 0xCC)
+        color = "#{:02x}{:02x}{:02x}".format(gray_val, gray_val, gray_val)
+        if color.lower() not in used_colors:
+            return color
 
 
 class MainView(TemplateView):
@@ -131,30 +145,94 @@ class MainView(TemplateView):
             },
         ]
         set_stroke_dashoffset()
-        context["production_demand_chart"] = generate_echarts_code(production, demand)
         context["results"] = results
         context["potentials"] = potentials
 
         return context
 
 
-def chart(request, chart_name: str) -> JsonResponse | HttpResponse:  # noqa: C901 PLR0911
-    """Return echart options as JSON."""
+def chart(request, chart_name: str) -> JsonResponse | HttpResponse:
+    """Gibt die rohen Daten (production und demand) als JSON zurück."""
     if request.method != "GET":
-        return HttpResponse(status=405)  # wrong method
+        return HttpResponse(status=405)
 
     if chart_name == "main_chart":
-        wind = request.GET.get("wind", 0.0)
-        pv = request.GET.get("pv", 0.0)
+        scenario_param = request.GET.get("scenario")
+        if scenario_param:
+            try:
+                scenario_number = int(scenario_param)
+            except ValueError:
+                return HttpResponse(status=400)
 
-        for item in production:
-            if item["label"] == "Windenergie":
-                item["value"] = float(wind)
-            elif item["label"] == "Solarenergie":
-                item["value"] = float(pv)
+            scenario = next((s for s in SCENARIOS if s["number"] == scenario_number), None)
+            if not scenario:
+                return HttpResponse(status=404)
 
-        echarts_option = generate_echarts_code(production, demand)
-        return JsonResponse(echarts_option)
+            production_mapping = {
+                "wind": {"label": "Windenergie", "color": "#8dd3c7"},
+                "pv": {"label": "Solarenergie", "color": "#eeee6c"},
+                "biomass": {"label": "Biomasse", "color": "#699434"}
+            }
+            demand_mapping = {
+                "mobility": {"label": "Mobilität", "color": "#334155"},
+                "heat": {"label": "Wärmebedarf", "color": "#cbd5e1"},
+                "electricity": {"label": "Elektrizität", "color": "#64748b"},
+                "h2o": {"label": "Wasser", "color": "#b6b6b6"},
+
+            }
+
+            used_prod_colors = {v["color"].lower() for v in production_mapping.values()}
+            used_demand_colors = {v["color"].lower() for v in demand_mapping.values()}
+
+            production_data = []
+            for key, value in scenario.get("production", {}).items():
+                if key in production_mapping:
+                    mapping = production_mapping[key]
+                else:
+                    mapping = {"label": key.capitalize()}
+                    mapping["color"] = random_production_color(used_prod_colors)
+                    used_prod_colors.add(mapping["color"].lower())
+                production_data.append({
+                    "label": mapping["label"],
+                    "value": value,
+                    "color": mapping["color"],
+                })
+
+            demand_data = []
+            for key, value in scenario.get("demand", {}).items():
+                if key in demand_mapping:
+                    mapping = demand_mapping[key]
+                else:
+                    mapping = {"label": key.capitalize()}
+                    mapping["color"] = random_gray_color(used_demand_colors)
+                    used_demand_colors.add(mapping["color"].lower())
+                demand_data.append({
+                    "label": mapping["label"],
+                    "value": value,
+                    "color": mapping["color"],
+                })
+
+            return JsonResponse({"production": production_data, "demand": demand_data})
+        else:
+            params = request.GET
+            updated_production = [item.copy() for item in production]
+            if params.get("wind") is not None:
+                try:
+                    wind_value = float(params.get("wind", 0.0))
+                except ValueError:
+                    wind_value = 0.0
+                for item in updated_production:
+                    if item["label"] == "Windenergie":
+                        item["value"] = wind_value
+            if params.get("pv") is not None:
+                try:
+                    pv_value = float(params.get("pv", 0.0))
+                except ValueError:
+                    pv_value = 0.0
+                for item in updated_production:
+                    if item["label"] == "Solarenergie":
+                        item["value"] = pv_value
+            return JsonResponse({"production": updated_production, "demand": demand})
 
     # dummy values for charts, get from DB later
     # structure: scenario name -> scenario data
