@@ -14,19 +14,19 @@
             <a id="tablink-statusquo"
                class="tablink tablink-active"
                href="#"
-               onclick="openTab('statusquo');">2024</a>
+               onclick="openTab('statusquo'); reload_chart('statusquo-chart');">2024</a>
             <a id="tablink-scenarios"
                class="tablink"
                href="#"
-               onclick="openTab('scenarios');">Szenarien 2040</a>
+               onclick="openTab('scenarios'); reload_chart('scenarios-chart');">Szenarien 2040</a>
             <a id="tablink-myplan"
                class="tablink"
                href="#"
-               onclick="openTab('myplan');">Mein Plan 2040</a>
+               onclick="openTab('myplan'); reload_chart('myplan-chart');">Mein Plan 2040</a>
             <a id="tablink-comparison"
                class="tablink"
                href="#"
-               onclick="openTab('comparison'); reload_chart('total');">Szenarienvergleich</a>
+               onclick="openTab('comparison'); fetch_chart('total');">Szenarienvergleich</a>
           </div>
         </nav>
       </div>

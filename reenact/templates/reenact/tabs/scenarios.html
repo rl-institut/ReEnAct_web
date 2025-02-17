@@ -1,17 +1,47 @@
-<div class="grid grid-cols-2 gap-4 h-screen p-6">
-  <div class="p-4 border rounded-lg shadow-md bg-white">
-    <h2 class="text-lg font-bold mb-4">Wählen Sie ein Szenario aus</h2>
-    <div id="scenarioTabs" class="flex flex-col gap-4">
-      {% for scenario in scenarios %}
-        <button class="scenario-button {% if forloop.first %}selected{% endif %}"
-                onclick="updateScenario('{{ scenario.title }}', '{{ scenario.description }}', this)">
-          {{ scenario.number }}: {{ scenario.name }}
-        </button>
+{% load l10n %}
+
+<section class="h-[50vh]">
+  <div class="grid grid-cols-2 gap-4">
+    <div class="p-4">
+      <div id="scenarios-chart" class="index-chart"></div>
+    </div>
+    <div class="p-4">
+      <div class="grid grid-cols-2 gap-4 h-screen p-6">
+        <div class="p-4 border rounded-lg shadow-md bg-white">
+          <h2 class="text-lg font-bold mb-4">Wählen Sie ein Szenario aus</h2>
+          <div id="scenarioTabs" class="flex flex-col gap-4">
+            {% for scenario in scenarios %}
+              <button class="scenario-button {% if forloop.first %}selected{% endif %}"
+                      onclick="updateScenario('{{ scenario.title }}', '{{ scenario.description }}', this)">
+                {{ scenario.number }}: {{ scenario.name }}
+              </button>
+            {% endfor %}
+          </div>
+          <a href="#" class="btn" onclick="openTab('myplan');">Eignen Plan erstellen</a>
+        </div>
+        <div class="p-4">
+          <h2 id="scenarioTitle" class="text-lg font-bold mb-2">{{ scenarios.0.title }}</h2>
+          <p id="scenarioDescription" class="text-gray-700 mb-4">{{ scenarios.0.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="grid grid-cols-2 gap-4 h-[40vh]">
+  <div>
+    <p>
+      GENUTZTE ENERGIEERZEUGUNGSFLÄCHEN <span class="info-icon" data-tooltip="Hier steht Info">i</span>
+    </p>
+    <div class="p-4 flex lex-wrap gap-4">
+      {% for potential in potentials %}
+        <c-potentials title="{{ potential.title }}" percentage="{{ potential.percentage }}" value="{{ potential.value }}" unit="{{ potential.unit }}" stroke_dashoffset="{{ potential.stroke_dashoffset }}" color="{{ potential.color }}">
+        </c-potentials>
       {% endfor %}
     </div>
   </div>
-  <div class="p-4">
-    <h2 id="scenarioTitle" class="text-lg font-bold mb-2">{{ scenarios.0.title }}</h2>
-    <p id="scenarioDescription" class="text-gray-700 mb-4">{{ scenarios.0.description }}</p>
+  <div class="p-4 flex flex-nowrap gap-4">
+    {% for result in results %}
+      <c-result_component_box title="{{ result.title }}" value1="{{ result.value1 }}" unit1="{{ result.unit1 }}" subtitle1="{{ result.subtitle1 }}" info_hover1="{{ result.info_hover1 }}" value2="{{ result.value2 }}" unit2="{{ result.unit2 }}" subtitle2="{{ result.subtitle2 }}" info_hover2="{{ result.info_hover2 }}" slider="{{ result.slider|unlocalize }}" />
+    {% endfor %}
   </div>
-</div>
+</section>

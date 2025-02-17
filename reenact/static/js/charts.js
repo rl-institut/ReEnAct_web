@@ -1,40 +1,50 @@
-const capacityForm = document.getElementById("capacityForm");
+const productionDemandChartOptions = JSON.parse(document.getElementById("productionDemandChart").textContent);
 
-create_main_chart_on_startup();
+create_chart("statusquo-chart", productionDemandChartOptions);
+create_chart("scenarios-chart", productionDemandChartOptions);
+create_chart("myplan-chart", productionDemandChartOptions);
 
-function createChart(div_id, options) {
-  const chartElement = document.getElementById(div_id);
-  let chart;
-  if (echarts.getInstanceByDom(chartElement)) {
-    chart = echarts.getInstanceByDom(chartElement);
-    chart.clear();
-  } else {
-    chart = echarts.init(chartElement, null, { renderer: "svg" });
-  }
-  chart.setOption(options);
-  chart.resize();
+function create_chart(div_id, options) {
+    const chartElement = document.getElementById(div_id);
+    if (!chartElement)
+        return;
+    let chart;
+    if (echarts.getInstanceByDom(chartElement)) {
+        chart = echarts.getInstanceByDom(chartElement);
+        chart.clear();
+    } else {
+        chart = echarts.init(chartElement, null, { renderer: "svg" });
+    }
+    chart.setOption(options);
+    chart.resize();
 }
 
-async function get_echart_options(chartName, parameters) {
-    const response = await fetch(`chart/${chartName}?${parameters}`);
-    const data = await response.json();
-    return data;
+function reload_chart(div_id) {
+    // Reload chart. Useful when size changed, for example after changing tabs. Does not change data.
+    const chartElement = document.getElementById(div_id);
+    if (!chartElement)
+        return;
+    try {
+        const chart = echarts.getInstanceByDom(chartElement);
+        chart.resize();
+    } catch (e) {
+        // chart not found
+    }
 }
 
-function create_main_chart() {
+function update_chart(div_id) {
+    // Update chart data from form input. Chart options calculated in backend.
+    const capacityForm = document.getElementById("capacityForm");
     const formData = new FormData(capacityForm);
     const params = new URLSearchParams(formData).toString();
-    get_echart_options("main_chart", params).then(
-        chartOptions => {createChart("mainChart", chartOptions);},
-    );
+    fetch(`chart/${div_id}?${params}`).then(
+        response => response.json()
+    ).then(chartOptions => {
+        create_chart(div_id, chartOptions)
+    });
 }
 
-function create_main_chart_on_startup() {
-  const productionDemandChartOptions = JSON.parse(document.getElementById("productionDemandChart").textContent);
-  createChart("mainChart", productionDemandChartOptions);
-}
-
-function reload_chart(name) {
+function fetch_chart(name) {
     // fetch and display scenario data in comparison charts
     let select = document.getElementById('select-' + name);
     let chartElement = document.getElementById('chart-' + name);

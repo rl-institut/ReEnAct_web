@@ -143,7 +143,7 @@ def chart(request, chart_name: str) -> JsonResponse | HttpResponse:  # noqa: C90
     if request.method != "GET":
         return HttpResponse(status=405)  # wrong method
 
-    if chart_name == "main_chart":
+    if chart_name == "myplan-chart":
         wind = request.GET.get("wind", 0.0)
         pv = request.GET.get("pv", 0.0)
 
