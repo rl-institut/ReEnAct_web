@@ -87,10 +87,13 @@ function generate_main_chart(production, demand) {
   return option;
 }
 
-function update_chart_from_sliders() {
-    const formData = new FormData(capacityForm);
-    const params = new URLSearchParams(formData).toString();
-    let requestUrl = window.location.origin + '/chart/main_chart?' + params;
+function update_main_chart(params = null) {
+    let requestUrl = window.location.origin + '/chart/main_chart';
+
+    if (params) {
+        let queryString = new URLSearchParams(params).toString();
+        requestUrl += '?' + queryString;
+    }
 
     fetch(requestUrl, {
         method: 'GET',
@@ -109,49 +112,17 @@ function update_chart_from_sliders() {
     .catch(error => console.error("Fehler beim Laden der Chart-Daten:", error));
 }
 
-function create_main_chart_on_startup() {
-        let requestUrl = window.location.origin + '/chart/main_chart';
-
-    fetch(requestUrl, {
-        method: 'GET',
-        mode: 'cors',
-        headers: new Headers({
-            'Accept': 'application/json',
-            'Content-Type': 'text/plain'
-        }),
-        credentials: 'same-origin'
-    })
-    .then(response => response.json())
-    .then(data => {
-        let options = generate_main_chart(data.production, data.demand);
-        createChart("mainChart", options);
-    })
-    .catch(error => console.error("Fehler beim Laden der Chart-Daten beim Startup:", error));
+function update_chart_from_sliders() {
+    const formData = new FormData(capacityForm);
+    const params = new URLSearchParams(formData);
+    update_main_chart(params);
 }
-
-create_main_chart_on_startup();
 
 function reload_main_chart(scenarioNumber) {
-    let params = new URLSearchParams({ scenario: scenarioNumber }).toString();
-    let requestUrl = window.location.origin + '/chart/main_chart?' + params;
-
-    fetch(requestUrl, {
-        method: 'GET',
-        mode: 'cors',
-        headers: new Headers({
-            'Accept': 'application/json',
-            'Content-Type': 'text/plain'
-        }),
-        credentials: 'same-origin',
-    })
-    .then(response => response.json())
-    .then(data => {
-        let options = generate_main_chart(data.production, data.demand);
-        createChart("mainChart", options);
-    })
-    .catch(error => console.error("Fehler beim Laden der Szenario-Daten:", error));
+    update_main_chart({ scenario: scenarioNumber });
 }
 
+update_main_chart();
 
 function reload_chart(name) {
     // fetch and display scenario data in comparison charts

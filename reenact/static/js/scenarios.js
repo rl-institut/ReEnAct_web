@@ -20,9 +20,9 @@ function updateScenario(title, description, button) {
       scenario_box.appendChild(clone);
    }
 }
-document.addEventListener("DOMContentLoaded", function() {
+function select_first_scenario() {
     const firstButton = document.querySelector("#scenarioTabs button");
     if (firstButton) {
         firstButton.click();
     }
-});
+}
