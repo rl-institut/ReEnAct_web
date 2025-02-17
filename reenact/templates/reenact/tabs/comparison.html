@@ -4,15 +4,15 @@
       <a id="tablink-chart-total"
          class="tablink-chart tablink-active"
          href="#"
-         onclick="openTab('total', 'chart'); reload_chart('total');">Gesamt</a>
+         onclick="openTab('total', 'chart'); fetch_chart('total');">Gesamt</a>
       <a id="tablink-chart-tech"
          class="tablink-chart"
          href="#"
-         onclick="openTab('tech', 'chart'); reload_chart('tech');">Pro Technologie</a>
+         onclick="openTab('tech', 'chart'); fetch_chart('tech');">Pro Technologie</a>
       <a id="tablink-chart-analysis"
          class="tablink-chart"
          href="#"
-         onclick="openTab('analysis', 'chart'); reload_chart('analysis');">Analyse</a>
+         onclick="openTab('analysis', 'chart'); fetch_chart('analysis');">Analyse</a>
     </div>
     <div id="tabcontent-chart-total"
          class="tabcontent-chart tabcontent-active">
@@ -21,14 +21,14 @@
     </div>
     <div id="tabcontent-chart-tech" class="tabcontent-chart tabcontent-hidden">
       <h2>Installierte Leistung</h2>
-      <select id="select-tech" onchange="reload_chart('tech');">
+      <select id="select-tech" onchange="fetch_chart('tech');">
         <option value="wind">Windkraft</option>
       </select>
       <div id="chart-tech" class="index-chart"></div>
     </div>
     <div id="tabcontent-chart-analysis"
          class="tabcontent-chart tabcontent-hidden">
-      <select id="select-analysis" onchange="reload_chart('analysis');">
+      <select id="select-analysis" onchange="fetch_chart('analysis');">
         <option value="production">Produktion 2040</option>
         <option value="consumption">Verbrauch 2040</option>
         <option value="area">Flächenverbrauch</option>
