@@ -15,7 +15,6 @@ function createChart(div_id, options) {
 }
 
 function generate_main_chart(production, demand) {
-  console.log("generate_main_chart in JS aufgerufen");
   let totalProduction = production.reduce((sum, item) => sum + item.value, 0);
   let totalDemand = demand.reduce((sum, item) => sum + item.value, 0);
 
