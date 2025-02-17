@@ -4,15 +4,17 @@
     <div id="scenarioTabs" class="flex flex-col gap-4">
       {{ scenarios|json_script:"scenarios-data" }}
       {% for scenario in scenarios %}
-        <button class="scenario-button {% if forloop.first %}selected{% endif %}"
+        <button class="scenario-button"
                 onclick="updateScenario('{{ scenario.title }}', '{{ scenario.description }}', this); reload_main_chart('{{ scenario.number }}');">
           {{ scenario.number }}: {{ scenario.name }}
         </button>
       {% endfor %}
     </div>
   </div>
-  <div class="p-4">
-    <h2 id="scenarioTitle" class="text-lg font-bold mb-2">{{ scenarios.0.title }}</h2>
-    <p id="scenarioDescription" class="text-gray-700 mb-4">{{ scenarios.0.description }}</p>
-  </div>
+  <div id="scenario_box" class="p-4"></div>
 </div>
+
+  <template id="scenario_info">
+    <h2 id="scenarioTitle" class="text-lg font-bold mb-2"></h2>
+    <p id="scenarioDescription" class="text-gray-700 mb-4"></p>
+  </template>

@@ -5,6 +5,24 @@ function updateScenario(title, description, button) {
 
     button.classList.add("selected");
 
-    document.getElementById("scenarioTitle").textContent = title;
-    document.getElementById("scenarioDescription").textContent = description;
+    if ("content" in document.createElement("template")){
+      const scenario_box = document.querySelector("#scenario_box");
+      const template = document.querySelector("#scenario_info");
+
+      scenario_box.innerHTML = "";
+
+      const clone = template.content.cloneNode(true);
+      let header = clone.querySelector("h2");
+      let text = clone.querySelector("p");
+      header.textContent = title;
+      text.textContent = description;
+
+      scenario_box.appendChild(clone);
+   }
 }
+document.addEventListener("DOMContentLoaded", function() {
+    const firstButton = document.querySelector("#scenarioTabs button");
+    if (firstButton) {
+        firstButton.click();
+    }
+});
