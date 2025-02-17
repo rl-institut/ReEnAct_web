@@ -88,7 +88,6 @@ function generate_main_chart(production, demand) {
 }
 
 function update_chart_from_sliders() {
-    console.log("update_chart_from_sliders triggered");
     const formData = new FormData(capacityForm);
     const params = new URLSearchParams(formData).toString();
     let requestUrl = window.location.origin + '/chart/main_chart?' + params;

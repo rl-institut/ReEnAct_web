@@ -25,6 +25,7 @@ demand = [
 ]
 
 def thousand_dot(value):
+    """returns formated value"""
     try:
         number = int(value)
         return f"{number:,}".replace(",", ".")
@@ -32,14 +33,14 @@ def thousand_dot(value):
         return value
 
 def random_production_color(used_colors):
-    """Erzeugt eine zufällige Farbe, die noch nicht in used_colors vorkommt."""
+    """creates random color."""
     while True:
         color = "#{:06x}".format(random.randint(0, 0xFFFFFF))
         if color.lower() not in used_colors:
             return color
 
 def random_gray_color(used_colors):
-    """Erzeugt eine zufällige Graufarbe aus einem moderaten Spektrum, die noch nicht verwendet wurde."""
+    """creates random gray color."""
     while True:
         gray_val = random.randint(0x33, 0xCC)
         color = "#{:02x}{:02x}{:02x}".format(gray_val, gray_val, gray_val)
@@ -152,7 +153,7 @@ class MainView(TemplateView):
 
 
 def chart(request, chart_name: str) -> JsonResponse | HttpResponse:
-    """Gibt die rohen Daten (production und demand) als JSON zurück."""
+    """returns raw data (production und demand) as JSON."""
     if request.method != "GET":
         return HttpResponse(status=405)
 
