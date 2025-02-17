@@ -31,8 +31,8 @@ with (CONFIG_DIR / "sliders.json").open("r", encoding="utf-8") as f:
 SCENARIOS = []
 for filename in sorted(SCENARIO_DIR.iterdir()):
     if filename.suffix == ".json":
-        scenario_number = filename.name.split("_")[0]
+        scenario_id = filename.name.split("_")[0]
         with filename.open("r", encoding="utf-8") as file:
             data = json.load(file)
-            data["number"] = int(scenario_number)
+            data["id"] = int(scenario_id)
             SCENARIOS.append(data)

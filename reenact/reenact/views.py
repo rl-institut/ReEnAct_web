@@ -161,11 +161,11 @@ def chart(request, chart_name: str) -> JsonResponse | HttpResponse:
         scenario_param = request.GET.get("scenario")
         if scenario_param:
             try:
-                scenario_number = int(scenario_param)
+                scenario_id = int(scenario_param)
             except ValueError:
                 return HttpResponse(status=400)
 
-            scenario = next((s for s in SCENARIOS if s["number"] == scenario_number), None)
+            scenario = next((s for s in SCENARIOS if s["id"] == scenario_id), None)
             if not scenario:
                 return HttpResponse(status=404)
 
