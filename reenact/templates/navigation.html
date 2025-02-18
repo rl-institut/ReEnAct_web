@@ -1,22 +1,20 @@
 {% load static i18n %}
 
-<nav class="bg-white shadow" data-headlessui-state="">
-  <div>
+<nav class="bg-white shadow text-slate-800" data-headlessui-state="">
+  <div class="px-8 py-3">
     <div class="relative flex items-center justify-between">
-      <div class="flex flex-shrink-0">
+      <div class="flex flex-shrink-0 gap-12">
         <a href="{% url 'reenact:index' %}">
           <img id="hdr-img"
-               class="h-8 w-auto"
+               class="h-[33px] w-[79px]"
                src="{% static 'images/logo-reenact.jpg' %}"
                alt="ReEnAct homepage" />
         </a>
-      </div>
-      <div class="container">
-        <h1 class="text-center text-2xl">ENERGIEREGION PEENETAL</h1>
+        <h1 class="hidden md:block text-center text-2xl text-uppercase font-normal tracking-wide">ENERGIEREGION PEENETAL</h1>
       </div>
       <div class="flex">
         <div class="nav-tab">
-          <ul>
+          <ul class="inline-flex space-x-4 lg:space-x-8 text-slate-800">
             <li>
               <a href="{% url 'reenact:index' %}">Startseite</a>
             </li>
