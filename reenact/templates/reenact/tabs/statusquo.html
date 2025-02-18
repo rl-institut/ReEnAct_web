@@ -1,22 +1,43 @@
 {% load static l10n %}
 
-<section class="h-[50vh]">
-  <div class="grid grid-cols-2 gap-4">
-    <div class="p-4">
+<section>
+  <div class="grid grid-cols-2 gap-8 pb-6">
+    <div class="p-4 bg-white shadow rounded">
       <div id="statusquo-chart" class="index-chart"></div>
     </div>
-    <div class="p-4">
-      <h2>Willkommen beim Energiekonfigurator der Energieregion Peenetal</h2>
-      <p>Hier erhalten Sie zunächst einen Überblick über die aktuelle Situation der Energieerzeugung im Amtsbereich.</p>
-      <a href="#" class="btn" onclick="openTab('scenarios');">Szenarien 2040 sehen</a>
-      <a href="{% url 'reenact:map' %}" class="btn">Karte sehen</a>
+
+    <!-- Text and Buttons -->
+    <div>
+      <h2 class="text-base font-bold text-slate-800">
+        Willkommen beim Energiekonfigurator der Energieregion Peenetal
+      </h2>
+      <p class="mt-4 text-sm text-slate-500">
+        Hier erhalten Sie zunächst einen Überblick über die aktuelle Situation der Energieerzeugung im Amtsbereich.
+      </p>
+      <p class="mt-2 text-sm text-slate-500">
+        Wir haben die erzeugte Energie der verbrauchten (jeweils unterteilt nach Arten) gegenübergestellt.
+      </p>
+      <p class="mt-2 text-sm text-slate-500">
+        Unten sehen Sie den daraus resultierenden Flächenverbrauch, den berechneten Kilowattstundenerzeugungspreis sowie den ermittelten CO2-Ausstoß.
+      </p>
+
+      <!-- Buttons -->
+      <div class="flex flex-col items-center mt-6 space-y-2">
+        <a href="#" class="block w-[24rem] text-center bg-sky-600 text-sm text-white font-semibold py-1 px-6 rounded-full shadow-md hover:bg-sky-500 transition" onclick="openTab('scenarios');">
+          Szenarien 2040 sehen
+        </a>
+        <a href="{% url 'reenact:map' %}" class="block w-[24rem] text-center bg-slate-200 text-slate-700 text-sm font-semibold py-1 px-6 rounded-full hover:bg-slate-300 transition">
+          Karte sehen
+        </a>
+      </div>
     </div>
   </div>
 </section>
-<section class="grid grid-cols-2 gap-4 h-[40vh]">
-  <div>
-    <p>
-      GENUTZTE ENERGIEERZEUGUNGSFLÄCHEN <span class="info-icon" data-tooltip="Hier steht Info">i</span>
+
+<section class="grid grid-cols-2 gap-8">
+  <div class="bg-white shadow rounded p-4 overflow-auto">
+    <p class="uppercase">
+      Genutzte Energieerzeugungsflächen<span class="info-icon" data-tooltip="Hier steht Info">i</span>
     </p>
     <div class="p-4 flex lex-wrap gap-4">
       {% for potential in potentials %}

@@ -14,11 +14,10 @@
          href="#"
          onclick="openTab('analysis', 'chart'); fetch_chart('analysis');">Analyse</a>
     </div>
-    <div id="tabcontent-chart-total"
-         class="tabcontent-chart tabcontent-active">
-      <h2>Erzeugung und Verbrauch</h2>
-      <div id="chart-total" class="index-chart"></div>
-    </div>
+    <div id="tabcontent-chart-total" class="bg-white shadow rounded tabcontent-chart tabcontent-active">
+      <h2 class="text-lg font-semibold mb-4">Erzeugung und Verbrauch</h2>
+      <div id="chart-total" class="w-full h-[50vh] max-h-[400px] sm:h-[40vh]"></div>
+    </div>    
     <div id="tabcontent-chart-tech" class="tabcontent-chart tabcontent-hidden">
       <h2>Installierte Leistung</h2>
       <select id="select-tech" onchange="fetch_chart('tech');">

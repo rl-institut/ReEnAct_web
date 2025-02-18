@@ -6,10 +6,10 @@
   ReEnAct
 {% endblock title %}
 {% block content %}
-  <div class="grid grid-cols-1 gap-4 h-screen w-full">
-    <section class="h-[10vh]">
+  <div class="grid grid-cols-1 gap-4 h-screen w-full bg-slate-50 px-6 py-4">
+    <div>
       <div>
-        <nav class="pt-6 pb-4">
+        <nav class="pt-4 p2-4">
           <div class="flex justify-center space-x-8">
             <a id="tablink-statusquo"
                class="tablink min-w-40 pb-2 border-b-4 border-sky-500 text-slate-800 font-semibold text-center"
@@ -30,7 +30,7 @@
           </div>
         </nav>        
       </div>
-    </section>
+    </div>
     <div id="tabcontent-statusquo" class="tabcontent tabcontent-active">{% include 'reenact/tabs/statusquo.html' %}</div>
     <div id="tabcontent-scenarios" class="tabcontent tabcontent-hidden">{% include 'reenact/tabs/scenarios.html' %}</div>
     <div id="tabcontent-myplan" class="tabcontent tabcontent-hidden">{% include 'reenact/tabs/myplan.html' %}</div>
