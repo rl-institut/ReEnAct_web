@@ -1,10 +1,6 @@
 #scenarioTabs button {
     background-color: #fff;
-    color: black;
-    padding: 10px;
-    border-radius: 20px;
-    border: 2px solid #e5e7eb;
-    text-align: left;
+    color: #64748B;
     width: 100%;
     cursor: pointer;
     transition: background-color 0.2s, color 0.2s;
@@ -12,7 +8,7 @@
 }
 
 #scenarioTabs button:hover {
-    background-color: #d1d5db;
+    background-color: #e8ebee;
 }
 
 #scenarioTabs button.selected {
