@@ -28,6 +28,10 @@ with (CONFIG_DIR / "sliders.json").open("r", encoding="utf-8") as f:
     ]
 
 
+with (CONFIG_DIR / "colors.json").open("r", encoding="utf-8") as f:
+    COLORS = json.load(f)
+
+
 SCENARIOS = []
 for filename in sorted(SCENARIO_DIR.iterdir()):
     if filename.suffix == ".json":

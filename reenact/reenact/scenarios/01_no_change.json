@@ -1,7 +1,0 @@
-{
-  "name": "Weiter wie bisher",
-  "title": "Sie sehen hier die Situation, die enstehen würde, wenn gar nicht mehr in Erneuerbare Energien investiert werden würde.",
-  "description": "lorem ipsum...",
-  "production": {"wind": 100, "pv": 20, "biomass": 44},
-  "demand": {"mobility": 100, "heat": 100, "electricity": 200, "h2o": 20}
-}

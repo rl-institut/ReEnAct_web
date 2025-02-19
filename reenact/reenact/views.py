@@ -8,6 +8,7 @@ from django.views.generic.base import TemplateView
 from . import settings
 from .chart import generate_echarts_code
 from .forms import CapacitiesForm
+from .settings import SCENARIOS, COLORS
 
 
 def thousand_dot(value):
@@ -18,14 +19,14 @@ def thousand_dot(value):
         return value
 
 
-production = [
+PRODUCTION = [
     {"label": "Windenergie", "value": 204.5, "color": "#8dd3c7"},
     {"label": "Solarenergie", "value": 80.6, "color": "#eeee6c"},
     {"label": "Wasserstoff", "value": 20, "color": "#80b1d3"},
     {"label": "Biogas", "value": 40.5, "color": "#bc80bd"},
 ]
 
-demand = [
+DEMAND = [
     {"label": "Wirtschaft", "value": 204.5, "color": "#f1f5f9"},
     {"label": "Wärmebedarf", "value": 80.6, "color": "#cbd5e1"},
     {"label": "Elektrolyseur", "value": 80.6, "color": "#64748b"},
@@ -131,7 +132,7 @@ class MainView(TemplateView):
             },
         ]
         set_stroke_dashoffset()
-        context["production_demand_chart"] = generate_echarts_code(production, demand)
+        context["production_demand_chart"] = generate_echarts_code(PRODUCTION, DEMAND)
         context["results"] = results
         context["potentials"] = potentials
 
@@ -147,13 +148,13 @@ def chart(request, chart_name: str) -> JsonResponse | HttpResponse:  # noqa: C90
         wind = request.GET.get("wind", 0.0)
         pv = request.GET.get("pv", 0.0)
 
-        for item in production:
+        for item in PRODUCTION:
             if item["label"] == "Windenergie":
                 item["value"] = float(wind)
             elif item["label"] == "Solarenergie":
                 item["value"] = float(pv)
 
-        echarts_option = generate_echarts_code(production, demand)
+        echarts_option = generate_echarts_code(PRODUCTION, DEMAND)
         return JsonResponse(echarts_option)
 
     # dummy values for charts, get from DB later
@@ -275,3 +276,21 @@ def chart(request, chart_name: str) -> JsonResponse | HttpResponse:  # noqa: C90
         )
 
     return HttpResponse(status=406)  # not acceptable: unknown chart
+
+
+def scenario(request, scenario_id: int) -> JsonResponse | HttpResponse:
+    """Return echart options as JSON."""
+    if request.method != "GET":
+        return HttpResponse(status=405)  # wrong method
+
+    scenario_data = SCENARIOS[scenario_id]
+    production = [
+        {"label": key, "value": value, "color": COLORS.get(key, "#000000")}
+        for key, value in scenario_data["production"].items()
+    ]
+    demand = [
+        {"label": key, "value": value, "color": COLORS.get(key, "#000000")}
+        for key, value in scenario_data["demand"].items()
+    ]
+    echarts_option = generate_echarts_code(production, demand)
+    return JsonResponse(echarts_option)
