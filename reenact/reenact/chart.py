@@ -30,8 +30,8 @@ def generate_echarts_code(production, demand):
     series_list.extend(demand_list)
 
     xaxis_labels = [
-        f"{{bold|{total_production:.1f} MWh}} \n {{small|Jahreserzeugung}}",
-        f"{{bold|{total_demand:.1f} MWh}} \n {{small|Jahresverbrauch}}",
+        f"{total_production:.1f} MWh \n Jahreserzeugung",
+        f"{total_demand:.1f} MWh \n Jahresverbrauch",
     ]
 
     legend_tooltip_formatter = (
@@ -49,7 +49,24 @@ def generate_echarts_code(production, demand):
 
     option = {
         "tooltip": {
-            "show": True,
+            "trigger": "axis",
+            "axisPointer": {
+                "label": False,
+                "type": "shadow",
+            },
+        },
+        "textStyle": {
+            "rich": {
+                "bold": {
+                    "fontWeight": "bold",
+                    "fontSize": 14,
+                    "align": "center",
+                },
+                "small": {
+                    "fontSize": 10,
+                    "align": "center",
+                },
+            },
         },
         "grid": {
             "top": "10%",
@@ -62,17 +79,6 @@ def generate_echarts_code(production, demand):
             "data": xaxis_labels,
             "axisLabel": {
                 "show": True,
-                "rich": {
-                    "bold": {
-                        "fontWeight": "bold",
-                        "fontSize": 14,
-                        "align": "center",
-                    },
-                    "small": {
-                        "fontSize": 10,
-                        "align": "center",
-                    },
-                },
                 "align": "center",
             },
             "axisTick": {
