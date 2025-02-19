@@ -47,14 +47,14 @@
       </span>
     </p>    
 
-    <div class="flex pt-2 gap-4 h-fit">
+    <div class="flex pt-2 gap-2 h-fit">
       {% for potential in potentials %}
         <c-potentials title="{{ potential.title }}" percentage="{{ potential.percentage }}" value="{{ potential.value }}" unit="{{ potential.unit }}" stroke_dashoffset="{{ potential.stroke_dashoffset }}" color="{{ potential.color }}">
         </c-potentials>
       {% endfor %}
     </div>
   </div>
-  <div class="overflow-x-auto">
+  <div>
     <div class="flex flex-nowrap gap-4">
       {% for result in results %}
         <c-result_component_box title="{{ result.title }}" value1="{{ result.value1 }}" unit1="{{ result.unit1 }}" subtitle1="{{ result.subtitle1 }}" info_hover1="{{ result.info_hover1 }}" value2="{{ result.value2 }}" unit2="{{ result.unit2 }}" subtitle2="{{ result.subtitle2 }}" info_hover2="{{ result.info_hover2 }}" slider="{{ result.slider|unlocalize }}" />
