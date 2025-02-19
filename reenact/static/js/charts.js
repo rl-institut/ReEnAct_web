@@ -40,8 +40,50 @@ function update_chart(div_id) {
     fetch(`chart/${div_id}?${params}`).then(
         response => response.json()
     ).then(chartOptions => {
-        create_chart(div_id, chartOptions)
+        create_chart(div_id, chartOptions);
     });
+}
+
+function init_chart(divId) {
+  const chartElement = document.getElementById(divId);
+    if (!chartElement) {
+      throw new Error(`Failed to initialize chart. Chart div '${divId}' cannot be found.`);
+    }
+  let chart;
+  if (echarts.getInstanceByDom(chartElement)) {
+        chart = echarts.getInstanceByDom(chartElement);
+        chart.clear();
+    } else {
+        chart = echarts.init(chartElement, null, { renderer: "svg" });
+    }
+  return chart;
+}
+
+function loadScenarioChart(scenarioId) {
+  const request = window.location.origin + '/scenario/' + scenarioId;
+  fetch(
+    request,
+    {
+        method: 'GET',
+        mode: 'cors',
+        headers: new Headers({'Accept': 'application/json', 'Content-Type':'text/plain',}),
+        credentials: 'same-origin',
+    }
+  ).then(
+    response => {
+      response.json().then(
+        data => {
+          const chart = init_chart("scenarios-chart");
+          chart.setOption(data);
+          chart.resize();
+        }
+      );
+    }
+  ).catch (
+    error => {
+      console.log(error);
+    }
+  );
 }
 
 function fetch_chart(name) {
@@ -115,7 +157,7 @@ function fetch_chart(name) {
         };
         chart.setOption(options);
         chart.resize();
-    })}).catch (error => {
+    });}).catch (error => {
         console.log(error);
     });
 }

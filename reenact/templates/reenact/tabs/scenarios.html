@@ -12,7 +12,7 @@
           <div id="scenarioTabs" class="flex flex-col gap-4">
             {% for scenario in scenarios %}
               <button class="scenario-button {% if forloop.first %}selected{% endif %}"
-                      onclick="updateScenario('{{ scenario.title }}', '{{ scenario.description }}', this)">
+                      onclick="updateScenario('{{ scenario.title }}', '{{ scenario.description }}', this); loadScenarioChart('{{ scenario.number }}');">
                 {{ scenario.number }}: {{ scenario.name }}
               </button>
             {% endfor %}
