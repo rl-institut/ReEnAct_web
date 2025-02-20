@@ -1111,6 +1111,10 @@ video {
     gap: 2rem;
   }
 
+  .\32xl\:p-8 {
+    padding: 2rem;
+  }
+
   .\32xl\:py-8 {
     padding-top: 2rem;
     padding-bottom: 2rem;

@@ -1,5 +1,5 @@
-<div class="flex">
-  <div class="tmp2">
+<div class="flex gap-8">
+  <div class="tmp2 p-4 2xl:p-8 bg-white shadow rounded-lg">
     <div class="flex justify-center space-x-8">
       <a id="tablink-chart-total"
          class="tablink-chart tablink-active"
@@ -14,8 +14,8 @@
          href="#"
          onclick="openTab('analysis', 'chart'); fetch_chart('analysis');">Analyse</a>
     </div>
-    <div id="tabcontent-chart-total" class="bg-white shadow rounded-lg tabcontent-chart tabcontent-active">
-      <h2 class="text-lg font-semibold mb-4">Erzeugung und Verbrauch</h2>
+    <div id="tabcontent-chart-total" class="tabcontent-chart tabcontent-active">
+      <h2 class="text-sm font-normal uppercase text-slate-500 mb-4">Erzeugung und Verbrauch</h2>
       <div id="chart-total" class="w-full h-[50vh] max-h-[400px] sm:h-[40vh]"></div>
     </div>    
     <div id="tabcontent-chart-tech" class="tabcontent-chart tabcontent-hidden">
@@ -36,19 +36,23 @@
     </div>
   </div>
   <div class="tmp5">
-    <h2>Hier können Sie verschiedene Szenarien miteinander vergleichen</h2>
-    <p class="justify">
+    <h2 class="text-base font-bold text-slate-800 mb-2">Hier können Sie verschiedene Szenarien miteinander vergleichen</h2>
+    <p class="text-sm text-slate-500 mb-2">
       So können sehen, wie unterschiedliche Entscheidungen die Energieversorgung und -kosten bis 2040 beeinflussen würden.
     </p>
-    <p class="justify">
+    <p class="text-sm text-slate-500 mb-2">
       Sie können genau analysieren, wie sich Investitionen in Erneuerbare Energien, der Rückbau fossiler Anlagen oder Effizienzmaßnahmen auf CO2-Emissionen, Energiekosten und den Investitionsbedarf auswirken.
     </p>
-    <p class="justify">
+    <p class="text-sm text-slate-500 mb-2">
       Ziel des Vergleiches ist es, die beste Balance zwischen Klimaschutz, Kosten und Versorgungssicherheit zu identifizieren.
     </p>
-    <p>
-      <a class="btn" onclick="openTab('scenarios');">Szenarien sehen</a>
-      <a class="btn" onclick="openTab('myplan');">Meinen Plan sehen</a>
-    </p>
+    <div class="flex flex-col items-center mt-6 space-y-2 pt-2">
+      <a class="block w-[24rem] text-center bg-slate-200 text-slate-700 text-sm font-semibold py-1 px-6 rounded-full cursor-pointer hover:bg-slate-300 transition" onclick="openTab('scenarios');">
+        Szenarien sehen
+      </a>
+      <a class="block w-[24rem] text-center bg-slate-200 text-slate-700 text-sm font-semibold py-1 px-6 rounded-full cursor-pointer hover:bg-slate-300 transition" onclick="openTab('myplan');">
+        Meinen Plan sehen
+      </a>
+    </div>
   </div>
 </div>
