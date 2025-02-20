@@ -36,7 +36,12 @@
 }
 
 #component_box {
-  text-align: center
+  text-align: center;
+  border-top: 4px solid #fff;
+}
+
+#component_box:first-of-type {
+  border-top-color: #64748B;
 }
 
 .center-container {
