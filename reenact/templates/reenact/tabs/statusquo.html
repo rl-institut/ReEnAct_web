@@ -2,7 +2,7 @@
 
 <section>
   <div class="grid grid-cols-2 gap-8 pb-6">
-    <div class="p-4 bg-white shadow rounded">
+    <div class="flex items-center p-4 bg-white shadow rounded overflow-auto max-h-[20.75rem] 2xl:max-h-full 2xl:h-[38rem]">
       <div id="statusquo-chart" class="index-chart"></div>
     </div>
     <div>
@@ -47,7 +47,7 @@
       </span>
     </p>    
 
-    <div class="flex pt-2 gap-2 h-fit">
+    <div class="flex justify-center pt-2 gap-2 h-fit">
       {% for potential in potentials %}
         <c-potentials title="{{ potential.title }}" percentage="{{ potential.percentage }}" value="{{ potential.value }}" unit="{{ potential.unit }}" stroke_dashoffset="{{ potential.stroke_dashoffset }}" color="{{ potential.color }}">
         </c-potentials>

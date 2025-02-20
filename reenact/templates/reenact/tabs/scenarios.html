@@ -2,12 +2,12 @@
 
 <section>
   <div class="grid grid-cols-2 gap-8 pb-6">
-    <div class="p-4 bg-white shadow rounded">
+    <div class="flex items-center p-4 bg-white shadow rounded overflow-auto max-h-[20.75rem] 2xl:max-h-full 2xl:h-[38rem]">
       <div id="scenarios-chart" class="index-chart"></div>
     </div>
     
     <div class="grid grid-cols-2 gap-4">
-      <div class="p-4 rounded-lg shadow bg-white">
+      <div class="p-4 rounded-lg shadow bg-white overflow-auto max-h-[20.75rem] 2xl:max-h-full 2xl:h-[38rem]">
         <h2 class="text-sm font-normal text-slate-500 mb-4">Wählen Sie ein Szenario aus</h2>
         <div id="scenarioTabs" class="flex flex-col gap-2 pb-4">
           {% for scenario in scenarios %}
@@ -29,7 +29,7 @@
       </div>
       <div>
         <h2 id="scenarioTitle" class="text-base text-slate-800 font-bold mb-2">{{ scenarios.0.title }}</h2>
-        <p id="scenarioDescription" class="text-slate-500">{{ scenarios.0.description }}</p>
+        <p id="scenarioDescription" class="text-sm text-slate-500">{{ scenarios.0.description }}</p>
       </div>
     </div>
   </div>
@@ -52,7 +52,7 @@
       </span>
     </p>    
 
-    <div class="flex pt-2 gap-2 h-fit">
+    <div class="flex justify-center pt-2 gap-2 h-fit">
       {% for potential in potentials %}
         <c-potentials title="{{ potential.title }}" percentage="{{ potential.percentage }}" value="{{ potential.value }}" unit="{{ potential.unit }}" stroke_dashoffset="{{ potential.stroke_dashoffset }}" color="{{ potential.color }}">
         </c-potentials>
