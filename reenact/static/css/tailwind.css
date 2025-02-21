@@ -925,11 +925,6 @@ video {
   padding-bottom: 1rem;
 }
 
-.py-8 {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-
 .pb-0 {
   padding-bottom: 0px;
 }
@@ -1017,11 +1012,6 @@ video {
 .text-slate-500 {
   --tw-text-opacity: 1;
   color: rgb(100 116 139 / var(--tw-text-opacity, 1));
-}
-
-.text-slate-600 {
-  --tw-text-opacity: 1;
-  color: rgb(71 85 105 / var(--tw-text-opacity, 1));
 }
 
 .text-slate-700 {
@@ -1135,12 +1125,16 @@ video {
 }
 
 @media (min-width: 1536px) {
-  .\32xl\:h-\[38rem\] {
-    height: 38rem;
+  .\32xl\:h-\[30rem\] {
+    height: 30rem;
   }
 
   .\32xl\:max-h-full {
     max-height: 100%;
+  }
+
+  .\32xl\:flex-1 {
+    flex: 1 1 0%;
   }
 
   .\32xl\:gap-8 {
