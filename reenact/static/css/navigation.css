@@ -34,10 +34,6 @@
   display: inherit;
 }
 
-#hdr-img {
-  width: 10em;
-}
-
 .tablink-active {
   font-weight: bold;
   text-decoration: underline;

@@ -36,7 +36,12 @@
 }
 
 #component_box {
-  text-align: center
+  text-align: center;
+  border-top: 4px solid #fff;
+}
+
+#component_box:first-of-type {
+  border-top-color: #64748B;
 }
 
 .center-container {
@@ -54,6 +59,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .potential {
@@ -62,14 +68,4 @@
 
 .potential svg {
   position:relative;
-}
-
-.percentage {
-  position: relative;
-  top: -28%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 15px;/
-  font-weight: bold;
-  color: black;
 }

@@ -49,3 +49,43 @@ h2 {
 .tmp5 {
   width: 25%;
 }
+
+/* Sliders */
+#capacityForm {
+  font-size: 14px;
+  color: #1E293B;
+}
+
+#capacityForm > div {
+  padding-bottom: 1rem;
+}
+
+#capacityForm .irs-min,
+#capacityForm .irs-max,
+#capacityForm .irs-single {
+  font-size: 13px;
+}
+
+#capacityForm .irs-min,
+#capacityForm .irs-max {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+#capacityForm .irs--round .irs-from,
+#capacityForm .irs--round .irs-bar {
+  background-color: #0EA5E9;
+}
+
+#capacityForm .irs--round .irs-single {
+  background-color: #0370A1;
+  font-weight: 700;
+}
+
+#capacityForm .irs--round .irs-single:before {
+  border-top-color: #0370A1;
+}
+
+#capacityForm .irs--round .irs-handle {
+  border-color: #0370A1;
+}

@@ -6,31 +6,31 @@
   ReEnAct
 {% endblock title %}
 {% block content %}
-  <div class="grid grid-cols-1 gap-4 h-screen w-full">
-    <section class="h-[10vh]">
+  <div class="grid grid-cols-1 gap-4 2xl:gap-8 px-6 py-4 2xl:py-8">
+    <div>
       <div>
-        <nav class="py-4 text-center">
+        <nav class="pt-4 p2-4">
           <div class="flex justify-center space-x-8">
             <a id="tablink-statusquo"
-               class="tablink tablink-active"
+               class="tablink min-w-40 pb-2 border-b-4 border-sky-500 hover:text-slate-800 font-semibold text-center"
                href="#"
                onclick="openTab('statusquo'); reload_chart('statusquo-chart');">2024</a>
             <a id="tablink-scenarios"
-               class="tablink"
+               class="tablink min-w-40 pb-2 border-b-4 border-transparent text-slate-500 hover:text-slate-800 font-semibold text-center"
                href="#"
                onclick="openTab('scenarios'); reload_chart('scenarios-chart');">Szenarien 2040</a>
             <a id="tablink-myplan"
-               class="tablink"
+               class="tablink min-w-40 pb-2 border-b-4 border-transparent text-slate-500 hover:text-slate-800 font-semibold text-center"
                href="#"
                onclick="openTab('myplan'); reload_chart('myplan-chart');">Mein Plan 2040</a>
             <a id="tablink-comparison"
-               class="tablink"
+               class="tablink min-w-40 pb-2 border-b-4 border-transparent text-slate-500 hover:text-slate-800 font-semibold text-center"
                href="#"
                onclick="openTab('comparison'); fetch_chart('total');">Szenarienvergleich</a>
           </div>
-        </nav>
+        </nav>        
       </div>
-    </section>
+    </div>
     <div id="tabcontent-statusquo" class="tabcontent tabcontent-active">{% include 'reenact/tabs/statusquo.html' %}</div>
     <div id="tabcontent-scenarios" class="tabcontent tabcontent-hidden">{% include 'reenact/tabs/scenarios.html' %}</div>
     <div id="tabcontent-myplan" class="tabcontent tabcontent-hidden">{% include 'reenact/tabs/myplan.html' %}</div>
@@ -51,31 +51,31 @@
   <script src="{% static 'vendors/jquery/jquery.slim.min.js' %}"></script>
   <script src="{% static 'vendors/ionrangeslider/ion.rangeSlider.min.js' %}"></script>
   <script>
-    // open navigation tab
-    function openTab(tabname, filter) {
-      filter = filter ? '-' + filter : '';
-      // move link
-      let tablink_classname = 'tablink' + filter;
-      let tablinks = document.getElementsByClassName(tablink_classname);
-      for (let tablink of tablinks)
-        tablink.classList.remove('tablink-active');
-      let active_tablink = document.getElementById('tablink' + filter + '-' + tabname);
-      if (active_tablink)
-        active_tablink.classList.add('tablink-active');
+    function openTab(tabname) {
+      // Remove active state from all tabs
+      document.querySelectorAll('.tablink').forEach(link => {
+        link.classList.remove('border-sky-500', 'text-slate-800');
+        link.classList.add('border-transparent', 'text-slate-500');
+      });
 
-      // hide all contents, except target by tabname
-      let content_classname = 'tabcontent' + filter;
-      let contents = document.getElementsByClassName(content_classname);
-      for (let content of contents) {
-        if (content.id === content_classname + '-' + tabname) {
-          // target content: show
-          content.classList.remove('tabcontent-hidden');
-          content.classList.add('tabcontent-active');
-        } else {
-          // other content: hide
-          content.classList.remove('tabcontent-active');
-          content.classList.add('tabcontent-hidden');
-        }
+      // Add active state to the clicked tab
+      let activeTab = document.getElementById('tablink-' + tabname);
+      if (activeTab) {
+        activeTab.classList.add('border-sky-500', 'text-slate-800');
+        activeTab.classList.remove('border-transparent', 'text-slate-500');
+      }
+
+      // Hide all content sections
+      document.querySelectorAll('.tabcontent').forEach(content => {
+        content.classList.add('tabcontent-hidden');
+        content.classList.remove('tabcontent-active');
+      });
+
+      // Show the selected content
+      let activeContent = document.getElementById('tabcontent-' + tabname);
+      if (activeContent) {
+        activeContent.classList.remove('tabcontent-hidden');
+        activeContent.classList.add('tabcontent-active');
       }
     }
   </script>

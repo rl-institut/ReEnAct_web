@@ -4,13 +4,19 @@
   FAQ
 {% endblock title %}
 {% block content %}
-  <h1>Häufige Fragen</h1>
-  <details>
-    <summary>1. Was sind die Energieziele der EU?</summary>
-    Gerne mit Inhalt füllen.
-  </details>
-  <details>
-    <summary>2. Was bedeuten die EU-Energieziele für die Region Peenetal?</summary>
-    Gerne mit Inhalt füllen.
-  </details>
+  <div class="flex justify-center">
+    <div class="container px-8 py-16">
+      <div class="max-w-5xl">
+        <h1 class="text-slate-800 font-bold text-2xl pb-8">Häufige Fragen</h1>
+        <details class="text-slate-800 border-b py-4">
+          <summary class="font-bold cursor-pointer pb-4">1. Was sind die Energieziele der EU?</summary>
+          <span class="text-slate-500 font-normal">Gerne mit Inhalt füllen.</span>
+        </details>
+        <details class="text-slate-800 border-b py-4">
+          <summary class="font-bold cursor-pointer pb-4">2. Was bedeuten die EU-Energieziele für die Region Peenetal?</summary>
+          <span class="text-slate-500 font-normal">Gerne mit Inhalt füllen.</span>
+        </details>
+      </div>
+    </div>
+  </div>
 {% endblock content %}
