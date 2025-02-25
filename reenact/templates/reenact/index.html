@@ -28,7 +28,7 @@
                href="#"
                onclick="openTab('comparison'); fetch_chart('total');">Szenarienvergleich</a>
           </div>
-        </nav>        
+        </nav>
       </div>
     </div>
     <div id="tabcontent-statusquo" class="tabcontent tabcontent-active">{% include 'reenact/tabs/statusquo.html' %}</div>
@@ -81,7 +81,8 @@
   </script>
 {% endblock javascript %}
 {% block javascript_inline %}
-  {{ production_demand_chart|json_script:"productionDemandChart" }}
+  {{ production|json_script:"production" }}
+  {{ demand|json_script:"demand" }}
   <script src="{% static 'js/sliders.js' %}"></script>
   <script src="{% static 'js/charts.js' %}"></script>
   <script src="{% static 'js/scenarios.js' %}"></script>

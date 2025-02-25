@@ -35,5 +35,6 @@ urlpatterns = [
     ),
     path("", views.MainView.as_view(), name="index"),
     path("chart/<str:chart_name>/", views.chart, name="chart"),
+    path("analysis/<str:chart_name>/", views.analysis, name="analysis"),
     path("scenario/<int:scenario_id>/", views.scenario, name="scenario"),
 ]
