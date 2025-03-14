@@ -77,8 +77,8 @@ function generate_main_chart(production, demand) {
   seriesList = seriesList.concat(demandList);
 
   let xaxis_labels = [
-    `${totalProduction.toFixed(1)} MWh \n {bold|Jahreserzeugung}`,
-    `${totalDemand.toFixed(1)} MWh \n {bold|Jahresverbrauch}`
+    `{bold|${totalProduction.toFixed(1)} MWh} \n Jahreserzeugung`,
+    `{bold|${totalDemand.toFixed(1)} MWh} \n Jahresverbrauch`
   ];
 
   let tooltip_formatter = function(params) {
@@ -92,7 +92,7 @@ function generate_main_chart(production, demand) {
         tip += `<tr><td>${item.marker} ${item.seriesName}:</td><td align='right'>${item.value} MWh</td></tr>`;
       }
     }
-    tip += "</table>"
+    tip += "</table>";
     return tip;
   };
 
@@ -100,10 +100,6 @@ function generate_main_chart(production, demand) {
     tooltip: {
     trigger: 'axis',
     formatter: tooltip_formatter,
-    textStyle: {rich: {
-        bold: {
-            fontWeight: "bold"
-        }}},
     axisPointer: {
       type: 'cross',
       label: {
@@ -115,10 +111,16 @@ function generate_main_chart(production, demand) {
     xAxis: {
       type: 'category',
       data: xaxis_labels,
-      axisLabel: { show: true, align: 'center', rich: {
-        bold: {
-            fontWeight: "bold"
-        }}},
+      axisLabel: {
+        show: true,
+        align: 'center',
+        rich: {
+          bold: {
+            fontWeight: "bold",
+            fontSize: 16
+          }
+        }
+      },
       axisTick: { show: false },
       axisPointer: {
         show: true,
