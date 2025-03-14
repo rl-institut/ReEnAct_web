@@ -77,35 +77,67 @@ function generate_main_chart(production, demand) {
   seriesList = seriesList.concat(demandList);
 
   let xaxis_labels = [
-    `${totalProduction.toFixed(1)} MWh \n Jahreserzeugung`,
-    `${totalDemand.toFixed(1)} MWh \n Jahresverbrauch`
+    `${totalProduction.toFixed(1)} MWh \n {bold|Jahreserzeugung}`,
+    `${totalDemand.toFixed(1)} MWh \n {bold|Jahresverbrauch}`
   ];
 
-  let legendTooltipFormatter = function(params) {
-    let chart = echarts.getInstanceByDom(document.getElementById('mainChart'));
-    let seriesData = chart.getOption().series;
-    let value = 0;
-    seriesData.forEach(series => {
-      if (series.name === params.name) {
-        value = series.data.find(val => val > 0);
+  let tooltip_formatter = function(params) {
+    let tip = "<table>";
+    const demand_labels = demand.map(item => item.label);
+    for (const item of params) {
+      if (item.dataIndex === 0 && !demand_labels.includes(item.seriesName)) {
+        tip += `<tr><td>${item.marker} ${item.seriesName}:</td><td align='right'>${item.value} MWh</td></tr>`;
       }
-    });
-    return `${params.name}: ${value} MWh`;
+      if (item.dataIndex === 1 && demand_labels.includes(item.seriesName)) {
+        tip += `<tr><td>${item.marker} ${item.seriesName}:</td><td align='right'>${item.value} MWh</td></tr>`;
+      }
+    }
+    tip += "</table>"
+    return tip;
   };
 
   return {
-    tooltip: { show: true },
+    tooltip: {
+    trigger: 'axis',
+    formatter: tooltip_formatter,
+    textStyle: {rich: {
+        bold: {
+            fontWeight: "bold"
+        }}},
+    axisPointer: {
+      type: 'cross',
+      label: {
+        backgroundColor: '#6a7985'
+      }
+    }
+  },
     grid: { top: '10%', left: '10%', right: '30%', bottom: '15%' },
     xAxis: {
       type: 'category',
       data: xaxis_labels,
-      axisLabel: { show: true, align: 'center' },
-      axisTick: { show: false }
+      axisLabel: { show: true, align: 'center', rich: {
+        bold: {
+            fontWeight: "bold"
+        }}},
+      axisTick: { show: false },
+      axisPointer: {
+        show: true,
+        label: {
+          show:false,
+          backgroundColor: '#6a7985',
+        }
+      }
     },
     yAxis: {
       type: 'value',
-      splitLine: { show: false },
-      axisLabel: { show: false }
+      splitLine: { show: true },
+      axisLabel: { show: true },
+      axisPointer: {
+        label: {
+          formatter: "{value} MWh",
+          backgroundColor: '#6a7985',
+        }
+      }
     },
     series: seriesList,
     legend: {
@@ -113,7 +145,7 @@ function generate_main_chart(production, demand) {
       orient: 'vertical',
       icon: 'circle',
       textStyle: { fontSize: 12 },
-      tooltip: { show: true, formatter: legendTooltipFormatter }
+      tooltip: { show: true }
     }
   };
 }
@@ -163,21 +195,6 @@ function generate_analysis_chart(data) {
   };
 }
 
-function init_chart(divId) {
-  const chartElement = document.getElementById(divId);
-    if (!chartElement) {
-      throw new Error(`Failed to initialize chart. Chart div '${divId}' cannot be found.`);
-    }
-  let chart;
-  if (echarts.getInstanceByDom(chartElement)) {
-        chart = echarts.getInstanceByDom(chartElement);
-        chart.clear();
-    } else {
-        chart = echarts.init(chartElement, null, { renderer: "svg" });
-    }
-  return chart;
-}
-
 function loadScenarioChart(scenarioId) {
   const request = window.location.origin + '/scenario/' + scenarioId;
   fetch(
@@ -192,10 +209,8 @@ function loadScenarioChart(scenarioId) {
     response => {
       response.json().then(
         data => {
-          const chart = init_chart("scenarios-chart");
           const options = generate_main_chart(data.production, data.demand);
-          chart.setOption(options);
-          chart.resize();
+          create_chart("scenarios-chart", options);
         }
       );
     }
