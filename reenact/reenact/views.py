@@ -5,9 +5,8 @@ import math
 from django.http import HttpResponse, JsonResponse
 from django.views.generic.base import TemplateView
 
-from . import settings
+from . import settings, scenarios
 from .forms import CapacitiesForm
-from .settings import SCENARIOS, COLORS
 
 
 def thousand_dot(value):
@@ -131,8 +130,7 @@ class MainView(TemplateView):
             },
         ]
         set_stroke_dashoffset()
-        context["production"] = PRODUCTION
-        context["demand"] = DEMAND
+        context.update(scenarios.get_chart_data_from_scenario(0))
         context["results"] = results
         context["potentials"] = potentials
 
@@ -285,14 +283,4 @@ def scenario(request, scenario_id: int) -> JsonResponse | HttpResponse:
     """Return echart options as JSON."""
     if request.method != "GET":
         return HttpResponse(status=405)  # wrong method
-
-    scenario_data = SCENARIOS[scenario_id]
-    production = [
-        {"label": key, "value": value, "color": COLORS.get(key, "#000000")}
-        for key, value in scenario_data["production"].items()
-    ]
-    demand = [
-        {"label": key, "value": value, "color": COLORS.get(key, "#000000")}
-        for key, value in scenario_data["demand"].items()
-    ]
-    return JsonResponse({"production": production, "demand": demand})
+    return JsonResponse(scenarios.get_chart_data_from_scenario(scenario_id))
