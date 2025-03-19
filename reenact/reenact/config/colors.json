@@ -1,4 +1,5 @@
 {
+    "Wind": "#8dd3c7",
     "Wind Strom": "#8dd3c7",
     "HH-Wärme": "#cbd5e1",
     "Agri-PV Strom": "#eeee6c",
@@ -8,5 +9,15 @@
     "HH-Strom": "#64748b",
     "Holz Wärme": "#CD853F",
     "Paludi BHKW Wärme": "#FA8072",
-    "Paludi BHKW Strom": "#E9967A"
+    "Paludi BHKW Strom": "#E9967A",
+    "PV - Freiflächen": "#FF8C00",
+    "PV - Dachanlagen": "#FFA500",
+    "PV - Moor": "#FFD700",
+    "Biogasanlage": "#8FBC8F",
+    "BHKW Paludi BM": "#D2B48C",
+    "BHKW Nasswiesen BM": "#DEB887",
+    "BHKW Sonstige BM": "#F5DEB3",
+    "Strom": "#64748b",
+    "Wärme": "#cbd5e1",
+    "Mobilität": "#334155"
 }

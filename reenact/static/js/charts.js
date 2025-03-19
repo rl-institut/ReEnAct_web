@@ -77,8 +77,8 @@ function generate_main_chart(production, demand) {
   seriesList = seriesList.concat(demandList);
 
   let xaxis_labels = [
-    `{bold|${totalProduction.toFixed(1)} MWh} \n Jahreserzeugung`,
-    `{bold|${totalDemand.toFixed(1)} MWh} \n Jahresverbrauch`
+    `{bold|${totalProduction.toFixed(1)} GWh} \n Jahreserzeugung`,
+    `{bold|${totalDemand.toFixed(1)} GWh} \n Jahresverbrauch`
   ];
 
   let tooltip_formatter = function(params) {
@@ -86,10 +86,10 @@ function generate_main_chart(production, demand) {
     const demand_labels = demand.map(item => item.label);
     for (const item of params) {
       if (item.dataIndex === 0 && !demand_labels.includes(item.seriesName)) {
-        tip += `<tr><td>${item.marker} ${item.seriesName}:</td><td align='right'>${item.value} MWh</td></tr>`;
+        tip += `<tr><td>${item.marker} ${item.seriesName}:</td><td align='right'>${item.value} GWh</td></tr>`;
       }
       if (item.dataIndex === 1 && demand_labels.includes(item.seriesName)) {
-        tip += `<tr><td>${item.marker} ${item.seriesName}:</td><td align='right'>${item.value} MWh</td></tr>`;
+        tip += `<tr><td>${item.marker} ${item.seriesName}:</td><td align='right'>${item.value} GWh</td></tr>`;
       }
     }
     tip += "</table>";
@@ -136,7 +136,7 @@ function generate_main_chart(production, demand) {
       axisLabel: { show: true },
       axisPointer: {
         label: {
-          formatter: "{value} MWh",
+          formatter: "{value} GWh",
           backgroundColor: '#6a7985',
         }
       }
