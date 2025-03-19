@@ -1,0 +1,12 @@
+{
+    "name": "2024",
+    "title": "Erzeugung und Verbrauch aktuell (2024)",
+    "description": "Ist-Zustand in 2024",
+    "production": {
+        "Wind": 112.1225344,
+        "PV - Freiflächen": 12.0320946,
+        "PV - Dachanlagen": 0.54,
+        "Biogasanlage": 3.62
+    },
+    "demand": {"Strom": 15.84, "Wärme": 143.63, "Mobilität": 48.33}
+}

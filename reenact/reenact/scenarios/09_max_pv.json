@@ -1,1 +1,0 @@
-{"name": "max_pv", "title": "max_pv", "description": "lorem ipsum", "production": {"Wind Strom": 112133.12, "Freiflächen PV Strom": 245910.0, "Aufdach-PV Strom": 29275.0, "Agri-PV Strom": 134665.0, "Paludi BHKW Strom": 1612.0, "Paludi BHKW Wärme": 2256.8}, "demand": {"HH-Strom": 15843.0, "HH-Wärme": 143625.0, "E-Mobilität": 15304.304}}

@@ -1,0 +1,11 @@
+{"name": "Ausbauziele Wind und PV 2040",
+"title": "Ausbauziele Wind und PV 2040",
+"description": "Darstellung Erzeugung anhand der erforderlichen installierten Leistung in Verbindung mit Wetterdaten von 2019 und Jahresvolllaststunden 2040, Biomasse bleibt bei status quo",
+"production": {"Wind": 193.74,
+	       "PV - Freiflächen": 220.64,
+	      "PV - Dachanlagen": 0.54,
+	       "Biogasanlage": 3.62},
+"demand": {"Strom": 15.84,
+	   "Wärme": 37.34,
+	   "Mobilität": 7.65}
+}

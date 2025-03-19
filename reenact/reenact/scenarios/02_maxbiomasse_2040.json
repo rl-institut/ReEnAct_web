@@ -1,0 +1,15 @@
+{
+    "name": "Maximum Biomasse",
+    "title": "Biomasse-Potential ausschöpfen",
+    "description": "Wind und PV bleiben gleich",
+    "production": {
+        "Wind": 112.1225344,
+        "PV - Freiflächen": 12.0320946,
+        "PV - Dachanlagen": 0.54,
+        "Biogasanlage": 3.62,
+        "BHKW Paludi BM": 3.87,
+        "BHKW Nasswiesen BM": 9.44,
+        "BHKW Sonstige BM": 86.95
+    },
+    "demand": {"Strom": 15.84, "Wärme": 37.34, "Mobilität": 7.65}
+}

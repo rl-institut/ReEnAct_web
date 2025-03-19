@@ -1,0 +1,15 @@
+{"name": "Gesamtmaximum",
+"title": "Alle Potentiale werden ausgeschöpft.",
+"description": "Alle Flächen werden zu 100% genutzt. Flächenkonkurrenz hier noch nicht berücksichtigt.",
+"production": {"Wind": 346.69,
+	       "PV - Freiflächen": 258.41,
+	       "PV - Dachanlagen": 1.75,
+	       "PV - Moor": 40.00,
+	       "Biogasanlage": 3.62,
+	       "BHKW Paludi BM": 3.87,
+	       "BHKW Nasswiesen BM": 9.44,
+	       "BHKW Sonstige BM": 86.95},
+"demand": {"Strom": 15.84,
+	   "Wärme": 37.34,
+	   "Mobilität": 7.65}
+}
