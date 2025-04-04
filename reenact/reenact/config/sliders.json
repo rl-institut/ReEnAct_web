@@ -1,18 +1,130 @@
 {
   "wind": {
       "label": "Windkraft",
-      "min": 10,
-      "max": 100,
+      "min": 0,
+      "max": 136,
       "step": 10,
-      "initial": 50,
+      "initial": 38.72,
       "unit": "Leistung (MW)"
-  },
-  "pv": {
-        "label": "Photovoltaik",
-        "min": 10,
-        "max": 150,
+    },
+    "pv": {
+        "label": "Photovoltaik - Gesamt",
+        "min": 0,
+        "max": 575,
         "step": 10,
-        "initial": 30,
+        "initial": 0,
         "unit": "Leistung (MW)"
+    },
+    "pv_ground": {
+        "label": "Photovoltaik - Freiflächen",
+        "min": 0,
+        "max": 210,
+        "step": 10,
+        "initial": 11.8,
+        "unit": "Leistung (MW)"
+    },
+    "pv_roof": {
+        "label": "Photovoltaik - Dachanlangen",
+        "min": 0,
+        "max": 25,
+        "step": 10,
+        "initial": 0.62,
+        "unit": "Leistung (MW)"
+    },
+    "pv_agri": {
+        "label": "Photovoltaik - Agri",
+        "min": 0,
+        "max": 210,
+        "step": 10,
+        "initial": 0,
+        "unit": "Leistung (MW)"
+    },
+    "pv_marsh": {
+        "label": "Photovoltaik - Moor",
+        "min": 0,
+        "max": 130,
+        "step": 10,
+        "initial": 0,
+        "unit": "Leistung (MW)"
+    },
+    "other_biomass": {
+        "label": "sonstige Biomasse",
+        "min": 0,
+        "max": 34504,
+        "step": 10,
+        "initial": 0,
+        "unit": "Trockenmasse (t)"
+    },
+    "marsh": {
+        "label": "Wiedervernässung Moore",
+        "min": 0,
+        "max": 815,
+        "step": 10,
+        "initial": 0,
+        "unit": "Fläche (ha)"
+    },
+    "paludiculture": {
+        "label": "Paludikultur (nur energetisch)",
+        "min": 0,
+        "max": 775,
+        "step": 10,
+        "initial": 0,
+        "unit": "Trockenmasse (t)"
+    },
+    "wet_meadows": {
+        "label": "Nasswiesennutzung (nur energetisch)",
+        "min": 0,
+        "max": 116,
+        "step": 10,
+        "initial": 0,
+        "unit": "Trockenmasse (t)"
+    },
+    "biomass": {
+        "label": "Biomasse/Biogasanlage - Gesamt",
+        "min": 0,
+        "max": 130,
+        "step": 10,
+        "initial": 0.64,
+        "unit": "Leistung (MW_e)"
+    },
+    "electrolyzer": {
+        "label": "Elektrolyseur",
+        "min": 0,
+        "max": 130,
+        "step": 10,
+        "initial": 0,
+        "unit": "Leistung (MW)"
+    },
+    "battery": {
+        "label": "Batteriespeicher",
+        "min": 0,
+        "max": 282.5,
+        "step": 10,
+        "initial": 0.38,
+        "unit": "Kapazität (MWh)"
+    },
+    "electricity": {
+        "label": "Strom",
+        "min": 15.8,
+        "max": 45011,
+        "step": 10,
+        "initial": 27940,
+        "unit": "Energie (MWh)"
+    },
+    "heat": {
+        "label": "Wärme",
+        "min": 37342.63,
+        "max": 143625.5,
+        "step": 10,
+        "initial": 107705.25,
+        "unit": "Energie (MWh)"
+    },
+    "mobility": {
+        "label": "Mobilität",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "initial": 2,
+        "unit": "Elektrifizierungsgrad (%)"
     }
 }
