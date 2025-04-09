@@ -19,5 +19,9 @@
     "BHKW Sonstige BM": "#F5DEB3",
     "Strom": "#64748b",
     "Wärme": "#cbd5e1",
-    "Mobilität": "#334155"
+    "Mobilität": "#334155",
+    "Photovoltaik - Gesamt": "#eeee6c",
+    "Wiedervernässung Moore": "#D2B4CC",
+    "Elektrolyseur": "#64748b",
+    "Batteriespeicher": "#f1f5f9"
 }

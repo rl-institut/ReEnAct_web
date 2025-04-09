@@ -137,30 +137,24 @@ class MainView(TemplateView):
         return context
 
 
-def chart(request, chart_name: str) -> JsonResponse | HttpResponse:
-    """Return echart options as JSON."""
-    if request.method != "GET":
-        return HttpResponse(status=405)  # wrong method
+def chart(request, chart_name: str) -> JsonResponse:
+    production = []
+    demand = []
 
-    label_value_mapping = {
-        "Windenergie": "wind",
-        "Solarenergie": "pv",
-        "Wärmebedarf": "heat",
-        "Elektrolyseur": "electricity",
-        "Mobilität": "mobility",
-    }
+    for slider_config in settings.SLIDERS:
+        key = slider_config.name
+        label = slider_config.label
+        category = slider_config.category
+        color = settings.COLORS.get(label, "#cccccc")
+        value = float(request.GET.get(key, slider_config.initial))
 
-    for item in PRODUCTION:
-        value_name = label_value_mapping.get(item["label"])
-        if value_name:
-            item["value"] = float(request.GET.get(value_name, 0.0))
+        item = {"label": label, "value": value, "color": color}
+        if category == "production":
+            production.append(item)
+        elif category == "demand":
+            demand.append(item)
 
-    for item in DEMAND:
-        value_name = label_value_mapping.get(item["label"])
-        if value_name:
-            item["value"] = float(request.GET.get(value_name, 0.0))
-
-    return JsonResponse({"production": PRODUCTION, "demand": DEMAND})
+    return JsonResponse({"production": production, "demand": demand})
 
 
 def analysis(request, chart_name: str) -> JsonResponse | HttpResponse:  # noqa: PLR0911

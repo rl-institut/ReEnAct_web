@@ -1,11 +1,12 @@
 {
   "wind": {
-      "label": "Windkraft",
+      "label": "Wind",
       "min": 0,
       "max": 136,
       "step": 10,
       "initial": 38.72,
-      "unit": "Leistung (MW)"
+      "unit": "Leistung (MW)",
+      "category": "production"
     },
     "pv": {
         "label": "Photovoltaik - Gesamt",
@@ -13,39 +14,44 @@
         "max": 575,
         "step": 10,
         "initial": 0,
-        "unit": "Leistung (MW)"
+        "unit": "Leistung (MW)",
+        "category": "production"
     },
     "pv_ground": {
-        "label": "Photovoltaik - Freiflächen",
+        "label": "PV - Freiflächen",
         "min": 0,
         "max": 210,
         "step": 10,
         "initial": 11.8,
-        "unit": "Leistung (MW)"
+        "unit": "Leistung (MW)",
+        "category": "production"
     },
     "pv_roof": {
-        "label": "Photovoltaik - Dachanlangen",
+        "label": "PV - Dachanlagen",
         "min": 0,
         "max": 25,
         "step": 10,
         "initial": 0.62,
-        "unit": "Leistung (MW)"
+        "unit": "Leistung (MW)",
+        "category": "production"
     },
     "pv_agri": {
-        "label": "Photovoltaik - Agri",
+        "label": "Agri-PV Strom",
         "min": 0,
         "max": 210,
         "step": 10,
         "initial": 0,
-        "unit": "Leistung (MW)"
+        "unit": "Leistung (MW)",
+        "category": "production"
     },
     "pv_marsh": {
-        "label": "Photovoltaik - Moor",
+        "label": "PV - Moor",
         "min": 0,
         "max": 130,
         "step": 10,
         "initial": 0,
-        "unit": "Leistung (MW)"
+        "unit": "Leistung (MW)",
+        "category": "production"
     },
     "other_biomass": {
         "label": "sonstige Biomasse",
@@ -53,7 +59,8 @@
         "max": 34504,
         "step": 10,
         "initial": 0,
-        "unit": "Trockenmasse (t)"
+        "unit": "Trockenmasse (t)",
+        "category": "production"
     },
     "marsh": {
         "label": "Wiedervernässung Moore",
@@ -61,7 +68,8 @@
         "max": 815,
         "step": 10,
         "initial": 0,
-        "unit": "Fläche (ha)"
+        "unit": "Fläche (ha)",
+        "category": "production"
     },
     "paludiculture": {
         "label": "Paludikultur (nur energetisch)",
@@ -69,23 +77,26 @@
         "max": 775,
         "step": 10,
         "initial": 0,
-        "unit": "Trockenmasse (t)"
+        "unit": "Trockenmasse (t)",
+        "category": "production"
     },
     "wet_meadows": {
-        "label": "Nasswiesennutzung (nur energetisch)",
+        "label": "BHKW Nasswiesen BM",
         "min": 0,
         "max": 116,
         "step": 10,
         "initial": 0,
-        "unit": "Trockenmasse (t)"
+        "unit": "Trockenmasse (t)",
+        "category": "production"
     },
     "biomass": {
-        "label": "Biomasse/Biogasanlage - Gesamt",
+        "label": "Biogasanlage",
         "min": 0,
         "max": 130,
         "step": 10,
         "initial": 0.64,
-        "unit": "Leistung (MW_e)"
+        "unit": "Leistung (MW_e)",
+        "category": "production"
     },
     "electrolyzer": {
         "label": "Elektrolyseur",
@@ -93,7 +104,8 @@
         "max": 130,
         "step": 10,
         "initial": 0,
-        "unit": "Leistung (MW)"
+        "unit": "Leistung (MW)",
+        "category": "demand"
     },
     "battery": {
         "label": "Batteriespeicher",
@@ -101,7 +113,8 @@
         "max": 282.5,
         "step": 10,
         "initial": 0.38,
-        "unit": "Kapazität (MWh)"
+        "unit": "Kapazität (MWh)",
+        "category": "demand"
     },
     "electricity": {
         "label": "Strom",
@@ -109,7 +122,8 @@
         "max": 45011,
         "step": 10,
         "initial": 27940,
-        "unit": "Energie (MWh)"
+        "unit": "Energie (MWh)",
+        "category": "demand"
     },
     "heat": {
         "label": "Wärme",
@@ -117,7 +131,8 @@
         "max": 143625.5,
         "step": 10,
         "initial": 107705.25,
-        "unit": "Energie (MWh)"
+        "unit": "Energie (MWh)",
+        "category": "demand"
     },
     "mobility": {
         "label": "Mobilität",
@@ -125,6 +140,7 @@
         "max": 100,
         "step": 1,
         "initial": 2,
-        "unit": "Elektrifizierungsgrad (%)"
+        "unit": "Elektrifizierungsgrad (%)",
+        "category": "demand"
     }
 }
