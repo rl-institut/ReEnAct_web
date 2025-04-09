@@ -142,14 +142,23 @@ def chart(request, chart_name: str) -> JsonResponse | HttpResponse:
     if request.method != "GET":
         return HttpResponse(status=405)  # wrong method
 
-    wind = request.GET.get("wind", 0.0)
-    pv = request.GET.get("pv", 0.0)
+    label_value_mapping = {
+        "Windenergie": "wind",
+        "Solarenergie": "pv",
+        "Wärmebedarf": "heat",
+        "Elektrolyseur": "electricity",
+        "Mobilität": "mobility",
+    }
 
     for item in PRODUCTION:
-        if item["label"] == "Windenergie":
-            item["value"] = float(wind)
-        elif item["label"] == "Solarenergie":
-            item["value"] = float(pv)
+        value_name = label_value_mapping.get(item["label"])
+        if value_name:
+            item["value"] = float(request.GET.get(value_name, 0.0))
+
+    for item in DEMAND:
+        value_name = label_value_mapping.get(item["label"])
+        if value_name:
+            item["value"] = float(request.GET.get(value_name, 0.0))
 
     return JsonResponse({"production": PRODUCTION, "demand": DEMAND})
 
