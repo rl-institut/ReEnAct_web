@@ -83,6 +83,7 @@
 {% block javascript_inline %}
   {{ production|json_script:"production" }}
   {{ demand|json_script:"demand" }}
+  {{ potentials|json_script:"potentials" }}
   <script src="{% static 'js/sliders.js' %}"></script>
   <script src="{% static 'js/charts.js' %}"></script>
   <script src="{% static 'js/scenarios.js' %}"></script>

@@ -1,5 +1,6 @@
 const production = JSON.parse(document.getElementById("production").textContent);
 const demand = JSON.parse(document.getElementById("demand").textContent);
+const potentials = JSON.parse(document.getElementById("potentials").textContent);
 
 const productionDemandChartOptions = generate_main_chart(production, demand);
 
@@ -35,6 +36,11 @@ function reload_chart(div_id) {
     }
 }
 
+function update_charts() {
+  update_chart("myplan-chart")
+  update_potentials_chart("")
+}
+
 function update_chart(div_id) {
     // Update chart data from form input. Chart options calculated in backend.
     const capacityForm = document.getElementById("capacityForm");
@@ -46,6 +52,38 @@ function update_chart(div_id) {
         create_chart(div_id, generate_main_chart(data.production, data.demand));
     });
 }
+
+function update_potentials_chart() {
+  const form = document.getElementById("capacityForm");
+  const formData = new FormData(form);
+  const params = new URLSearchParams(formData).toString();
+
+  fetch(`/chart/potentials-chart?${params}`)
+      .then(response => response.json())
+      .then(data => {
+
+        const myPlanTab = document.querySelector("#tabcontent-myplan");
+        const potentials = data.potentials
+        const containers = myPlanTab.querySelectorAll(".center-container");
+
+        containers.forEach(container => {
+
+            const title = container.querySelector("h3").textContent.trim();
+            const match = potentials.find(p => p.title === title);
+            if (!match) return;
+
+            const svg_element = container.querySelector("#layer1")
+            svg_element.querySelector("text").x = `${Math.round(match.percentage)}%`
+
+            container.querySelector("circle").setAttribute("stroke-dashoffset", match.stroke_dashoffset);
+            container.querySelector("circle").setAttribute("stroke", match.color);
+            container.querySelector("text").textContent = `${Math.round(match.percentage)}%`;
+
+        });
+    });
+};
+
+
 
 function generate_main_chart(production, demand) {
   let totalProduction = production.reduce((sum, item) => sum + item.value, 0);
