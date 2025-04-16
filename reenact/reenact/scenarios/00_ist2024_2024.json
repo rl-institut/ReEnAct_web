@@ -8,5 +8,19 @@
         "PV - Dachanlagen": 0.54,
         "Biogasanlage": 3.62
     },
-    "demand": {"Strom": 15.84, "Wärme": 143.63, "Mobilität": 48.33}
+    "demand": {"Strom": 15.84, "Wärme": 143.63, "Mobilität": 48.33},
+    "potentials": {
+      "Wind": {
+        "percentage": 12,
+        "area": 200
+      },
+      "PV - Freiflächen": {
+        "percentage": 20,
+        "area": 30
+      },
+      "PV - Dachanlagen": {
+        "percentage": 2,
+        "area": 20
+      }
+    }
 }

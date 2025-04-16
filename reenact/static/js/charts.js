@@ -41,7 +41,7 @@ function reload_chart(div_id) {
 
 function update_charts() {
   update_chart("myplan-chart");
-  update_potentials_chart();
+  update_potentials();
 }
 
 function update_chart(div_id) {
@@ -56,7 +56,7 @@ function update_chart(div_id) {
     });
 }
 
-function update_potentials_chart() {
+function update_potentials() {
   const form = document.getElementById("capacityForm");
   const formData = new FormData(form);
   const params = new URLSearchParams(formData).toString();
@@ -67,7 +67,6 @@ function update_potentials_chart() {
       my_plan_potentials.innerHTML = text;
     });
 }
-
 
 
 function generate_main_chart(production, demand, targetLine=true) {
@@ -238,32 +237,6 @@ function generate_analysis_chart(data) {
       legend: {},
       series: series,
   };
-}
-
-function loadScenarioChart(scenarioId) {
-  const request = window.location.origin + '/scenario/' + scenarioId;
-  fetch(
-    request,
-    {
-        method: 'GET',
-        mode: 'cors',
-        headers: new Headers({'Accept': 'application/json', 'Content-Type':'text/plain',}),
-        credentials: 'same-origin',
-    }
-  ).then(
-    response => {
-      response.json().then(
-        data => {
-          const options = generate_main_chart(data.production, data.demand);
-          create_chart("scenarios-chart", options);
-        }
-      );
-    }
-  ).catch (
-    error => {
-      console.log(error);
-    }
-  );
 }
 
 function fetch_chart(name) {

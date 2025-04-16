@@ -9,7 +9,7 @@
         <div id="scenarioTabs" class="flex flex-col gap-2 pb-4">
           {% for scenario in scenarios %}
             <button class="scenario-button py-1 px-4 text-sm rounded-full border {% if forloop.first %}selected{% endif %}"
-                    onclick="updateScenario('{{ scenario.title }}', '{{ scenario.description }}', this); loadScenarioChart('{{ scenario.number }}');">
+                    onclick="updateScenario('{{ scenario.title }}', '{{ scenario.description }}', this); loadScenarioChart('{{ scenario.number }}'); updateScenarioPotentials('{{ scenario.number }}');">
               {{ scenario.number }}: {{ scenario.name }}
             </button>
           {% endfor %}
@@ -27,4 +27,6 @@
     </div>
   </div>
 </section>
-{% include 'partials/results.html' with potentials=potentials_status_quo resultbox_id="resultbox_scenarios" %}
+<div id="scenario_results">
+  {% include 'partials/results.html' with potentials=potentials_status_quo resultbox_id="resultbox_scenarios" %}
+</div>

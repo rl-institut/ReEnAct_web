@@ -6,7 +6,11 @@ from django.views.generic.base import TemplateView
 from reenact.reenact.results import capacities
 from . import settings
 from .forms import CapacitiesForm
-from .results.potentials import calculate_potentials_from_request
+from .results.potentials import (
+    calculate_potentials_from_request,
+    get_potentials_from_scenario_data,
+)
+from .settings import SCENARIOS
 
 
 def thousand_dot(value):
@@ -83,13 +87,8 @@ class MainView(TemplateView):
         ]
         context["results"] = results
 
-        status_quo = settings.SCENARIOS[0]["production"]
-        status_quo_potentials = {
-            settings.LABEL_TO_SLIDER[label]: value
-            for label, value in status_quo.items()
-        }
-        context["potentials_status_quo"] = calculate_potentials_from_request(
-            status_quo_potentials,
+        context["potentials_status_quo"] = get_potentials_from_scenario_data(
+            settings.SCENARIOS[0],
         )
         my_plan_potentials = {
             name: data["initial"] for name, data in settings.SLIDER_DATA.items()
@@ -117,7 +116,11 @@ class PotentialsView(TemplateView):
     template_name = "partials/potentials.html"
 
     def get_context_data(self, **kwargs):
-        potentials = calculate_potentials_from_request(self.request)
+        if "scenario" in self.request.GET:
+            scenario_id = int(self.request.GET["scenario"])
+            potentials = get_potentials_from_scenario_data(SCENARIOS[scenario_id])
+        else:
+            potentials = calculate_potentials_from_request(self.request)
         return {"potentials": potentials}
 
 

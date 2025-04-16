@@ -11,5 +11,19 @@
         "BHKW Nasswiesen BM": 9.44,
         "BHKW Sonstige BM": 86.95
     },
-    "demand": {"Strom": 15.84, "Wärme": 37.34, "Mobilität": 7.65}
+    "demand": {"Strom": 15.84, "Wärme": 37.34, "Mobilität": 7.65},
+  "potentials": {
+      "Wind": {
+        "percentage": 1,
+        "area": 20
+      },
+      "PV - Freiflächen": {
+        "percentage": 24,
+        "area": 99
+      },
+      "PV - Dachanlagen": {
+        "percentage": 60,
+        "area": 200
+      }
+    }
 }
