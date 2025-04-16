@@ -8,15 +8,6 @@
       "unit": "Leistung (MW)",
       "category": "production"
     },
-    "pv": {
-        "label": "Photovoltaik - Gesamt",
-        "min": 0,
-        "max": 575,
-        "step": 10,
-        "initial": 0,
-        "unit": "Leistung (MW)",
-        "category": "production"
-    },
     "pv_ground": {
         "label": "PV - Freiflächen",
         "min": 0,
