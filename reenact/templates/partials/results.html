@@ -23,9 +23,15 @@
   </div>
   <div>
     <div class="flex flex-nowrap gap-4">
-      {% for result in results %}
-        <c-result_component_box id="{{ resultbox_id | default_if_none:"resultbox" }}_{{ forloop.counter }}" title="{{ result.title }}" value1="{{ result.value1 }}" unit1="{{ result.unit1 }}" subtitle1="{{ result.subtitle1 }}" info_hover1="{{ result.info_hover1 }}" value2="{{ result.value2 }}" unit2="{{ result.unit2 }}" subtitle2="{{ result.subtitle2 }}" info_hover2="{{ result.info_hover2 }}" slider="{{ result.slider|unlocalize }}" />
-      {% endfor %}
+      {% if "my_plan" in resultbox_id %}
+        <button class="block w-[12rem] text-center bg-sky-600 text-sm text-white font-semibold py-2 px-6 rounded-full shadow-md hover:bg-sky-500 transition">
+          Berechnung starten
+        </button>
+      {% else %}
+        {% for result in results %}
+          <c-result_component_box id="{{ resultbox_id | default_if_none:"resultbox" }}_{{ forloop.counter }}" title="{{ result.title }}" value1="{{ result.value1 }}" unit1="{{ result.unit1 }}" subtitle1="{{ result.subtitle1 }}" info_hover1="{{ result.info_hover1 }}" value2="{{ result.value2 }}" unit2="{{ result.unit2 }}" subtitle2="{{ result.subtitle2 }}" info_hover2="{{ result.info_hover2 }}" slider="{{ result.slider|unlocalize }}" />
+        {% endfor %}
+      {% endif %}
     </div>
   </div>
 </section>
