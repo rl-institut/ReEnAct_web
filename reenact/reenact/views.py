@@ -45,15 +45,15 @@ class MainView(TemplateView):
 
         results = [
             {
-                "title": "CO2-AUSSTOß",
+                "title": "CO2",
                 "value1": 14.7,
                 "unit1": "Tonnen",
                 "subtitle1": "Ausstoß",
                 "info_hover1": "Hier steht Info über Ausstoß",
                 "value2": 12,
-                "unit2": "%",
-                "subtitle2": "CO² Einsparungen",
-                "info_hover2": "Hier steht Info über CO² Einsparungen",
+                "unit2": "Mio. €",
+                "subtitle2": "Kosten",
+                "info_hover2": "Hier steht Info über Kosten",
                 "slider": set_slider(1),
             },
             {
