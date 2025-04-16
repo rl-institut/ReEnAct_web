@@ -68,8 +68,6 @@ function update_potentials_chart() {
     });
 }
 
-
-
 function generate_main_chart(production, demand) {
   let totalProduction = production.reduce((sum, item) => sum + item.value, 0);
   let totalDemand = demand.reduce((sum, item) => sum + item.value, 0);
@@ -100,8 +98,8 @@ function generate_main_chart(production, demand) {
   seriesList = seriesList.concat(demandList);
 
   let xaxis_labels = [
-    `{bold|${totalProduction.toFixed(1)} GWh} \n Jahreserzeugung`,
-    `{bold|${totalDemand.toFixed(1)} GWh} \n Jahresverbrauch`
+    `{bold|${totalProduction.toFixed(1)} GWh}\n{label|Jahreserzeugung}`,
+    `{bold|${totalDemand.toFixed(1)} GWh}\n{label|Jahresverbrauch}`
   ];
 
   let tooltip_formatter = function(params) {
@@ -130,7 +128,7 @@ function generate_main_chart(production, demand) {
       }
     }
   },
-    grid: { top: '10%', left: '10%', right: '30%', bottom: '15%' },
+    grid: { top: '10%', left: '10%', right: '30%', bottom: '20%' },
     xAxis: {
       type: 'category',
       data: xaxis_labels,
@@ -140,7 +138,15 @@ function generate_main_chart(production, demand) {
         rich: {
           bold: {
             fontWeight: "bold",
-            fontSize: 16
+            fontSize: 24,
+            color: '#1e293b',
+            lineHeight: 30,
+          },
+          label: {
+            fontWeight: "normal",
+            fontSize: 16,
+            color: '#64748b',
+            lineHeight: 20,
           }
         }
       },
