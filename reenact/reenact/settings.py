@@ -24,10 +24,12 @@ class SliderConfig:
 
 
 with (CONFIG_DIR / "sliders.json").open("r", encoding="utf-8") as f:
-    slider_data = json.load(f)
-    SLIDERS = [
-        SliderConfig(name=name, **values) for name, values in slider_data.items()
-    ]
+    SLIDER_DATA = json.load(f)
+SLIDERS = [SliderConfig(name=name, **values) for name, values in SLIDER_DATA.items()]
+LABEL_TO_SLIDER = {config["label"]: name for name, config in SLIDER_DATA.items()}
+
+
+POTENTIALS = ["wind", "pv_ground", "pv_roof", "pv_agri", "paludiculture"]
 
 
 with (CONFIG_DIR / "colors.json").open("r", encoding="utf-8") as f:

@@ -1,12 +1,12 @@
 from __future__ import annotations
 
-import math
-
 from django.http import HttpResponse, JsonResponse
 from django.views.generic.base import TemplateView
 
 from . import settings, scenarios
 from .forms import CapacitiesForm
+from .results.potentials import calculate_potentials_from_request
+from .settings import SLIDER_DATA
 
 
 def thousand_dot(value):
@@ -82,7 +82,20 @@ class MainView(TemplateView):
             },
         ]
 
-        context["potentials"] = calculate_potentials_from_request(self.request)
+        status_quo = settings.SCENARIOS[0]["production"]
+        status_quo_potentials = {
+            settings.LABEL_TO_SLIDER[label]: value
+            for label, value in status_quo.items()
+        }
+        context["potentials_status_quo"] = calculate_potentials_from_request(
+            status_quo_potentials,
+        )
+        my_plan_potentials = {
+            name: data["initial"] for name, data in SLIDER_DATA.items()
+        }
+        context["potentials_my_plan"] = calculate_potentials_from_request(
+            my_plan_potentials,
+        )
 
         context.update(scenarios.get_chart_data_from_scenario(0))
         context["results"] = results
@@ -107,84 +120,11 @@ def chart(request, chart_name: str) -> JsonResponse:
         elif category == "demand":
             demand.append(item)
 
-        potentials = calculate_potentials_from_request(request)
+    potentials = calculate_potentials_from_request(request)
 
     return JsonResponse(
         {"production": production, "demand": demand, "potentials": potentials},
     )
-
-
-def calculate_potentials_from_request(request_or_data) -> list:
-    def circle_view(arc_percentage):
-        radius = 27
-        stroke = 2 * math.pi * radius
-        stroke_dashoffset = stroke * (1 - arc_percentage / 100)
-        return f"{stroke_dashoffset:.5f}"
-
-    base_potentials = [
-        {
-            "title": "Windenergie",
-            "key": "wind",
-            "unit": "km²",
-            "color": "#8dd3c7",
-            "max": 100,
-        },
-        {
-            "title": "Solarpark",
-            "key": "pv_ground",
-            "unit": "km²",
-            "color": "#eeee6c",
-            "max": 100,
-        },
-        {
-            "title": "Dachsolar",
-            "key": "pv_roof",
-            "unit": "km²",
-            "color": "#fdb462",
-            "max": 100,
-        },
-        {
-            "title": "Agrisolar",
-            "key": "pv_agri",
-            "unit": "km²",
-            "color": "#fb8072",
-            "max": 100,
-        },
-        {
-            "title": "Nasse Moorbewirtschaftung",
-            "key": "paludiculture",
-            "unit": "km²",
-            "color": "#b3de69",
-            "max": 100,
-        },
-    ]
-
-    if hasattr(request_or_data, "GET"):
-        query_data = request_or_data.GET
-    else:
-        query_data = request_or_data
-
-    potentials = []
-    for pot in base_potentials:
-        raw_value = query_data.get(pot["key"], 0)
-        try:
-            value = float(raw_value)
-        except (TypeError, ValueError):
-            value = 0
-
-        percentage = (value / pot["max"]) * 100 if pot["max"] else 0
-        potentials.append(
-            {
-                "title": pot["title"],
-                "percentage": percentage,
-                "value": value,
-                "unit": pot["unit"],
-                "color": pot["color"],
-                "stroke_dashoffset": circle_view(percentage),
-            },
-        )
-
-    return potentials
 
 
 def analysis(request, chart_name: str) -> JsonResponse | HttpResponse:  # noqa: PLR0911
