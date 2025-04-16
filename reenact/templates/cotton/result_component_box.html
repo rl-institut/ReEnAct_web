@@ -1,4 +1,5 @@
-<div id="component_box" class="bg-white shadow rounded-lg p-4 pb-2 min-w-[10rem] w-full md:w-[20rem] 2xl:flex-1">
+<div id="component_box"
+     class="bg-white shadow rounded-lg p-4 pb-2 min-w-[10rem] w-full md:w-[20rem] 2xl:flex-1">
   <h3 class="text-sm text-slate-500 font-normal text-left">{{ title }}</h3>
   <div class="pt-1">
     <span class="text-2xl font-bold">{{ value1 }}</span>
@@ -6,11 +7,15 @@
     <p class="flex items-center justify-center gap-2 text-sm text-slate-500">
       {{ subtitle1 }}
       <span class="relative group">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke-width="1.5"
+             stroke="currentColor"
+             class="size-6 cursor-pointer">
           <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-        </svg>        
-        <span class="absolute left-1/2 -translate-x-1/2 top-7 bg-slate-800 text-white text-xs normal-case px-3 py-1 rounded-lg shadow-md 
-                      opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-nowrap z-50">
+        </svg>
+        <span class="absolute left-1/2 -translate-x-1/2 top-7 bg-slate-800 text-white text-xs normal-case px-3 py-1 rounded-lg shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-nowrap z-50">
           {{ info_hover1 }}
         </span>
       </span>
@@ -22,11 +27,15 @@
     <p class="flex items-center justify-center gap-2 text-sm text-slate-500">
       {{ subtitle2 }}
       <span class="relative group">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke-width="1.5"
+             stroke="currentColor"
+             class="size-6 cursor-pointer">
           <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-        </svg>        
-        <span class="absolute left-1/2 -translate-x-1/2 top-7 bg-slate-800 text-white text-xs normal-case px-3 py-1 rounded-lg shadow-md 
-                      opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-nowrap z-50">
+        </svg>
+        <span class="absolute left-1/2 -translate-x-1/2 top-7 bg-slate-800 text-white text-xs normal-case px-3 py-1 rounded-lg shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-nowrap z-50">
           {{ info_hover2 }}
         </span>
       </span>
@@ -38,7 +47,7 @@
          height="auto"
          viewBox="0 0 110 12"
          version="1.1"
-         id="svg5"
+         id="svg5_{{ id }}"
          sodipodi:docname="scale.svg"
          inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
          xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -46,29 +55,29 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          xmlns="http://www.w3.org/2000/svg"
          xmlns:svg="http://www.w3.org/2000/svg">
-      <sodipodi:namedview id="namedview7" pagecolor="#505050" bordercolor="#eeeeee" borderopacity="1" inkscape:showpageshadow="0" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#505050" inkscape:document-units="mm" showgrid="false" inkscape:zoom="2.1442755" inkscape:cx="280.7475" inkscape:cy="80.679931" inkscape:window-width="1920" inkscape:window-height="1022" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="g6937" />
-      <defs id="defs2">
-      <linearGradient inkscape:collect="always" id="linearGradient8948">
-      <stop style="stop-color:#fe3732;stop-opacity:1;" offset="0" id="stop8944" />
-      <stop style="stop-color:#e8f000;stop-opacity:1;" offset="0.5" id="stop11856" />
-      <stop style="stop-color:#77e03a;stop-opacity:1;" offset="1" id="stop8946" />
+      <sodipodi:namedview id="namedview7_{{ id }}" pagecolor="#505050" bordercolor="#eeeeee" borderopacity="1" inkscape:showpageshadow="0" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#505050" inkscape:document-units="mm" showgrid="false" inkscape:zoom="2.1442755" inkscape:cx="280.7475" inkscape:cy="80.679931" inkscape:window-width="1920" inkscape:window-height="1022" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="g6937" />
+      <defs id="defs2_{{ id }}">
+      <linearGradient inkscape:collect="always" id="linearGradient8948_{{ id }}">
+      <stop style="stop-color:#fe3732;stop-opacity:1;" offset="0" id="stop8944_{{ id }}" />
+      <stop style="stop-color:#e8f000;stop-opacity:1;" offset="0.5" id="stop11856_{{ id }}" />
+      <stop style="stop-color:#77e03a;stop-opacity:1;" offset="1" id="stop8946_{{ id }}" />
       </linearGradient>
-      <filter style="color-interpolation-filters:sRGB" inkscape:label="Drop Shadow" id="filter8809" x="-0.28725316" y="-0.28725316" width="1.6941951" height="1.6941951">
-      <feFlood flood-opacity="0.498039" flood-color="rgb(0,0,0)" result="flood" id="feFlood8799" />
-      <feComposite in="flood" in2="SourceGraphic" operator="in" result="composite1" id="feComposite8801" />
-      <feGaussianBlur in="composite1" stdDeviation="1" result="blur" id="feGaussianBlur8803" />
-      <feOffset dx="1" dy="1" result="offset" id="feOffset8805" />
-      <feComposite in="SourceGraphic" in2="offset" operator="over" result="composite2" id="feComposite8807" />
+      <filter style="color-interpolation-filters:sRGB" inkscape:label="Drop Shadow" id="filter8809_{{ id }}" x="-0.28725316" y="-0.28725316" width="1.6941951" height="1.6941951">
+      <feFlood flood-opacity="0.498039" flood-color="rgb(0,0,0)" result="flood" id="feFlood8799_{{ id }}" />
+      <feComposite in="flood" in2="SourceGraphic" operator="in" result="composite1" id="feComposite8801_{{ id }}" />
+      <feGaussianBlur in="composite1" stdDeviation="1" result="blur" id="feGaussianBlur8803_{{ id }}" />
+      <feOffset dx="1" dy="1" result="offset" id="feOffset8805_{{ id }}" />
+      <feComposite in="SourceGraphic" in2="offset" operator="over" result="composite2" id="feComposite8807_{{ id }}" />
       </filter>
-      <linearGradient inkscape:collect="always" xlink:href="#linearGradient8948" id="linearGradient8950" x1="25.106565" y1="139.16257" x2="132.43143" y2="139.16257" gradientUnits="userSpaceOnUse" />
+      <linearGradient inkscape:collect="always" xlink:href="#linearGradient8948_{{ id }}" id="linearGradient8950_{{ id }}" x1="25.106565" y1="139.16257" x2="132.43143" y2="139.16257" gradientUnits="userSpaceOnUse" />
       </defs>
-      <g inkscape:label="Ebene 1" inkscape:groupmode="layer" id="layer1" transform="translate(-25.106565,-134.41257)">
-      <g id="g6937" inkscape:label="scale" style="fill-opacity:1;fill:url(#linearGradient8950)">
-      <rect style="fill:url(#linearGradient8950);fill-opacity:1;stroke-width:0.235779;-inkscape-stroke:none;stop-color:#000000" id="rect839" width="97.828384" height="5" x="29.863192" y="134.41257" />
-      <circle style="fill:url(#linearGradient8950);fill-opacity:1;stroke-width:0.240856;-inkscape-stroke:none;stop-color:#000000;stroke:none" id="path893" cx="29.856565" cy="136.9" r="2.25" />
-      <circle style="fill:url(#linearGradient8950);fill-opacity:1;stroke-width:0.240854;-inkscape-stroke:none;stop-color:#000000" id="path893-3" cx="127.68143" cy="136.9" r="2.25" />
+      <g inkscape:label="Ebene 1" inkscape:groupmode="layer" id="layer1_{{ id }}" transform="translate(-25.106565,-134.41257)">
+      <g id="g6937" inkscape:label="scale" style="fill-opacity:1;fill:url(#linearGradient8950_{{ id }})">
+      <rect style="fill:url(#linearGradient8950_{{ id }});fill-opacity:1;stroke-width:0.235779;-inkscape-stroke:none;stop-color:#000000" id="rect839_{{ id }}" width="97.828384" height="5" x="29.863192" y="134.41257" />
+      <circle style="fill:url(#linearGradient8950_{{ id }});fill-opacity:1;stroke-width:0.240856;-inkscape-stroke:none;stop-color:#000000;stroke:none" id="path893_{{ id }}" cx="29.856565" cy="136.9" r="2.25" />
+      <circle style="fill:url(#linearGradient8950_{{ id }});fill-opacity:1;stroke-width:0.240854;-inkscape-stroke:none;stop-color:#000000" id="path893-3_{{ id }}" cx="127.68143" cy="136.9" r="2.25" />
       </g>
-      <circle style="fill:#ffffff;fill-opacity:1;stroke-width:0.260294;-inkscape-stroke:none;filter:url(#filter8809);stop-color:#000000" id="path6145" cx="{{ slider }}" cy="136.5" r="2" inkscape:label="slider" />
+      <circle style="fill:#ffffff;fill-opacity:1;stroke-width:0.260294;-inkscape-stroke:none;filter:url(#filter8809_{{ id }});stop-color:#000000" id="path6145_{{ id }}" cx="{{ slider }}" cy="136.5" r="2" inkscape:label="slider" />
       </g>
     </svg>
     {# djlint:on #}
