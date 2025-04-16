@@ -2,7 +2,7 @@ const production = JSON.parse(document.getElementById("production").textContent)
 const demand = JSON.parse(document.getElementById("demand").textContent);
 const production_my_plan = JSON.parse(document.getElementById("production_my_plan").textContent);
 const demand_my_plan = JSON.parse(document.getElementById("demand_my_plan").textContent);
-const my_plan_potentials = document.getElementsByClassName("my_plan_potentials")[0].getElementsByClassName("potentials")[0];
+const my_plan_potentials = document.getElementById("my_plan_results").getElementsByClassName("potentials")[0];
 
 const productionDemandChartOptions = generate_main_chart(production, demand, false);
 const productionDemandChartMyPlanOptions = generate_main_chart(production_my_plan, demand_my_plan);
