@@ -1,6 +1,6 @@
 const production = JSON.parse(document.getElementById("production").textContent);
 const demand = JSON.parse(document.getElementById("demand").textContent);
-const potentials = JSON.parse(document.getElementById("potentials").textContent);
+const my_plan_potentials = document.getElementsByClassName("my_plan_potentials")[0].getElementsByClassName("potentials")[0];
 
 const productionDemandChartOptions = generate_main_chart(production, demand);
 
@@ -37,8 +37,8 @@ function reload_chart(div_id) {
 }
 
 function update_charts() {
-  update_chart("myplan-chart")
-  update_potentials_chart("")
+  update_chart("myplan-chart");
+  update_potentials_chart();
 }
 
 function update_chart(div_id) {
@@ -58,30 +58,12 @@ function update_potentials_chart() {
   const formData = new FormData(form);
   const params = new URLSearchParams(formData).toString();
 
-  fetch(`/chart/potentials-chart?${params}`)
-      .then(response => response.json())
-      .then(data => {
-
-        const myPlanTab = document.querySelector("#tabcontent-myplan");
-        const potentials = data.potentials
-        const containers = myPlanTab.querySelectorAll(".center-container");
-
-        containers.forEach(container => {
-
-            const title = container.querySelector("h3").textContent.trim();
-            const match = potentials.find(p => p.title === title);
-            if (!match) return;
-
-            const svg_element = container.querySelector("#layer1")
-            svg_element.querySelector("text").x = `${Math.round(match.percentage)}%`
-
-            container.querySelector("circle").setAttribute("stroke-dashoffset", match.stroke_dashoffset);
-            container.querySelector("circle").setAttribute("stroke", match.color);
-            container.querySelector("text").textContent = `${Math.round(match.percentage)}%`;
-
-        });
+  fetch(`/potentials?${params}`)
+    .then((response) => response.text())
+    .then((text) => {
+      my_plan_potentials.innerHTML = text;
     });
-};
+}
 
 
 

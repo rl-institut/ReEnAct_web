@@ -26,7 +26,6 @@ def calculate_potentials_from_request(request_or_data) -> list:
             value = 0
 
         potential_data = settings.SLIDER_DATA[pot]
-
         percentage = (value / potential_data["max"]) * 100
         potentials.append(
             {

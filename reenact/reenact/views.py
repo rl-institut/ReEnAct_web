@@ -120,11 +120,19 @@ def chart(request, chart_name: str) -> JsonResponse:
         elif category == "demand":
             demand.append(item)
 
-    potentials = calculate_potentials_from_request(request)
-
     return JsonResponse(
-        {"production": production, "demand": demand, "potentials": potentials},
+        {"production": production, "demand": demand},
     )
+
+
+class PotentialsView(TemplateView):
+    """Render HTML for potentials."""
+
+    template_name = "partials/potentials.html"
+
+    def get_context_data(self, **kwargs):
+        potentials = calculate_potentials_from_request(self.request)
+        return {"potentials": potentials}
 
 
 def analysis(request, chart_name: str) -> JsonResponse | HttpResponse:  # noqa: PLR0911
