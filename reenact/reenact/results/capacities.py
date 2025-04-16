@@ -23,7 +23,7 @@ def get_chart_data_from_user_input(user_input: dict) -> dict:
         label = slider_config.label
         category = slider_config.category
         color = COLORS.get(label, "#cccccc")
-        value = float(user_input.get(key, slider_config.initial))
+        value = float(user_input.get(key, slider_config.initial)) * 1e-3
         value = calculate_energy_from_capacity(key, value)
 
         item = {"label": label, "value": value, "color": color}

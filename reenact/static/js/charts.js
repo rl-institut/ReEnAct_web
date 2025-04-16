@@ -4,7 +4,7 @@ const production_my_plan = JSON.parse(document.getElementById("production_my_pla
 const demand_my_plan = JSON.parse(document.getElementById("demand_my_plan").textContent);
 const my_plan_potentials = document.getElementsByClassName("my_plan_potentials")[0].getElementsByClassName("potentials")[0];
 
-const productionDemandChartOptions = generate_main_chart(production, demand);
+const productionDemandChartOptions = generate_main_chart(production, demand, false);
 const productionDemandChartMyPlanOptions = generate_main_chart(production_my_plan, demand_my_plan);
 
 create_chart("statusquo-chart", productionDemandChartOptions);
@@ -70,7 +70,7 @@ function update_potentials_chart() {
 
 
 
-function generate_main_chart(production, demand) {
+function generate_main_chart(production, demand, targetLine=true) {
   let totalProduction = production.reduce((sum, item) => sum + item.value, 0);
   let totalDemand = demand.reduce((sum, item) => sum + item.value, 0);
 
@@ -84,6 +84,25 @@ function generate_main_chart(production, demand) {
   if (seriesList.length > 0) {
     seriesList[0].barCategoryGap = '10%';
     seriesList[0].barWidth = '40%';
+    if (targetLine) {
+      seriesList[0].markLine = {
+        symbol: 'none',
+        data: [
+          {
+            yAxis: 270,
+            name: 'Ziel'
+          }
+        ],
+        lineStyle: {
+          color: 'gray',
+          type: 'dashed'
+        },
+        label: {
+          formatter: 'Ziel: {c}',
+          position: 'middle'
+        }
+      };
+    }
   }
 
   let demandList = demand.map(dem_item => ({
