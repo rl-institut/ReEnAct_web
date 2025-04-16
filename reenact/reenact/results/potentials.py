@@ -3,6 +3,7 @@ from __future__ import annotations
 import math
 
 from reenact.reenact import settings
+from reenact.reenact.settings import POTENTIAL_AREAS
 
 
 def calculate_potentials_from_request(request_or_data) -> list:
@@ -31,7 +32,7 @@ def calculate_potentials_from_request(request_or_data) -> list:
             {
                 "title": potential_data["label"],
                 "percentage": round(percentage),
-                "value": round(value),
+                "value": round(calculate_area_from_capacity(pot, value)),
                 "unit": "km²",
                 "color": settings.COLORS[potential_data["label"]],
                 "stroke_dashoffset": circle_view(percentage),
@@ -39,3 +40,10 @@ def calculate_potentials_from_request(request_or_data) -> list:
         )
 
     return potentials
+
+
+def calculate_area_from_capacity(technology: str, value: float) -> float:
+    """Calculate energy for technologies using full load hours."""
+    if technology in POTENTIAL_AREAS:
+        return value * POTENTIAL_AREAS[technology]
+    return value
