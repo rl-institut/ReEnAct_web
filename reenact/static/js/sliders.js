@@ -1,5 +1,9 @@
 
-$(".js-range-slider").ionRangeSlider();
+$(".js-range-slider").ionRangeSlider({
+  onFinish: function (data) {
+    update_charts('myplan-chart');
+  }
+});
 // updateSliderMarks();
 
 function convertToPercent(num, min, max) {
