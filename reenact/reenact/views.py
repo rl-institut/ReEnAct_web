@@ -3,10 +3,10 @@ from __future__ import annotations
 from django.http import HttpResponse, JsonResponse
 from django.views.generic.base import TemplateView
 
-from . import settings, scenarios
+from reenact.reenact.results import capacities
+from . import settings
 from .forms import CapacitiesForm
 from .results.potentials import calculate_potentials_from_request
-from .settings import SLIDER_DATA
 
 
 def thousand_dot(value):
@@ -81,6 +81,7 @@ class MainView(TemplateView):
                 "slider": set_slider(100),
             },
         ]
+        context["results"] = results
 
         status_quo = settings.SCENARIOS[0]["production"]
         status_quo_potentials = {
@@ -91,38 +92,23 @@ class MainView(TemplateView):
             status_quo_potentials,
         )
         my_plan_potentials = {
-            name: data["initial"] for name, data in SLIDER_DATA.items()
+            name: data["initial"] for name, data in settings.SLIDER_DATA.items()
         }
         context["potentials_my_plan"] = calculate_potentials_from_request(
             my_plan_potentials,
         )
 
-        context.update(scenarios.get_chart_data_from_scenario(0))
-        context["results"] = results
+        # Get production and demand for status quo and my plan
+        context.update(capacities.get_chart_data_from_scenario(0))
+        my_plan_capacities = capacities.get_chart_data_from_user_input({})
+        context["production_my_plan"] = my_plan_capacities["production"]
+        context["demand_my_plan"] = my_plan_capacities["demand"]
 
         return context
 
 
 def chart(request, chart_name: str) -> JsonResponse:
-    production = []
-    demand = []
-
-    for slider_config in settings.SLIDERS:
-        key = slider_config.name
-        label = slider_config.label
-        category = slider_config.category
-        color = settings.COLORS.get(label, "#cccccc")
-        value = float(request.GET.get(key, slider_config.initial))
-
-        item = {"label": label, "value": value, "color": color}
-        if category == "production":
-            production.append(item)
-        elif category == "demand":
-            demand.append(item)
-
-    return JsonResponse(
-        {"production": production, "demand": demand},
-    )
+    return JsonResponse(capacities.get_chart_data_from_user_input(request.GET))
 
 
 class PotentialsView(TemplateView):
@@ -264,4 +250,6 @@ def scenario(request, scenario_id: int) -> JsonResponse | HttpResponse:
     """Return echart options as JSON."""
     if request.method != "GET":
         return HttpResponse(status=405)  # wrong method
-    return JsonResponse(scenarios.get_chart_data_from_scenario(scenario_id))
+    return JsonResponse(
+        capacities.get_chart_data_from_scenario(scenario_id),
+    )

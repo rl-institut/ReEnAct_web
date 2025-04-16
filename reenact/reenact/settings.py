@@ -48,3 +48,7 @@ for filename in sorted(SCENARIO_DIR.iterdir()):
                 raise RuntimeError(error_msg) from e
             data["number"] = int(scenario_number)
             SCENARIOS.append(data)
+
+
+with (CONFIG_DIR / "full_load_hours.json").open("r", encoding="utf-8") as f:
+    FULL_LOAD_HOURS = json.load(f)

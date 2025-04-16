@@ -1,12 +1,15 @@
 const production = JSON.parse(document.getElementById("production").textContent);
 const demand = JSON.parse(document.getElementById("demand").textContent);
+const production_my_plan = JSON.parse(document.getElementById("production_my_plan").textContent);
+const demand_my_plan = JSON.parse(document.getElementById("demand_my_plan").textContent);
 const my_plan_potentials = document.getElementsByClassName("my_plan_potentials")[0].getElementsByClassName("potentials")[0];
 
 const productionDemandChartOptions = generate_main_chart(production, demand);
+const productionDemandChartMyPlanOptions = generate_main_chart(production_my_plan, demand_my_plan);
 
 create_chart("statusquo-chart", productionDemandChartOptions);
 create_chart("scenarios-chart", productionDemandChartOptions);
-create_chart("myplan-chart", productionDemandChartOptions);
+create_chart("myplan-chart", productionDemandChartMyPlanOptions);
 
 function create_chart(div_id, options) {
     const chartElement = document.getElementById(div_id);
