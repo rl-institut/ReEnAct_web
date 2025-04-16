@@ -1,26 +1,55 @@
 {
-    "name": "2024",
-    "title": "Erzeugung und Verbrauch aktuell (2024)",
-    "description": "Ist-Zustand in 2024",
-    "production": {
-        "Wind": 112.1225344,
-        "PV - Freiflächen": 12.0320946,
-        "PV - Dachanlagen": 0.54,
-        "Biogasanlage": 3.62
+  "name": "2024",
+  "title": "Erzeugung und Verbrauch aktuell (2024)",
+  "description": "Ist-Zustand in 2024",
+  "production": {
+    "Wind": 112.1225344,
+    "PV - Freiflächen": 12.0320946,
+    "PV - Dachanlagen": 0.54,
+    "Biogasanlage": 3.62
+  },
+  "demand": {"Strom": 15.84, "Wärme": 143.63, "Mobilität": 48.33},
+  "potentials": {
+    "Wind": {"percentage": 12, "area": 200},
+    "PV - Freiflächen": {"percentage": 20, "area": 30},
+    "PV - Dachanlagen": {"percentage": 2, "area": 20}
+  },
+  "boxes": [
+    {
+      "title": "CO2",
+      "value1": 19,
+      "unit1": "Tonnen",
+      "subtitle1": "Ausstoß",
+      "info_hover1": "Hier steht Info über Ausstoß",
+      "value2": 1300,
+      "unit2": "Mio. €",
+      "subtitle2": "Kosten",
+      "info_hover2": "Hier steht Info über Kosten",
+      "slider": 1
     },
-    "demand": {"Strom": 15.84, "Wärme": 143.63, "Mobilität": 48.33},
-    "potentials": {
-      "Wind": {
-        "percentage": 12,
-        "area": 200
+    {
+          "title": "ENERGIEKOSTEN",
+          "value1": 0.13,
+          "unit1": "€/kWh",
+          "subtitle1": "Erzeugungspreis",
+          "info_hover1": "Hier steht Info über Erzeugungspreis",
+          "value2": 100000,
+          "unit2": "€",
+          "subtitle2": "Investitionsbedarf",
+          "info_hover2": "Hier steht Info über Investitionsbedarf",
+          "slider": 50
       },
-      "PV - Freiflächen": {
-        "percentage": 20,
-        "area": 30
-      },
-      "PV - Dachanlagen": {
-        "percentage": 2,
-        "area": 20
+      {
+          "title": "not used",
+          "value1": 10,
+          "unit1": "%",
+          "subtitle1": "Bilanziell",
+          "info_hover1": "Hier steht Info über Bilanziell",
+          "value2": 2,
+          "unit2": "%",
+          "subtitle2": "Zeitgleich",
+          "info_hover2": "Hier steht Info über Zeitgleich",
+          "slider": 100
       }
-    }
+  ]
 }

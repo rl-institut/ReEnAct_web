@@ -25,5 +25,43 @@
         "percentage": 60,
         "area": 200
       }
-    }
+    },
+  "boxes": [
+        {
+            "title": "CO2",
+            "value1": 300,
+            "unit1": "Tonnen",
+            "subtitle1": "Ausstoß",
+            "info_hover1": "Hier steht Info über Ausstoß",
+            "value2": 10,
+            "unit2": "%",
+            "subtitle2": "Einsparungen",
+            "info_hover2": "Hier steht Info über CO2 Einsparungen",
+            "slider": 70
+        },
+        {
+            "title": "ENERGIEKOSTEN",
+            "value1": "-",
+            "unit1": "€/kWh",
+            "subtitle1": "Erzeugungspreis",
+            "info_hover1": "Hier steht Info über Erzeugungspreis",
+            "value2": "-",
+            "unit2": "€",
+            "subtitle2": "Investitionsbedarf",
+            "info_hover2": "Hier steht Info über Investitionsbedarf",
+            "slider": 100
+        },
+        {
+            "title": "SELBSTVERSORGUNG",
+            "value1": 10,
+            "unit1": "%",
+            "subtitle1": "Bilanziell",
+            "info_hover1": "Hier steht Info über Bilanziell",
+            "value2": 2,
+            "unit2": "%",
+            "subtitle2": "Zeitgleich",
+            "info_hover2": "Hier steht Info über Zeitgleich",
+            "slider": 70
+        }
+    ]
 }

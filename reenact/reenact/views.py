@@ -10,15 +10,8 @@ from .results.potentials import (
     calculate_potentials_from_request,
     get_potentials_from_scenario_data,
 )
+from .results.boxes import get_result_boxes_from_scenario_data
 from .settings import SCENARIOS
-
-
-def thousand_dot(value):
-    try:
-        number = int(value)
-        return f"{number:,}".replace(",", ".")
-    except (ValueError, TypeError):
-        return value
 
 
 PRODUCTION = [
@@ -44,47 +37,7 @@ class MainView(TemplateView):
         context["capacities"] = CapacitiesForm(sliders=settings.SLIDERS)
         context["scenarios"] = settings.SCENARIOS
 
-        def set_slider(slider):
-            return 29.86 + slider * (97.83 / 100)
-
-        results = [
-            {
-                "title": "CO2",
-                "value1": 14.7,
-                "unit1": "Tonnen",
-                "subtitle1": "Ausstoß",
-                "info_hover1": "Hier steht Info über Ausstoß",
-                "value2": 12,
-                "unit2": "Mio. €",
-                "subtitle2": "Kosten",
-                "info_hover2": "Hier steht Info über Kosten",
-                "slider": set_slider(1),
-            },
-            {
-                "title": "ENERGIEKOSTEN",
-                "value1": 0.16,
-                "unit1": "€/kWh",
-                "subtitle1": "Erzeugungspreis",
-                "info_hover1": "Hier steht Info über Erzeugungspreis",
-                "value2": thousand_dot(100000),
-                "unit2": "€",
-                "subtitle2": "Investitionsbedarf",
-                "info_hover2": "Hier steht Info über Investitionsbedarf",
-                "slider": set_slider(50),
-            },
-            {
-                "title": "SELBSTVERSORGUNG",
-                "value1": 114,
-                "unit1": "%",
-                "subtitle1": "Bilanziell",
-                "info_hover1": "Hier steht Info über Bilanziell",
-                "value2": 75,
-                "unit2": "%",
-                "subtitle2": "Zeitgleich",
-                "info_hover2": "Hier steht Info über Zeitgleich",
-                "slider": set_slider(100),
-            },
-        ]
+        results = get_result_boxes_from_scenario_data(SCENARIOS[0])
         context["results"] = results
 
         context["potentials_status_quo"] = get_potentials_from_scenario_data(
@@ -122,6 +75,17 @@ class PotentialsView(TemplateView):
         else:
             potentials = calculate_potentials_from_request(self.request)
         return {"potentials": potentials}
+
+
+class ResultBoxView(TemplateView):
+    """Render HTML for result boxes."""
+
+    template_name = "partials/resultboxes.html"
+
+    def get_context_data(self, **kwargs):
+        scenario_id = int(self.request.GET["scenario"])
+        results = get_result_boxes_from_scenario_data(SCENARIOS[scenario_id])
+        return {"results": results}
 
 
 def analysis(request, chart_name: str) -> JsonResponse | HttpResponse:  # noqa: PLR0911
