@@ -181,6 +181,7 @@ function generate_main_chart(production, demand) {
     },
     series: seriesList,
     legend: {
+      type: "scroll",
       right: '5%',
       orient: 'vertical',
       icon: 'circle',
