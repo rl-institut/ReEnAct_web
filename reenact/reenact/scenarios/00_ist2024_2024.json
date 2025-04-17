@@ -11,10 +11,7 @@
   "potentials": {
     "Wind": {"percentage": 28.47, "area": 20.68},
     "PV - Freiflächen": {"percentage": 5.7, "area": 0.17},
-    "PV - Dachanlagen": {"percentage": 1.04, "area": 0.0078},
-    "Agri-PV": {"percentage": 0.0, "area": 0.0},
-    "Moor-PV": {"percentage": 0.0, "area": 0.0},
-    "Paludikultur (nur energetisch)": {"percentage": 0.0, "area": 0.0}
+    "PV - Dachanlagen": {"percentage": 1.04, "area": 0.0078}
   },
   "boxes": [
     {
