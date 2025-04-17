@@ -26,11 +26,11 @@
       "unit2": "Mio. €",
       "subtitle2": "Kosten",
       "info_hover2": "Hier steht Info über Kosten",
-      "slider": 50
+      "slider": 0
     },
     {
       "title": "ENERGIEKOSTEN",
-      "value1": 0.0,
+      "value1": "-",
       "unit1": "€/kWh",
       "subtitle1": "Erzeugungspreis",
       "info_hover1": "Hier steht Info über Erzeugungspreis",
@@ -42,7 +42,7 @@
     },
     {
       "title": "not used",
-      "value1": 10,
+      "value1": "-",
       "unit1": "%",
       "subtitle1": "Bilanziell",
       "info_hover1": "Hier steht Info über Bilanziell",
