@@ -79,7 +79,7 @@
         "initial": 0,
         "unit": "Trockenmasse (t)",
         "category": "production"
-    }
+    },
     "electrolyzer": {
         "label": "Elektrolyseur",
         "min": 0,
