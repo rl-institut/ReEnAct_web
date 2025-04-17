@@ -34,11 +34,11 @@
     },
     {
       "title": "ENERGIEKOSTEN",
-      "value1": "-",
+      "value1": 0.0,
       "unit1": "€/kWh",
       "subtitle1": "Erzeugungspreis",
       "info_hover1": "Hier steht Info über Erzeugungspreis",
-      "value2": "-",
+      "value2": 0.0,
       "unit2": "€",
       "subtitle2": "Investitionsbedarf",
       "info_hover2": "Hier steht Info über Investitionsbedarf",
