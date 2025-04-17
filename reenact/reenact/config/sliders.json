@@ -20,7 +20,7 @@
     "pv_roof": {
         "label": "PV - Dachanlagen",
         "min": 0,
-        "max": 25,
+        "max": 59,
         "step": 10,
         "initial": 0.62,
         "unit": "Leistung (MW)",
@@ -48,7 +48,7 @@
         "label": "sonstige Biomasse",
         "min": 0,
         "max": 34504,
-        "step": 10,
+        "step": 1000,
         "initial": 0,
         "unit": "Trockenmasse (t)",
         "category": "production"
@@ -109,20 +109,20 @@
     },
     "electricity": {
         "label": "Strom",
-        "min": 15.8,
-        "max": 45011,
-        "step": 10,
-        "initial": 27940,
-        "unit": "Energie (MWh)",
+        "min": 10,
+        "max": 30,
+        "step": 5,
+        "initial": 15,
+        "unit": "Energie (GWh)",
         "category": "demand"
     },
     "heat": {
         "label": "Wärme",
-        "min": 37342.63,
-        "max": 143625.5,
-        "step": 10,
-        "initial": 107705.25,
-        "unit": "Energie (MWh)",
+        "min": 15,
+        "max": 70,
+        "step": 5,
+        "initial": 40,
+        "unit": "Energie (GWh)",
         "category": "demand"
     },
     "mobility": {

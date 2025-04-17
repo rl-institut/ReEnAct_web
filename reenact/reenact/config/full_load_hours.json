@@ -3,5 +3,14 @@
   "pv_ground": 1165.08,
   "pv_roof": 876,
   "pv_agri": 788.4,
-  "pv_marsh": 800
+  "pv_marsh": 800,
+  "other_biomass": 2.418,
+  "marsh": 0.0,
+  "paludiculture": 2.418,
+  "wet_meadows": 0.0,
+  "electrolyzer": 0.0,
+  "battery": 0.0,
+  "electricity": 1000,
+  "heat": 1000,
+  "mobility": 7.65
 }
