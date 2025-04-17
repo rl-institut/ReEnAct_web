@@ -65,8 +65,8 @@
     "paludiculture": {
         "label": "Paludikultur (nur energetisch)",
         "min": 0,
-        "max": 775,
-        "step": 10,
+        "max": 3904,
+        "step": 100,
         "initial": 0,
         "unit": "Trockenmasse (t)",
         "category": "production"
