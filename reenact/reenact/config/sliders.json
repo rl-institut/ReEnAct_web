@@ -118,7 +118,7 @@
     },
     "mobility": {
         "label": "Mobilität",
-        "min": 0,
+        "min": 99,
         "max": 100,
         "step": 1,
         "initial": 2,
