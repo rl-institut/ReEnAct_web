@@ -93,12 +93,17 @@ function generate_main_chart(production, demand, targetLine=true) {
           }
         ],
         lineStyle: {
-          color: 'gray',
-          type: 'dashed'
+          type: 'dashed',
+          width: 2,
+          color: '#1E293B',
         },
         label: {
           formatter: 'Ziel: {c}',
-          position: 'middle'
+          position: 'middle',
+          color: '#1E293B',
+          fontSize: 14,
+          fontWeight: 'bold',
+          fontFamily: 'Roboto',
         }
       };
     }
