@@ -4,6 +4,27 @@ const production_my_plan = JSON.parse(document.getElementById("production_my_pla
 const demand_my_plan = JSON.parse(document.getElementById("demand_my_plan").textContent);
 const my_plan_potentials = document.getElementById("my_plan_results").getElementsByClassName("potentials")[0];
 
+const goalMarkLine = {
+  symbol: 'none',
+  data: [{ 
+    yAxis: 270, 
+    name: 'Ziel' 
+  }],
+  lineStyle: { 
+    type: 'dashed', 
+    width: 2, 
+    color: '#1E293B' 
+  },
+  label: {
+    formatter: 'Ziel: {c}',
+    position: 'middle',
+    color: '#1E293B',
+    fontSize: 14,
+    fontWeight: 'bold',
+    fontFamily: 'Roboto',
+  }
+};
+
 const productionDemandChartOptions = generate_main_chart(production, demand, false);
 const productionDemandChartMyPlanOptions = generate_main_chart(production_my_plan, demand_my_plan);
 
@@ -13,11 +34,16 @@ create_chart("myplan-chart", productionDemandChartMyPlanOptions);
 
 function create_chart(div_id, options) {
     const chartElement = document.getElementById(div_id);
+    // Add y axis scale for scenarios chart
     if (div_id === "scenarios-chart") {
       options.yAxis = {
         ...options.yAxis,
         max: 500
       };
+    }
+    // Make sure the Ziel‑line is present on first scenario
+    if (options.series && options.series[0]) {
+      options.series[0].markLine = goalMarkLine;
     }
     if (!chartElement)
         return;
@@ -90,28 +116,7 @@ function generate_main_chart(production, demand, targetLine=true) {
     seriesList[0].barCategoryGap = '10%';
     seriesList[0].barWidth = '40%';
     if (targetLine) {
-      seriesList[0].markLine = {
-        symbol: 'none',
-        data: [
-          {
-            yAxis: 270,
-            name: 'Ziel'
-          }
-        ],
-        lineStyle: {
-          type: 'dashed',
-          width: 2,
-          color: '#1E293B',
-        },
-        label: {
-          formatter: 'Ziel: {c}',
-          position: 'middle',
-          color: '#1E293B',
-          fontSize: 14,
-          fontWeight: 'bold',
-          fontFamily: 'Roboto',
-        }
-      };
+      seriesList[0].markLine = goalMarkLine;
     }
   }
 
