@@ -34,7 +34,7 @@
       "unit1": "€/kWh",
       "subtitle1": "Erzeugungspreis",
       "info_hover1": "Hier steht Info über Erzeugungspreis",
-      "value2": 0.0,
+      "value2": "-",
       "unit2": "€",
       "subtitle2": "Investitionsbedarf",
       "info_hover2": "Hier steht Info über Investitionsbedarf",
