@@ -1,7 +1,7 @@
 {
-  "wind": 53.42,
-  "pv_ground": 1.4,
-  "pv_roof": 1.4,
-  "pv_agri": 1.4,
+  "wind": 0.5342,
+  "pv_ground": 0.014,
+  "pv_roof": 0.01262,
+  "pv_agri": 0.014,
   "pv_marsh": 4
 }
