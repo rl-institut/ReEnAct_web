@@ -2,9 +2,9 @@ const production = JSON.parse(document.getElementById("production").textContent)
 const demand = JSON.parse(document.getElementById("demand").textContent);
 const production_my_plan = JSON.parse(document.getElementById("production_my_plan").textContent);
 const demand_my_plan = JSON.parse(document.getElementById("demand_my_plan").textContent);
-const my_plan_potentials = document.getElementsByClassName("my_plan_potentials")[0].getElementsByClassName("potentials")[0];
+const my_plan_potentials = document.getElementById("my_plan_results").getElementsByClassName("potentials")[0];
 
-const productionDemandChartOptions = generate_main_chart(production, demand);
+const productionDemandChartOptions = generate_main_chart(production, demand, false);
 const productionDemandChartMyPlanOptions = generate_main_chart(production_my_plan, demand_my_plan);
 
 create_chart("statusquo-chart", productionDemandChartOptions);
@@ -41,7 +41,7 @@ function reload_chart(div_id) {
 
 function update_charts() {
   update_chart("myplan-chart");
-  update_potentials_chart();
+  update_potentials();
 }
 
 function update_chart(div_id) {
@@ -56,7 +56,7 @@ function update_chart(div_id) {
     });
 }
 
-function update_potentials_chart() {
+function update_potentials() {
   const form = document.getElementById("capacityForm");
   const formData = new FormData(form);
   const params = new URLSearchParams(formData).toString();
@@ -68,7 +68,8 @@ function update_potentials_chart() {
     });
 }
 
-function generate_main_chart(production, demand) {
+
+function generate_main_chart(production, demand, targetLine=true) {
   let totalProduction = production.reduce((sum, item) => sum + item.value, 0);
   let totalDemand = demand.reduce((sum, item) => sum + item.value, 0);
 
@@ -82,6 +83,25 @@ function generate_main_chart(production, demand) {
   if (seriesList.length > 0) {
     seriesList[0].barCategoryGap = '10%';
     seriesList[0].barWidth = '40%';
+    if (targetLine) {
+      seriesList[0].markLine = {
+        symbol: 'none',
+        data: [
+          {
+            yAxis: 270,
+            name: 'Ziel'
+          }
+        ],
+        lineStyle: {
+          color: 'gray',
+          type: 'dashed'
+        },
+        label: {
+          formatter: 'Ziel: {c}',
+          position: 'middle'
+        }
+      };
+    }
   }
 
   let demandList = demand.map(dem_item => ({
@@ -225,32 +245,6 @@ function generate_analysis_chart(data) {
       legend: {},
       series: series,
   };
-}
-
-function loadScenarioChart(scenarioId) {
-  const request = window.location.origin + '/scenario/' + scenarioId;
-  fetch(
-    request,
-    {
-        method: 'GET',
-        mode: 'cors',
-        headers: new Headers({'Accept': 'application/json', 'Content-Type':'text/plain',}),
-        credentials: 'same-origin',
-    }
-  ).then(
-    response => {
-      response.json().then(
-        data => {
-          const options = generate_main_chart(data.production, data.demand);
-          create_chart("scenarios-chart", options);
-        }
-      );
-    }
-  ).catch (
-    error => {
-      console.log(error);
-    }
-  );
 }
 
 function fetch_chart(name) {

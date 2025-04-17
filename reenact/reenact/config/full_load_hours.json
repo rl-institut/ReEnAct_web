@@ -3,7 +3,5 @@
   "pv_ground": 1165.08,
   "pv_roof": 876,
   "pv_agri": 788.4,
-  "pv_marsh": 800,
-  "marsh": 4.03,
-  "paludiculture": 4.03
+  "pv_marsh": 800
 }

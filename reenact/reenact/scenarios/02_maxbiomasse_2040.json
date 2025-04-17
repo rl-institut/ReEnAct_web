@@ -11,5 +11,57 @@
         "BHKW Nasswiesen BM": 9.44,
         "BHKW Sonstige BM": 86.95
     },
-    "demand": {"Strom": 15.84, "Wärme": 37.34, "Mobilität": 7.65}
+    "demand": {"Strom": 15.84, "Wärme": 37.34, "Mobilität": 7.65},
+  "potentials": {
+      "Wind": {
+        "percentage": 1,
+        "area": 20
+      },
+      "PV - Freiflächen": {
+        "percentage": 24,
+        "area": 99
+      },
+      "PV - Dachanlagen": {
+        "percentage": 60,
+        "area": 200
+      }
+    },
+  "boxes": [
+        {
+            "title": "CO2",
+            "value1": 300,
+            "unit1": "Tonnen",
+            "subtitle1": "Ausstoß",
+            "info_hover1": "Hier steht Info über Ausstoß",
+            "value2": 10,
+            "unit2": "%",
+            "subtitle2": "Einsparungen",
+            "info_hover2": "Hier steht Info über CO2 Einsparungen",
+            "slider": 70
+        },
+        {
+            "title": "ENERGIEKOSTEN",
+            "value1": "-",
+            "unit1": "€/kWh",
+            "subtitle1": "Erzeugungspreis",
+            "info_hover1": "Hier steht Info über Erzeugungspreis",
+            "value2": "-",
+            "unit2": "€",
+            "subtitle2": "Investitionsbedarf",
+            "info_hover2": "Hier steht Info über Investitionsbedarf",
+            "slider": 100
+        },
+        {
+            "title": "SELBSTVERSORGUNG",
+            "value1": 10,
+            "unit1": "%",
+            "subtitle1": "Bilanziell",
+            "info_hover1": "Hier steht Info über Bilanziell",
+            "value2": 2,
+            "unit2": "%",
+            "subtitle2": "Zeitgleich",
+            "info_hover2": "Hier steht Info über Zeitgleich",
+            "slider": 70
+        }
+    ]
 }

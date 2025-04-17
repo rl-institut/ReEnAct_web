@@ -52,3 +52,6 @@ for filename in sorted(SCENARIO_DIR.iterdir()):
 
 with (CONFIG_DIR / "full_load_hours.json").open("r", encoding="utf-8") as f:
     FULL_LOAD_HOURS = json.load(f)
+
+with (CONFIG_DIR / "potential_areas.json").open("r", encoding="utf-8") as f:
+    POTENTIAL_AREAS = json.load(f)
