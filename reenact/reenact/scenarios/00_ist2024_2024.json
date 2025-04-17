@@ -5,13 +5,19 @@
   "production": {
     "Wind": 93.29,
     "PV - Freiflächen": 12.03,
-    "PV - Dachanlagen": 2.51
+    "PV - Dachanlagen": 2.51,
+    "BHKW Paludi BM": 3.87,
+    "BHKW Nasswiesen BM": 9.44,
+    "BHKW Sonstige BM": 86.95
   },
   "demand": {"Strom": 15.84, "Wärme": 143.63, "Mobilität": 48.33},
   "potentials": {
     "Wind": {"percentage": 28.47, "area": 20.68},
-    "PV - Freiflächen": {"percentage": 0.46, "area": 0.17},
-    "PV - Dachanlagen": {"percentage": 1.04, "area": 0.0078}
+    "PV - Freiflächen": {"percentage": 5.7, "area": 0.17},
+    "PV - Dachanlagen": {"percentage": 1.04, "area": 0.0078},
+    "Agri-PV": {"percentage": 0.0, "area": 0.0},
+    "Moor-PV": {"percentage": 0.0, "area": 0.0},
+    "Paludikultur (nur energetisch)": {"percentage": 0.0, "area": 0.0}
   },
   "boxes": [
     {
@@ -24,31 +30,31 @@
       "unit2": "Mio. €",
       "subtitle2": "Kosten",
       "info_hover2": "Hier steht Info über Kosten",
-      "slider": 1
+      "slider": 50
     },
     {
-          "title": "ENERGIEKOSTEN",
-          "value1": 0.0,
-          "unit1": "€/kWh",
-          "subtitle1": "Erzeugungspreis",
-          "info_hover1": "Hier steht Info über Erzeugungspreis",
-          "value2": 0,
-          "unit2": "€",
-          "subtitle2": "Investitionsbedarf",
-          "info_hover2": "Hier steht Info über Investitionsbedarf",
-          "slider": 0
+      "title": "ENERGIEKOSTEN",
+      "value1": "-",
+      "unit1": "€/kWh",
+      "subtitle1": "Erzeugungspreis",
+      "info_hover1": "Hier steht Info über Erzeugungspreis",
+      "value2": "-",
+      "unit2": "€",
+      "subtitle2": "Investitionsbedarf",
+      "info_hover2": "Hier steht Info über Investitionsbedarf",
+      "slider": 0.5
       },
       {
-          "title": "not used",
-          "value1": 10,
-          "unit1": "%",
-          "subtitle1": "Bilanziell",
-          "info_hover1": "Hier steht Info über Bilanziell",
-          "value2": 2,
-          "unit2": "%",
-          "subtitle2": "Zeitgleich",
-          "info_hover2": "Hier steht Info über Zeitgleich",
-          "slider": 100
+      "title": "not used",
+      "value1": 10,
+      "unit1": "%",
+      "subtitle1": "Bilanziell",
+      "info_hover1": "Hier steht Info über Bilanziell",
+      "value2": 2,
+      "unit2": "%",
+      "subtitle2": "Zeitgleich",
+      "info_hover2": "Hier steht Info über Zeitgleich",
+      "slider": 100
       }
   ]
 }
