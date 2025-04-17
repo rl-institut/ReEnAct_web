@@ -13,6 +13,12 @@ create_chart("myplan-chart", productionDemandChartMyPlanOptions);
 
 function create_chart(div_id, options) {
     const chartElement = document.getElementById(div_id);
+    if (div_id === "scenarios-chart") {
+      options.yAxis = {
+        ...options.yAxis,
+        max: 500
+      };
+    }
     if (!chartElement)
         return;
     let chart;
