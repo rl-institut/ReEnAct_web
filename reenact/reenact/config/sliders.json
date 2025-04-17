@@ -121,7 +121,7 @@
         "min": 99,
         "max": 100,
         "step": 1,
-        "initial": 2,
+        "initial": 100,
         "unit": "Elektrifizierungsgrad (%)",
         "category": "demand"
     }
