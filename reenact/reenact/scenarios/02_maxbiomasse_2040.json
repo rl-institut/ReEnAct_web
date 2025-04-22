@@ -1,43 +1,35 @@
 {
     "name": "Maximum Biomasse",
     "title": "Biomasse-Potential ausschöpfen",
-    "description": "Wind und PV bleiben gleich",
+    "description": "Das regionale Biomassepotential wird vollständig ausgeschöpft und für die Stromerzeugung in Blockheizkraftwerken eingesetzt. Der Bestand an Windkraft- und Photovoltaik-Anlagen bleibt erhalten oder wird ersetzt. Der gesamte Energiebedarf der Region sinkt aufgrund einer vollständigen Elektrifizierung im Wärme- und Verkehrssektor.",
     "production": {
-        "Wind": 112.1225344,
-        "PV - Freiflächen": 12.0320946,
-        "PV - Dachanlagen": 0.54,
-        "Biogasanlage": 3.62,
-        "BHKW Paludi BM": 3.87,
-        "BHKW Nasswiesen BM": 9.44,
+        "Wind": 98.70,
+        "PV - Freiflächen": 13.75,
+        "PV - Dachanlagen": 2.51,
+        "BHKW Paludi BM": 9.44,
+        "BHKW Nasswiesen BM": 0.28,
         "BHKW Sonstige BM": 86.95
     },
     "demand": {"Strom": 15.84, "Wärme": 37.34, "Mobilität": 7.65},
   "potentials": {
-      "Wind": {
-        "percentage": 1,
-        "area": 20
-      },
-      "PV - Freiflächen": {
-        "percentage": 24,
-        "area": 99
-      },
-      "PV - Dachanlagen": {
-        "percentage": 60,
-        "area": 200
-      }
+        "Wind": {"percentage": 28.47, "area": 20.68},
+        "PV - Freiflächen": {"percentage": 5.7, "area": 0.17},
+        "PV - Dachanlagen": {"percentage": 1.04, "area": 0.0078},
+        "Agri-PV Strom": {"percentage": 0.0, "area": 0.0},
+        "Paludikultur (nur energetisch)": {"percentage": 100.0, "area": 8.15}
     },
   "boxes": [
         {
             "title": "CO2",
-            "value1": 300,
+            "value1": 26039,
             "unit1": "Tonnen",
             "subtitle1": "Ausstoß",
             "info_hover1": "Hier steht Info über Ausstoß",
-            "value2": 10,
+            "value2": 65.8,
             "unit2": "%",
             "subtitle2": "Einsparungen",
             "info_hover2": "Hier steht Info über CO2 Einsparungen",
-            "slider": 70
+            "slider": 1
         },
         {
             "title": "ENERGIEKOSTEN",
