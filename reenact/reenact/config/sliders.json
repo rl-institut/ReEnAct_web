@@ -63,7 +63,7 @@
         "category": "production"
     },
     "paludiculture": {
-        "label": "Paludikultur",
+        "label": "Paludikultur (nur energetisch)",
         "min": 0,
         "max": 3904,
         "step": 100,
