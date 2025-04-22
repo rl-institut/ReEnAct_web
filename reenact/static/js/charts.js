@@ -7,8 +7,8 @@ const my_plan_potentials = document.getElementById("my_plan_results").getElement
 const goalMarkLine = {
   symbol: 'none',
   data: [{ 
-    yAxis: 300, 
-    name: 'Minderstwert' 
+    yAxis: 270, 
+    name: 'Ziel' 
   }],
   lineStyle: { 
     type: 'dashed', 
@@ -16,7 +16,7 @@ const goalMarkLine = {
     color: '#1E293B' 
   },
   label: {
-    formatter: 'Minderstwert:\n{c} GWh',
+    formatter: 'Ziel:\n{c} GWh',
     position: 'middle',
     color: '#1E293B',
     fontSize: 14,
@@ -34,6 +34,13 @@ create_chart("myplan-chart", productionDemandChartMyPlanOptions);
 
 function create_chart(div_id, options) {
     const chartElement = document.getElementById(div_id);
+    // Add minimm value to yAxis
+    if (div_id === "scenarios-chart") {
+      options.yAxis = {
+        ...options.yAxis,
+        min: 100
+      };
+    }
     // Make sure the minimum‑line is present on first scenario
     if (options.series && options.series[0]) {
       options.series[0].markLine = goalMarkLine;
