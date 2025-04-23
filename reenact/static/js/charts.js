@@ -6,16 +6,16 @@ const my_plan_potentials = document.getElementById("my_plan_results").getElement
 
 const goalMarkLine = {
   symbol: 'none',
-  data: [{ 
-    yAxis: 270, 
-    name: 'Ziel' 
+  data: [{
+    yAxis: 270,
+    name: 'Ziel MV (Anteil)'
   }],
   lineStyle: {
     color: 'gray',
     type: 'dashed'
   },
   label: {
-    formatter: 'Ziel: {c}',
+    formatter: 'Ziel MV (Anteil): {c}',
     position: 'middle'
   }
 };
