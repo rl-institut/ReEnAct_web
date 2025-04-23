@@ -21,11 +21,11 @@
   "boxes": [
         {
             "title": "CO2",
-            "value1": 26039,
+            "value1": "-",
             "unit1": "Tonnen",
             "subtitle1": "Ausstoß",
             "info_hover1": "Hier steht Info über Ausstoß",
-            "value2": 65.8,
+            "value2": "-",
             "unit2": "%",
             "subtitle2": "Einsparungen",
             "info_hover2": "Hier steht Info über CO2 Einsparungen",
