@@ -15,7 +15,7 @@ const goalMarkLine = {
     type: 'dashed'
   },
   label: {
-    formatter: 'Ziel MV (Anteil): {c}',
+    formatter: 'Ziel MV (Anteil): {c} GWh',
     position: 'middle'
   }
 };
