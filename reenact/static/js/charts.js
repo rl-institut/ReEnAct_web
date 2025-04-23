@@ -10,18 +10,13 @@ const goalMarkLine = {
     yAxis: 270, 
     name: 'Ziel' 
   }],
-  lineStyle: { 
-    type: 'dashed', 
-    width: 2, 
-    color: '#1E293B' 
+  lineStyle: {
+    color: 'gray',
+    type: 'dashed'
   },
   label: {
-    formatter: 'Ziel:\n{c} GWh',
-    position: 'middle',
-    color: '#1E293B',
-    fontSize: 14,
-    fontWeight: 'bold',
-    fontFamily: 'Roboto',
+    formatter: 'Ziel: {c}',
+    position: 'middle'
   }
 };
 
@@ -34,11 +29,11 @@ create_chart("myplan-chart", productionDemandChartMyPlanOptions);
 
 function create_chart(div_id, options) {
     const chartElement = document.getElementById(div_id);
-    // Add minimm value to yAxis
     if (div_id === "scenarios-chart") {
       options.yAxis = {
         ...options.yAxis,
-        min: 100
+        min: 0,
+        max: value => Math.max(300, value.max) // set minimum y-axis value to 0, maximum to 300 or higher
       };
     }
     // Make sure the minimum‑line is present on first scenario
