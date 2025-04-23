@@ -1,12 +1,58 @@
 {
     "name": "Ausbauziele Wind und PV 2030",
     "title": "Ausbauziele Wind und PV 2030",
-    "description": "Darstellung Erzeugung anhand der erforderlichen installierten Leistung in Verbindung mit Wetterdaten von 2019 und Jahresvolllaststunden 2040, Biomasse bleibt bei status quo",
+    "description": "Windkraft- und Photovoltaik-Anlagen werden, orientiert an den Ausbauzielen des EEGs für das Jahr 2030, ausgebaut. Der gesamte Energiebedarf der Region sinkt aufgrund einer vollständigen Elektrifizierung im Wärme- und Verkehrssektor.",
     "production": {
         "Wind": 140.20,
-        "PV - Freiflächen": 118.12,
-        "PV - Dachanlagen": 0.54,
-        "Biogasanlage": 3.62
+        "PV - Freiflächen": 48.83,
+        "PV - Dachanlagen": 9.92,
+        "PV - Agri": 23.74,
+        "PV - Moor": 14.91
     },
-    "demand": {"Strom": 15.84, "Wärme": 37.34, "Mobilität": 7.65}
+    "demand": {"Strom": 15.84, "Wärme": 37.34, "Mobilität": 7.65},
+    "potentials": {
+        "Wind": {"percentage": 40.40, "area": 29.38},
+        "PV - Freiflächen": {"percentage": 20.0, "area": 0.59},
+        "PV - Dachanlagen": {"percentage": 19.2, "area": 0.14},
+        "Agri-PV Strom": {"percentage": 14.3, "area": 0.42},
+        "Paludikultur (nur energetisch)": {"percentage": 0.0, "area": 0.0}
+    },
+    "boxes": [
+        {
+            "title": "CO2",
+            "value1": "-",
+            "unit1": "Tonnen",
+            "subtitle1": "Ausstoß",
+            "info_hover1": "Hier steht Info über Ausstoß",
+            "value2": "-",
+            "unit2": "%",
+            "subtitle2": "Einsparungen",
+            "info_hover2": "Hier steht Info über CO2 Einsparungen",
+            "slider": 1
+        },
+        {
+            "title": "ENERGIEKOSTEN",
+            "value1": "-",
+            "unit1": "€/kWh",
+            "subtitle1": "Erzeugungspreis",
+            "info_hover1": "Hier steht Info über Erzeugungspreis",
+            "value2": "-",
+            "unit2": "€",
+            "subtitle2": "Investitionsbedarf",
+            "info_hover2": "Hier steht Info über Investitionsbedarf",
+            "slider": 0
+        },
+        {
+            "title": "SELBSTVERSORGUNG",
+            "value1": 10,
+            "unit1": "%",
+            "subtitle1": "Bilanziell",
+            "info_hover1": "Hier steht Info über Bilanziell",
+            "value2": 2,
+            "unit2": "%",
+            "subtitle2": "Zeitgleich",
+            "info_hover2": "Hier steht Info über Zeitgleich",
+            "slider": 100
+        }
+    ]
 }
