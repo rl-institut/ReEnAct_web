@@ -4,6 +4,22 @@ const production_my_plan = JSON.parse(document.getElementById("production_my_pla
 const demand_my_plan = JSON.parse(document.getElementById("demand_my_plan").textContent);
 const my_plan_potentials = document.getElementById("my_plan_results").getElementsByClassName("potentials")[0];
 
+const goalMarkLine = {
+  symbol: 'none',
+  data: [{ 
+    yAxis: 270, 
+    name: 'Ziel' 
+  }],
+  lineStyle: {
+    color: 'gray',
+    type: 'dashed'
+  },
+  label: {
+    formatter: 'Ziel: {c}',
+    position: 'middle'
+  }
+};
+
 const productionDemandChartOptions = generate_main_chart(production, demand, false);
 const productionDemandChartMyPlanOptions = generate_main_chart(production_my_plan, demand_my_plan);
 
@@ -13,6 +29,17 @@ create_chart("myplan-chart", productionDemandChartMyPlanOptions);
 
 function create_chart(div_id, options) {
     const chartElement = document.getElementById(div_id);
+    if (div_id === "scenarios-chart") {
+      options.yAxis = {
+        ...options.yAxis,
+        min: 0,
+        max: value => Math.max(300, value.max) // set minimum y-axis value to 0, maximum to 300 or higher
+      };
+    }
+    // Make sure the minimum‑line is present on first scenario
+    if (options.series && options.series[0]) {
+      options.series[0].markLine = goalMarkLine;
+    }
     if (!chartElement)
         return;
     let chart;
@@ -84,23 +111,7 @@ function generate_main_chart(production, demand, targetLine=true) {
     seriesList[0].barCategoryGap = '10%';
     seriesList[0].barWidth = '40%';
     if (targetLine) {
-      seriesList[0].markLine = {
-        symbol: 'none',
-        data: [
-          {
-            yAxis: 270,
-            name: 'Ziel'
-          }
-        ],
-        lineStyle: {
-          color: 'gray',
-          type: 'dashed'
-        },
-        label: {
-          formatter: 'Ziel: {c}',
-          position: 'middle'
-        }
-      };
+      seriesList[0].markLine = goalMarkLine;
     }
   }
 
@@ -118,8 +129,8 @@ function generate_main_chart(production, demand, targetLine=true) {
   seriesList = seriesList.concat(demandList);
 
   let xaxis_labels = [
-    `{bold|${totalProduction.toFixed(1)} GWh} \n Jahreserzeugung`,
-    `{bold|${totalDemand.toFixed(1)} GWh} \n Jahresverbrauch`
+    `{bold|${totalProduction.toFixed(1)} GWh}\n{label|Jahreserzeugung}`,
+    `{bold|${totalDemand.toFixed(1)} GWh}\n{label|Jahresverbrauch}`
   ];
 
   let tooltip_formatter = function(params) {
@@ -148,7 +159,7 @@ function generate_main_chart(production, demand, targetLine=true) {
       }
     }
   },
-    grid: { top: '10%', left: '10%', right: '30%', bottom: '15%' },
+    grid: { top: '10%', left: '10%', right: '30%', bottom: '20%' },
     xAxis: {
       type: 'category',
       data: xaxis_labels,
@@ -158,7 +169,15 @@ function generate_main_chart(production, demand, targetLine=true) {
         rich: {
           bold: {
             fontWeight: "bold",
-            fontSize: 16
+            fontSize: 24,
+            color: '#1e293b',
+            lineHeight: 30,
+          },
+          label: {
+            fontWeight: "normal",
+            fontSize: 16,
+            color: '#64748b',
+            lineHeight: 20,
           }
         }
       },
