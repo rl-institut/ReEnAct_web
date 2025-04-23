@@ -4,9 +4,9 @@
 "production": {
         "Wind": 346.69,
         "PV - Freiflächen": 244.67,
-        "PV - Dachanlagen": 2.51,
-        "PV - Moor": 36.44,
-        "PV - Agri": 165.48,
+        "PV - Dachanlagen": 51.68,
+        "PV - Moor": 104.00,
+        "PV - Agri": 165.56,
         "BHKW Paludi BM": 9.44,
         "BHKW Nasswiesen BM": 0.28,
         "BHKW Sonstige BM": 86.95
@@ -22,11 +22,11 @@
     "boxes": [
         {
             "title": "CO2",
-            "value1": 26039,
+            "value1": "-",
             "unit1": "Tonnen",
             "subtitle1": "Ausstoß",
             "info_hover1": "Hier steht Info über Ausstoß",
-            "value2": 65.8,
+            "value2": "-",
             "unit2": "%",
             "subtitle2": "Einsparungen",
             "info_hover2": "Hier steht Info über CO2 Einsparungen",
