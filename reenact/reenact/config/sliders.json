@@ -27,7 +27,7 @@
         "category": "production"
     },
     "pv_agri": {
-        "label": "Agri-PV Strom",
+        "label": "PV - Agri",
         "min": 0,
         "max": 210,
         "step": 10,
