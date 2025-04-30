@@ -89,3 +89,50 @@ h2 {
 #capacityForm .irs--round .irs-handle {
   border-color: #0370A1;
 }
+
+/* Override the default styles */
+#capacityForm {
+  width: 80%;
+  padding-left: 1.5rem;
+}
+
+#capacityForm .irs.irs--round {
+  height: 24px;
+}
+
+#capacityForm .irs.irs--round .irs-line {
+  top: 0;
+}
+
+#capacityForm .irs.irs--round .irs-min {
+  display: none;
+}
+
+#capacityForm .irs.irs--round .irs-max {
+  top: -7px;
+  right: -25%;
+}
+
+#capacityForm .irs.irs--round .irs-bar {
+  top: 0;
+}
+
+#capacityForm .irs.irs--round .irs-handle {
+  top: -10px;
+  height: 1px;
+  width: 1px;
+  border: 0;
+}
+
+#capacityForm .irs.irs--round .irs-single {
+  top: -8px;
+  font-size: 14px;
+  padding: 4px 6px;
+  z-index: 9;
+  min-width: 32px;
+  text-align: center;
+}
+
+#capacityForm .irs.irs--round .irs-single::before {
+  display: none;
+}

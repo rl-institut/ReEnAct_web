@@ -5,6 +5,10 @@
     </div>
     <div class="grid grid-cols-2 gap-4">
       <div class="p-4 rounded-lg shadow bg-white overflow-auto max-h-[20.75rem] 2xl:max-h-full 2xl:h-[30rem]">
+        <div class="flex items-center justify-between mb-4">
+          <div class="text-base font-bold">Jahreserzeugung</div>
+          <div class="text-sm font-light text-slate-500">max. MWh/Jahr</div>
+        </div>
         <form id="capacityForm">
           {{ capacities.as_div }}
         </form>
