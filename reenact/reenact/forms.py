@@ -22,6 +22,7 @@ class CapacitiesForm(Form):
                         "data-step": slider.step,
                         "data-from": slider.initial,
                         "data-skin": "round",
+                        "data-color": "#FF8C00",
                     },
                 ),
             )

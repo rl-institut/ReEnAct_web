@@ -1,10 +1,27 @@
 
+const colors = JSON.parse(document.getElementById("slider_colors").textContent);
+
+
 $(".js-range-slider").ionRangeSlider({
   onFinish: function (data) {
     update_charts('myplan-chart');
   }
 });
+
 // updateSliderMarks();
+updateColors();
+
+
+function updateColors() {
+  document.getElementById("capacityForm").querySelectorAll("input").forEach(function(item) {
+      const sliderColor = colors[item.id.slice(3)];  // Strip "id_" from item ID
+      if (sliderColor !== undefined) {
+        item.parentElement.querySelector(".irs-bar").style.backgroundColor = sliderColor;
+        item.parentElement.querySelector(".irs-single").style.backgroundColor = sliderColor;
+      }
+    }
+  );
+}
 
 function convertToPercent(num, min, max) {
   return ((num - min) / (max - min)) * 100;

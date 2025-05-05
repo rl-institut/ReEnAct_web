@@ -34,6 +34,10 @@ class MainView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["slider_colors"] = {
+            slider_config.name: settings.COLORS.get(slider_config.label, "blue")
+            for slider_config in settings.SLIDERS
+        }
         context["capacities"] = CapacitiesForm(sliders=settings.SLIDERS)
         context["scenarios"] = settings.SCENARIOS
 
