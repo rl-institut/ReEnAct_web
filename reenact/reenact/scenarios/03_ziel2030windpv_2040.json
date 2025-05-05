@@ -14,7 +14,7 @@
         "Wind": {"percentage": 40.40, "area": 29.38},
         "PV - Freiflächen": {"percentage": 20.0, "area": 0.59},
         "PV - Dachanlagen": {"percentage": 19.2, "area": 0.14},
-        "Agri-PV Strom": {"percentage": 14.3, "area": 0.42},
+        "PV - Agri": {"percentage": 14.3, "area": 0.42},
         "Paludikultur (nur energetisch)": {"percentage": 0.0, "area": 0.0}
     },
     "boxes": [
