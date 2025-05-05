@@ -81,6 +81,7 @@
   </script>
 {% endblock javascript %}
 {% block javascript_inline %}
+  {{ slider_colors|json_script:"slider_colors" }}
   {{ production|json_script:"production" }}
   {{ demand|json_script:"demand" }}
   {{ production_my_plan|json_script:"production_my_plan" }}

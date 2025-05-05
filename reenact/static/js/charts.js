@@ -27,30 +27,69 @@ create_chart("statusquo-chart", productionDemandChartOptions);
 create_chart("scenarios-chart", productionDemandChartOptions);
 create_chart("myplan-chart", productionDemandChartMyPlanOptions);
 
+function getResponsiveLayout() {
+  const width = window.innerWidth;
+  if (width >= 1600) {
+    return { gridLeft: '10%', gridRight: '40%', legendRight: '5%', axisLabelSize: 24, labelFontSize: 16 };
+  } else if (width >= 1280) {
+    return { gridLeft: '5%', gridRight: '35%', legendRight: '3%', axisLabelSize: 20, labelFontSize: 14 };
+  } else if (width >= 1024) {
+    return { gridLeft: '0%', gridRight: '35%', legendRight: '0%', axisLabelSize: 18, labelFontSize: 13 };
+  } else {
+    return { gridLeft: '0%', gridRight: '15%', legendRight: 'center', axisLabelSize: 16, labelFontSize: 12 }; // or maybe set `show: false` in legend
+  }
+}
+
+// Function to create a chart with responsive layout
 function create_chart(div_id, options) {
-    const chartElement = document.getElementById(div_id);
-    if (div_id === "scenarios-chart") {
-      options.yAxis = {
-        ...options.yAxis,
-        min: 0,
-        max: value => Math.max(300, value.max) // set minimum y-axis value to 0, maximum to 300 or higher
-      };
-    }
-    // Make sure the minimum‑line is present on first scenario
-    if (options.series && options.series[0]) {
-      options.series[0].markLine = goalMarkLine;
-    }
-    if (!chartElement)
-        return;
-    let chart;
-    if (echarts.getInstanceByDom(chartElement)) {
-        chart = echarts.getInstanceByDom(chartElement);
-        chart.clear();
-    } else {
-        chart = echarts.init(chartElement, null, { renderer: "svg" });
-    }
-    chart.setOption(options);
-    chart.resize();
+  const chartElement = document.getElementById(div_id);
+  if (!chartElement) return;
+
+  const { gridLeft, gridRight, legendRight, axisLabelSize, labelFontSize } = getResponsiveLayout();
+
+  options.grid = {
+    ...options.grid,
+    right: gridRight,
+    left: gridLeft,
+  };
+
+  options.legend = {
+    ...options.legend,
+    right: legendRight,
+  };
+
+  options.xAxis.axisLabel.rich.bold = {
+    ...options.xAxis.axisLabel.rich.bold,
+    fontSize: axisLabelSize,
+  };
+
+  options.xAxis.axisLabel.rich.label = {
+    ...options.xAxis.axisLabel.rich.label,
+    fontSize: labelFontSize,
+  };
+
+  if (div_id === "scenarios-chart") {
+    options.yAxis = {
+      ...options.yAxis,
+      min: 0,
+      max: value => Math.max(300, value.max),
+    };
+  }
+
+  if (options.series && options.series[0]) {
+    options.series[0].markLine = goalMarkLine;
+  }
+
+  let chart;
+  if (echarts.getInstanceByDom(chartElement)) {
+    chart = echarts.getInstanceByDom(chartElement);
+    chart.clear();
+  } else {
+    chart = echarts.init(chartElement, null, { renderer: "svg" });
+  }
+
+  chart.setOption(options);
+  chart.resize();
 }
 
 function reload_chart(div_id) {
@@ -82,6 +121,28 @@ function update_chart(div_id) {
         create_chart(div_id, generate_main_chart(data.production, data.demand));
     });
 }
+
+// Update all charts on window resize
+function update_all_charts() {
+  const chartDivs = ["statusquo-chart", "scenarios-chart", "myplan-chart"];
+  chartDivs.forEach((div_id) => {
+    const chartElement = document.getElementById(div_id);
+    if (!chartElement || !chartElement.__chartInstance__) return;
+
+    const chart = chartElement.__chartInstance__;
+    const { gridRight, legendRight } = getResponsiveLayout();
+
+    chart.setOption({
+      grid: { right: gridRight },
+      legend: { right: legendRight },
+    });
+
+    chart.resize();
+  });
+}
+
+window.addEventListener("resize", update_all_charts);
+
 
 function update_potentials() {
   const form = document.getElementById("capacityForm");
@@ -204,7 +265,7 @@ function generate_main_chart(production, demand, targetLine=true) {
     series: seriesList,
     legend: {
       type: "scroll",
-      right: '5%',
+      right: '0%',
       orient: 'vertical',
       icon: 'circle',
       textStyle: { fontSize: 12 },
