@@ -21,6 +21,7 @@ class SliderConfig:
     unit: str
     marks: tuple[str, int | float] | None = None
     category: str | None = None
+    slider_category: str | None = None
 
 
 with (CONFIG_DIR / "sliders.json").open("r", encoding="utf-8") as f:

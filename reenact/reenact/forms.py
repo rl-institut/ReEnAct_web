@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 from django.forms import Form
 from django.forms import IntegerField
 from django.forms import NumberInput
@@ -10,7 +12,10 @@ class CapacitiesForm(Form):
 
     def __init__(self, sliders: list[SliderConfig]):
         super().__init__()
+        self.categories = defaultdict(list)
+
         for slider in sliders:
+            self.categories[slider.slider_category].append(slider.name)
             self.fields[slider.name] = IntegerField(
                 label=slider.label,
                 help_text=slider.unit,
@@ -22,7 +27,10 @@ class CapacitiesForm(Form):
                         "data-step": slider.step,
                         "data-from": slider.initial,
                         "data-skin": "round",
-                        "data-color": "#FF8C00",
                     },
                 ),
             )
+
+        self.categories = dict(
+            self.categories,
+        )  # This must be done in order to loop over defaultdict in template
