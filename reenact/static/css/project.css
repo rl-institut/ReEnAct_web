@@ -136,3 +136,7 @@ h2 {
 #capacityForm .irs.irs--round .irs-single::before {
   display: none;
 }
+
+.slider-category {
+  transform: translateX(-1rem);
+}
