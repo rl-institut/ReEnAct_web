@@ -281,3 +281,4 @@ reenact/media/
 !.envs/.local/
 
 .idea/
+/reenact/reenact/data/
