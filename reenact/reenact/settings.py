@@ -37,6 +37,10 @@ with (CONFIG_DIR / "colors.json").open("r", encoding="utf-8") as f:
     COLORS = json.load(f)
 
 
+with (CONFIG_DIR / "marsh_dependencies.json").open("r", encoding="utf-8") as f:
+    SLIDER_DEPENDENCIES = json.load(f)
+
+
 SCENARIOS = []
 for filename in sorted(SCENARIO_DIR.iterdir()):
     if filename.suffix == ".json":

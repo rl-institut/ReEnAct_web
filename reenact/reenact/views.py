@@ -59,6 +59,7 @@ class MainView(TemplateView):
         my_plan_capacities = capacities.get_chart_data_from_user_input({})
         context["production_my_plan"] = my_plan_capacities["production"]
         context["demand_my_plan"] = my_plan_capacities["demand"]
+        context["slider_dependencies"] = settings.SLIDER_DEPENDENCIES
 
         return context
 

@@ -1,0 +1,15 @@
+{
+  "static_max": {
+    "marsh": {
+      "wet_meadows":     0.1423312883,
+      "paludiculture":   4.644171779,
+      "pv_marsh":        0.22331288
+    }
+  },
+  "competition": {
+    "marsh": {
+      "sum_ratio": 0.92883436,
+      "related":   ["paludiculture", "pv_marsh"]
+    }
+  }
+}

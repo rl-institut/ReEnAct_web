@@ -1,12 +1,74 @@
 
 const colors = JSON.parse(document.getElementById("slider_colors").textContent);
+const dependencies = JSON.parse(document.getElementById("slider_dependencies").textContent);
 
 
 $(".js-range-slider").ionRangeSlider({
   onFinish: function (data) {
+    handleSliderDependencies(data);
     update_charts('myplan-chart');
+    updateColors();
   }
 });
+
+
+function handleSliderDependencies(data) {
+  const id   = data.input.attr('id');    // e.g. "id_marsh", "id_paludiculture", "id_pv_marsh"
+  const name = id.slice(3);              // remove "id_"
+  const val  = data.from;                // current slider value
+
+  // --- 1) STATIC MAX Dependencies (unchanged) ---
+  if (dependencies.static_max?.[name]) {
+    Object.entries(dependencies.static_max[name]).forEach(([target, ratio]) => {
+      const newMax = Math.round(val * ratio);
+      $('#id_' + target)
+        .data('ionRangeSlider')
+        .update({ max: newMax });
+    });
+  }
+
+  // --- 2) COMPETITION: adjust only 'from', not max ---
+  // sum of areas (ha) for paludiculture & pv_marsh ≤ marsh * sum_ratio
+  const compConfig = dependencies.competition?.marsh;
+  if (compConfig && (name === 'paludiculture' || name === 'pv_marsh')) {
+    const marshVal = $('#id_marsh').data('ionRangeSlider').result.from;
+    const capHa    = marshVal * compConfig.sum_ratio;
+
+    // static ratio for paludiculture TM→ha conversion
+    const paluRatio = dependencies.static_max.marsh.paludiculture;
+
+    if (name === 'paludiculture') {
+      // user moved paludiculture → compute allowed pv_marsh area
+      const paluTM   = val;
+      const paluHa   = paluTM / paluRatio;
+      let allowedPv = capHa - paluHa;
+      if (allowedPv < 0) allowedPv = 0;
+
+      const pvSlider   = $('#id_pv_marsh').data('ionRangeSlider');
+      const currentPv  = pvSlider.result.from;  // in ha
+
+      // only update if current Pv > allowedPv
+      if (currentPv > allowedPv) {
+        pvSlider.update({ from: allowedPv });
+      }
+    }
+    else { // name === 'pv_marsh'
+      // user moved pv_marsh → compute allowed paludiculture TM
+      const pvHa      = val;
+      let allowedPaluHa = capHa - pvHa;
+      if (allowedPaluHa < 0) allowedPaluHa = 0;
+      const allowedPaluTM = Math.round(allowedPaluHa * paluRatio);
+
+      const paluSlider  = $('#id_paludiculture').data('ionRangeSlider');
+      const currentPalu = paluSlider.result.from; // in TM
+
+      // only update if current Palu TM > allowed Palu TM
+      if (currentPalu > allowedPaluTM) {
+        paluSlider.update({ from: allowedPaluTM });
+      }
+    }
+  }
+}
 
 // updateSliderMarks();
 updateColors();
@@ -81,3 +143,13 @@ function updateSliderMarks(msg) {
     });
   }
 }
+
+$(document).ready(function() {
+  const marshSlider = $("#id_marsh").data("ionRangeSlider");
+  handleSliderDependencies({
+    input: $("#id_marsh"),
+    from:  marshSlider.result.from
+  });
+  updateColors();
+});
+
