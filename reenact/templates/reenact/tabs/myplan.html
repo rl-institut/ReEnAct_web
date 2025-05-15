@@ -1,10 +1,10 @@
 <section>
-  <div class="grid grid-cols-2 gap-6 pb-6">
-    <div class="flex items-center p-4 bg-white shadow rounded-lg overflow-auto max-h-[24rem] 2xl:max-h-full 2xl:h-[34rem]">
-      <div id="myplan-chart" class="index-chart"></div>
-    </div>
-    <div class="grid grid-cols-2 gap-4">
-      <div class="p-4 rounded-lg shadow bg-white overflow-auto max-h-[24rem] 2xl:max-h-full 2xl:h-[34rem]">
+  <div class="grid grid-cols-[3fr_1fr] gap-6 pb-6">
+    <div class="flex bg-white shadow rounded-lg overflow-auto max-h-[24rem] 2xl:max-h-full 2xl:h-[34rem]">
+      <div class="flex items-center p-4 p-4 w-2/3">
+        <div id="myplan-chart" class="index-chart"></div>
+      </div>
+      <div class="p-4 w-1/3 rounded-r-lg shadow bg-white overflow-auto max-h-[24rem] 2xl:max-h-full 2xl:h-[34rem]">
         <div class="flex items-center justify-between mb-6">
           <div class="text-base font-bold">Jahreserzeugung</div>
           <div class="text-sm font-light text-slate-500">max. MWh/Jahr</div>
@@ -13,10 +13,10 @@
           {{ capacities.as_div }}
         </form>
       </div>
-      <div>
-        <h2 class="text-base text-slate-800 font-bold mb-2">Hier können Sie einen eigenen Plan erstellen</h2>
-        <p class="text-sm text-slate-500">Die zu Beginn eingestellten Werte der Schieberegler stellen den Bestand an Anlagen zur Energieerzeugung und -speicherung von 2024 und eine Verbrauchsprognose für 2040 dar. Mit Anpassung der Schieberegler für Ihr Szenario werden die Darstellungen von Verbrauch und Erzeugung sowie die genutzten Energieerzeugungsflächen sofort geändert.  Die Werte für CO2, Energiekosten usw. erscheinen nach der Simulation des Szenarios (ca. 2 Minuten). </p>
-      </div>
+    </div>
+    <div>
+      <h2 class="text-base text-slate-800 font-bold mb-2">Hier können Sie einen eigenen Plan erstellen</h2>
+      <p class="text-sm text-slate-500">Die zu Beginn eingestellten Werte der Schieberegler stellen den Bestand an Anlagen zur Energieerzeugung und -speicherung von 2024 und eine Verbrauchsprognose für 2040 dar. Mit Anpassung der Schieberegler für Ihr Szenario werden die Darstellungen von Verbrauch und Erzeugung sowie die genutzten Energieerzeugungsflächen sofort geändert. Die Werte für CO2, Energiekosten usw. erscheinen nach der Simulation des Szenarios (ca. 2 Minuten).</p>
     </div>
   </div>
 </section>
