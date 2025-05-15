@@ -50,7 +50,7 @@
       "slider_category": "ERZEUGUNG"
     },
     "other_biomass": {
-      "label": "sonstige Biomasse",
+      "label": "BHKW Sonstige BM",
       "min": 0,
       "max": 34504,
       "step": 1000,
