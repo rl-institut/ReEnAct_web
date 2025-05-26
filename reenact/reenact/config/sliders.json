@@ -1,142 +1,128 @@
 {
   "wind": {
-      "label": "Wind",
-      "min": 0,
-      "max": 136,
-      "step": 10,
-      "initial": 38.72,
-      "unit": "Leistung (MW)",
-      "category": "production",
-      "slider_category": "ERZEUGUNG"
-    },
-    "pv_ground": {
-      "label": "PV - Freiflächen",
-      "min": 0,
-      "max": 210,
-      "step": 10,
-      "initial": 11.8,
-      "unit": "Leistung (MW)",
-      "category": "production",
-      "slider_category": "ERZEUGUNG"
-    },
-    "pv_roof": {
-      "label": "PV - Dachanlagen",
-      "min": 0,
-      "max": 59,
-      "step": 10,
-      "initial": 0.62,
-      "unit": "Leistung (MW)",
-      "category": "production",
-      "slider_category": "ERZEUGUNG"
-    },
-    "pv_agri": {
-      "label": "PV - Agri",
-      "min": 0,
-      "max": 210,
-      "step": 10,
-      "initial": 0,
-      "unit": "Leistung (MW)",
-      "category": "production",
-      "slider_category": "ERZEUGUNG"
-    },
-    "pv_marsh": {
-      "label": "PV - Moor",
-      "min": 0,
-      "max": 130,
-      "step": 10,
-      "initial": 0,
-      "unit": "Leistung (MW)",
-      "category": "production",
-      "slider_category": "ERZEUGUNG"
-    },
-    "other_biomass": {
-      "label": "sonstige Biomasse",
-      "min": 0,
-      "max": 34504,
-      "step": 1000,
-      "initial": 0,
-      "unit": "Trockenmasse (t)",
-      "category": "production",
-      "slider_category": "ERZEUGUNG"
-    },
-    "marsh": {
-      "label": "Wiedervernässung Moore",
-      "min": 0,
-      "max": 815,
-      "step": 10,
-      "initial": 0,
-      "unit": "Fläche (ha)",
-      "category": "production",
-      "slider_category": "ERZEUGUNG"
-    },
-    "paludiculture": {
-      "label": "Paludikultur (nur energetisch)",
-      "min": 0,
-      "max": 3904,
-      "step": 100,
-      "initial": 0,
-      "unit": "Trockenmasse (t)",
-      "category": "production",
-      "slider_category": "ERZEUGUNG"
-    },
-    "wet_meadows": {
-      "label": "BHKW Nasswiesen BM",
-      "min": 0,
-      "max": 116,
-      "step": 10,
-      "initial": 0,
-      "unit": "Trockenmasse (t)",
-      "category": "production",
-      "slider_category": "ERZEUGUNG"
-    },
-    "electrolyzer": {
-      "label": "Elektrolyseur",
-      "min": 0,
-      "max": 130,
-      "step": 10,
-      "initial": 0,
-      "unit": "Leistung (MW)",
-      "category": "demand",
-      "slider_category": "VERBRAUCH"
-    },
-    "battery": {
-      "label": "Batteriespeicher",
-      "min": 0,
-      "max": 282.5,
-      "step": 10,
-      "initial": 0.38,
-      "unit": "Kapazität (MWh)",
-      "category": "demand",
-      "slider_category": "VERBRAUCH"
-    },
-    "electricity": {
-      "label": "Strom",
-      "min": 10,
-      "max": 30,
-      "step": 5,
-      "initial": 15,
-      "unit": "Energie (GWh)",
-      "category": "demand",
-      "slider_category": "VERBRAUCH"
-    },
-    "heat": {
-      "label": "Wärme",
-      "min": 15,
-      "max": 70,
-      "step": 5,
-      "initial": 40,
-      "unit": "Energie (GWh)",
-      "category": "demand",
-      "slider_category": "VERBRAUCH"
-    },
-    "mobility": {
-      "label": "Mobilität",
-      "min": 99,
-      "max": 100,
-      "step": 1,
-      "initial": 100,
-      "unit": "Elektrifizierungsgrad (%)",
-      "category": "demand",
-      "slider_category": "VERBRAUCH"
-    }
+    "label": "Wind",
+    "min": 0,
+    "max": 136,
+    "step": 10,
+    "initial": 38.72,
+    "unit": "Leistung (MW)",
+    "category": "production"
+  },
+  "pv_ground": {
+    "label": "PV - Freiflächen",
+    "min": 0,
+    "max": 210,
+    "step": 10,
+    "initial": 11.8,
+    "unit": "Leistung (MW)",
+    "category": "production"
+  },
+  "pv_roof": {
+    "label": "PV - Dachanlagen",
+    "min": 0,
+    "max": 59,
+    "step": 10,
+    "initial": 0.62,
+    "unit": "Leistung (MW)",
+    "category": "production"
+  },
+  "pv_agri": {
+    "label": "PV - Agri",
+    "min": 0,
+    "max": 210,
+    "step": 10,
+    "initial": 0,
+    "unit": "Leistung (MW)",
+    "category": "production"
+  },
+  "pv_marsh": {
+    "label": "PV - Moor",
+    "min": 0,
+    "max": 130,
+    "step": 10,
+    "initial": 0,
+    "unit": "Leistung (MW)",
+    "category": "production"
+  },
+  "other_biomass": {
+    "label": "sonstige Biomasse",
+    "min": 0,
+    "max": 34504,
+    "step": 1000,
+    "initial": 0,
+    "unit": "Trockenmasse (t)",
+    "category": "production"
+  },
+  "marsh": {
+    "label": "Wiedervernässung Moore",
+    "min": 0,
+    "max": 815,
+    "step": 10,
+    "initial": 0,
+    "unit": "Fläche (ha)",
+    "category": "production"
+  },
+  "paludiculture": {
+    "label": "Paludikultur (nur energetisch)",
+    "min": 0,
+    "max": 3904,
+    "step": 100,
+    "initial": 0,
+    "unit": "Trockenmasse (t)",
+    "category": "production"
+  },
+  "wet_meadows": {
+    "label": "BHKW Nasswiesen BM",
+    "min": 0,
+    "max": 116,
+    "step": 10,
+    "initial": 0,
+    "unit": "Trockenmasse (t)",
+    "category": "production"
+  },
+  "electrolyzer": {
+    "label": "Elektrolyseur",
+    "min": 0,
+    "max": 130,
+    "step": 10,
+    "initial": 0,
+    "unit": "Leistung (MW)",
+    "category": "demand"
+  },
+  "battery": {
+    "label": "Batteriespeicher",
+    "min": 0,
+    "max": 282.5,
+    "step": 10,
+    "initial": 0.38,
+    "unit": "Kapazität (MWh)",
+    "category": "demand"
+  },
+  "electricity": {
+    "label": "Strom",
+    "min": 10,
+    "max": 30,
+    "step": 5,
+    "initial": 15,
+    "unit": "Energie (GWh)",
+    "category": "demand"
+  },
+  "heat": {
+    "label": "Wärme",
+    "min": 15,
+    "max": 70,
+    "step": 5,
+    "initial": 40,
+    "unit": "Energie (GWh)",
+    "category": "demand"
+  },
+  "mobility": {
+    "label": "Mobilität",
+    "min": 99,
+    "max": 100,
+    "step": 1,
+    "initial": 100,
+    "unit": "Elektrifizierungsgrad (%)",
+    "category": "demand"
+  }
 }
