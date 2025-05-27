@@ -38,5 +38,5 @@ urlpatterns = [
     path("potentials/", views.PotentialsView.as_view(), name="potentials"),
     path("boxes/", views.ResultBoxView.as_view(), name="boxes"),
     path("analysis/<str:chart_name>/", views.analysis, name="analysis"),
-    path("scenario/<int:scenario_id>/", views.scenario, name="scenario"),
+    path("scenario/<int:scenario_id>/", views.scenario_chart, name="scenario"),
 ]

@@ -3,7 +3,7 @@ from __future__ import annotations
 from django.http import HttpResponse, JsonResponse
 from django.views.generic.base import TemplateView
 
-from reenact.reenact.results import capacities
+from reenact.reenact.results import capacities, scenario
 from . import settings
 from .forms import CapacitiesForm
 from .results.potentials import (
@@ -55,11 +55,20 @@ class MainView(TemplateView):
         )
 
         # Get production and demand for status quo and my plan
-        context.update(capacities.get_chart_data_from_scenario(0))
+        simulation_id = scenario.get_simulation_results(
+            SCENARIOS[0].get("oemof_scenario", ""),
+            {},
+        )
+        if simulation_id is None:
+            context.update(capacities.get_chart_data_from_scenario(0))
+        else:
+            context.update(
+                capacities.get_chart_data_from_oemof_simulation(simulation_id),
+            )
         my_plan_capacities = capacities.get_chart_data_from_user_input({})
         context["production_my_plan"] = my_plan_capacities["production"]
         context["demand_my_plan"] = my_plan_capacities["demand"]
-
+        capacities.get_chart_data_from_oemof_simulation(6)
         return context
 
 
@@ -217,10 +226,18 @@ def analysis(request, chart_name: str) -> JsonResponse | HttpResponse:  # noqa: 
     return HttpResponse(status=406)  # not acceptable: unknown chart
 
 
-def scenario(request, scenario_id: int) -> JsonResponse | HttpResponse:
+def scenario_chart(request, scenario_id: int) -> JsonResponse | HttpResponse:
     """Return echart options as JSON."""
     if request.method != "GET":
         return HttpResponse(status=405)  # wrong method
+    simulation_id = scenario.get_simulation_results(
+        SCENARIOS[scenario_id].get("oemof_scenario", ""),
+        {},
+    )
+    if simulation_id is None:
+        return JsonResponse(
+            capacities.get_chart_data_from_scenario(scenario_id),
+        )
     return JsonResponse(
-        capacities.get_chart_data_from_scenario(scenario_id),
+        capacities.get_chart_data_from_oemof_simulation(simulation_id),
     )
