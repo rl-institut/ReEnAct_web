@@ -68,7 +68,6 @@ class MainView(TemplateView):
         my_plan_capacities = capacities.get_chart_data_from_user_input({})
         context["production_my_plan"] = my_plan_capacities["production"]
         context["demand_my_plan"] = my_plan_capacities["demand"]
-        capacities.get_chart_data_from_oemof_simulation(6)
         return context
 
 
