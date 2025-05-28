@@ -1,8 +1,11 @@
 
-.PHONY : update_vendor_assets, tailwind, celery
+.PHONY : update_vendor_assets, tailwind, celery, run_simulations
 
 DJANGO_READ_DOT_ENV_FILE=True
 export
+
+run_simulations:
+	python manage.py shell -c "from scripts.data_processing import prerun_all_scenarios; prerun_all_scenarios()"
 
 celery:
 	redis-server --port 6380 & celery -A config.celery_app worker -l INFO
