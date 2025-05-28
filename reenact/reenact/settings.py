@@ -29,6 +29,9 @@ with (CONFIG_DIR / "sliders.json").open("r", encoding="utf-8") as f:
 SLIDERS = [SliderConfig(name=name, **values) for name, values in SLIDER_DATA.items()]
 LABEL_TO_SLIDER = {config["label"]: name for name, config in SLIDER_DATA.items()}
 
+with (CONFIG_DIR / "categories.json").open("r", encoding="utf-8") as f:
+    CATEGORIES = json.load(f)
+
 
 POTENTIALS = ["wind", "pv_ground", "pv_roof", "pv_agri", "paludiculture"]
 

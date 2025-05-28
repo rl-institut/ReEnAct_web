@@ -136,3 +136,6 @@ extend-unsafe-fixes = [
 
 [tool.ruff.lint.isort]
 force-single-line = true
+
+[tool.ruff.lint.pycodestyle]
+max-line-length = 100

@@ -1,0 +1,20 @@
+{
+  "production":[
+    "wind",
+    "pv_ground",
+    "pv_roof",
+    "pv_agri",
+    "pv_marsh",
+    "other_biomass",
+    "marsh",
+    "paludiculture",
+    "wet_meadows"
+  ],
+  "demand":[
+    "electrolyzer",
+    "battery",
+    "electricity",
+    "heat",
+    "mobility"
+  ]
+}
