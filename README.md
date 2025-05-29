@@ -11,6 +11,113 @@ License: MIT
 
 Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).
 
+## Installation
+
+### Docker
+
+Build dev container with
+
+`docker-compose -f local.yml up -d --build`
+
+or for production (requires manual creation of `.envs/.production/.django`):
+
+`docker-compose -f production.yml up -d --build`
+
+### Local
+
+1. Clone repo, setup virtual environment and install dependencies
+
+first: 
+```shell
+git clone git@github.com:rl-institut/ReEnAct_web.git
+cd ReEnAct_web
+```
+then set up your virtualenvironment with virtualenv (works well with python version 3.12) and then install dependencies with uv (should be faster): 
+```shell
+virtualenv reenact_venv
+source reenact_venv/bin/activate
+pip install uv
+uv pip install -r ./requirements/local.txt
+```
+OR use uv ([documentation](https://docs.astral.sh/uv/pip/environments/)) for your virtual environment as well and then for installing dependencies:
+```shell
+pip install uv
+uv reenact_venv --python 3.12
+source reenact_venv/bin/activate
+uv pip install -r ./requirements/local.txt
+```
+you can also use conda for setting up the venv, but it might cause problems with celery.
+
+2. Setup local PostgreSQL server and configure using pgadmin4 (Linux)
+
+- Install: `sudo apt install postgresql pgadmin4` (only if not already installed)
+- Start pgadmin4
+  - Create database "reenact_webapp"
+  - Create user "reenact_user" with some password, e.g. "my_reenact_user_pass"
+- Grant write permissions to this DB for the user
+- Activate postGIS via SQL query: `CREATE EXTENSION postgis;`
+
+3. Create `.env` file with the following content
+```
+# General
+# ------------------------------------------------------------------------------
+USE_DOCKER=yes
+IPYTHONDIR=/app/.ipython
+# Redis
+# ------------------------------------------------------------------------------
+REDIS_URL=redis://redis:6379/0
+
+# Celery
+# ------------------------------------------------------------------------------
+
+CELERY_BROKER_URL=redis://redis:6379/0
+
+# Flower
+CELERY_FLOWER_USER=dVSdYOthZmldNnHOnGLAgKhnETvRbOXs
+CELERY_FLOWER_PASSWORD=YbGI8ju9tsiODB0ACmcEGC1yMoOe3BI51PwV8niA6AH6oXLPMQ6Fahc3NWFHaQlK
+
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=reenact_webapp
+POSTGRES_USER=reenact_user
+POSTGRES_PASSWORD=my_reenact_user_pass
+
+DATABASE_URL=postgres://reenact_user:my_reenact_user_pass@localhost:5432/reenact_webapp
+```
+(make sure you use the same password in `POSTGRES_PASSWORD` as in step 2)
+
+4. Activate the `.env` file
+
+Run `export DJANGO_READ_DOT_ENV=True;` - ff this fails, try `source .env`
+
+Activate pre-commit:
+```shell
+pre-commit install
+```
+
+5. Migrate and start app
+
+```shell
+python manage.py migrate
+python manage.py runserver
+```
+
+## Add dependencies
+
+This can be done in `requirements/` folder by adding dependency to related *.in file and compile/lock dependencies.
+Via `uv` (you must install uv first - recommended!):
+```shell
+uv pip compile -o requirements/local.txt requirements/local.in
+uv pip compile -o requirements/production.txt requirements/production.in
+```
+or via `pip-compile` (you must install pip-tools first):
+```shell
+pip-compile -o requirements/local.txt requirements/local.in
+pip-compile -o requirements/production.txt requirements/production.in
+```
+
 ## Basic Commands
 
 ### Setting Up Your Users
