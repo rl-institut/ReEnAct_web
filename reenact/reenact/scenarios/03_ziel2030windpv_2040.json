@@ -19,7 +19,7 @@
     },
     "boxes": [
         {
-            "title": "CO2",
+            "title": "CO2e",
             "value1": "-",
             "unit1": "Tonnen",
             "subtitle1": "Ausstoß",

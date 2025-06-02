@@ -1,7 +1,17 @@
 <section>
   <div class="grid grid-cols-2 gap-6 pb-6">
-    <div class="flex items-center p-4 bg-white shadow rounded-lg overflow-auto max-h-[24rem] 2xl:max-h-full 2xl:h-[34rem]">
-      <div id="scenarios-chart" class="index-chart"></div>
+    <div class="flex flex-col justify-around items-center p-4 bg-white shadow rounded-lg overflow-auto max-h-[24rem] 2xl:max-h-full 2xl:h-[34rem]">
+      <div class="pb-4">
+        <div class="flex justify-center space-x-8">
+          <a id=""
+            class="tablink-chart text-sm min-w-24 pb-1 border-b-4 border-slate-800 hover:text-slate-950 font-semibold text-center"
+            href="#">Gesamt</a>
+          <a id=""
+            class="tablink-chart text-sm min-w-24 pb-1 border-b-4 border-transparent text-slate-800 hover:text-slate-950 font-semibold text-center"
+            href="#">???</a>
+        </div>
+      </div>
+      <div id="scenarios-chart" class="index-chart grow"></div>
     </div>
     <div class="grid grid-cols-2 gap-4">
       <div class="p-4 rounded-lg shadow bg-white overflow-auto max-h-[24rem] 2xl:max-h-full 2xl:h-[34rem]">
