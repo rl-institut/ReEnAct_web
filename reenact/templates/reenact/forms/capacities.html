@@ -1,6 +1,4 @@
-{% for category, category_fields in form.categories.items %}
-  <p class="slider-category pb-6 text-slate-500">{{ category }}</p>
-  {% for field in form %}
-    {% if field.name in category_fields %}<div>{{ field }}</div>{% endif %}
-  {% endfor %}
+{% for field in form %}
+  <div>{{ field }}</div>
 {% endfor %}
+
