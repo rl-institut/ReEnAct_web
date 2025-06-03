@@ -42,7 +42,7 @@ uv pip install -r ./requirements/local.txt
 OR use uv ([documentation](https://docs.astral.sh/uv/pip/environments/)) for your virtual environment as well and then for installing dependencies:
 ```shell
 pip install uv
-uv reenact_venv --python 3.12
+uv venv reenact_venv --python 3.12
 source reenact_venv/bin/activate
 uv pip install -r ./requirements/local.txt
 ```
