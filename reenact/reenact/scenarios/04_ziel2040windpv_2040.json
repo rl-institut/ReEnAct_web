@@ -40,18 +40,6 @@
             "subtitle2": "Investitionsbedarf",
             "info_hover2": "Hier steht Info über Investitionsbedarf",
             "slider": 0
-        },
-        {
-            "title": "SELBSTVERSORGUNG",
-            "value1": 10,
-            "unit1": "%",
-            "subtitle1": "Bilanziell",
-            "info_hover1": "Hier steht Info über Bilanziell",
-            "value2": 2,
-            "unit2": "%",
-            "subtitle2": "Zeitgleich",
-            "info_hover2": "Hier steht Info über Zeitgleich",
-            "slider": 100
         }
     ]
 }
