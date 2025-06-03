@@ -1,10 +1,8 @@
-from collections import defaultdict
-
 from django.forms import Form
 from django.forms import IntegerField
 from django.forms import NumberInput
 
-from .settings import SliderConfig, CATEGORIES
+from .settings import SliderConfig
 
 
 class CapacitiesForm(Form):
@@ -12,7 +10,6 @@ class CapacitiesForm(Form):
 
     def __init__(self, sliders: list[SliderConfig]):
         super().__init__()
-        self.categories = defaultdict(list)
 
         for slider in sliders:
             self.fields[slider.name] = IntegerField(
@@ -29,3 +26,6 @@ class CapacitiesForm(Form):
                     },
                 ),
             )
+            self.fields[
+                slider.name
+            ].icon = f"images/icons/slider_icon_{slider.name}.svg"

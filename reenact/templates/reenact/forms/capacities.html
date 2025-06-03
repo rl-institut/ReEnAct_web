@@ -1,4 +1,10 @@
-{% for field in form %}
-  <div>{{ field }}</div>
-{% endfor %}
+{% load static %}
 
+<div class="grid grid-cols-[40px_auto]">
+  {% for field in form %}
+    <div class="h-10">
+      <img src="{% static field.field.icon %}" alt="Icon for {{ field.label }}" />
+    </div>
+    <div class="h-10">{{ field }}</div>
+  {% endfor %}
+</div>

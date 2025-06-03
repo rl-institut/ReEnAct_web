@@ -665,6 +665,10 @@ video {
   height: 1.5rem;
 }
 
+.h-10 {
+  height: 2.5rem;
+}
+
 .h-\[33px\] {
   height: 33px;
 }
@@ -765,6 +769,10 @@ video {
 
 .grid-cols-\[3fr_1fr\] {
   grid-template-columns: 3fr 1fr;
+}
+
+.grid-cols-\[40px_auto\] {
+  grid-template-columns: 40px auto;
 }
 
 .flex-col {
