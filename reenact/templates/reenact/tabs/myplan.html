@@ -1,8 +1,28 @@
 <section>
   <div class="grid grid-cols-[3fr_1fr] gap-6 pb-6">
     <div class="flex bg-white shadow rounded-lg overflow-auto max-h-[24rem] 2xl:max-h-full 2xl:h-[34rem]">
-      <div class="flex items-center p-4 p-4 w-2/3">
-        <div id="myplan-chart" class="index-chart"></div>
+      <div class="flex flex-col justify-around items-center p-4 p-4 w-2/3">
+        <div class="pb-4">
+          <div class="flex justify-center space-x-8">
+            <a id=""
+              class="tablink-plan-chart text-sm min-w-24 pb-1 border-b-4 border-slate-800 hover:text-slate-950 font-semibold text-center"
+              data-tab="total" 
+              href="#">Gesamt</a>
+            <a id=""
+              class="tablink-plan-chart text-sm min-w-24 pb-1 border-b-4 border-transparent text-slate-800 hover:text-slate-950 font-semibold text-center"
+              data-tab="output" 
+              href="#">???</a>
+          </div>
+        </div>
+        <div id="tab-content-plan-total" class="index-chart grow">
+          <div id="myplan-chart" class="index-chart grow"></div>
+        </div>
+        <div id="tab-content-plan-output" class="index-chart grow hidden">
+          <div id="plan-chart-input-output" class="index-chart grow"></div>
+          <!-- I added `index-chart grow`, remove if not needed -->
+          New chart comes here
+        </div>
+        
       </div>
       <div class="p-4 w-1/3 rounded-r-lg shadow bg-white overflow-auto max-h-[24rem] 2xl:max-h-full 2xl:h-[34rem]">
         <div class="flex items-center justify-between mb-6">
@@ -16,10 +36,35 @@
     </div>
     <div>
       <h2 class="text-base text-slate-800 font-bold mb-2">Hier können Sie einen eigenen Plan erstellen</h2>
-      <p class="text-sm text-slate-500">Die zu Beginn eingestellten Werte der Schieberegler stellen den Bestand an Anlagen zur Energieerzeugung und -speicherung von 2024 und eine Verbrauchsprognose für 2040 dar. Mit Anpassung der Schieberegler für Ihr Szenario werden die Darstellungen von Verbrauch und Erzeugung sowie die genutzten Energieerzeugungsflächen sofort geändert. Die Werte für CO2, Energiekosten usw. erscheinen nach der Simulation des Szenarios (ca. 2 Minuten).</p>
+      <p class="text-base text-slate-500">Die zu Beginn eingestellten Werte der Schieberegler stellen den Bestand an Anlagen zur Energieerzeugung und -speicherung von 2024 und eine Verbrauchsprognose für 2040 dar. Mit Anpassung der Schieberegler für Ihr Szenario werden die Darstellungen von Verbrauch und Erzeugung sowie die genutzten Energieerzeugungsflächen sofort geändert. Die Werte für CO2, Energiekosten usw. erscheinen nach der Simulation des Szenarios (ca. 2 Minuten).</p>
     </div>
   </div>
 </section>
 <div id="my_plan_results">
   {% include 'partials/results.html' with potentials=potentials_my_plan resultbox_id="resultbox_my_plan" %}
 </div>
+
+<script>
+  // Tab functionality for my plan charts
+  document.querySelectorAll('.tablink-plan-chart').forEach(tab => {
+  tab.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    document.querySelectorAll('.tablink-plan-chart').forEach(t => {
+      t.classList.remove('border-slate-800', 'active-tab');
+      t.classList.add('border-transparent');
+    });
+
+    document.querySelectorAll('[id^="tab-content-plan-"]').forEach(content => {
+      content.classList.add('hidden');
+    });
+
+    this.classList.remove('border-transparent');
+    this.classList.add('border-slate-800', 'active-tab');
+    
+    const selected = this.getAttribute('data-tab');
+    const contentToShow = document.getElementById(`tab-content-plan-${selected}`);
+    if (contentToShow) contentToShow.classList.remove('hidden');
+  });
+});
+</script>

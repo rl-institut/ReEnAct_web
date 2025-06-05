@@ -140,3 +140,7 @@ h2 {
 .slider-category {
   transform: translateX(-1rem);
 }
+
+.irs.irs--round {
+  transform: translateY(70%);
+}

@@ -1,6 +1,12 @@
-{% for category, category_fields in form.categories.items %}
-  <p class="slider-category pb-6 text-slate-500">{{ category }}</p>
+{% load static %}
+
+<div class="grid grid-cols-[48px_auto]">
   {% for field in form %}
-    {% if field.name in category_fields %}<div>{{ field }}</div>{% endif %}
+    <div class="flex items-center h-10">
+      <img src="{% static field.field.icon %}" alt="Icon for {{ field.label }}" />
+    </div>
+    <div class="h-10">
+      {{ field }}
+    </div>
   {% endfor %}
-{% endfor %}
+</div>

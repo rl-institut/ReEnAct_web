@@ -1,5 +1,5 @@
 {% load l10n %}
 
 {% for result in results %}
-  <c-result_component_box id="{{ resultbox_id | default_if_none:"resultbox" }}_{{ forloop.counter }}" title="{{ result.title }}" value1="{{ result.value1 }}" unit1="{{ result.unit1 }}" subtitle1="{{ result.subtitle1 }}" info_hover1="{{ result.info_hover1 }}" value2="{{ result.value2 }}" unit2="{{ result.unit2 }}" subtitle2="{{ result.subtitle2 }}" info_hover2="{{ result.info_hover2 }}" slider="{{ result.slider|unlocalize }}" />
+  <c-result_component_box id="{{ resultbox_id | default_if_none:"resultbox" }}_{{ forloop.counter }}" title="{{ result.title }}" value1="{{ result.value1 }}" unit1="{{ result.unit1 }}" subtitle1="{{ result.subtitle1 }}" info_hover1="{{ result.info_hover1 }}" value2="{{ result.value2 }}" unit2="{{ result.unit2 }}" subtitle2="{{ result.subtitle2 }}" info_hover2="{{ result.info_hover2 }}" value3="{{ result.value3 }}" unit3="{{ result.unit3 }}" subtitle3="{{ result.subtitle3 }}" info_hover3="{{ result.info_hover3 }}" slider="{{ result.slider|unlocalize }}" />
 {% endfor %}

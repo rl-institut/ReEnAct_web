@@ -18,7 +18,7 @@
   },
   "boxes": [
     {
-      "title": "CO2",
+      "title": "CO2e",
       "value1": 76105,
       "unit1": "Tonnen",
       "subtitle1": "Ausstoß",
@@ -28,30 +28,6 @@
       "subtitle2": "Kosten",
       "info_hover2": "Hier steht Info über Kosten",
       "slider": 0
-    },
-    {
-      "title": "ENERGIEKOSTEN",
-      "value1": "-",
-      "unit1": "€/kWh",
-      "subtitle1": "Erzeugungspreis",
-      "info_hover1": "Hier steht Info über Erzeugungspreis",
-      "value2": "-",
-      "unit2": "€",
-      "subtitle2": "Investitionsbedarf",
-      "info_hover2": "Hier steht Info über Investitionsbedarf",
-      "slider": 0
-    },
-    {
-      "title": "not used",
-      "value1": "-",
-      "unit1": "%",
-      "subtitle1": "Bilanziell",
-      "info_hover1": "Hier steht Info über Bilanziell",
-      "value2": 2,
-      "unit2": "%",
-      "subtitle2": "Zeitgleich",
-      "info_hover2": "Hier steht Info über Zeitgleich",
-      "slider": 100
     }
   ]
 }

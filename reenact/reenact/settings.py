@@ -33,9 +33,6 @@ with (CONFIG_DIR / "categories.json").open("r", encoding="utf-8") as f:
     CATEGORIES = json.load(f)
 
 
-POTENTIALS = ["wind", "pv_ground", "pv_roof", "pv_agri", "paludiculture"]
-
-
 with (CONFIG_DIR / "colors.json").open("r", encoding="utf-8") as f:
     COLORS = json.load(f)
 
