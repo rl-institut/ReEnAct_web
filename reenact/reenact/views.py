@@ -6,11 +6,7 @@ from django.views.generic.base import TemplateView
 from reenact.reenact.results import capacities, scenario
 from . import settings
 from .forms import CapacitiesForm
-from .results.potentials import (
-    calculate_potentials_from_request,
-    get_potentials_from_scenario_data,
-)
-from .results.boxes import get_result_boxes_from_scenario_data
+from .results import boxes, potentials
 from .settings import SCENARIOS
 
 
@@ -41,16 +37,16 @@ class MainView(TemplateView):
         context["capacities"] = CapacitiesForm(sliders=settings.SLIDERS)
         context["scenarios"] = settings.SCENARIOS
 
-        results = get_result_boxes_from_scenario_data(SCENARIOS[0])
+        results = boxes.get_result_boxes_from_scenario_data(SCENARIOS[0])
         context["results"] = results
 
-        context["potentials_status_quo"] = get_potentials_from_scenario_data(
+        context["potentials_status_quo"] = potentials.get_potentials_from_scenario_data(
             settings.SCENARIOS[0],
         )
         my_plan_potentials = {
             name: data["initial"] for name, data in settings.SLIDER_DATA.items()
         }
-        context["potentials_my_plan"] = calculate_potentials_from_request(
+        context["potentials_my_plan"] = potentials.calculate_potentials_from_request(
             my_plan_potentials,
         )
 
@@ -85,10 +81,15 @@ class PotentialsView(TemplateView):
     def get_context_data(self, **kwargs):
         if "scenario" in self.request.GET:
             scenario_id = int(self.request.GET["scenario"])
-            potentials = get_potentials_from_scenario_data(SCENARIOS[scenario_id])
+            current_potentials = potentials.get_potentials_from_scenario_data(
+                SCENARIOS[scenario_id],
+            )
         else:
-            potentials = calculate_potentials_from_request(self.request)
-        return {"potentials": potentials}
+            current_potentials = potentials.calculate_potentials_from_request(
+                self.request,
+            )
+        current_potentials = potentials.add_wetland_potential(current_potentials)
+        return {"potentials": current_potentials}
 
 
 class ResultBoxView(TemplateView):
@@ -98,7 +99,7 @@ class ResultBoxView(TemplateView):
 
     def get_context_data(self, **kwargs):
         scenario_id = int(self.request.GET["scenario"])
-        results = get_result_boxes_from_scenario_data(SCENARIOS[scenario_id])
+        results = boxes.get_result_boxes_from_scenario_data(SCENARIOS[scenario_id])
         return {"results": results}
 
 

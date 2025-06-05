@@ -38,7 +38,7 @@
   "pv_marsh": {
     "label": "PV - Moor",
     "min": 0,
-    "max": 130,
+    "max": 46,
     "step": 10,
     "initial": 0,
     "unit": "Leistung (MW)",
@@ -65,7 +65,7 @@
   "paludiculture": {
     "label": "Paludikultur (nur energetisch)",
     "min": 0,
-    "max": 3904,
+    "max": 3785,
     "step": 100,
     "initial": 0,
     "unit": "Trockenmasse (t)",
