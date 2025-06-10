@@ -2,7 +2,7 @@
   "wind": {
     "label": "Wind",
     "min": 0,
-    "max": 136,
+    "max": 51,
     "step": 10,
     "initial": 38.72,
     "unit": "Leistung (MW)",
@@ -11,7 +11,7 @@
   "pv_ground": {
     "label": "PV - Freiflächen",
     "min": 0,
-    "max": 210,
+    "max": 2546,
     "step": 10,
     "initial": 11.8,
     "unit": "Leistung (MW)",
@@ -29,7 +29,7 @@
   "pv_agri": {
     "label": "PV - Agri",
     "min": 0,
-    "max": 210,
+    "max": 858,
     "step": 10,
     "initial": 0,
     "unit": "Leistung (MW)",
@@ -38,7 +38,7 @@
   "pv_marsh": {
     "label": "PV - Moor",
     "min": 0,
-    "max": 46,
+    "max": 189,
     "step": 10,
     "initial": 0,
     "unit": "Leistung (MW)",
@@ -47,7 +47,7 @@
   "other_biomass": {
     "label": "BHKW Sonstige BM",
     "min": 0,
-    "max": 34504,
+    "max": 10821,
     "step": 1000,
     "initial": 0,
     "unit": "Trockenmasse (t)",
@@ -65,7 +65,7 @@
   "paludiculture": {
     "label": "Paludikultur (nur energetisch)",
     "min": 0,
-    "max": 3785,
+    "max": 3904,
     "step": 100,
     "initial": 0,
     "unit": "Trockenmasse (t)",
