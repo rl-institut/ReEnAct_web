@@ -1,13 +1,11 @@
 {
   "marsh_max_area": 815,
   "areas_at_full_marsh_usage": {
-    "wet_meadows": 58,
-    "paludiculture": 757,
-    "pv_marsh": 182
+    "biomass_marsh": 815,
+    "pv_marsh": 757
   },
   "densities": {
-    "wet_meadows": 2,
-    "paludiculture": 5,
+    "biomass_marsh": 5,
     "pv_marsh": 0.25
   }
 }

@@ -7,8 +7,7 @@
     "pv_marsh",
     "other_biomass",
     "marsh",
-    "paludiculture",
-    "wet_meadows"
+    "biomass_marsh"
   ],
   "demand":[
     "electrolyzer",

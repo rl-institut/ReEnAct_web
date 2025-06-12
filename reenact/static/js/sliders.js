@@ -29,42 +29,39 @@ function handleSliderDependencies(data) {
   }
 
   // --- 2) COMPETITION: adjust only 'from', not max ---
-  // sum of areas (ha) for paludiculture & pv_marsh ≤ marsh * sum_ratio
-  if (name === 'paludiculture' || name === 'pv_marsh') {
-    const marshVal = $('#id_marsh').data('ionRangeSlider').result.from;
-    const capHa    = marshVal * dependencies.areas_at_full_marsh_usage.paludiculture / dependencies.marsh_max_area;
+  // sum of areas (ha) for biomass & pv_marsh ≤ marsh * sum_ratio
+  const marshHa = $('#id_marsh').data('ionRangeSlider').result.from;
 
-    if (name === 'paludiculture') {
-      // user moved paludiculture → compute allowed pv_marsh area
-      const paluTM   = val;
-      const paluHa   = paluTM / dependencies.densities.paludiculture;
-      let allowedPvHa = capHa - paluHa;
-      if (allowedPvHa < 0) allowedPvHa = 0;
-      const allowedPvMW = allowedPvHa * dependencies.densities.pv_marsh;
+  if (name === 'biomass_marsh') {
+    // user moved biomass → compute allowed pv_marsh area
+    const biomassTM   = val;
+    const biomassHa   = biomassTM / dependencies.densities.biomass_marsh;
+    let allowedPvHa = marshHa - biomassHa;
+    if (allowedPvHa < 0) allowedPvHa = 0;
+    const allowedPvMW = allowedPvHa * dependencies.densities.pv_marsh;
 
-      const pvSlider   = $('#id_pv_marsh').data('ionRangeSlider');
-      const currentPv  = pvSlider.result.from;  // in ha
+    const pvSlider   = $('#id_pv_marsh').data('ionRangeSlider');
+    const currentPv  = pvSlider.result.from;  // in ha
 
-      // only update if current Pv > allowedPv
-      if (currentPv > allowedPvMW) {
-        pvSlider.update({ from: allowedPvMW });
-      }
+    // only update if current Pv > allowedPv
+    if (currentPv > allowedPvMW) {
+      pvSlider.update({ from: allowedPvMW });
     }
-    else { // name === 'pv_marsh'
-      // user moved pv_marsh → compute allowed paludiculture TM
-      const pvMW = val;
-      const pvHa = pvMW / dependencies.densities.pv_marsh;
-      let allowedPaluHa = capHa - pvHa;
-      if (allowedPaluHa < 0) allowedPaluHa = 0;
-      const allowedPaluTM = Math.round(allowedPaluHa * dependencies.densities.paludiculture);
+  }
+  if (name === 'pv_marsh') {
+    // user moved pv_marsh → compute allowed biomass TM
+    const pvMW = val;
+    const pvHa = pvMW / dependencies.densities.pv_marsh;
+    let allowedBiomassHa = marshHa - pvHa;
+    if (allowedBiomassHa < 0) allowedBiomassHa = 0;
+    const allowedBiomassTM = Math.round(allowedBiomassHa * dependencies.densities.biomass_marsh);
 
-      const paluSlider  = $('#id_paludiculture').data('ionRangeSlider');
-      const currentPalu = paluSlider.result.from; // in TM
+    const biomassSlider  = $('#id_biomass_marsh').data('ionRangeSlider');
+    const currentBiomass = biomassSlider.result.from; // in TM
 
-      // only update if current Palu TM > allowed Palu TM
-      if (currentPalu > allowedPaluTM) {
-        paluSlider.update({ from: allowedPaluTM });
-      }
+    // only update if current Palu TM > allowed Palu TM
+    if (currentBiomass > allowedBiomassTM) {
+      biomassSlider.update({ from: allowedBiomassTM });
     }
   }
 }

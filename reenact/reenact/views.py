@@ -40,14 +40,18 @@ class MainView(TemplateView):
         results = boxes.get_result_boxes_from_scenario_data(SCENARIOS[0])
         context["results"] = results
 
-        context["potentials_status_quo"] = potentials.get_potentials_from_scenario_data(
-            settings.SCENARIOS[0],
+        context["potentials_status_quo"] = potentials.add_wetland_potential(
+            potentials.get_potentials_from_scenario_data(
+                settings.SCENARIOS[0],
+            ),
         )
         my_plan_potentials = {
             name: data["initial"] for name, data in settings.SLIDER_DATA.items()
         }
-        context["potentials_my_plan"] = potentials.calculate_potentials_from_request(
-            my_plan_potentials,
+        context["potentials_my_plan"] = potentials.add_wetland_potential(
+            potentials.calculate_potentials_from_request(
+                my_plan_potentials,
+            ),
         )
 
         # Get production and demand for status quo and my plan

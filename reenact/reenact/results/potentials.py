@@ -5,7 +5,7 @@ import math
 from reenact.reenact import settings
 from reenact.reenact.settings import POTENTIAL_AREAS, LABEL_TO_SLIDER, SLIDER_DATA
 
-WETLAND_RELATED_POTENTIALS = ("wet_meadows", "paludiculture", "pv_marsh")
+WETLAND_RELATED_POTENTIALS = ("biomass_marsh", "pv_marsh")
 
 
 def circle_view(arc_percentage):
@@ -77,7 +77,7 @@ def add_wetland_potential(potentials: list[dict]) -> list[dict]:
     percentage = round(area_wetland / total_area * 100)
     potentials.append(
         {
-            "title": "Nasswiesen",
+            "title": "Moorbewirtschaftung",
             "percentage": min(100, percentage),
             "value": round(area_wetland, 1),
             "unit": "km²",

@@ -4,6 +4,5 @@
   "pv_roof": 0.01262,
   "pv_agri": 0.014,
   "pv_marsh": 0.04,
-  "paludiculture": 0.002,
-  "wet_meadows": 0.005
+  "biomass_marsh": 0.002
 }
