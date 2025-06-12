@@ -7,11 +7,11 @@
     "pv_marsh",
     "other_biomass",
     "marsh",
-    "biomass_marsh"
+    "biomass_marsh",
+    "electrolyzer",
+    "battery"
   ],
   "demand":[
-    "electrolyzer",
-    "battery",
     "electricity",
     "heat",
     "mobility"
