@@ -1,4 +1,6 @@
 
+/* globals capacitiesChanged */
+
 const colors = JSON.parse(document.getElementById("slider_colors").textContent);
 const dependencies = JSON.parse(document.getElementById("slider_dependencies").textContent);
 
@@ -6,8 +8,8 @@ const dependencies = JSON.parse(document.getElementById("slider_dependencies").t
 $(".js-range-slider").ionRangeSlider({
   onFinish: function (data) {
     handleSliderDependencies(data);
-    update_charts('myplan-chart');
     updateColors();
+    capacitiesChanged();  // in myplan.js
   }
 });
 

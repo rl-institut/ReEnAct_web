@@ -4,18 +4,19 @@
       <div class="flex flex-col justify-around items-center p-4 p-4 w-1/2">
         <div class="pb-4">
           <div class="flex justify-center space-x-8">
-            <a id=""
-              class="tablink-plan-chart text-sm min-w-24 pb-1 border-b-4 border-slate-800 hover:text-slate-950 font-semibold text-center"
-              data-tab="total" 
-              href="#">Gesamt</a>
-            <a id=""
-              class="tablink-plan-chart text-sm min-w-24 pb-1 border-b-4 border-transparent text-slate-800 hover:text-slate-950 font-semibold text-center"
-              data-tab="output" 
-              href="#">???</a>
+            <a class="tablink-plan-chart text-sm min-w-24 pb-1 border-b-4 border-slate-800 hover:text-slate-950 font-semibold text-center"
+               data-tab="total"
+               href="#">Gesamt</a>
+            <a class="tablink-plan-chart text-sm min-w-24 pb-1 border-b-4 border-transparent text-slate-800 hover:text-slate-950 font-semibold text-center"
+               data-tab="output"
+               href="#">???</a>
           </div>
         </div>
         <div id="tab-content-plan-total" class="index-chart grow">
           <div id="myplan-chart" class="index-chart grow"></div>
+          <div class="myplanUpdateMsg bg-red-300 text-white hidden">
+            Die Ergebnisse sind nicht mehr aktuell. Bitte starten Sie die Berechnung neu.
+          </div>
         </div>
         <div id="tab-content-plan-output" class="index-chart grow hidden">
           <div id="plan-chart-input-output" class="index-chart grow"></div>
@@ -39,6 +40,33 @@
             </div>
           </div>
         </div>
+        <div class="flex justify-around">
+          <button id="myplanSimulationBtn"
+                  class="flex items-center justify-center gap-2 text-center bg-sky-600 text-sm text-white font-semibold py-2 px-6 rounded-full shadow-md hover:bg-sky-500 transition disabled:bg-gray-300"
+                  onclick="startMyPlan('{{ my_plan_oemof_scenario }}');"
+                  disabled="disabled">
+            <svg width="16"
+                 height="16"
+                 version="1.1"
+                 viewBox="0 0 100 100"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path d="m16.668 87.527h25c2.2969 0 4.1641-1.8633 4.1641-4.1641s-1.8672-4.168-4.1641-4.168h-25c-2.3008 0-4.168 1.8672-4.168 4.168s1.8672 4.1641 4.168 4.1641zm52.441-12.527-5.3867 5.3867c-1.625 1.625-1.625 4.2656 0 5.8906s4.2656 1.625 5.8906 0l5.3867-5.3867 5.3867 5.3867c1.625 1.625 4.2656 1.625 5.8906 0s1.625-4.2656 0-5.8906l-5.3867-5.3867 5.3867-5.3867c1.625-1.625 1.625-4.2656 0-5.8906s-4.2656-1.625-5.8906 0l-5.3867 5.3867-5.3867-5.3867c-1.625-1.625-4.2656-1.625-5.8906 0s-1.625 4.2656 0 5.8906zm-52.441-4.1367h25c2.2969 0 4.1641-1.8672 4.1641-4.168 0-2.3008-1.8672-4.168-4.1641-4.168h-25c-2.3008 0-4.168 1.8672-4.168 4.168 0 2.3008 1.8672 4.168 4.168 4.168zm66.664-33.363c2.3008 0 4.168 1.8672 4.168 4.168 0 2.2969-1.8672 4.1641-4.168 4.1641-2.2969 0-4.1641-1.8672-4.1641-4.1641 0-2.3008 1.8672-4.168 4.1641-4.168zm-58.332-12.5h-8.332c-2.3008 0-4.168 1.8672-4.168 4.168 0 2.2969 1.8672 4.1641 4.168 4.1641h8.332v8.3359c0 2.2969 1.8672 4.1641 4.168 4.1641 2.2969 0 4.1641-1.8672 4.1641-4.1641v-8.3359h8.3359c2.2969 0 4.1641-1.8672 4.1641-4.1641 0-2.3008-1.8672-4.168-4.1641-4.168h-8.3359v-8.332c0-2.3008-1.8672-4.168-4.1641-4.168-2.3008 0-4.168 1.8672-4.168 4.168zm55.387-7.1133-20.832 20.836c-1.625 1.625-1.625 4.2656 0 5.8906s4.2656 1.625 5.8906 0l20.832-20.836c1.625-1.625 1.625-4.2656 0-5.8906s-4.2656-1.625-5.8906 0zm-17.887-5.3867c2.3008 0 4.168 1.8672 4.168 4.168 0 2.2969-1.8672 4.1641-4.168 4.1641s-4.168-1.8672-4.168-4.1641c0-2.3008 1.8672-4.168 4.168-4.168z" fill-rule="evenodd" fill="#fff" />
+            </svg>
+            <span>Berechnung starten</span>
+          </button>
+          {# Copied from FlowBite#}
+          <div id="myplanSpinner" class="hidden" role="status">
+            <svg aria-hidden="true"
+                 class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                 viewBox="0 0 100 101"
+                 fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+              <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+            </svg>
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -46,28 +74,27 @@
 <div id="my_plan_results">
   {% include 'partials/results.html' with potentials=potentials_my_plan resultbox_id="resultbox_my_plan" %}
 </div>
-
 <script>
   // Tab functionality for my plan charts
   document.querySelectorAll('.tablink-plan-chart').forEach(tab => {
-  tab.addEventListener('click', function (e) {
-    e.preventDefault();
+    tab.addEventListener('click', function(e) {
+      e.preventDefault();
 
-    document.querySelectorAll('.tablink-plan-chart').forEach(t => {
-      t.classList.remove('border-slate-800', 'active-tab');
-      t.classList.add('border-transparent');
+      document.querySelectorAll('.tablink-plan-chart').forEach(t => {
+        t.classList.remove('border-slate-800', 'active-tab');
+        t.classList.add('border-transparent');
+      });
+
+      document.querySelectorAll('[id^="tab-content-plan-"]').forEach(content => {
+        content.classList.add('hidden');
+      });
+
+      this.classList.remove('border-transparent');
+      this.classList.add('border-slate-800', 'active-tab');
+
+      const selected = this.getAttribute('data-tab');
+      const contentToShow = document.getElementById(`tab-content-plan-${selected}`);
+      if (contentToShow) contentToShow.classList.remove('hidden');
     });
-
-    document.querySelectorAll('[id^="tab-content-plan-"]').forEach(content => {
-      content.classList.add('hidden');
-    });
-
-    this.classList.remove('border-transparent');
-    this.classList.add('border-slate-800', 'active-tab');
-    
-    const selected = this.getAttribute('data-tab');
-    const contentToShow = document.getElementById(`tab-content-plan-${selected}`);
-    if (contentToShow) contentToShow.classList.remove('hidden');
   });
-});
 </script>

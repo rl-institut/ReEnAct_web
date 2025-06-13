@@ -20,25 +20,11 @@
     <div class="potentials flex pt-2 gap-2 h-fit">{% include 'partials/potentials.html' %}</div>
   </div>
   <div>
-    <div class="boxes flex flex-nowrap gap-4 h-full">
-      {% if "my_plan" in resultbox_id %}
-        <div class="flex flex-col justify-center items-center gap-4 w-full h-full">
-          <span class="text-sm text-slate-500">Die Werte für CO<sub>2</sub>, Energiekosten und (?) müssen neu berechnet werden.</span>
-          <button class="flex items-center justify-center gap-2 text-center bg-sky-600 text-sm text-white font-semibold py-2 px-6 rounded-full shadow-md hover:bg-sky-500 transition"
-                  onclick="startMyPlan('{{ my_plan_oemof_scenario }}');">
-            <svg width="16"
-                 height="16"
-                 version="1.1"
-                 viewBox="0 0 100 100"
-                 xmlns="http://www.w3.org/2000/svg">
-              <path d="m16.668 87.527h25c2.2969 0 4.1641-1.8633 4.1641-4.1641s-1.8672-4.168-4.1641-4.168h-25c-2.3008 0-4.168 1.8672-4.168 4.168s1.8672 4.1641 4.168 4.1641zm52.441-12.527-5.3867 5.3867c-1.625 1.625-1.625 4.2656 0 5.8906s4.2656 1.625 5.8906 0l5.3867-5.3867 5.3867 5.3867c1.625 1.625 4.2656 1.625 5.8906 0s1.625-4.2656 0-5.8906l-5.3867-5.3867 5.3867-5.3867c1.625-1.625 1.625-4.2656 0-5.8906s-4.2656-1.625-5.8906 0l-5.3867 5.3867-5.3867-5.3867c-1.625-1.625-4.2656-1.625-5.8906 0s-1.625 4.2656 0 5.8906zm-52.441-4.1367h25c2.2969 0 4.1641-1.8672 4.1641-4.168 0-2.3008-1.8672-4.168-4.1641-4.168h-25c-2.3008 0-4.168 1.8672-4.168 4.168 0 2.3008 1.8672 4.168 4.168 4.168zm66.664-33.363c2.3008 0 4.168 1.8672 4.168 4.168 0 2.2969-1.8672 4.1641-4.168 4.1641-2.2969 0-4.1641-1.8672-4.1641-4.1641 0-2.3008 1.8672-4.168 4.1641-4.168zm-58.332-12.5h-8.332c-2.3008 0-4.168 1.8672-4.168 4.168 0 2.2969 1.8672 4.1641 4.168 4.1641h8.332v8.3359c0 2.2969 1.8672 4.1641 4.168 4.1641 2.2969 0 4.1641-1.8672 4.1641-4.1641v-8.3359h8.3359c2.2969 0 4.1641-1.8672 4.1641-4.1641 0-2.3008-1.8672-4.168-4.1641-4.168h-8.3359v-8.332c0-2.3008-1.8672-4.168-4.1641-4.168-2.3008 0-4.168 1.8672-4.168 4.168zm55.387-7.1133-20.832 20.836c-1.625 1.625-1.625 4.2656 0 5.8906s4.2656 1.625 5.8906 0l20.832-20.836c1.625-1.625 1.625-4.2656 0-5.8906s-4.2656-1.625-5.8906 0zm-17.887-5.3867c2.3008 0 4.168 1.8672 4.168 4.168 0 2.2969-1.8672 4.1641-4.168 4.1641s-4.168-1.8672-4.168-4.1641c0-2.3008 1.8672-4.168 4.168-4.168z" fill-rule="evenodd" fill="#fff" />
-            </svg>
-            <span>Berechnung starten</span>
-          </button>
-        </div>
-      {% else %}
-        {% include 'partials/resultboxes.html' %}
-      {% endif %}
-    </div>
+    <div class="boxes flex flex-nowrap gap-4 h-full">{% include 'partials/resultboxes.html' %}</div>
+    {% if "my_plan" in resultbox_id %}
+      <div class="myplanUpdateMsg bg-red-300 text-white hidden">
+        Die Ergebnisse sind nicht mehr aktuell. Bitte starten Sie die Berechnung neu.
+      </div>
+    {% endif %}
   </div>
 </section>
