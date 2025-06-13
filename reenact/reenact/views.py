@@ -75,6 +75,11 @@ class MainView(TemplateView):
 
 
 def chart(request, chart_name: str) -> JsonResponse:
+    if "simulationId" in request.GET:
+        simulation_id = request.GET["simulationId"]
+        return JsonResponse(
+            capacities.get_chart_data_from_oemof_simulation(simulation_id),
+        )
     return JsonResponse(capacities.get_chart_data_from_user_input(request.GET))
 
 

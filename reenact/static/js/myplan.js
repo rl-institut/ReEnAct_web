@@ -25,4 +25,5 @@ async function checkResults() {
 
 function showResults(simulationId) {
   console.log(`Show results for ID #${simulationId}...`);
+  update_chart("myplan-chart", {simulationId: simulationId});
 }
