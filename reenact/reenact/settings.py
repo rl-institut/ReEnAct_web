@@ -9,6 +9,8 @@ APP_DIR = pathlib.Path(__file__).parent
 CONFIG_DIR = APP_DIR / "config"
 SCENARIO_DIR = APP_DIR / "scenarios"
 
+MYPLAN_OEMOF_SCENARIO = "es6"
+
 
 @dataclass
 class SliderConfig:

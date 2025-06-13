@@ -4,17 +4,17 @@ from django.forms import Form
 from django.forms import IntegerField
 from django.forms import NumberInput
 
-from .settings import SliderConfig, CATEGORIES
+from .settings import SLIDERS, CATEGORIES
 
 
 class CapacitiesForm(Form):
     template_name_div = "reenact/forms/capacities.html"
 
-    def __init__(self, sliders: list[SliderConfig]):
-        super().__init__()
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         self.categories = defaultdict(list)
 
-        for slider in sliders:
+        for slider in SLIDERS:
             if slider.name in CATEGORIES["production"]:
                 self.categories["Erzeugung und Speicherung"].append(slider.name)
             elif slider.name in CATEGORIES["demand"]:

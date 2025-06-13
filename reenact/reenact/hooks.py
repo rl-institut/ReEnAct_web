@@ -1,7 +1,24 @@
+"""Module to apply hooks on oemof simulation."""
+
 import oemof
 import pyomo.environ as po
+from django.http import HttpRequest
 
+from .forms import CapacitiesForm
 from oemof.solph._plumbing import sequence
+
+
+def set_up_volatiles(scenario: str, data: dict, request: HttpRequest):
+    """Set up capacities for volatiles."""
+
+    # Extract capacities from user input
+    capacity_form = CapacitiesForm(data=data)
+    if not capacity_form.is_valid():
+        raise RuntimeError(capacity_form.errors)
+    capacities = capacity_form.cleaned_data
+
+    parameters = {"wind": {"capacity": capacities["wind"]}}
+    return parameters
 
 
 def track_emissions(scenario: str, model, additional_data):
