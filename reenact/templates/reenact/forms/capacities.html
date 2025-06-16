@@ -1,15 +1,26 @@
 {% load static %}
 
 {% for category, category_fields in form.categories.items %}
-  <p class="slider-category pb-6 text-slate-500">{{ category }}</p>
-  <div class="grid grid-cols-[48px_auto]">
-    {% for field in form %}
-      {% if field.name in category_fields %}
-        <div class="flex items-center h-10">
-          <img src="{% static field.field.icon %}" alt="Icon for {{ field.label }}" />
-        </div>
-        <div class="h-10">{{ field }}</div>
-      {% endif %}
-    {% endfor %}
+  <div class="flex gap-x-8">
+    <div class="flex items-center justify-center bg-slate-500 w-6">
+      <p class="text-white -rotate-90 whitespace-nowrap">{{ category }}</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-[6rem] gap-y-4 w-full">
+      {% for field in form %}
+        {% if field.name in category_fields %}
+          <div class="flex flex-col items-start h-full w-full">
+            <div class="flex items-center gap-x-2 -translate-x-4">
+              <img src="{% static field.field.icon %}" alt="Icon for {{ field.label }}" class="h-4 w-4" />
+              <label for="{{ field.id_for_label }}" class="text-sm text-slate-700 font-bold whitespace-nowrap">
+                {{ field.label}}
+              </label>
+            </div>
+            <div class="w-full">
+              {{ field }}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
   </div>
 {% endfor %}

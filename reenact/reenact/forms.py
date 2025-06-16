@@ -16,9 +16,9 @@ class CapacitiesForm(Form):
 
         for slider in sliders:
             if slider.name in CATEGORIES["production"]:
-                self.categories["ERZEUGUNG"].append(slider.name)
+                self.categories["Erzeugung und Speicherung"].append(slider.name)
             elif slider.name in CATEGORIES["demand"]:
-                self.categories["VERBRAUCH"].append(slider.name)
+                self.categories["Verbrauch"].append(slider.name)
             else:
                 error_msg = f"Slider {slider.name} has no valid category."
                 raise KeyError(error_msg)
