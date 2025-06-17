@@ -58,6 +58,10 @@ h2 {
 
 #capacityForm > div {
   padding-bottom: 1rem;
+
+  @media screen and (min-width: 1536px) {
+    padding-bottom: 2rem;
+  }
 }
 
 #capacityForm .irs-min,
@@ -146,15 +150,52 @@ h2 {
 }
 
 .showcase__mark_production {
-  top: 2.5rem;
+  position: relative;
+  top: -8px;
+}
 
-  &:before {
-    content: '';
-    top: -1.3rem;
-    width: 0.25rem;
-    height: 1.3rem;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-  }
+.showcase__mark_demand {
+  position: relative;
+  top: -6px;
+}
+
+.showcase__mark_production:before {
+  content: '';
+  display: inline-block;
+  background-color: #000;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 4px;
+  height: 0.75rem;
+  margin: 0 auto;
+}
+
+.showcase__mark_demand:before {
+  content: '';
+  display: inline-block;
+  background-color: #276CDE;
+  width: 0.5rem;
+  height: 0.5rem;
+  transform: rotate(45deg);
+  position: absolute;
+  left: 0;
+  right: 0;
+  transform-origin: center;
+}
+
+#production-slider-icon {
+  display: inline-block;
+  background-color: #000;
+  width: 4px;
+  height: 0.75rem;
+}
+
+#demand-slider-icon {
+  display: inline-block;
+  background-color: #276CDE;
+  width: 0.5rem;
+  height: 0.5rem;
+  transform: rotate(45deg);
+  transform-origin: center;
 }

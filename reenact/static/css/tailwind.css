@@ -604,8 +604,16 @@ video {
   position: relative;
 }
 
+.bottom-\[1\.5rem\] {
+  bottom: 1.5rem;
+}
+
 .left-1\/2 {
   left: 50%;
+}
+
+.right-\[2\.5rem\] {
+  right: 2.5rem;
 }
 
 .top-7 {
@@ -882,6 +890,10 @@ video {
   overflow: hidden;
 }
 
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
 .whitespace-nowrap {
   white-space: nowrap;
 }
@@ -941,6 +953,11 @@ video {
 .bg-sky-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(2 132 199 / var(--tw-bg-opacity, 1));
+}
+
+.bg-slate-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity, 1));
 }
 
 .bg-slate-200 {

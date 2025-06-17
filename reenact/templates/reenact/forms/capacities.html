@@ -15,7 +15,9 @@
                    class="h-4 w-4" />
               <label for="{{ field.id_for_label }}"
                      class="text-sm text-slate-700 font-bold whitespace-nowrap">{{ field.label }}</label>
-              {{ field.help_text }}
+              <span class="text-sm text-slate-500">
+                ({{ field.help_text }})
+              </span>
             </div>
             <div class="w-full">{{ field }}</div>
           </div>
