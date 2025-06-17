@@ -6,7 +6,8 @@
     "step": 10,
     "initial": 38.72,
     "unit": "Leistung (MW)",
-    "category": "production"
+    "category": "production",
+    "mark": 20
   },
   "pv_ground": {
     "label": "PV - Freiflächen",
@@ -105,7 +106,8 @@
     "step": 5,
     "initial": 40,
     "unit": "Energie (GWh)",
-    "category": "demand"
+    "category": "demand",
+    "mark": 30
   },
   "mobility": {
     "label": "Mobilität",

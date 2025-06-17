@@ -144,3 +144,17 @@ h2 {
 .irs.irs--round {
   transform: translateY(50%);
 }
+
+.showcase__mark_production {
+  top: 2.5rem;
+
+  &:before {
+    content: '';
+    top: -1.3rem;
+    width: 0.25rem;
+    height: 1.3rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+}

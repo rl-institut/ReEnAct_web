@@ -69,6 +69,7 @@ class MainView(TemplateView):
         context["production_my_plan"] = my_plan_capacities["production"]
         context["demand_my_plan"] = my_plan_capacities["demand"]
         context["slider_dependencies"] = settings.SLIDER_DEPENDENCIES
+        context["slider_marks"] = settings.SLIDER_MARKS
 
         return context
 
