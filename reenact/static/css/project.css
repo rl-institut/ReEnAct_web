@@ -93,7 +93,7 @@ h2 {
 /* Override the default styles */
 #capacityForm {
   padding-left: 1rem;
-  padding-right: 3rem;
+  padding-right: 5rem;
 }
 
 #capacityForm .irs.irs--round {
@@ -110,7 +110,7 @@ h2 {
 
 #capacityForm .irs.irs--round .irs-max {
   top: -7px;
-  right: -22%;
+  right: -3.5rem;
 }
 
 #capacityForm .irs.irs--round .irs-bar {

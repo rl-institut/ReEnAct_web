@@ -847,9 +847,9 @@ video {
        column-gap: 2rem;
 }
 
-.gap-x-\[6rem\] {
-  -moz-column-gap: 6rem;
-       column-gap: 6rem;
+.gap-x-\[8rem\] {
+  -moz-column-gap: 8rem;
+       column-gap: 8rem;
 }
 
 .gap-y-4 {
