@@ -10,14 +10,14 @@
         {% if field.name in category_fields %}
           <div class="flex flex-col items-start h-full w-full">
             <div class="flex items-center gap-x-2 -translate-x-4">
-              <img src="{% static field.field.icon %}" alt="Icon for {{ field.label }}" class="h-4 w-4" />
-              <label for="{{ field.id_for_label }}" class="text-sm text-slate-700 font-bold whitespace-nowrap">
-                {{ field.label}}
-              </label>
+              <img src="{% static field.field.icon %}"
+                   alt="Icon for {{ field.label }}"
+                   class="h-4 w-4" />
+              <label for="{{ field.id_for_label }}"
+                     class="text-sm text-slate-700 font-bold whitespace-nowrap">{{ field.label }}</label>
+              {{ field.help_text }}
             </div>
-            <div class="w-full">
-              {{ field }}
-            </div>
+            <div class="w-full">{{ field }}</div>
           </div>
         {% endif %}
       {% endfor %}
