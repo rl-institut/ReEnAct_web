@@ -19,9 +19,8 @@ class SliderConfig:
     step: int | float
     initial: int | float
     unit: str
-    marks: tuple[str, int | float] | None = None
+    mark: int | float | None = None
     category: str | None = None
-    slider_category: str | None = None
 
 
 with (CONFIG_DIR / "sliders.json").open("r", encoding="utf-8") as f:
@@ -60,3 +59,12 @@ with (CONFIG_DIR / "full_load_hours.json").open("r", encoding="utf-8") as f:
 
 with (CONFIG_DIR / "potential_areas.json").open("r", encoding="utf-8") as f:
     POTENTIAL_AREAS = json.load(f)
+
+SLIDER_MARKS = {
+    category: [
+        [item, SLIDER_DATA[item]["mark"]]
+        for item in items
+        if SLIDER_DATA[item].get("mark", None)
+    ]
+    for category, items in CATEGORIES.items()
+}

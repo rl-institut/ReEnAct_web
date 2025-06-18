@@ -58,6 +58,10 @@ h2 {
 
 #capacityForm > div {
   padding-bottom: 1rem;
+
+  @media screen and (min-width: 1536px) {
+    padding-bottom: 2rem;
+  }
 }
 
 #capacityForm .irs-min,
@@ -92,8 +96,8 @@ h2 {
 
 /* Override the default styles */
 #capacityForm {
-  width: 80%;
-  padding-left: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 5rem;
 }
 
 #capacityForm .irs.irs--round {
@@ -110,7 +114,7 @@ h2 {
 
 #capacityForm .irs.irs--round .irs-max {
   top: -7px;
-  right: -25%;
+  right: -3.5rem;
 }
 
 #capacityForm .irs.irs--round .irs-bar {
@@ -137,10 +141,61 @@ h2 {
   display: none;
 }
 
-.slider-category {
-  transform: translateX(-1rem);
+.irs {
+  width: 100% !important;
 }
 
 .irs.irs--round {
-  transform: translateY(70%);
+  transform: translateY(50%);
+}
+
+.showcase__mark_production {
+  position: relative;
+  top: -8px;
+}
+
+.showcase__mark_demand {
+  position: relative;
+  top: -6px;
+}
+
+.showcase__mark_production:before {
+  content: '';
+  display: inline-block;
+  background-color: #000;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 4px;
+  height: 0.75rem;
+  margin: 0 auto;
+}
+
+.showcase__mark_demand:before {
+  content: '';
+  display: inline-block;
+  background-color: #276CDE;
+  width: 0.5rem;
+  height: 0.5rem;
+  transform: rotate(45deg);
+  position: absolute;
+  left: 0;
+  right: 0;
+  transform-origin: center;
+}
+
+#production-slider-icon {
+  display: inline-block;
+  background-color: #000;
+  width: 4px;
+  height: 0.75rem;
+}
+
+#demand-slider-icon {
+  display: inline-block;
+  background-color: #276CDE;
+  width: 0.5rem;
+  height: 0.5rem;
+  transform: rotate(45deg);
+  transform-origin: center;
 }
