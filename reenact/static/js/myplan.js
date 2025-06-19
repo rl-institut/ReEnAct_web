@@ -12,14 +12,17 @@ const myplanSpinner = document.getElementById("myplanSpinner");
 const msgUpdate = "Die Ergebnisse sind nicht mehr aktuell. Bitte starten Sie die Berechnung neu.";
 const msgSimulation = "Berechnung gestartet...";
 
+const msgUpdateColor = "bg-red-300";
+const msgSimulationColor = "bg-yellow-300";
+
 async function capacitiesChanged() {
   myplanSimulationBtn.disabled = "";
   myplanSpinner.classList.add("hidden");
   // Show update message
   document.querySelectorAll(".myplanUpdateMsg").forEach(element => {
       element.classList.remove("hidden");
-      element.classList.add("bg-red-300");
-      element.classList.remove("bg-yellow-300");
+      element.classList.add(msgUpdateColor);
+      element.classList.remove(msgSimulationColor);
       element.innerHTML = msgUpdate;
     }
   );
@@ -34,8 +37,8 @@ async function startMyPlan(oemof_scenario) {
   myplanSpinner.classList.remove("hidden");
   // Hide update message
   document.querySelectorAll(".myplanUpdateMsg").forEach(element => {
-    element.classList.remove("bg-red-300");
-    element.classList.add("bg-yellow-300");
+    element.classList.remove(msgUpdateColor);
+    element.classList.add(msgSimulationColor);
     element.innerHTML = msgSimulation;
   });
   if (currentTask !== null) {
