@@ -9,12 +9,30 @@
     "category": "production",
     "mark": 20
   },
+  "marsh": {
+    "label": "Wiedervernässung Moore",
+    "min": 0,
+    "max": 815,
+    "step": 10,
+    "initial": 0,
+    "unit": "km2",
+    "category": "production"
+  },
   "pv_ground": {
     "label": "PV - Freiflächen",
     "min": 0,
     "max": 2546,
     "step": 10,
     "initial": 11.8,
+    "unit": "MWp",
+    "category": "production"
+  },
+  "pv_marsh": {
+    "label": "PV - Moor",
+    "min": 0,
+    "max": 189,
+    "step": 10,
+    "initial": 0,
     "unit": "MWp",
     "category": "production"
   },
@@ -27,42 +45,6 @@
     "unit": "MWp",
     "category": "production"
   },
-  "pv_agri": {
-    "label": "PV - Agri",
-    "min": 0,
-    "max": 858,
-    "step": 10,
-    "initial": 0,
-    "unit": "MWp",
-    "category": "production"
-  },
-  "electrolyzer": {
-    "label": "Elektrolyseur",
-    "min": 0,
-    "max": 130,
-    "step": 10,
-    "initial": 0,
-    "unit": "MW",
-    "category": "demand"
-  },
-  "marsh": {
-    "label": "Wiedervernässung Moore",
-    "min": 0,
-    "max": 815,
-    "step": 10,
-    "initial": 0,
-    "unit": "km2",
-    "category": "production"
-  },
-  "pv_marsh": {
-    "label": "PV - Moor",
-    "min": 0,
-    "max": 189,
-    "step": 10,
-    "initial": 0,
-    "unit": "MWp",
-    "category": "production"
-  },
   "biomass_marsh": {
     "label": "Biomasse Moor",
     "min": 0,
@@ -70,6 +52,15 @@
     "step": 100,
     "initial": 0,
     "unit": "t",
+    "category": "production"
+  },
+  "pv_agri": {
+    "label": "PV - Agri",
+    "min": 0,
+    "max": 858,
+    "step": 10,
+    "initial": 0,
+    "unit": "MWp",
     "category": "production"
   },
   "other_biomass": {
@@ -80,6 +71,15 @@
     "initial": 0,
     "unit": "t",
     "category": "production"
+  },
+  "electrolyzer": {
+    "label": "Elektrolyseur",
+    "min": 0,
+    "max": 130,
+    "step": 10,
+    "initial": 0,
+    "unit": "MW",
+    "category": "demand"
   },
   "battery": {
     "label": "Batteriespeicher",
@@ -99,6 +99,15 @@
     "unit": "GWh",
     "category": "demand"
   },
+  "mobility": {
+    "label": "Mobilität",
+    "min": 99,
+    "max": 100,
+    "step": 1,
+    "initial": 100,
+    "unit": "%",
+    "category": "demand"
+  },
   "heat": {
     "label": "Wärme",
     "min": 15,
@@ -108,14 +117,5 @@
     "unit": "GWh",
     "category": "demand",
     "mark": 30
-  },
-  "mobility": {
-    "label": "Mobilität",
-    "min": 99,
-    "max": 100,
-    "step": 1,
-    "initial": 100,
-    "unit": "%",
-    "category": "demand"
   }
 }
