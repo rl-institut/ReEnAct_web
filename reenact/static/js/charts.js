@@ -4,6 +4,11 @@ const production_my_plan = JSON.parse(document.getElementById("production_my_pla
 const demand_my_plan = JSON.parse(document.getElementById("demand_my_plan").textContent);
 const my_plan_potentials = document.getElementById("my_plan_results").getElementsByClassName("potentials")[0];
 
+// Resize charts when switching tabs
+document.querySelectorAll("[data-tab]").forEach(tab => tab.addEventListener("click", function () {
+  update_all_charts();
+}));
+
 const goalMarkLine = {
   symbol: 'none',
   data: [{
@@ -124,19 +129,13 @@ function update_chart(div_id) {
 
 // Update all charts on window resize
 function update_all_charts() {
-  const chartDivs = ["statusquo-chart", "scenarios-chart", "myplan-chart"];
-  chartDivs.forEach((div_id) => {
-    const chartElement = document.getElementById(div_id);
-    if (!chartElement || !chartElement.__chartInstance__) return;
-
-    const chart = chartElement.__chartInstance__;
-    const { gridRight, legendRight } = getResponsiveLayout();
-
+  const { gridRight, legendRight } = getResponsiveLayout();
+  document.querySelectorAll("[_echarts_instance_]").forEach(element => {
+    const chart = echarts.getInstanceByDom(element);
     chart.setOption({
       grid: { right: gridRight },
       legend: { right: legendRight },
     });
-
     chart.resize();
   });
 }
