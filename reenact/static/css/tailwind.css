@@ -689,12 +689,12 @@ video {
   height: 1rem;
 }
 
-.h-\[28rem\] {
-  height: 28rem;
-}
-
 .h-8 {
   height: 2rem;
+}
+
+.h-\[28rem\] {
+  height: 28rem;
 }
 
 .h-\[33px\] {
