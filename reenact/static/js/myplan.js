@@ -35,6 +35,7 @@ async function capacitiesChanged() {
 async function startMyPlan(oemof_scenario) {
   myplanSimulationBtn.disabled = "disabled";
   myplanSpinner.classList.remove("hidden");
+  myplanSimulationBtn.querySelector(".calculate-button-text").innerText = "Wird berechnet";
   // Hide update message
   document.querySelectorAll(".myplanUpdateMsg").forEach(element => {
     element.classList.remove(msgUpdateColor);
@@ -63,6 +64,7 @@ async function checkResults() {
 function showResults(simulationId) {
   console.log(`Show results for ID #${simulationId}...`);
   myplanSpinner.classList.add("hidden");
+  myplanSimulationBtn.querySelector(".calculate-button-text").innerText = "Neu berechnen";
   document.querySelectorAll(".myplanUpdateMsg").forEach(element => element.classList.add("hidden"));
   update_chart("myplan-chart", {simulationId: simulationId});  // in charts.js
 }
