@@ -17,6 +17,7 @@ const msgSimulation = "Berechnung gestartet...";
 
 async function capacitiesChanged() {
   myplanSimulationBtn.disabled = "";
+  myplanSimulationBtn.classList.add("animate-popIn");
   myplanSpinner.classList.add("hidden");
   myplanChartSection.style.opacity = "0.6";
   planChartInputOutput.style.opacity = "0.6";
@@ -31,6 +32,9 @@ async function capacitiesChanged() {
     await stopSimulation(currentTask);
     currentTask = null;
   }
+  setTimeout(() => {
+    myplanSimulationBtn.classList.remove("animate-popIn");
+  }, 300);
 }
 
 async function startMyPlan(oemof_scenario) {
