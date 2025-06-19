@@ -8,6 +8,9 @@ let currentTask = null;
 const capacityForm = document.getElementById("capacityForm");
 const myplanSimulationBtn = document.getElementById("myplanSimulationBtn");
 const myplanSpinner = document.getElementById("myplanSpinner");
+const myplanChartSection = document.getElementById("myplan-chart");
+const planChartInputOutput = document.getElementById("plan-chart-input-output");
+const componentBox = document.querySelector("#my_plan_results .boxes");
 
 const msgUpdate = "Die Ergebnisse sind nicht mehr aktuell. Bitte starten Sie die Berechnung neu.";
 const msgSimulation = "Berechnung gestartet...";
@@ -15,6 +18,9 @@ const msgSimulation = "Berechnung gestartet...";
 async function capacitiesChanged() {
   myplanSimulationBtn.disabled = "";
   myplanSpinner.classList.add("hidden");
+  myplanChartSection.style.opacity = "0.6";
+  planChartInputOutput.style.opacity = "0.6";
+  componentBox.style.opacity = "0.6";
   // Show update message
   document.querySelectorAll(".myplanUpdateMsg").forEach(element => {
       element.classList.remove("hidden");
@@ -57,6 +63,9 @@ async function checkResults() {
 function showResults(simulationId) {
   console.log(`Show results for ID #${simulationId}...`);
   myplanSpinner.classList.add("hidden");
+  myplanChartSection.style.opacity = "1";
+  planChartInputOutput.style.opacity = "1";
+  componentBox.style.opacity = "1";
   myplanSimulationBtn.querySelector(".calculate-button-text").innerText = "Neu berechnen";
   document.querySelectorAll(".myplanUpdateMsg").forEach(element => element.classList.add("hidden"));
   update_chart("myplan-chart", {simulationId: simulationId});  // in charts.js
