@@ -111,15 +111,15 @@ function reload_chart(div_id) {
 }
 
 function update_charts() {
-  update_chart("myplan-chart");
+  const capacityForm = document.getElementById("capacityForm");
+  const formData = new FormData(capacityForm);
+  update_chart("myplan-chart", formData);
   update_potentials();
 }
 
-function update_chart(div_id) {
+function update_chart(div_id, parameters={}) {
     // Update chart data from form input. Chart options calculated in backend.
-    const capacityForm = document.getElementById("capacityForm");
-    const formData = new FormData(capacityForm);
-    const params = new URLSearchParams(formData).toString();
+    const params = new URLSearchParams(parameters).toString();
     fetch(`chart/${div_id}?${params}`).then(
         response => response.json()
     ).then(data => {

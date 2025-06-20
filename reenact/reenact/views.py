@@ -34,7 +34,7 @@ class MainView(TemplateView):
             slider_config.name: settings.COLORS.get(slider_config.label, "blue")
             for slider_config in settings.SLIDERS
         }
-        context["capacities"] = CapacitiesForm(sliders=settings.SLIDERS)
+        context["capacities"] = CapacitiesForm()
         context["scenarios"] = settings.SCENARIOS
 
         results = boxes.get_result_boxes_from_scenario_data(SCENARIOS[0])
@@ -70,11 +70,16 @@ class MainView(TemplateView):
         context["demand_my_plan"] = my_plan_capacities["demand"]
         context["slider_dependencies"] = settings.SLIDER_DEPENDENCIES
         context["slider_marks"] = settings.SLIDER_MARKS
-
+        context["my_plan_oemof_scenario"] = settings.MYPLAN_OEMOF_SCENARIO
         return context
 
 
 def chart(request, chart_name: str) -> JsonResponse:
+    if "simulationId" in request.GET:
+        simulation_id = request.GET["simulationId"]
+        return JsonResponse(
+            capacities.get_chart_data_from_oemof_simulation(simulation_id),
+        )
     return JsonResponse(capacities.get_chart_data_from_user_input(request.GET))
 
 

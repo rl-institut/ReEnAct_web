@@ -14,6 +14,14 @@ class ReenactConfig(AppConfig):
         from reenact.reenact import hooks as reenact_hooks
 
         hooks.register_hook(
+            hooks.HookType.SETUP,
+            hooks.Hook(
+                scenario=hooks.ALL_SCENARIOS,
+                function=reenact_hooks.set_up_volatiles,
+            ),
+        )
+
+        hooks.register_hook(
             hooks.HookType.MODEL,
             hooks.Hook(
                 scenario=hooks.ALL_SCENARIOS,

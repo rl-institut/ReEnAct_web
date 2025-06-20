@@ -1,9 +1,12 @@
 {
-  "esversion": 8,
+  "esversion": 11,
   "globals": {
     "echarts": false,
     "console": false,
-    "$": false
+    "$": false,
+    "startSimulation": false,
+    "stopSimulation": false,
+    "checkSimulation": false
   },
   "strict": "implied",
   "browser": true
