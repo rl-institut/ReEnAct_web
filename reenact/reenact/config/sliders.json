@@ -64,7 +64,7 @@
     "category": "production"
   },
   "other_biomass": {
-    "label": "BHKW Sonstige BM",
+    "label": "Sonstige Biomasse",
     "min": 0,
     "max": 10821,
     "step": 1000,

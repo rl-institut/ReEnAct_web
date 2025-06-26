@@ -9,7 +9,7 @@
         "PV - Agri": 165.56,
         "BHKW Paludi BM": 9.44,
         "BHKW Nasswiesen BM": 0.28,
-        "BHKW Sonstige BM": 86.95
+        "Sonstige Biomasse": 86.95
     },
     "demand": {"Strom": 15.84, "Wärme": 37.34, "Mobilität": 7.65},
     "potentials": {
