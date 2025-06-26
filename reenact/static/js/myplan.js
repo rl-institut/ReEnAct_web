@@ -36,6 +36,7 @@ async function capacitiesChangedSimulation() {
       element.innerHTML = msgUpdate;
     }
   );
+  myplanSimulationBtn.querySelector(".calculate-button-text").innerText = "Neu berechnen";
   if (currentTask !== null) {
     await stopSimulation(currentTask);
     currentTask = null;
