@@ -15,11 +15,19 @@ const componentBox = document.querySelector("#my_plan_results .boxes");
 const msgUpdate = "Die Ergebnisse sind nicht mehr aktuell. Bitte starten Sie die Berechnung neu.";
 const msgSimulation = "Berechnung gestartet...";
 
-async function capacitiesChanged() {
+function capacitiesChanged() {
+  const capacityForm = document.getElementById("capacityForm");
+  const formData = new FormData(capacityForm);
+  update_chart("myplan-chart", formData);
+  update_potentials();
+  capacitiesChangedSimulation();
+}
+
+async function capacitiesChangedSimulation() {
   myplanSimulationBtn.disabled = "";
   myplanSimulationBtn.classList.add("animate-popIn");
   myplanSpinner.classList.add("hidden");
-  myplanChartSection.style.opacity = "0.6";
+  // myplanChartSection.style.opacity = "0.6";
   planChartInputOutput.style.opacity = "0.6";
   componentBox.style.opacity = "0.6";
   // Show update message
@@ -72,5 +80,5 @@ function showResults(simulationId) {
   componentBox.style.opacity = "1";
   myplanSimulationBtn.querySelector(".calculate-button-text").innerText = "Neu berechnen";
   document.querySelectorAll(".myplanUpdateMsg").forEach(element => element.classList.add("hidden"));
-  update_chart("myplan-chart", {simulationId: simulationId});  // in charts.js
+  // update_chart("myplan-chart", {simulationId: simulationId});  // in charts.js
 }
