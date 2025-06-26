@@ -17,7 +17,7 @@ class ReenactConfig(AppConfig):
             hooks.HookType.SETUP,
             hooks.Hook(
                 scenario=hooks.ALL_SCENARIOS,
-                function=reenact_hooks.set_up_volatiles,
+                function=reenact_hooks.set_up_oemof_components_from_user_input,
             ),
         )
 

@@ -13,16 +13,36 @@ from .forms import CapacitiesForm
 from oemof.solph._plumbing import sequence
 
 
-def set_up_volatiles(scenario: str, data: dict, request: HttpRequest | None = None):
-    """Set up capacities for volatiles."""
+def set_up_oemof_components_from_user_input(
+    scenario: str,
+    data: dict,
+    request: HttpRequest,
+):
+    """Set up capacities for volatiles, potentials and load demand amounts from user inputs."""
 
-    # Extract capacities from user input
+    # Extract user input
     capacity_form = CapacitiesForm(data=data)
     if not capacity_form.is_valid():
         raise RuntimeError(capacity_form.errors)
     capacities = capacity_form.cleaned_data
 
-    parameters = {"wind": {"capacity": capacities["wind"]}}
+    parameters = {
+        "wind": {"capacity": capacities["wind"]},
+        "pv_ground": {"capacity": capacities["pv_ground"]},
+        "pv_roof": {"capacity": capacities["pv_roof"]},
+        "pv_agri": {"capacity": capacities["pv_agri"]},
+        "pv_marsh": {"capacity": capacities["pv_marsh"]},
+        "other_biomass": {"capacity": capacities["other_biomass"] / 1000},
+        "SB-depot": {"capacity": capacities["biomass_marsh"] / 1000},
+        "electrolyser": {"capacity": capacities["electrolyzer"]},
+        "battery": {
+            "capacity": capacities["battery"],
+            "storage_capacity": capacities["battery"],
+        },
+        "electricity": {"amount": capacities["electricity"]},
+        "heat": {"amount": capacities["heat"]},
+        "mobility": {"amount": capacities["mobility"]},
+    }
     return parameters
 
 
