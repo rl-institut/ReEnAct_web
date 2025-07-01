@@ -22,10 +22,6 @@ update_vendor_assets:
 	# Update
 	npm update
 
-	# eCharts https://echarts.apache.org/en/index.html
-#	rm -r digiplan/static/vendors/echarts/js/*
-#	cp node_modules/echarts/dist/echarts.min.js digiplan/static/vendors/echarts/js/
-
 	# Ion.RangeSlider https://github.com/IonDen/ion.rangeSlider
 	rm -r reenact/static/vendors/ionrangeslider/*
 	cp node_modules/ion-rangeslider/js/ion.rangeSlider.min.js reenact/static/vendors/ionrangeslider/
@@ -35,6 +31,20 @@ update_vendor_assets:
 	rm -r reenact/static/vendors/jquery/*
 	cp node_modules/jquery/dist/jquery.slim.min.* reenact/static/vendors/jquery/
 
-# eCharts https://echarts.apache.org/en/index.html
+	# eCharts https://echarts.apache.org/en/index.html
 	rm -r reenact/static/vendors/echarts/*
 	cp node_modules/echarts/dist/echarts.min.js reenact/static/vendors/echarts/
+
+	# MapLibre GL JS https://github.com/maplibre/maplibre-gl-js
+	rm -rf reenact/static/vendors/maplibre/js/*
+	mkdir -p reenact/static/vendors/maplibre/js
+	cp node_modules/maplibre-gl/dist/maplibre-gl.js reenact/static/vendors/maplibre/js/
+	cp node_modules/maplibre-gl/dist/maplibre-gl.js.map reenact/static/vendors/maplibre/js/
+	rm -rf reenact/static/vendors/maplibre/css/*
+	mkdir -p reenact/static/vendors/maplibre/css
+	cp node_modules/maplibre-gl/dist/maplibre-gl.css reenact/static/vendors/maplibre/css/
+
+	# PubSubJS https://github.com/mroderick/PubSubJS
+	rm -rf reenact/static/vendors/pubsub/js/*
+	mkdir -p reenact/static/vendors/pubsub/js
+	cp node_modules/pubsub-js/src/pubsub.js reenact/static/vendors/pubsub/js/
