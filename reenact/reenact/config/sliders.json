@@ -2,7 +2,7 @@
   "wind": {
     "label": "Wind",
     "min": 0,
-    "max": 51,
+    "max": 259,
     "step": 10,
     "initial": 40.72,
     "unit": "MW",
@@ -15,8 +15,9 @@
     "max": 815,
     "step": 10,
     "initial": 0,
-    "unit": "ha",
-    "category": "production"
+    "unit": "km2",
+    "category": "production",
+    "mark": 0
   },
   "pv_ground": {
     "label": "PV - Freiflächen",
@@ -35,7 +36,8 @@
     "step": 10,
     "initial": 0,
     "unit": "MWp",
-    "category": "production"
+    "category": "production",
+    "mark": 0
   },
   "pv_roof": {
     "label": "PV - Dachanlagen",
@@ -54,7 +56,8 @@
     "step": 100,
     "initial": 0,
     "unit": "t",
-    "category": "production"
+    "category": "production",
+    "mark": 0
   },
   "pv_agri": {
     "label": "PV - Agri",
@@ -63,7 +66,8 @@
     "step": 10,
     "initial": 0,
     "unit": "MWp",
-    "category": "production"
+    "category": "production",
+    "mark": 0
   },
   "other_biomass": {
     "label": "Sonstige Biomasse",
@@ -72,7 +76,8 @@
     "step": 1000,
     "initial": 0,
     "unit": "t",
-    "category": "production"
+    "category": "production",
+    "mark": 0
   },
   "electrolyzer": {
     "label": "Elektrolyseur",
@@ -81,7 +86,8 @@
     "step": 1,
     "initial": 0,
     "unit": "MW",
-    "category": "demand"
+    "category": "demand",
+    "mark": 0
   },
   "battery": {
     "label": "Batteriespeicher",
@@ -90,7 +96,8 @@
     "step": 10,
     "initial": 0.38,
     "unit": "MWh",
-    "category": "demand"
+    "category": "demand":
+    "mark": 0
   },
   "electricity": {
     "label": "Strom",
@@ -107,9 +114,10 @@
     "min": 0,
     "max": 100,
     "step": 1,
-    "initial": 5,
+    "initial": 90,
     "unit": "%",
-    "category": "demand"
+    "category": "demand",
+    "mark": 90
   },
   "heat": {
     "label": "Wärme",
