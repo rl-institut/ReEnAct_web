@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from django.http import HttpResponse, JsonResponse
 from django.views.generic.base import TemplateView
+from django_mapengine.views import MapEngineMixin
 
 from reenact.reenact.results import capacities, scenario
 from . import settings, hooks
@@ -161,6 +162,12 @@ class PotentialsView(TemplateView):
             )
         current_potentials = potentials.add_wetland_potential(current_potentials)
         return {"potentials": current_potentials}
+
+
+class MapView(TemplateView, MapEngineMixin):
+    """Render HTML for map."""
+
+    template_name = "reenact/map.html"
 
 
 class ResultBoxView(TemplateView):

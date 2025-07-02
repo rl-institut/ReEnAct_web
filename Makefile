@@ -4,6 +4,18 @@
 DJANGO_READ_DOT_ENV_FILE=True
 export
 
+migrate:
+	python manage.py migrate
+
+makemigrations:
+	python manage.oy makemigrations
+
+load_regions:
+	python manage.py shell --command="from scripts import data_processing; data_processing.load_regions()"
+
+load_data:
+	python manage.py shell --command="from scripts import data_processing; data_processing.load_data()"
+
 run_simulations:
 	python manage.py shell -c "from scripts import data_processing as dp; dp.prerun_initial_myplan_scenario()"
 
@@ -48,3 +60,8 @@ update_vendor_assets:
 	rm -rf reenact/static/vendors/pubsub/js/*
 	mkdir -p reenact/static/vendors/pubsub/js
 	cp node_modules/pubsub-js/src/pubsub.js reenact/static/vendors/pubsub/js/
+
+	# jQuery https://github.com/jquery/jquery
+	rm -rf reenact/static/vendors/jquery/js/*
+	mkdir -p reenact/static/vendors/jquery/js
+	cp node_modules/jquery/dist/jquery.min.* reenact/static/vendors/jquery/js/

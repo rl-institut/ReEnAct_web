@@ -58,6 +58,7 @@ target-version = "py312"
 extend-exclude = [
     "*/migrations/*.py",
     "staticfiles/*",
+    "scripts/ogr_layer_mapping.py"
 ]
 
 [tool.ruff.lint]

@@ -31,7 +31,7 @@ urlpatterns = [
         TemplateView.as_view(template_name="reenact/impressum.html"),
         name="impressum",
     ),
-    path("map/", TemplateView.as_view(template_name="reenact/map.html"), name="map"),
+    path("map/", views.MapView.as_view(), name="map"),
     path(
         "sources/",
         TemplateView.as_view(template_name="reenact/sources.html"),

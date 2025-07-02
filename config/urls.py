@@ -10,6 +10,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path("", include("reenact.reenact.urls")),
     path("oemof/", include("django_oemof.urls")),
+    path("map/", include("django_mapengine.urls")),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # Media files

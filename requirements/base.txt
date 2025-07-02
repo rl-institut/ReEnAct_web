@@ -1,3 +1,4 @@
+setuptools<=81
 rcssmin==1.1.2  # https://github.com/ndparker/rcssmin
 whitenoise==6.7.0  # https://github.com/evansd/whitenoise
 redis==5.1.1  # https://github.com/redis/redis-py
@@ -15,3 +16,4 @@ django-cotton==1.3.0  # https://github.com/wrabit/django-cotton
 # ------------------------------------------------------------------------------
 django-oemof==2.1.0
 pyyaml==6.0.2
+django-mapengine==2.3.0
