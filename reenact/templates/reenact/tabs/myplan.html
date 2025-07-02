@@ -1,6 +1,6 @@
 <section>
   <div class="flex pb-4">
-    <div class="flex w-full bg-white shadow rounded-lg overflow-auto h-[28rem] 2xl:max-h-full 2xl:h-[34rem]">
+    <div class="flex w-full bg-white shadow rounded-lg overflow-auto h-[29rem] 2xl:max-h-full 2xl:h-[31rem]">
       <div class="flex flex-col justify-around items-center p-4 p-4 w-1/2">
         <div class="pb-4">
           <div class="flex justify-center space-x-8">
@@ -24,8 +24,8 @@
           New chart comes here
         </div>
       </div>
-      <div class="relative pt-2 px-4 pb-2 2xl:py-4 2xl:px-8 w-1/2 rounded-r-lg shadow bg-white overflow-auto h-[28rem] 2xl:max-h-full 2xl:h-[34rem] overflow-x-hidden">
-        <div class="flex justify-center pb-1 2xl:pb-4">
+      <div class="relative pt-2 px-4 pb-2 2xl:py-4 2xl:px-6 w-1/2 rounded-r-lg shadow bg-white overflow-auto h-[29rem] 2xl:max-h-full 2xl:h-[31rem] overflow-x-hidden">
+        <div class="flex justify-center pb-1 2xl:pb-2">
           <div class="bg-slate-100 py-1 px-2">
             <div class="flex items-center gap-x-8">
               <div class="flex items-center gap-x-2">
@@ -42,7 +42,7 @@
         <form id="capacityForm">
           {{ capacities.as_div }}
         </form>
-        <div class="absolute bottom-[1rem] 2xl:bottom-[2rem] right-0 lg:right-[10%] 2xl:right-[15%]">
+        <div class="absolute bottom-[1rem] right-0 lg:right-[10%] 2xl:right-[15%]">
           <button id="myplanSimulationBtn"
                   class="flex items-center justify-center gap-2 text-center bg-sky-600 text-sm text-white font-semibold py-2 px-6 rounded-full shadow-md hover:bg-sky-500 transition disabled:bg-gray-300"
                   onclick="startMyPlan('{{ my_plan_oemof_scenario }}');"

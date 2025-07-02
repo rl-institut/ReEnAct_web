@@ -6,25 +6,25 @@
   ReEnAct
 {% endblock title %}
 {% block content %}
-  <div class="grid grid-cols-1 gap-4 2xl:gap-8 px-6 py-4 2xl:py-8">
+  <div class="grid grid-cols-1 gap-2 xl:gap-4 px-6 py-2 xl:py-4">
     <div>
       <div>
         <nav>
           <div class="flex justify-center space-x-8">
             <a id="tablink-statusquo"
-               class="tablink min-w-40 pb-2 border-b-4 border-sky-500 hover:text-slate-800 font-semibold text-center"
+               class="tablink min-w-40 xl:pb-2 border-b-4 border-sky-500 hover:text-slate-800 font-semibold text-center text-sm xl:text-base"
                href="#"
                onclick="openTab('statusquo'); reload_chart('statusquo-chart');">2024</a>
             <a id="tablink-scenarios"
-               class="tablink min-w-40 pb-2 border-b-4 border-transparent text-slate-500 hover:text-slate-800 font-semibold text-center"
+               class="tablink min-w-40 xl:pb-2 border-b-4 border-transparent text-slate-500 hover:text-slate-800 font-semibold text-center text-sm xl:text-base"
                href="#"
                onclick="openTab('scenarios'); reload_chart('scenarios-chart');">Szenarien 2040</a>
             <a id="tablink-myplan"
-               class="tablink min-w-40 pb-2 border-b-4 border-transparent text-slate-500 hover:text-slate-800 font-semibold text-center"
+               class="tablink min-w-40 xl:pb-2 border-b-4 border-transparent text-slate-500 hover:text-slate-800 font-semibold text-center text-sm xl:text-base"
                href="#"
                onclick="openTab('myplan'); reload_chart('myplan-chart');">Mein Plan 2040</a>
             <a id="tablink-comparison"
-               class="tablink min-w-40 pb-2 border-b-4 border-transparent text-slate-500 hover:text-slate-800 font-semibold text-center"
+               class="tablink min-w-40 xl:pb-2 border-b-4 border-transparent text-slate-500 hover:text-slate-800 font-semibold text-center text-sm xl:text-base"
                href="#"
                onclick="openTab('comparison'); fetch_chart('total');">Szenarienvergleich</a>
           </div>
