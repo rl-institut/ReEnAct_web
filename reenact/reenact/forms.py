@@ -22,9 +22,9 @@ class CapacitiesForm(Form):
             else:
                 error_msg = f"Slider {slider.name} has no valid category."
                 raise KeyError(error_msg)
-            self.fields[slider.name] = IntegerField(
+            field = IntegerField(
                 label=slider.label,
-                help_text=slider.unit,
+                help_text=slider.info,
                 widget=NumberInput(
                     attrs={
                         "class": "js-range-slider",
@@ -36,9 +36,9 @@ class CapacitiesForm(Form):
                     },
                 ),
             )
-            self.fields[
-                slider.name
-            ].icon = f"images/icons/slider_icon_{slider.name}.svg"
+            field.unit = slider.unit
+            field.icon = f"images/icons/slider_icon_{slider.name}.svg"
+            self.fields[slider.name] = field
 
         self.categories = dict(
             self.categories,

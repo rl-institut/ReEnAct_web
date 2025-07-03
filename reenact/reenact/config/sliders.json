@@ -7,7 +7,8 @@
     "initial": 40.72,
     "unit": "MW",
     "category": "production",
-    "mark": 41
+    "mark": 41,
+    "info": "Wind information"
   },
   "marsh": {
     "label": "Wiedervernässung Moore",

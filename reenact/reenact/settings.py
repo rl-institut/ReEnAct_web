@@ -23,6 +23,7 @@ class SliderConfig:
     unit: str
     mark: int | float | None = None
     category: str | None = None
+    info: str | None = None
 
 
 with (CONFIG_DIR / "sliders.json").open("r", encoding="utf-8") as f:
