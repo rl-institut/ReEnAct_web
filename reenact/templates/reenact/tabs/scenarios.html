@@ -1,7 +1,12 @@
 <section>
   <div class="grid grid-cols-2 gap-6 pb-4">
     <div class="flex flex-col justify-around items-center p-4 bg-white shadow rounded-lg overflow-auto h-[28rem] 2xl:max-h-full 2xl:h-[34rem]">
-      <div class="pb-4">
+      <div class="w-full pb-4 relative">
+        <div class="absolute top-0 right-0">
+          <div class="fixed -ml-6">
+            {% include "partials/chart_info.html" %}
+          </div>
+        </div>
         <div class="flex justify-center space-x-8">
           <a class="tablink-scenarios-chart text-sm min-w-24 pb-1 border-b-4 border-slate-800 hover:text-slate-950 font-semibold text-center active-tab"
              data-tab="total"
@@ -12,7 +17,6 @@
         </div>
       </div>
       <div id="tab-content-scenarios-total" class="index-chart grow">
-        {% include "partials/chart_info.html" %}
         <div id="scenarios-chart" class="index-chart grow"></div>
       </div>
       <div id="tab-content-scenarios-output" class="index-chart grow hidden">

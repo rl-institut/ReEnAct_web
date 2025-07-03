@@ -1,8 +1,13 @@
 <section>
   <div class="flex pb-4">
     <div class="flex w-full bg-white shadow rounded-lg overflow-auto h-[28rem] 2xl:max-h-full 2xl:h-[34rem]">
-      <div class="flex flex-col justify-around items-center p-4 p-4 w-1/2">
-        <div class="pb-4">
+      <div class="flex flex-col justify-around items-center p-4 p-4 w-1/2 z-50">
+        <div class="w-full pb-4 relative">
+          <div class="absolute top-0 right-0">
+            <div class="-ml-6">
+              {% include "partials/chart_info.html" %}
+            </div>
+          </div>
           <div class="flex justify-center space-x-8">
             <a class="tablink-plan-chart text-sm min-w-24 pb-1 border-b-4 border-slate-800 hover:text-slate-950 font-semibold text-center"
                data-tab="total"
@@ -13,7 +18,6 @@
           </div>
         </div>
         <div id="tab-content-plan-total" class="index-chart grow">
-          {% include "partials/chart_info.html" %}
           <div id="myplan-chart" class="index-chart grow"></div>
           <div class="bg-blue-50 text-blue-700 text-sm text-center py-2 px-4 2xl:mt-4 border border-blue-200 rounded-md hidden">
             Die Ergebnisse sind nicht mehr aktuell. Bitte starten Sie die Berechnung neu.
