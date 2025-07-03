@@ -664,6 +664,10 @@ video {
   top: 1.75rem;
 }
 
+.top-8 {
+  top: 2rem;
+}
+
 .top-\[-3rem\] {
   top: -3rem;
 }

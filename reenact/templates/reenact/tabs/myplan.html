@@ -1,11 +1,18 @@
 <section class="relative">
-  <div class="absolute top-[-3rem] right-0">
-    <button
-      id="copyButton"
-      class="px-4 py-1 rounded-full bg-white transition-transform duration-150 ease-in-out active:scale-95"
-    >
+  <div class="absolute top-[-3rem] right-0 group">
+    <div id="copyNotification"
+         class="hidden absolute top-8 right-0 bg-slate-800 text-white text-xs normal-case px-3 py-1 rounded duration-300 whitespace-nowrap z-50">
+      URL wurde in die Zwischenablage kopiert
+    </div>
+    <button class="px-4 py-1 rounded-full bg-white transition-transform duration-150 ease-in-out active:scale-95 urlbutton"
+            onclick="copyURLToClipboard();">
       <div class="flex gap-2 items-center text-slate-800 font-semibold">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke-width="1.5"
+             stroke="currentColor"
+             class="size-4">
           <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
         </svg>
         <span class="text-sm">URL kopieren</span>
