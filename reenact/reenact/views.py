@@ -34,7 +34,9 @@ class MainView(TemplateView):
             slider_config.name: settings.COLORS.get(slider_config.label, "blue")
             for slider_config in settings.SLIDERS
         }
-        context["capacities"] = CapacitiesForm()
+        context["capacities"] = CapacitiesForm(self.request.GET)
+        if not context["capacities"].is_valid():
+            context["capacities"] = CapacitiesForm()
         context["scenarios"] = settings.SCENARIOS
 
         results = boxes.get_result_boxes_from_scenario_data(SCENARIOS[0])
