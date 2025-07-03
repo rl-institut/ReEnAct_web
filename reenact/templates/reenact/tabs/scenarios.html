@@ -1,16 +1,19 @@
 <section>
   <div class="grid grid-cols-2 gap-6 pb-4">
     <div class="flex flex-col justify-around items-center p-4 bg-white shadow rounded-lg overflow-auto h-[28rem] 2xl:max-h-full 2xl:h-[34rem]">
-      <div class="pb-4">
+      <div class="w-full pb-4 relative">
+        <div class="absolute top-0 right-0">
+          <div class="fixed -ml-6">
+            {% include "partials/chart_info.html" %}
+          </div>
+        </div>
         <div class="flex justify-center space-x-8">
-          <a 
-            class="tablink-scenarios-chart text-sm min-w-24 pb-1 border-b-4 border-slate-800 hover:text-slate-950 font-semibold text-center active-tab" 
-            data-tab="total" 
-            href="#">Gesamt</a>
-          <a 
-            class="tablink-scenarios-chart text-sm min-w-24 pb-1 border-b-4 border-transparent text-slate-800 hover:text-slate-950 font-semibold text-center" 
-            data-tab="output" 
-            href="#">Other Tab</a>
+          <a class="tablink-scenarios-chart text-sm min-w-24 pb-1 border-b-4 border-slate-800 hover:text-slate-950 font-semibold text-center active-tab"
+             data-tab="total"
+             href="#">Gesamt</a>
+          <a class="tablink-scenarios-chart text-sm min-w-24 pb-1 border-b-4 border-transparent text-slate-800 hover:text-slate-950 font-semibold text-center"
+             data-tab="output"
+             href="#">Other Tab</a>
         </div>
       </div>
       <div id="tab-content-scenarios-total" class="index-chart grow">
@@ -49,28 +52,27 @@
 <div id="scenario_results">
   {% include 'partials/results.html' with potentials=potentials_status_quo resultbox_id="resultbox_scenarios" %}
 </div>
-
 <script>
   // Tab functionality for scenario charts
   document.querySelectorAll('.tablink-scenarios-chart').forEach(tab => {
-  tab.addEventListener('click', function (e) {
-    e.preventDefault();
+    tab.addEventListener('click', function(e) {
+      e.preventDefault();
 
-    document.querySelectorAll('.tablink-scenarios-chart').forEach(t => {
-      t.classList.remove('border-slate-800', 'active-tab');
-      t.classList.add('border-transparent');
+      document.querySelectorAll('.tablink-scenarios-chart').forEach(t => {
+        t.classList.remove('border-slate-800', 'active-tab');
+        t.classList.add('border-transparent');
+      });
+
+      document.querySelectorAll('[id^="tab-content-scenarios-"]').forEach(content => {
+        content.classList.add('hidden');
+      });
+
+      this.classList.remove('border-transparent');
+      this.classList.add('border-slate-800', 'active-tab');
+
+      const selected = this.getAttribute('data-tab');
+      const contentToShow = document.getElementById(`tab-content-scenarios-${selected}`);
+      if (contentToShow) contentToShow.classList.remove('hidden');
     });
-
-    document.querySelectorAll('[id^="tab-content-scenarios-"]').forEach(content => {
-      content.classList.add('hidden');
-    });
-
-    this.classList.remove('border-transparent');
-    this.classList.add('border-slate-800', 'active-tab');
-    
-    const selected = this.getAttribute('data-tab');
-    const contentToShow = document.getElementById(`tab-content-scenarios-${selected}`);
-    if (contentToShow) contentToShow.classList.remove('hidden');
   });
-});
 </script>
