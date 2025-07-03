@@ -1,11 +1,11 @@
 {
-  "marsh_max_area": 815,
+  "marsh_max_area": 8.15,
   "areas_at_full_marsh_usage": {
-    "biomass_marsh": 815,
-    "pv_marsh": 757
+    "biomass_marsh": 8.15,
+    "pv_marsh": 7.57
   },
   "densities": {
-    "biomass_marsh": 5,
-    "pv_marsh": 0.25
+    "biomass_marsh": 500,
+    "pv_marsh": 25
   }
 }
