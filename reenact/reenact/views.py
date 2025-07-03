@@ -48,10 +48,15 @@ class MainView(TemplateView):
             )
             if simulation_id is None:
                 context["show_simulation_update_msg"] = True
+                context["invalid_scenario_msg"] = (
+                    "Die Ergebnisse des Scenarios müssen neu berechnet werden."
+                )
         else:
             # User input is not valid, thus default my-plan scenario gets loaded
             if len(self.request.GET) != 0:
-                context["show_invalid_scenario_msg"] = True
+                context["invalid_scenario_msg"] = (
+                    "Das Scenario konnte nicht geladen werden"
+                )
             context["capacities"] = CapacitiesForm()
             my_plan_potentials = {
                 name: data["initial"] for name, data in settings.SLIDER_DATA.items()
