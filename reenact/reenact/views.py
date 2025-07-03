@@ -175,7 +175,7 @@ def analysis(request, chart_name: str) -> JsonResponse | HttpResponse:  # noqa: 
             "consumption": 6000,
         },
         "Autarkie": {"area": 140, "wind": 100, "production": 5000, "consumption": 6000},
-        "⭐️ Mein Plan 2040": {
+        "⭐️ Mein Plan 2045": {
             "area": 130,
             "wind": 100,
             "production": 5000,
@@ -188,10 +188,10 @@ def analysis(request, chart_name: str) -> JsonResponse | HttpResponse:  # noqa: 
             {
                 "x_data": list(data.keys()),
                 "y_data": {  # production and consumption for each scenario
-                    "Jahreserzeugung 2040": [
+                    "Jahreserzeugung 2045": [
                         v.get("production") for v in data.values()
                     ],
-                    "Jahresverbrauch 2040": [
+                    "Jahresverbrauch 2045": [
                         v.get("consumption") for v in data.values()
                     ],
                 },
@@ -208,11 +208,11 @@ def analysis(request, chart_name: str) -> JsonResponse | HttpResponse:  # noqa: 
             {
                 "x_data": list(data.keys()),
                 "y_data": {
-                    "Installierte Leistung 2040": [
+                    "Installierte Leistung 2045": [
                         v.get(technology) for v in data.values()
                     ],
                 },
-                "target": {"Ziel 2040": 70},
+                "target": {"Ziel 2045": 70},
                 "y_label": "Installierte Leistung [MW]",
             },
         )
@@ -225,8 +225,8 @@ def analysis(request, chart_name: str) -> JsonResponse | HttpResponse:  # noqa: 
         # get label
         labels = {
             "area": "Fläche [km²]",
-            "production": "Erzeugung 2040 [MWh]",
-            "consumption": "Verbrauch 2040 [MWh]",
+            "production": "Erzeugung 2045 [MWh]",
+            "consumption": "Verbrauch 2045 [MWh]",
         }
         return JsonResponse(
             {
