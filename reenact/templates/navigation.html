@@ -12,6 +12,12 @@
         </a>
         <h1 class="hidden md:block text-center text-2xl text-uppercase font-normal tracking-wide">ENERGIEREGION PEENETAL</h1>
         <p class="bg-orange-100 text-orange-800 px-10 pt-1">Die Anwendung befindet sich noch in der Entwicklung</p>
+        {% if show_invalid_scenario_msg %}
+          <p id="invalid_scenario"
+             class="bg-red-500 text-red-950 px-10 pt-1 transition-opacity duration-1000">
+            Das Szenario konnte nicht geladen werden
+          </p>
+        {% endif %}
       </div>
       <div class="flex">
         <div class="nav-tab">

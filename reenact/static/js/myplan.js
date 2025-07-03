@@ -92,10 +92,20 @@ function updateURL(formData) {
 }
 
 function copyURLToClipboard() {
-    navigator.clipboard.writeText(window.location.href);
-    const notification = document.getElementById('copyNotification');
-    notification.classList.remove('hidden');
+  navigator.clipboard.writeText(window.location.href);
+  const notification = document.getElementById('copyNotification');
+  notification.classList.remove('hidden');
+  setTimeout(() => {
+    notification.classList.add('hidden');
+  }, 2000);
+}
+
+
+window.addEventListener('DOMContentLoaded', () => {
+  const invalid_scenario_msg = document.getElementById('invalid_scenario');
+  if(invalid_scenario_msg) {
     setTimeout(() => {
-      notification.classList.add('hidden');
-    }, 2000);
+      invalid_scenario_msg.classList.add('opacity-0');
+    }, 3000);
   }
+});
