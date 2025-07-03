@@ -12,15 +12,15 @@ document.querySelectorAll("[data-tab]").forEach(tab => tab.addEventListener("cli
 const goalMarkLine = {
   symbol: 'none',
   data: [{
-    yAxis: 270,
-    name: 'Ziel MV (Anteil)'
+    yAxis: 401.1,
+    name: 'Ziel Deutschland (Flächenanteil)'
   }],
   lineStyle: {
     color: 'gray',
     type: 'dashed'
   },
   label: {
-    formatter: 'Ziel MV (Anteil): {c} GWh',
+    formatter: 'Ziel Deutschland (Flächenanteil): {c} GWh',
     position: 'middle'
   }
 };
