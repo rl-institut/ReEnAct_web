@@ -18,6 +18,7 @@ const msgSimulation = "Berechnung gestartet...";
 function capacitiesChanged() {
   const capacityForm = document.getElementById("capacityForm");
   const formData = new FormData(capacityForm);
+  updateURL(formData);
   update_chart("myplan-chart", formData);
   update_potentials();
   capacitiesChangedSimulation();
@@ -83,3 +84,28 @@ function showResults(simulationId) {
   document.querySelectorAll(".myplanUpdateMsg").forEach(element => element.classList.add("hidden"));
   // update_chart("myplan-chart", {simulationId: simulationId});  // in charts.js
 }
+
+function updateURL(formData) {
+  const searchParams = new URLSearchParams(formData);
+  const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+  window.history.pushState({path: newUrl}, '', newUrl);
+}
+
+function copyURLToClipboard() {
+  navigator.clipboard.writeText(window.location.href);
+  const notification = document.getElementById('copyNotification');
+  notification.classList.remove('hidden');
+  setTimeout(() => {
+    notification.classList.add('hidden');
+  }, 2000);
+}
+
+
+window.addEventListener('DOMContentLoaded', () => {
+  const invalid_scenario_msg = document.getElementById('invalid_scenario');
+  if(invalid_scenario_msg) {
+    setTimeout(() => {
+      invalid_scenario_msg.classList.add('opacity-0');
+    }, 3000);
+  }
+});

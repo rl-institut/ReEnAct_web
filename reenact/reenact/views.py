@@ -34,7 +34,39 @@ class MainView(TemplateView):
             slider_config.name: settings.COLORS.get(slider_config.label, "blue")
             for slider_config in settings.SLIDERS
         }
-        context["capacities"] = CapacitiesForm()
+        context["capacities"] = CapacitiesForm(self.request.GET)
+        if context["capacities"].is_valid():
+            # Load potentials and capacity chart from user input
+            my_plan_potentials = self.request.GET
+            my_plan_capacities = capacities.get_chart_data_from_user_input(
+                self.request.GET,
+            )
+            # Check if simulation exists for user input
+            simulation_id = scenario.get_simulation_results_from_request(
+                SCENARIOS[0].get("oemof_scenario", ""),
+                self.request,
+            )
+            if simulation_id is None:
+                context["show_simulation_update_msg"] = True
+                context["invalid_scenario_msg"] = (
+                    "Die Ergebnisse des Scenarios müssen neu berechnet werden."
+                )
+        else:
+            # User input is not valid, thus default my-plan scenario gets loaded
+            if len(self.request.GET) != 0:
+                context["invalid_scenario_msg"] = (
+                    "Das Scenario konnte nicht geladen werden"
+                )
+            context["capacities"] = CapacitiesForm()
+            my_plan_potentials = {
+                name: data["initial"] for name, data in settings.SLIDER_DATA.items()
+            }
+            my_plan_capacities = capacities.get_chart_data_from_user_input({})
+            simulation_id = scenario.get_simulation_results(
+                SCENARIOS[0].get("oemof_scenario", ""),
+                {},
+            )
+
         context["scenarios"] = settings.SCENARIOS
 
         results = boxes.get_result_boxes_from_scenario_data(SCENARIOS[0])
@@ -45,27 +77,20 @@ class MainView(TemplateView):
                 settings.SCENARIOS[0],
             ),
         )
-        my_plan_potentials = {
-            name: data["initial"] for name, data in settings.SLIDER_DATA.items()
-        }
-        context["potentials_my_plan"] = potentials.add_wetland_potential(
-            potentials.calculate_potentials_from_request(
-                my_plan_potentials,
-            ),
-        )
 
         # Get production and demand for status quo and my plan
-        simulation_id = scenario.get_simulation_results(
-            SCENARIOS[0].get("oemof_scenario", ""),
-            {},
-        )
         if simulation_id is None:
             context.update(capacities.get_chart_data_from_scenario(0))
         else:
             context.update(
                 capacities.get_chart_data_from_oemof_simulation(simulation_id),
             )
-        my_plan_capacities = capacities.get_chart_data_from_user_input({})
+
+        context["potentials_my_plan"] = potentials.add_wetland_potential(
+            potentials.calculate_potentials_from_request(
+                my_plan_potentials,
+            ),
+        )
         context["production_my_plan"] = my_plan_capacities["production"]
         context["demand_my_plan"] = my_plan_capacities["demand"]
         context["slider_dependencies"] = settings.SLIDER_DEPENDENCIES

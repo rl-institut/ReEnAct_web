@@ -1,17 +1,34 @@
+from __future__ import annotations
+
 from collections import defaultdict
 
 from django.forms import Form
 from django.forms import IntegerField
 from django.forms import NumberInput
 
-from .settings import SLIDERS, CATEGORIES
+from .settings import SLIDERS, CATEGORIES, SliderConfig, SLIDER_DEPENDENCIES
+
+
+def get_max_value(slider: SliderConfig, data: dict | None) -> int | float:
+    """Get max value for slider based on marsh value in data dict."""
+    if (
+        data is None
+        or slider.name not in SLIDER_DEPENDENCIES["densities"]
+        or "marsh" not in data
+    ):
+        return slider.max
+    return (
+        float(data["marsh"])
+        / SLIDER_DEPENDENCIES["marsh_max_area"]
+        * SLIDER_DEPENDENCIES["areas_at_full_marsh_usage"][slider.name]
+        * SLIDER_DEPENDENCIES["densities"][slider.name]
+    )
 
 
 class CapacitiesForm(Form):
     template_name_div = "reenact/forms/capacities.html"
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, data=None, **kwargs):
         self.categories = defaultdict(list)
 
         for slider in SLIDERS:
@@ -29,17 +46,23 @@ class CapacitiesForm(Form):
                     attrs={
                         "class": "js-range-slider",
                         "data-min": slider.min,
-                        "data-max": slider.max,
+                        "data-max": get_max_value(slider, data),
                         "data-step": slider.step,
-                        "data-from": slider.initial,
+                        "data-from": (
+                            data.get(slider.name, slider.initial)
+                            if data
+                            else slider.initial
+                        ),
                         "data-skin": "round",
                     },
                 ),
             )
             field.unit = slider.unit
             field.icon = f"images/icons/slider_icon_{slider.name}.svg"
-            self.fields[slider.name] = field
+            self.base_fields[slider.name] = field
 
         self.categories = dict(
             self.categories,
         )  # This must be done in order to loop over defaultdict in template
+
+        super().__init__(data, **kwargs)

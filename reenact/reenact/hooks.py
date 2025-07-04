@@ -1,14 +1,19 @@
 """Module to apply hooks on oemof simulation."""
 
+from __future__ import annotations
+
 import oemof
 import pyomo.environ as po
-from django.http import HttpRequest
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from django.http import HttpRequest
 
 from .forms import CapacitiesForm
 from oemof.solph._plumbing import sequence
 
 
-def set_up_volatiles(scenario: str, data: dict, request: HttpRequest):
+def set_up_volatiles(scenario: str, data: dict, request: HttpRequest | None = None):
     """Set up capacities for volatiles."""
 
     # Extract capacities from user input

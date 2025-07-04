@@ -22,7 +22,7 @@
   <div>
     <div class="boxes flex flex-nowrap gap-4">{% include 'partials/resultboxes.html' %}</div>
     {% if "my_plan" in resultbox_id %}
-      <div class="myplanUpdateMsg bg-blue-50 text-blue-700 text-sm text-center py-1 px-4 2xl:mt-4 border border-blue-200 rounded-md hidden">
+      <div class="myplanUpdateMsg bg-blue-50 text-blue-700 text-sm text-center py-1 px-4 2xl:mt-4 border border-blue-200 rounded-md {% if not show_simulation_update_msg %}hidden{% endif %}">
         Die Ergebnisse sind nicht mehr aktuell. Bitte starten Sie die Berechnung neu.
       </div>
     {% endif %}
