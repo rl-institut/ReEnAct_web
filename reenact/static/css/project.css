@@ -58,10 +58,6 @@ h2 {
 
 #capacityForm > div {
   padding-bottom: 1rem;
-
-  @media screen and (min-width: 1536px) {
-    padding-bottom: 2rem;
-  }
 }
 
 #capacityForm .irs-min,
