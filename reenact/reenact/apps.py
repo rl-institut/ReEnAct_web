@@ -22,11 +22,20 @@ class ReenactConfig(AppConfig):
         )
 
         hooks.register_hook(
-            hooks.HookType.MODEL,
-            hooks.Hook(
-                scenario=hooks.ALL_SCENARIOS,
-                function=reenact_hooks.track_emissions,
-            ),
+            hook_type=hooks.HookType.MODEL,
+            hook=hooks.Hook(hooks.ALL_SCENARIOS, reenact_hooks.model_co2_tracking),
+        )
+        hooks.register_hook(
+            hook_type=hooks.HookType.MODEL,
+            hook=hooks.Hook(hooks.ALL_SCENARIOS, reenact_hooks.model_co2_limit),
+        )
+        hooks.register_hook(
+            hook_type=hooks.HookType.MODEL,
+            hook=hooks.Hook(hooks.ALL_SCENARIOS, reenact_hooks.model_co2_cost),
+        )
+        hooks.register_hook(
+            hook_type=hooks.HookType.MODEL,
+            hook=hooks.Hook(hooks.ALL_SCENARIOS, reenact_hooks.model_prod_goal),
         )
 
         hooks.register_hook(
