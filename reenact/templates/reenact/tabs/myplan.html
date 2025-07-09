@@ -124,13 +124,11 @@
   });
 
   // Activate myplan tab if scenario has been loaded
-  {
-    %
-    if scenario_loaded %
-  }
-  document.getElementById("tablink-myplan").click();
-  {
-    %
-    endif %
-  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const status = JSON.parse(document.getElementById('status').textContent);
+    if (status.scenario_loaded) {
+      document.getElementById("tablink-myplan").click();
+    }
+  });
 </script>

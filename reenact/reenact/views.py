@@ -46,7 +46,7 @@ class MainView(TemplateView):
                 MYPLAN_OEMOF_SCENARIO,
                 self.request,
             )
-            context["scenario_loaded"] = True
+            context["status"] = {"scenario_loaded": True}
             if simulation_id is None:
                 context["show_simulation_update_msg"] = True
                 context["invalid_scenario_msg"] = (
