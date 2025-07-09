@@ -97,7 +97,7 @@
   </div>
 </section>
 <div id="my_plan_results">
-  {% include 'partials/results.html' with potentials=potentials_my_plan resultbox_id="resultbox_my_plan" %}
+  {% include 'partials/results.html' with potentials=potentials_my_plan resultbox_id="resultbox_my_plan" results=results.2 %}
 </div>
 <script>
   // Tab functionality for my plan charts
@@ -122,4 +122,15 @@
       if (contentToShow) contentToShow.classList.remove('hidden');
     });
   });
+
+  // Activate myplan tab if scenario has been loaded
+  {
+    %
+    if scenario_loaded %
+  }
+  document.getElementById("tablink-myplan").click();
+  {
+    %
+    endif %
+  }
 </script>

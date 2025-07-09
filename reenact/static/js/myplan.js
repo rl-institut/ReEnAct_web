@@ -82,7 +82,15 @@ function showResults(simulationId) {
   componentBox.style.opacity = "1";
   myplanSimulationBtn.querySelector(".calculate-button-text").innerText = "Neu berechnen";
   document.querySelectorAll(".myplanUpdateMsg").forEach(element => element.classList.add("hidden"));
-  // update_chart("myplan-chart", {simulationId: simulationId});  // in charts.js
+  update_result_boxes(simulationId);
+}
+
+function update_result_boxes(simulationId) {
+  fetch(`/boxes?simulation_id=${simulationId}`)
+    .then((response) => response.text())
+    .then((text) => {
+      componentBox.innerHTML = text;
+    });
 }
 
 function updateURL(formData) {

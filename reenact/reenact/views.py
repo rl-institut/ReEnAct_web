@@ -7,7 +7,7 @@ from reenact.reenact.results import capacities, scenario
 from . import settings
 from .forms import CapacitiesForm
 from .results import boxes, potentials
-from .settings import SCENARIOS
+from .settings import SCENARIOS, MYPLAN_OEMOF_SCENARIO
 
 
 PRODUCTION = [
@@ -43,9 +43,10 @@ class MainView(TemplateView):
             )
             # Check if simulation exists for user input
             simulation_id = scenario.get_simulation_results_from_request(
-                SCENARIOS[0].get("oemof_scenario", ""),
+                MYPLAN_OEMOF_SCENARIO,
                 self.request,
             )
+            context["scenario_loaded"] = True
             if simulation_id is None:
                 context["show_simulation_update_msg"] = True
                 context["invalid_scenario_msg"] = (
@@ -63,14 +64,11 @@ class MainView(TemplateView):
             }
             my_plan_capacities = capacities.get_chart_data_from_user_input({})
             simulation_id = scenario.get_simulation_results(
-                SCENARIOS[0].get("oemof_scenario", ""),
+                MYPLAN_OEMOF_SCENARIO,
                 {},
             )
 
         context["scenarios"] = settings.SCENARIOS
-
-        results = boxes.get_result_boxes_from_scenario_data(SCENARIOS[0])
-        context["results"] = results
 
         context["potentials_status_quo"] = potentials.add_wetland_potential(
             potentials.get_potentials_from_scenario_data(
@@ -78,12 +76,22 @@ class MainView(TemplateView):
             ),
         )
 
+        # Prepare result boxes for statusquo, scenario and myplan
+        # at startup statusquo = scenario = myplan
+        # if simulation_id is given myplan diverges
+        statusquo_box = boxes.get_result_boxes_from_scenario_data(SCENARIOS[0])
+        context["results"] = [statusquo_box, statusquo_box]
+
         # Get production and demand for status quo and my plan
         if simulation_id is None:
             context.update(capacities.get_chart_data_from_scenario(0))
+            context["results"].append(statusquo_box)
         else:
             context.update(
                 capacities.get_chart_data_from_oemof_simulation(simulation_id),
+            )
+            context["results"].append(
+                boxes.get_result_boxes_from_oemof_simulation(simulation_id),
             )
 
         context["potentials_my_plan"] = potentials.add_wetland_potential(
@@ -133,6 +141,11 @@ class ResultBoxView(TemplateView):
     template_name = "partials/resultboxes.html"
 
     def get_context_data(self, **kwargs):
+        if "simulation_id" in self.request.GET:
+            simulation_id = int(self.request.GET["simulation_id"])
+            results = boxes.get_result_boxes_from_oemof_simulation(simulation_id)
+            return {"results": results}
+
         scenario_id = int(self.request.GET["scenario"])
         results = boxes.get_result_boxes_from_scenario_data(SCENARIOS[scenario_id])
         return {"results": results}
