@@ -2,11 +2,9 @@ from __future__ import annotations
 
 from collections import defaultdict
 
-from django.forms import Form
-from django.forms import IntegerField
-from django.forms import NumberInput
+from django.forms import FloatField, Form, NumberInput
 
-from .settings import SLIDERS, CATEGORIES, SliderConfig, SLIDER_DEPENDENCIES
+from .settings import CATEGORIES, SLIDER_DEPENDENCIES, SLIDERS, SliderConfig
 
 
 def get_max_value(slider: SliderConfig, data: dict | None) -> int | float:
@@ -39,7 +37,7 @@ class CapacitiesForm(Form):
             else:
                 error_msg = f"Slider {slider.name} has no valid category."
                 raise KeyError(error_msg)
-            field = IntegerField(
+            field = FloatField(
                 label=slider.label,
                 help_text=slider.info,
                 widget=NumberInput(
