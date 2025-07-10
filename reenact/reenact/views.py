@@ -3,6 +3,7 @@ from __future__ import annotations
 from django.http import HttpResponse, JsonResponse
 from django.views.generic.base import TemplateView
 from django_mapengine.views import MapEngineMixin
+from django_mapengine.legend import Legend, LegendItem
 
 from reenact.reenact.results import capacities, scenario
 from . import settings, hooks
@@ -168,6 +169,14 @@ class MapView(TemplateView, MapEngineMixin):
     """Render HTML for map."""
 
     template_name = "reenact/map.html"
+
+    def get_context_data(self, **kwargs) -> dict:
+        context = super().get_context_data(**kwargs)
+        context["mapengine_legend"] = Legend.from_layer_names(
+            "Legende",
+            [LegendItem("fauna_flora_habitat", tooltip="test")],
+        )
+        return context
 
 
 class ResultBoxView(TemplateView):
