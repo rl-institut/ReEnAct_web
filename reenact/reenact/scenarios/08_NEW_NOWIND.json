@@ -1,0 +1,59 @@
+{"name": "NEU_NOWIND",
+"title": "Beschränkung kein Wind",
+"description": "...",
+"production": {
+        "Wind": 0.0,
+        "PV - Freiflächen": 399.23,
+        "PV - Dachanlagen": 0.73,
+        "PV - Moor": 0.0,
+        "PV - Agri": 0.0,
+        "BHKW Paludi BM": 1.14,
+        "BHKW Nasswiesen BM": 0.0,
+        "Sonstige Biomasse": 0.0
+    },
+    "demand": {"Strom": 15.84, "Wärme": 37.34, "Mobilität": 7.65},
+    "potentials": {
+        "Wind": {"percentage": 0.0, "area": 0.0},
+        "PV - Freiflächen": {"percentage": 13.39, "area": 4.77},
+        "PV - Dachanlagen": {"percentage": 1.05, "area": 0.0078},
+        "PV - Agri": {"percentage": 0.0, "area": 0.0}
+    },
+    "boxes": [
+        {
+            "title": "KLIMAZIELE",
+            "value1": "100,0",
+            "unit1": "% von 401,1 GWh",
+            "subtitle1": "Energieproduktion",
+            "info_hover1": "Hier steht Info über Energieproduktion",
+            "value2": "0,0 t / 0,0",
+            "unit2": "Mio. €",
+            "subtitle2": "CO2-Emissionen/-Kosten",
+            "info_hover2": "Hier steht Info über CO2-Emissionen/-Kosten",
+            "slider": 1
+        },
+        {
+            "title": "KOSTEN",
+            "value1": "5,25",
+            "unit1": "ct/kWh",
+            "subtitle1": "Mittlere Stromkosten",
+            "info_hover1": "Hier steht Info über Mittlere Stromkosten",
+            "value2": "17,24",
+            "unit2": "Mio. €",
+            "subtitle2": "Investitionsbedarf",
+            "info_hover2": "Hier steht Info über Investitionsbedarf",
+            "slider": 0
+        },
+        {
+            "title": "ERLÖSE",
+            "value1": "10,38",
+            "unit1": "Mio. €",
+            "subtitle1": "Stromexport",
+            "info_hover1": "Hier steht Info über Stromexport",
+            "value2": "0,0",
+            "unit2": "Mio. €",
+            "subtitle2": "Wasserstoffexport",
+            "info_hover2": "Hier steht Info über Wasserstoffexport",
+            "slider": 0
+        }
+    ]
+}
