@@ -4,7 +4,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views.generic.base import TemplateView
 
 from reenact.reenact.results import capacities, scenario
-from . import settings
+from . import settings, hooks
 from .forms import CapacitiesForm
 from .results import boxes, potentials
 from .settings import SCENARIOS, MYPLAN_OEMOF_SCENARIO
@@ -62,10 +62,20 @@ class MainView(TemplateView):
             my_plan_potentials = {
                 name: data["initial"] for name, data in settings.SLIDER_DATA.items()
             }
-            my_plan_capacities = capacities.get_chart_data_from_user_input({})
+            initial_capacities = {
+                slider.name: round(slider.initial, 0) for slider in settings.SLIDERS
+            }
+            my_plan_capacities = capacities.get_chart_data_from_user_input(
+                initial_capacities,
+            )
+            parameters = hooks.set_up_oemof_components_from_user_input(
+                "",
+                initial_capacities,
+                None,
+            )
             simulation_id = scenario.get_simulation_results(
                 MYPLAN_OEMOF_SCENARIO,
-                {},
+                parameters,
             )
 
         context["scenarios"] = settings.SCENARIOS
