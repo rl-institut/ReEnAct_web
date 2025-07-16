@@ -53,7 +53,11 @@ for filename in sorted(SCENARIO_DIR.iterdir()):
             except JSONDecodeError as e:
                 error_msg = f"Could not load scenario {filename} due to JSON error."
                 raise RuntimeError(error_msg) from e
-            data["number"] = int(scenario_number)
+            try:
+                data["number"] = int(scenario_number)
+            except ValueError:
+                # Skip scenarios without a scenario ID (legacy scenarios)
+                continue
             SCENARIOS.append(data)
 
 
