@@ -24,10 +24,15 @@
       <div class="flex w-full gap-4">
 
         <!-- Box 1: Klimaziele -->
-        <div class="relative overflow-visible flex-1 bg-white border-t-2 border-yellow-200 rounded-md shadow-md p-4 min-w-[40%]">
+
+         <!-- @Hendrik Replace border-yellow-300 with border-green-300 when successful -->
+        <div class="relative overflow-visible flex-1 bg-white border-t-2 border-yellow-300 rounded-md shadow-md p-4 min-w-[40%]">
           <div class="flex items-center justify-between mb-2">
             <p class="text-slate-500 text-sm tracking-[0.0175rem]">KLIMAZIELE</p>
-            <span class="bg-yellow-200 text-[#4F3F0C] text-sm font-bold px-2 py-0.5 rounded tracking-[-0.0175rem]">Nicht erreicht</span>
+
+            <!-- @Hendrik Erreicht vs Nicht erreicht -->
+            <span class="bg-yellow-300 text-yellow-900 text-sm font-bold px-2 py-0.5 rounded tracking-[-0.0175rem]">Nicht erreicht</span>
+            <!-- <span class="bg-green-300 text-green-900 text-sm font-bold px-2 py-0.5 rounded tracking-[-0.0175rem]">Erreicht</span> -->
           </div>
 
           <div class="mb-4">
@@ -62,9 +67,9 @@
 
           <div>
             <div class="flex items-center space-x-2">
-              <span class="text-red-600">
+              <span class="text-green-700">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
               </span>
               <span class="flex items-center gap-1">
