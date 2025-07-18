@@ -799,10 +799,6 @@ video {
   height: 28rem;
 }
 
-.h-\[29rem\] {
-  height: 29rem;
-}
-
 .h-\[33px\] {
   height: 33px;
 }
@@ -1772,16 +1768,24 @@ video {
     margin-top: 1rem;
   }
 
-  .\32xl\:h-\[31rem\] {
-    height: 31rem;
-  }
-
   .\32xl\:h-\[34rem\] {
     height: 34rem;
   }
 
+  .\32xl\:h-full {
+    height: 100%;
+  }
+
   .\32xl\:max-h-full {
     max-height: 100%;
+  }
+
+  .\32xl\:w-\[25\%\] {
+    width: 25%;
+  }
+
+  .\32xl\:w-\[40\%\] {
+    width: 40%;
   }
 
   .\32xl\:flex-1 {
