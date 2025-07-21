@@ -73,7 +73,7 @@ def add_wetland_potential(potentials: list[dict]) -> list[dict]:
     for i in reversed(indexes_wetland):
         potentials.pop(i)
 
-    total_area = SLIDER_DATA["marsh"]["max"] / 100  # in km2
+    total_area = SLIDER_DATA["marsh"]["max"]
     percentage = round(area_wetland / total_area * 100)
     potentials.append(
         {
