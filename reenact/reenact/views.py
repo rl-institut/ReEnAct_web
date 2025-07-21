@@ -89,17 +89,14 @@ class MainView(TemplateView):
         # Prepare result boxes for statusquo, scenario and myplan
         # at startup statusquo = scenario = myplan
         # if simulation_id is given myplan diverges
+        context.update(capacities.get_chart_data_from_scenario(0))
         statusquo_box = boxes.get_result_boxes_from_scenario_data(SCENARIOS[0])
         context["results"] = [statusquo_box, statusquo_box]
 
         # Get production and demand for status quo and my plan
         if simulation_id is None:
-            context.update(capacities.get_chart_data_from_scenario(0))
             context["results"].append(statusquo_box)
         else:
-            context.update(
-                capacities.get_chart_data_from_oemof_simulation(simulation_id),
-            )
             context["results"].append(
                 boxes.get_result_boxes_from_oemof_simulation(simulation_id),
             )
@@ -161,139 +158,18 @@ class ResultBoxView(TemplateView):
         return {"results": results}
 
 
-def analysis(request, chart_name: str) -> JsonResponse | HttpResponse:  # noqa: PLR0911
-    if request.method != "GET":
-        return HttpResponse(status=405)  # wrong method
-
-    # dummy values for charts, get from DB later
-    # structure: scenario name -> scenario data
-    data = {
-        "Weiter wie bisher": {
-            "area": 70,
-            "wind": 40,
-            "production": 2000,
-            "consumption": 7000,
-        },
-        "Wind-Repowering": {
-            "area": 140,
-            "wind": 160,
-            "production": 8000,
-            "consumption": 6000,
-        },
-        "Zubau PV": {
-            "area": 90,
-            "wind": 90,
-            "production": 5000,
-            "consumption": 4000,
-        },
-        "Zubau Wind und PV": {
-            "area": 160,
-            "wind": 140,
-            "production": 7000,
-            "consumption": 5000,
-        },
-        "Moorbewirtschaftung": {
-            "area": 110,
-            "wind": 30,
-            "production": 1000,
-            "consumption": 1000,
-        },
-        "Wasserstoff": {
-            "area": 70,
-            "wind": 20,
-            "production": 1000,
-            "consumption": 1000,
-        },
-        "Kostenoptimierung": {
-            "area": 70,
-            "wind": 40,
-            "production": 2000,
-            "consumption": 1000,
-        },
-        "Hohe CO2-Preise": {
-            "area": 100,
-            "wind": 70,
-            "production": 3000,
-            "consumption": 3000,
-        },
-        "Suffizienz": {
-            "area": 150,
-            "wind": 150,
-            "production": 7000,
-            "consumption": 6000,
-        },
-        "Autarkie": {"area": 140, "wind": 100, "production": 5000, "consumption": 6000},
-        "⭐️ Mein Plan 2045": {
-            "area": 130,
-            "wind": 100,
-            "production": 5000,
-            "consumption": 6000,
-        },
-    }
-
-    if chart_name == "total_chart":
-        return JsonResponse(
-            {
-                "x_data": list(data.keys()),
-                "y_data": {  # production and consumption for each scenario
-                    "Jahreserzeugung 2045": [
-                        v.get("production") for v in data.values()
-                    ],
-                    "Jahresverbrauch 2045": [
-                        v.get("consumption") for v in data.values()
-                    ],
-                },
-                "y_label": "Energieerzeugung und -verbrauch [kWh]",
-            },
-        )
-
-    if chart_name == "tech_chart":
-        technology = request.GET.get("q")
-        if technology is None:
-            return HttpResponse(status=406)  # not acceptable: technology needed
-
-        return JsonResponse(
-            {
-                "x_data": list(data.keys()),
-                "y_data": {
-                    "Installierte Leistung 2045": [
-                        v.get(technology) for v in data.values()
-                    ],
-                },
-                "target": {"Ziel 2045": 70},
-                "y_label": "Installierte Leistung [MW]",
-            },
-        )
-
-    if chart_name == "analysis_chart":
-        kpi = request.GET.get("q")
-        if kpi is None:
-            return HttpResponse(status=406)  # not acceptable: KPI needed
-
-        # get label
-        labels = {
-            "area": "Fläche [km²]",
-            "production": "Erzeugung 2045 [MWh]",
-            "consumption": "Verbrauch 2045 [MWh]",
-        }
-        return JsonResponse(
-            {
-                "x_data": list(data.keys()),
-                "y_data": {labels.get(kpi): [v.get(kpi) for v in data.values()]},
-            },
-        )
-
-    return HttpResponse(status=406)  # not acceptable: unknown chart
-
-
 def scenario_chart(request, scenario_id: int) -> JsonResponse | HttpResponse:
     """Return echart options as JSON."""
     if request.method != "GET":
         return HttpResponse(status=405)  # wrong method
-    simulation_id = scenario.get_simulation_results(
-        SCENARIOS[scenario_id].get("oemof_scenario", ""),
-        {},
-    )
+
+    simulation_id = None
+    if settings.USE_SCENARIOS_FROM_SIMULATION:
+        simulation_id = scenario.get_simulation_results(
+            SCENARIOS[scenario_id].get("oemof_scenario", ""),
+            {},
+        )
+
     if simulation_id is None:
         return JsonResponse(
             capacities.get_chart_data_from_scenario(scenario_id),

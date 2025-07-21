@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import json
 import pathlib
 from dataclasses import dataclass
@@ -59,6 +60,10 @@ for filename in sorted(SCENARIO_DIR.iterdir()):
                 # Skip scenarios without a scenario ID (legacy scenarios)
                 continue
             SCENARIOS.append(data)
+
+# If True, scenario data will be loaded from oemof results.
+# Otherwise, production and demand data from JSON is used.
+USE_SCENARIOS_FROM_SIMULATION = os.environ.get("USE_SCENARIOS_FROM_SIMULATION", False)
 
 
 with (CONFIG_DIR / "full_load_hours.json").open("r", encoding="utf-8") as f:
