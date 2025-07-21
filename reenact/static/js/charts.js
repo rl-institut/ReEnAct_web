@@ -9,10 +9,12 @@ document.querySelectorAll("[data-tab]").forEach(tab => tab.addEventListener("cli
   update_all_charts();
 }));
 
+const goal2024 = 401.1;
+
 const goalMarkLine = {
   symbol: 'none',
   data: [{
-    yAxis: 401.1,
+    yAxis: goal2024,
     name: 'Ziel Deutschland (Flächenanteil)'
   }],
   lineStyle: {
@@ -72,14 +74,6 @@ function create_chart(div_id, options) {
     ...options.xAxis.axisLabel.rich.label,
     fontSize: labelFontSize,
   };
-
-  if (div_id === "scenarios-chart") {
-    options.yAxis = {
-      ...options.yAxis,
-      min: 0,
-      max: value => Math.max(300, value.max),
-    };
-  }
 
   if (options.series && options.series[0]) {
     options.series[0].markLine = goalMarkLine;
@@ -252,6 +246,9 @@ function generate_main_chart(production, demand, targetLine=true) {
           formatter: "{value} GWh",
           backgroundColor: '#6a7985',
         }
+      },
+      max: function (value) {
+          return Math.max(value.max, goal2024);
       }
     },
     series: seriesList,
