@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from reenact.reenact import settings
 from . import postprocessing
 from django_oemof import models
 
@@ -18,7 +19,7 @@ def thousand_dot(value):
 
 def get_result_boxes_from_scenario_data(
     scenario_data: dict,
-) -> list[dict[str, str | float | int | bool | None]]:
+) -> dict[str, float | int | bool]:
     """
     Extracts and processes result boxes from the given scenario data.
 
@@ -33,24 +34,15 @@ def get_result_boxes_from_scenario_data(
         key for processing.
 
     Returns:
-    list[dict[str, str | float | int | bool | None]]
-        A list of dictionaries representing the processed boxes. Each dictionary contains
-        updated values for "value1", "value2", and "slider" fields, along with the other
-        existing fields in each box.
+    dict[str, float | int | bool]
+        A dictionary representing the processed boxes.
     """
     if "boxes" not in scenario_data:
-        return []
-
-    boxes = []
-    for box in scenario_data["boxes"]:
-        box["value1"] = thousand_dot(box["value1"])
-        box["value2"] = thousand_dot(box["value2"])
-        box["slider"] = set_slider(box["slider"])
-        boxes.append(box)
-    return boxes
+        return {}
+    return scenario_data["boxes"]
 
 
-def get_result_boxes_from_oemof_simulation(simulation_id: int) -> list[dict]:
+def get_result_boxes_from_oemof_simulation(simulation_id: int) -> dict:
     """
     Retrieves the result boxes from an oemof simulation based on the provided simulation ID.
 
@@ -64,7 +56,8 @@ def get_result_boxes_from_oemof_simulation(simulation_id: int) -> list[dict]:
         The unique ID for the specific simulation to fetch results for.
 
     Returns:
-    None
+    dict
+        Holding results for climate, CO2 emissions, cost, and revenue.
     """
     sim = models.Simulation.objects.get(id=simulation_id)
     inputs, outputs = sim.dataset.restore_results()
@@ -76,39 +69,24 @@ def get_result_boxes_from_oemof_simulation(simulation_id: int) -> list[dict]:
     el_rev = postprocessing.el_revenue(inputs, outputs)
     hy_rev = postprocessing.hy_revenue(inputs, outputs)
 
-    boxes = [
-        {
-            "title": "KLIMAZIELE",
-            "value1": thousand_dot(prod_goal_achieved),
-            "unit1": "%",
-            "subtitle1": "Energieproduktion",
-            "info_hover1": "Hier steht Info über Energieproduktion",
-            "value2": f"{round(co2_amount, 0)} t / {round(co2_cost / 1e6, 2)} Mio. €",
-            "unit2": "",
-            "subtitle2": "CO₂ Emissionen / -kosten",
-            "info_hover2": "Infos",
+    boxes = {
+        "climate": {
+            "percentage": thousand_dot(prod_goal_achieved),
+            "total": settings.SCENARIO_GOAL,
+            "fulfilled": prod_goal_achieved != 100.0,  # noqa: PLR2004
         },
-        {
-            "title": "KOSTEN",
-            "value1": thousand_dot(kwh_cost),
-            "unit1": "ct/kWh",
-            "subtitle1": "Erzeugungspreis",
-            "info_hover1": "Hier steht Info über Erzeugungspreis",
-            "value2": f"{round(inv_cost, 2)}",
-            "unit2": "€",
-            "subtitle2": "Investitionsbedarf",
-            "info_hover2": "Infos Investitionsbedarf",
+        "co2": {
+            "emissions": round(co2_amount, 0),
+            "cost": round(co2_cost / 1e6, 2),
+            "fulfilled": co2_amount != 0,
         },
-        {
-            "title": "ERLÖSE",
-            "value1": thousand_dot(el_rev),
-            "unit1": "€",
-            "subtitle1": "Stromexport",
-            "info_hover1": "Hier steht Info über Stromexport",
-            "value2": f"{thousand_dot(hy_rev)}",
-            "unit2": "€",
-            "subtitle2": "H₂-Export",
-            "info_hover2": "Infos Wasserstoffexport",
+        "cost": {
+            "production": thousand_dot(kwh_cost),
+            "invest": round(inv_cost, 2),
         },
-    ]
+        "revenue": {
+            "power": thousand_dot(el_rev),
+            "hydrogen": thousand_dot(hy_rev),
+        },
+    }
     return boxes

@@ -15,18 +15,23 @@
     "PV - Dachanlagen": {"percentage": 1.04, "area": 0.0078},
     "PV - Agri": {"percentage": 0.0, "area": 0.0}
   },
-  "boxes": [
-    {
-      "title": "CO2e",
-      "value1": 76105,
-      "unit1": "Tonnen",
-      "subtitle1": "Ausstoß",
-      "info_hover1": "Hier steht Info über Ausstoß",
-      "value2": 3.42,
-      "unit2": "Mio. €",
-      "subtitle2": "Kosten",
-      "info_hover2": "Hier steht Info über Kosten",
-      "slider": 0
+  "boxes": {
+    "climate": {
+      "percentage": 78,
+      "fulfilled": false
+    },
+    "co2": {
+      "emissions": 48.6,
+      "cost": 5.3,
+      "fulfilled": true
+    },
+    "cost": {
+      "production": 130000,
+      "invest": 2500000
+    },
+    "revenue": {
+      "power": 5400,
+      "hydrogen": 3000
     }
-  ]
+  }
 }
