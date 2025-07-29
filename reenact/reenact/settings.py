@@ -76,7 +76,7 @@ SLIDER_MARKS = {
     category: [
         [item, SLIDER_DATA[item]["mark"]]
         for item in items
-        if SLIDER_DATA[item].get("mark", None)
+        if SLIDER_DATA[item].get("mark", None) is not None
     ]
     for category, items in CATEGORIES.items()
 }

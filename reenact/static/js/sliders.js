@@ -116,7 +116,7 @@ function convertToPercent(num, min, max) {
 function addMark(data, category, markValue) {
   let percent = convertToPercent(markValue, data.min, data.max);
   // Fix percentage due to offset
-  percent = percent - 2.5 - (3.5 * percent) / 100;
+  percent = percent - (3.5 * percent) / 100;
   const html = `<span class="showcase__mark_${category}" style="left: ${percent}%"></span>`;
   data.slider.append(html);
 }
