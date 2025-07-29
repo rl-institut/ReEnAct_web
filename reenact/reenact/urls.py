@@ -16,11 +16,15 @@ urlpatterns = [
         TemplateView.as_view(template_name="reenact/dsgvo.html"),
         name="dsgvo",
     ),
-    path("faq/", TemplateView.as_view(template_name="reenact/faq.html"), name="faq"),
     path(
-        "glossary/",
-        TemplateView.as_view(template_name="reenact/glossary.html"),
-        name="glossary",
+        "background/",
+        TemplateView.as_view(template_name="reenact/background.html"),
+        name="background",
+    ),
+    path(
+        "data/",
+        TemplateView.as_view(template_name="reenact/data.html"),
+        name="data",
     ),
     path(  # legal
         "impressum/",
