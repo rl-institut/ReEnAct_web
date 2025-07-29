@@ -4,7 +4,7 @@
     "min": 0,
     "max": 259,
     "step": 10,
-    "initial": 40.72,
+    "initial": 93.29,
     "unit": "MW",
     "category": "production",
     "mark": 41,
@@ -25,7 +25,7 @@
     "min": 0,
     "max": 2546,
     "step": 10,
-    "initial": 11.8,
+    "initial": 12.03,
     "unit": "MWp",
     "category": "production",
     "mark": 12
@@ -45,7 +45,7 @@
     "min": 0,
     "max": 59,
     "step": 10,
-    "initial": 0.62,
+    "initial": 2.51,
     "unit": "MWp",
     "category": "production",
     "mark": 1
@@ -95,7 +95,7 @@
     "min": 0,
     "max": 10000.0,
     "step": 10,
-    "initial": 0.38,
+    "initial": 0,
     "unit": "MWh",
     "category": "demand",
     "mark": 0
@@ -105,7 +105,7 @@
     "min": 10,
     "max": 30,
     "step": 5,
-    "initial": 16,
+    "initial": 15.84,
     "unit": "GWh",
     "category": "demand",
     "mark": 16
@@ -115,7 +115,7 @@
     "min": 0,
     "max": 100,
     "step": 1,
-    "initial": 90,
+    "initial": 7.65,
     "unit": "%",
     "category": "demand",
     "mark": 90
@@ -125,7 +125,7 @@
     "min": 15,
     "max": 70,
     "step": 5,
-    "initial": 37.3,
+    "initial": 37.34,
     "unit": "GWh",
     "category": "demand",
     "mark": 37
