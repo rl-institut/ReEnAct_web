@@ -7,11 +7,11 @@
 {% endblock title %}
 {% block content %}
   <div class="flex justify-center">
-    <div class="container px-8 py-16">
-      <div class="max-w-5xl">
+    <div class="container px-8 py-16 flex gap-8">
+      <div class="max-w-5xl flex-1">
         <h1 class="text-slate-800 font-bold text-2xl pb-8">Daten</h1>
         <div class="py-4 border-b">
-          <h2 class="text-slate-800 font-bold pb-2">Stromimport und –export</h2>
+          <h2 id="stromimport" class="text-slate-800 font-bold pb-2">Stromimport und –export</h2>
           <p class="text-slate-500">
             Die Grundlage für sowohl die dynamischen Ex- als auch Import-Strompreise bietet eine Zeitreihe aus dem Projekt DEKADE-F-WAERME (Papadis, E. et. al. (2022). DEKADE-F-Wärme: Dekarbonisierung der Fernwärmeversorgung durch die Sektorenkopplung von Strom und Wärme und die Einbindung erneuerbarer Energien.) welche die Preise für das Jahr 2040 prognostiziert. Zur Verwendung als Import- respektive Export-Preiszeitreihe wurden bestimmte Anpassungen vorgenommen. Für den Import wurden negative Preise auf null Euro gesetzt; außerdem erfolgte darüber hinaus ein pauschaler Aufschlag von 36,35 €/MWh an Netzentgelt. Die Exportpreise wurden pauschal um 11,12 €/MWh erhöht, dies entspricht einem vorgeschlagenen Ansatz zur Refinanzierung von EE-Anlagen (Bundesministerium für Wirtschaft und Klimaschutz. (2024) Strommarktdesign der Zukunft. Optionen für ein sicheres, bezahlbares und nachhaltiges Stromsystem.). Die jeweiligen minimalen, maximalen sowie durchschnittlichen Strompreise der resultierenden Zeitreihen sind in der folgenden Tabelle dargestellt.
           </p>
@@ -64,11 +64,27 @@
              class="block text-blue-600 hover:underline">Quelle: Renewable Energy Integration in Urban Areas</a>
         </div>
         <div class="py-4 border-b">
-          <h2 class="text-slate-800 font-bold pb-2">Kosten und Erlöse</h2>
+          <h2 id="kosten" class="text-slate-800 font-bold pb-2">
+            Kosten und
+            Erlöse
+          </h2>
           <p class="text-slate-500">
             RLI – hier nicht die Kosten/ Erlöse der einzelnen Technologien (Wind, PV, etc.) sondern kurze Erklärung, wie die Gesamtwerte  entstehen/ berechnet werden (ESM und Postprocessing) Anmerkung MZ: was hier m. E. n. hingehört wären genau die Kosten der einzelnen Technologien (aus Datentabelle)
           </p>
         </div>
+      </div>
+      <div class="w-64 py-16 border-l pl-8">
+        <h3 class="text-slate-800 font-bold mb-4">Inhalt</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="#stromimport" class="text-blue-600 hover:underline">Stromimport
+            und –export</a>
+          </li>
+          <li>
+            <a href="#kosten" class="text-blue-600 hover:underline">Kosten und
+            Erlöse</a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
