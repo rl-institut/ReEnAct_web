@@ -7,6 +7,7 @@ from reenact.reenact.settings import (
     MYPLAN_OEMOF_SCENARIO,
     SLIDERS,
 )
+from reenact.reenact import hooks
 from django_oemof import simulation
 
 
@@ -38,7 +39,9 @@ def prerun_all_scenarios():
 
 def prerun_initial_myplan_scenario():
     logger.info("Run simulation for initial myplan scenario.")
-    parameters = {slider.name: {"capacity": slider.initial} for slider in SLIDERS}
+    parameters = {slider.name: slider.initial for slider in SLIDERS}
+    parameters = hooks.set_up_oemof_components_from_user_input("", parameters, None)
+
     simulation_id = simulation.simulate_scenario(
         scenario=MYPLAN_OEMOF_SCENARIO,
         parameters=parameters,
