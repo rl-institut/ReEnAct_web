@@ -6,6 +6,7 @@ import pyomo.environ as po
 from django.http import HttpRequest
 
 from .forms import CapacitiesForm
+from .settings import FULL_LOAD_HOURS
 from oemof.solph._plumbing import sequence
 
 
@@ -41,9 +42,11 @@ def set_up_oemof_components_from_user_input(
             "storage_capacity": capacities["battery"],
             "investment": None,
         },
-        "electricity": {"amount": capacities["electricity"]},
-        "heat": {"amount": capacities["heat"]},
-        "mobility": {"amount": capacities["mobility"]},
+        "electricity": {
+            "amount": capacities["electricity"] * FULL_LOAD_HOURS["electricity"],
+        },
+        "heat": {"amount": capacities["heat"] * FULL_LOAD_HOURS["heat"]},
+        "mobility": {"amount": capacities["mobility"] * FULL_LOAD_HOURS["mobility"]},
     }
     return parameters
 
