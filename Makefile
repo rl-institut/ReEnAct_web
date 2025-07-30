@@ -5,7 +5,7 @@ DJANGO_READ_DOT_ENV_FILE=True
 export
 
 run_simulations:
-	python manage.py shell -c "from scripts import data_processing as dp; dp.prerun_all_scenarios(); dp.prerun_initial_myplan_scenario()"
+	python manage.py shell -c "from scripts import data_processing as dp; dp.prerun_initial_myplan_scenario()"
 
 celery:
 	redis-server --port 6380 & celery -A config.celery_app worker -l INFO
