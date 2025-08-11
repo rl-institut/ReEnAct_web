@@ -1,14 +1,13 @@
-{"name": "NEU_BAU",
-"title": "Buisness as usual",
-"description": "...",
+{"name": "Kein Zubau",
+"title": "Kein Zubau",
+"description": "Die regionale Energieerzeugung bleibt unverändert, da aktuelle Erzeugungsanlagen nach Ablauf der Lebensdauer baugleich ersetzt werden. Der Energiebedarf der Region sinkt aufgrund einer vollständigen Elektrifizierung im Wärme- und Verkehrssektor.",
 "production": {
         "Wind": 103.80,
         "PV - Freiflächen": 13.75,
         "PV - Dachanlagen": 0.54,
         "PV - Moor": 0.0,
         "PV - Agri": 0.0,
-        "BHKW Paludi BM": 0.0,
-        "BHKW Nasswiesen BM": 0.0,
+        "Biomasse Moor": 0.0,
         "Sonstige Biomasse": 0.0
     },
     "demand": {"Strom": 15.84, "Wärme": 37.34, "Mobilität": 7.65},
@@ -26,7 +25,7 @@
       "co2": {
         "emissions": 70.036,
         "cost": 19.26,
-        "fulfilled": true
+        "fulfilled": false
       },
       "cost": {
         "production": 7.13,

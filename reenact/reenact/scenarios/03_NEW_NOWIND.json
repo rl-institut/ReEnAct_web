@@ -1,14 +1,13 @@
-{"name": "NEU_NOWIND",
-"title": "Beschränkung kein Wind",
-"description": "...",
+{"name": "Zubau ohne Wind",
+"title": "Zubau ohne Wind",
+"description": "Erneuerbare-Energien-Anlagen werden unter Verfolgung der Klimaziele bis zum Erzeugungsziel der Region von 401,1 GWh ausgebaut. Dabei werden aktuelle Photovoltaik-Anlagen nach Ablauf der Lebensdauer baugleich ersetzt. Vorhandene Windkraftanlagen werden nach Ablauf der Lebensdauer zurückgebaut und die Installation weiterer Windkraftanlagen ausgeschlossen. Der Energiebedarf der Region sinkt aufgrund einer vollständigen Elektrifizierung im Wärme- und Verkehrssektor.",
 "production": {
         "Wind": 0.0,
         "PV - Freiflächen": 399.23,
         "PV - Dachanlagen": 0.73,
         "PV - Moor": 0.0,
         "PV - Agri": 0.0,
-        "BHKW Paludi BM": 1.14,
-        "BHKW Nasswiesen BM": 0.0,
+        "Biomasse Moor": 1.14,
         "Sonstige Biomasse": 0.0
     },
     "demand": {"Strom": 15.84, "Wärme": 37.34, "Mobilität": 7.65},
