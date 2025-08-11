@@ -1,247 +1,246 @@
 {% if resultbox_id == "resultbox_status_quo" %}
-<div class="relative overflow-visible bg-white border-t-2 {% if results.climate.fulfilled and results.co2.fulfilled %}border-green-300{% else %}border-yellow-300{% endif %} rounded-md shadow-md p-4 min-w-[40%] 2xl:w-[50%]">
-  <div class="flex items-center justify-between mb-2">
-    <p class="text-slate-500 text-sm tracking-[0.0175rem] uppercase">Treibhausgas-Emissionen</p>
+  <div class="relative overflow-visible bg-white border-t-2 {% if results.climate.fulfilled and results.co2.fulfilled %}border-green-300{% else %}border-yellow-300{% endif %} rounded-md shadow-md p-4 min-w-[40%] 2xl:w-[50%]">
+    <div class="flex items-center justify-between mb-2">
+      <p class="text-slate-500 text-sm tracking-[0.0175rem] uppercase">Treibhausgas-Emissionen</p>
+    </div>
+    <div class="flex flex-col w-full justify-center gap-4">
+      <div class="flex flex-col">
+        <div class="flex items-center space-x-2">
+          <span class="flex items-center gap-1">
+            <span class="text-xl font-bold text-slate-800 tracking-tight">{{ results.co2.emissions }} t</span>
+          </span>
+        </div>
+        <p class="flex items-center gap-2 text-slate-500 text-sm">
+          <span>CO₂-Emissionen</span>
+          <span class="relative group">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke-width="1.5"
+                 stroke="currentColor"
+                 class="size-4 cursor-pointer">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+            </svg>
+            <span class="absolute left-7 top-1/2 -translate-y-1/2 mb-1 bg-slate-800 text-white text-xs normal-case px-3 py-1 w-[22rem] rounded shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-normal z-50">
+              Die CO₂-Emissionen werden in Tonnen pro Jahr gemessen und umfassen alle direkten und indirekten Emissionen.
+            </span>
+          </span>
+        </p>
+      </div>
+      <div class="flex flex-col">
+        <div class="flex items-center space-x-2">
+          <span class="flex items-center gap-1">
+            <span class="text-xl font-bold text-slate-800 tracking-tight">{{ results.co2.cost }} Mio. €</span>
+          </span>
+        </div>
+        <p class="flex items-center gap-2 text-slate-500 text-sm">
+          <span>CO₂-Kosten</span>
+          <span class="relative group">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke-width="1.5"
+                 stroke="currentColor"
+                 class="size-4 cursor-pointer">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+            </svg>
+            <span class="absolute left-7 bottom-full mb-1 bg-slate-800 text-white text-xs normal-case px-3 py-1 w-[22rem] rounded shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-normal z-50">
+              Die Kosten basieren auf dem aktuellen EU-Emissionshandelspreis von 82.5€ pro Tonne CO₂. Eine Reduktion um 55% bis 2030 ist das erklärte Ziel der Klimastrategie.
+            </span>
+          </span>
+        </p>
+      </div>
+    </div>
   </div>
-  <div class="flex flex-col w-full justify-center gap-4">
-    <div class="flex flex-col">
+{% else %}
+  <!-- Box 1: Klimaziele -->
+  <div class="relative overflow-visible flex-1 bg-white border-t-2 {% if results.climate.fulfilled and results.co2.fulfilled %}border-green-300{% else %}border-yellow-300{% endif %} rounded-md shadow-md p-4 min-w-[40%] 2xl:w-[40%]">
+    <div class="flex items-center justify-between mb-2">
+      <p class="text-slate-500 text-sm tracking-[0.0175rem]">KLIMAZIELE</p>
+      {% if results.climate.fulfilled and results.co2.fulfilled %}
+        <span class="bg-green-300 text-green-900 text-sm font-bold px-2 py-0.5 rounded tracking-[-0.0175rem]">Erreicht</span>
+      {% else %}
+        <span class="bg-yellow-300 text-yellow-900 text-sm font-bold px-2 py-0.5 rounded tracking-[-0.0175rem]">Nicht erreicht</span>
+      {% endif %}
+    </div>
+    <div class="mb-4">
       <div class="flex items-center space-x-2">
+        {% if results.climate.fulfilled %}
+          <span class="text-green-700">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke-width="1.5"
+                 stroke="currentColor"
+                 class="size-4">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+          </span>
+        {% else %}
+          <span class="text-red-600">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke-width="1.5"
+                 stroke="currentColor"
+                 class="size-4">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+          </span>
+        {% endif %}
         <span class="flex items-center gap-1">
-          <span class="text-xl font-bold text-slate-800 tracking-tight">{{ results.co2.emissions }} t</span>
+          <span class="text-xl font-bold text-slate-800 tracking-tight">{{ results.climate.percentage }} %</span>
+          <span class="text-sm font-normal text-slate-800">von {{ results.climate.total }} GWh</span>
         </span>
       </div>
-      <p class="flex items-center gap-2 text-slate-500 text-sm">
-        <span>CO₂-Emissionen</span>
+      <p class="flex items-center gap-2 text-slate-500 text-sm pl-6">
+        <span>Energieerzeugung</span>
         <span class="relative group">
           <svg xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="size-4 cursor-pointer">
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke-width="1.5"
+               stroke="currentColor"
+               class="size-4 cursor-pointer">
             <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
           </svg>
-          <span class="absolute left-7 top-1/2 -translate-y-1/2 mb-1 bg-slate-800 text-white text-xs normal-case px-3 py-1 w-[22rem] rounded shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-normal z-50">
-            Die CO₂-Emissionen werden in Tonnen pro Jahr gemessen und umfassen alle direkten und indirekten Emissionen.
+          <span class="absolute left-7 top-1/2 -translate-y-1/2 bg-slate-800 text-white text-xs normal-case px-3 py-1 w-[22rem] rounded shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-normal z-50">
+            Die Energieerzeugung zeigt den Anteil erneuerbarer Energien am Gesamtenergieverbrauch der Region. Dieser Wert wird monatlich aktualisiert und basiert auf Daten der lokalen Energieversorger. Das Ziel von 100% erneuerbarer Energie soll bis 2030 erreicht werden.
           </span>
         </span>
       </p>
     </div>
-    <div class="flex flex-col">
+    <div>
       <div class="flex items-center space-x-2">
+        {% if results.co2.fulfilled %}
+          <span class="text-green-700">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke-width="1.5"
+                 stroke="currentColor"
+                 class="size-4">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+          </span>
+        {% else %}
+          <span class="text-red-600">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke-width="1.5"
+                 stroke="currentColor"
+                 class="size-4">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+          </span>
+        {% endif %}
         <span class="flex items-center gap-1">
-          <span class="text-xl font-bold text-slate-800 tracking-tight">{{ results.co2.cost }} €</span>
+          <span class="text-xl font-bold text-slate-800 tracking-tight">{{ results.co2.emissions }} t</span>
+          <span class="text-sm font-bold text-slate-800">/</span>
+          <span class="text-xl font-bold text-slate-800 tracking-tight">{{ results.co2.cost }} Mio. €</span>
         </span>
       </div>
-      <p class="flex items-center gap-2 text-slate-500 text-sm">
-        <span>CO₂-Kosten</span>
+      <p class="flex items-center gap-2 text-slate-500 text-sm pl-6">
+        <span>CO₂-Emissionen / -Kosten</span>
         <span class="relative group">
           <svg xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="size-4 cursor-pointer">
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke-width="1.5"
+               stroke="currentColor"
+               class="size-4 cursor-pointer">
             <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
           </svg>
           <span class="absolute left-7 bottom-full mb-1 bg-slate-800 text-white text-xs normal-case px-3 py-1 w-[22rem] rounded shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-normal z-50">
-            Die Kosten basieren auf dem aktuellen EU-Emissionshandelspreis von 85€ pro Tonne CO₂. Eine Reduktion um 55% bis 2030 ist das erklärte Ziel der Klimastrategie.
+            Die CO₂-Emissionen werden in Tonnen pro Jahr gemessen und umfassen alle direkten und indirekten Emissionen. Die Kosten basieren auf dem aktuellen EU-Emissionshandelspreis von 275€ pro Tonne CO₂. Eine Reduktion um 55% bis 2030 ist das erklärte Ziel der Klimastrategie.
           </span>
         </span>
       </p>
     </div>
   </div>
-</div>
-
-{% else %}
-<!-- Box 1: Klimaziele -->
-<div class="relative overflow-visible flex-1 bg-white border-t-2 {% if results.climate.fulfilled and results.co2.fulfilled %}border-green-300{% else %}border-yellow-300{% endif %} rounded-md shadow-md p-4 min-w-[40%] 2xl:w-[40%]">
-  <div class="flex items-center justify-between mb-2">
-    <p class="text-slate-500 text-sm tracking-[0.0175rem]">KLIMAZIELE</p>
-    {% if results.climate.fulfilled and results.co2.fulfilled %}
-      <span class="bg-green-300 text-green-900 text-sm font-bold px-2 py-0.5 rounded tracking-[-0.0175rem]">Erreicht</span>
-    {% else %}
-      <span class="bg-yellow-300 text-yellow-900 text-sm font-bold px-2 py-0.5 rounded tracking-[-0.0175rem]">Nicht erreicht</span>
-    {% endif %}
-  </div>
-  <div class="mb-4">
-    <div class="flex items-center space-x-2">
-      {% if results.climate.fulfilled %}
-        <span class="text-green-700">
+  <!-- Box 2: Kosten -->
+  <div class="min-w-[180px] flex-shrink-0 bg-white border-t-2 rounded-md shadow-md p-4 2xl:w-[25%]">
+    <p class="text-slate-500 text-sm tracking-[0.0175rem] mb-4">KOSTEN</p>
+    <div class="mb-4">
+      <span class="text-xl font-bold text-slate-800 tracking-[-0.03rem]">{{ results.cost.production }} €/kWh</span>
+      <p class="flex items-center gap-2 text-slate-500 text-sm">
+        <span>Erzeugungspreis</span>
+        <span class="relative group">
           <svg xmlns="http://www.w3.org/2000/svg"
                fill="none"
                viewBox="0 0 24 24"
                stroke-width="1.5"
                stroke="currentColor"
-               class="size-4">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+               class="size-4 cursor-pointer">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
           </svg>
+          <span class="absolute right-7 top-1/2 -translate-y-1/2 bg-slate-800 text-white text-xs normal-case px-3 py-1 w-[22rem] rounded shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-normal z-50">
+            Die Energieerzeugung zeigt den Anteil erneuerbarer Energien am Gesamtenergieverbrauch der Region. Dieser Wert wird monatlich aktualisiert und basiert auf Daten der lokalen Energieversorger. Das Ziel von 100% erneuerbarer Energie soll bis 2030 erreicht werden.
+          </span>
         </span>
-      {% else %}
-        <span class="text-red-600">
-          <svg xmlns="http://www.w3.org/2000/svg"
-               fill="none"
-               viewBox="0 0 24 24"
-               stroke-width="1.5"
-               stroke="currentColor"
-               class="size-4">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-          </svg>
-        </span>
-      {% endif %}
-      <span class="flex items-center gap-1">
-        <span class="text-xl font-bold text-slate-800 tracking-tight">{{ results.climate.percentage }} %</span>
-        <span class="text-sm font-normal text-slate-800">von {{ results.climate.total }} GWh</span>
-      </span>
+      </p>
     </div>
-    <p class="flex items-center gap-2 text-slate-500 text-sm pl-6">
-      <span>Energieerzeugung</span>
-      <span class="relative group">
-        <svg xmlns="http://www.w3.org/2000/svg"
-             fill="none"
-             viewBox="0 0 24 24"
-             stroke-width="1.5"
-             stroke="currentColor"
-             class="size-4 cursor-pointer">
-          <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-        </svg>
-        <span class="absolute left-7 top-1/2 -translate-y-1/2 bg-slate-800 text-white text-xs normal-case px-3 py-1 w-[22rem] rounded shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-normal z-50">
-          Die Energieerzeugung zeigt den Anteil erneuerbarer Energien am Gesamtenergieverbrauch der Region. Dieser Wert wird monatlich aktualisiert und basiert auf Daten der lokalen Energieversorger. Das Ziel von 100% erneuerbarer Energie soll bis 2030 erreicht werden.
-        </span>
-      </span>
-    </p>
-  </div>
-  <div>
-    <div class="flex items-center space-x-2">
-      {% if results.co2.fulfilled %}
-        <span class="text-green-700">
+    <div>
+      <span class="text-xl font-bold text-slate-800 tracking-[-0.03rem]">{{ results.cost.invest }} Mio. €</span>
+      <p class="flex items-center gap-2 text-slate-500 text-sm">
+        <span>Investitionsbedarf</span>
+        <span class="relative group">
           <svg xmlns="http://www.w3.org/2000/svg"
                fill="none"
                viewBox="0 0 24 24"
                stroke-width="1.5"
                stroke="currentColor"
-               class="size-4">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+               class="size-4 cursor-pointer">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
           </svg>
+          <span class="absolute right-7 bottom-full mb-1 bg-slate-800 text-white text-xs normal-case px-3 py-1 w-[22rem] rounded shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-normal z-50">
+            Die CO₂-Emissionen werden in Tonnen pro Jahr gemessen und umfassen alle direkten und indirekten Emissionen. Die Kosten basieren auf dem aktuellen EU-Emissionshandelspreis von 85€ pro Tonne CO₂. Eine Reduktion um 55% bis 2030 ist das erklärte Ziel der Klimastrategie.
+          </span>
         </span>
-      {% else %}
-        <span class="text-red-600">
-          <svg xmlns="http://www.w3.org/2000/svg"
-               fill="none"
-               viewBox="0 0 24 24"
-               stroke-width="1.5"
-               stroke="currentColor"
-               class="size-4">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-          </svg>
-        </span>
-      {% endif %}
-      <span class="flex items-center gap-1">
-        <span class="text-xl font-bold text-slate-800 tracking-tight">{{ results.co2.emissions }} t</span>
-        <span class="text-sm font-bold text-slate-800">/</span>
-        <span class="text-xl font-bold text-slate-800 tracking-tight">{{ results.co2.cost }} €</span>
-      </span>
+      </p>
     </div>
-    <p class="flex items-center gap-2 text-slate-500 text-sm pl-6">
-      <span>CO₂-Emissionen / -Kosten</span>
-      <span class="relative group">
-        <svg xmlns="http://www.w3.org/2000/svg"
-             fill="none"
-             viewBox="0 0 24 24"
-             stroke-width="1.5"
-             stroke="currentColor"
-             class="size-4 cursor-pointer">
-          <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-        </svg>
-        <span class="absolute left-7 bottom-full mb-1 bg-slate-800 text-white text-xs normal-case px-3 py-1 w-[22rem] rounded shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-normal z-50">
-          Die CO₂-Emissionen werden in Tonnen pro Jahr gemessen und umfassen alle direkten und indirekten Emissionen. Die Kosten basieren auf dem aktuellen EU-Emissionshandelspreis von 85€ pro Tonne CO₂. Eine Reduktion um 55% bis 2030 ist das erklärte Ziel der Klimastrategie.
-        </span>
-      </span>
-    </p>
   </div>
-</div>
-<!-- Box 2: Kosten -->
-<div class="min-w-[180px] flex-shrink-0 bg-white border-t-2 rounded-md shadow-md p-4 2xl:w-[25%]">
-  <p class="text-slate-500 text-sm tracking-[0.0175rem] mb-4">KOSTEN</p>
-  <div class="mb-4">
-    <span class="text-xl font-bold text-slate-800 tracking-[-0.03rem]">{{ results.cost.production }} €/kWh</span>
-    <p class="flex items-center gap-2 text-slate-500 text-sm">
-      <span>Erzeugungspreis</span>
-      <span class="relative group">
-        <svg xmlns="http://www.w3.org/2000/svg"
-             fill="none"
-             viewBox="0 0 24 24"
-             stroke-width="1.5"
-             stroke="currentColor"
-             class="size-4 cursor-pointer">
-          <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-        </svg>
-        <span class="absolute right-7 top-1/2 -translate-y-1/2 bg-slate-800 text-white text-xs normal-case px-3 py-1 w-[22rem] rounded shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-normal z-50">
-          Die Energieerzeugung zeigt den Anteil erneuerbarer Energien am Gesamtenergieverbrauch der Region. Dieser Wert wird monatlich aktualisiert und basiert auf Daten der lokalen Energieversorger. Das Ziel von 100% erneuerbarer Energie soll bis 2030 erreicht werden.
+  <!-- Box 3: Erlöse -->
+  <div class="min-w-[180px] flex-shrink-0 bg-white border-t-2 rounded-md shadow-md p-4 2xl:w-[25%]">
+    <p class="text-slate-500 text-sm tracking-[0.0175rem] mb-4">ERLÖSE</p>
+    <div class="mb-4">
+      <span class="text-xl font-bold text-slate-800 tracking-[-0.03rem]">{{ results.revenue.power }} Mio. €</span>
+      <p class="flex items-center gap-2 text-slate-500 text-sm">
+        <span>Stromexport</span>
+        <span class="relative group">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke-width="1.5"
+               stroke="currentColor"
+               class="size-4 cursor-pointer">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+          </svg>
+          <span class="absolute right-7 top-1/2 -translate-y-1/2 bg-slate-800 text-white text-xs normal-case px-3 py-1 w-[22rem] rounded shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-normal z-50">
+            Die Energieerzeugung zeigt den Anteil erneuerbarer Energien am Gesamtenergieverbrauch der Region. Dieser Wert wird monatlich aktualisiert und basiert auf Daten der lokalen Energieversorger. Das Ziel von 100% erneuerbarer Energie soll bis 2030 erreicht werden.
+          </span>
         </span>
-      </span>
-    </p>
-  </div>
-  <div>
-    <span class="text-xl font-bold text-slate-800 tracking-[-0.03rem]">{{ results.cost.invest }} €</span>
-    <p class="flex items-center gap-2 text-slate-500 text-sm">
-      <span>Investitionsbedarf</span>
-      <span class="relative group">
-        <svg xmlns="http://www.w3.org/2000/svg"
-             fill="none"
-             viewBox="0 0 24 24"
-             stroke-width="1.5"
-             stroke="currentColor"
-             class="size-4 cursor-pointer">
-          <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-        </svg>
-        <span class="absolute right-7 bottom-full mb-1 bg-slate-800 text-white text-xs normal-case px-3 py-1 w-[22rem] rounded shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-normal z-50">
-          Die CO₂-Emissionen werden in Tonnen pro Jahr gemessen und umfassen alle direkten und indirekten Emissionen. Die Kosten basieren auf dem aktuellen EU-Emissionshandelspreis von 85€ pro Tonne CO₂. Eine Reduktion um 55% bis 2030 ist das erklärte Ziel der Klimastrategie.
+      </p>
+    </div>
+    <div>
+      <span class="text-xl font-bold text-slate-800 tracking-[-0.03rem]">{{ results.revenue.hydrogen }} Mio. €</span>
+      <p class="flex items-center gap-2 text-slate-500 text-sm">
+        <span>H₂-Export</span>
+        <span class="relative group">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke-width="1.5"
+               stroke="currentColor"
+               class="size-4 cursor-pointer">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+          </svg>
+          <span class="absolute right-7 bottom-full mb-1 bg-slate-800 text-white text-xs normal-case px-3 py-1 w-[22rem] rounded shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-normal z-50">
+            Die CO₂-Emissionen werden in Tonnen pro Jahr gemessen und umfassen alle direkten und indirekten Emissionen. Die Kosten basieren auf dem aktuellen EU-Emissionshandelspreis von € pro Tonne CO₂. Eine Reduktion um 55% bis 2030 ist das erklärte Ziel der Klimastrategie.
+          </span>
         </span>
-      </span>
-    </p>
+      </p>
+    </div>
   </div>
-</div>
-<!-- Box 3: Erlöse -->
-<div class="min-w-[180px] flex-shrink-0 bg-white border-t-2 rounded-md shadow-md p-4 2xl:w-[25%]">
-  <p class="text-slate-500 text-sm tracking-[0.0175rem] mb-4">ERLÖSE</p>
-  <div class="mb-4">
-    <span class="text-xl font-bold text-slate-800 tracking-[-0.03rem]">{{ results.revenue.power }} €</span>
-    <p class="flex items-center gap-2 text-slate-500 text-sm">
-      <span>Stromexport</span>
-      <span class="relative group">
-        <svg xmlns="http://www.w3.org/2000/svg"
-             fill="none"
-             viewBox="0 0 24 24"
-             stroke-width="1.5"
-             stroke="currentColor"
-             class="size-4 cursor-pointer">
-          <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-        </svg>
-        <span class="absolute right-7 top-1/2 -translate-y-1/2 bg-slate-800 text-white text-xs normal-case px-3 py-1 w-[22rem] rounded shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-normal z-50">
-          Die Energieerzeugung zeigt den Anteil erneuerbarer Energien am Gesamtenergieverbrauch der Region. Dieser Wert wird monatlich aktualisiert und basiert auf Daten der lokalen Energieversorger. Das Ziel von 100% erneuerbarer Energie soll bis 2030 erreicht werden.
-        </span>
-      </span>
-    </p>
-  </div>
-  <div>
-    <span class="text-xl font-bold text-slate-800 tracking-[-0.03rem]">{{ results.revenue.hydrogen }} €</span>
-    <p class="flex items-center gap-2 text-slate-500 text-sm">
-      <span>H₂-Export</span>
-      <span class="relative group">
-        <svg xmlns="http://www.w3.org/2000/svg"
-             fill="none"
-             viewBox="0 0 24 24"
-             stroke-width="1.5"
-             stroke="currentColor"
-             class="size-4 cursor-pointer">
-          <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-        </svg>
-        <span class="absolute right-7 bottom-full mb-1 bg-slate-800 text-white text-xs normal-case px-3 py-1 w-[22rem] rounded shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-normal z-50">
-          Die CO₂-Emissionen werden in Tonnen pro Jahr gemessen und umfassen alle direkten und indirekten Emissionen. Die Kosten basieren auf dem aktuellen EU-Emissionshandelspreis von 85€ pro Tonne CO₂. Eine Reduktion um 55% bis 2030 ist das erklärte Ziel der Klimastrategie.
-        </span>
-      </span>
-    </p>
-  </div>
-</div>
 {% endif %}
