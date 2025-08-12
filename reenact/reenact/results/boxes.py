@@ -73,12 +73,12 @@ def get_result_boxes_from_oemof_simulation(simulation_id: int) -> dict:
         "climate": {
             "percentage": thousand_dot(prod_goal_achieved),
             "total": settings.SCENARIO_GOAL,
-            "fulfilled": prod_goal_achieved != 100.0,  # noqa: PLR2004
+            "fulfilled": prod_goal_achieved >= 100.0,  # noqa: PLR2004
         },
         "co2": {
             "emissions": round(co2_amount, 0),
             "cost": round(co2_cost / 1e6, 2),
-            "fulfilled": co2_amount != 0,
+            "fulfilled": co2_amount == 0,
         },
         "cost": {
             "production": thousand_dot(kwh_cost),
