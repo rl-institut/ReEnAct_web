@@ -22,7 +22,7 @@ const goalMarkLine = {
     type: 'dashed'
   },
   label: {
-    formatter: 'Ziel Deutschland (Flächenanteil): {c} GWh',
+    formatter: 'Erzeugungsziel: {c} GWh',
     position: 'middle'
   }
 };
