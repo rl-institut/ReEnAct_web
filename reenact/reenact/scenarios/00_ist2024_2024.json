@@ -18,6 +18,7 @@
   "boxes": {
     "climate": {
       "percentage": 78,
+      "total": 401.1,
       "fulfilled": false
     },
     "co2": {
