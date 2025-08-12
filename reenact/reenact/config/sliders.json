@@ -8,7 +8,7 @@
     "unit": "MW",
     "category": "production",
     "mark": 41,
-    "info": "Das Potential ist abhängig vom Abstand der Windenergieanlagen zur Wohnbebauung.<br>Bei 1000m (800m) Abstand beträgt das Potential 50.72 MW, bei 600m 174.72 MW und 400m 258.72 MW."
+    "info": "Das Potential ist abhängig vom Abstand der Windenergieanlagen zur Wohnbebauung. Bei 1000m und 800m Abstand beträgt das Potential 50.72 MW, bei 600m 174.72 MW und 400m 258.72 MW."
   },
   "marsh": {
     "label": "Wiedervernässung Moore",
