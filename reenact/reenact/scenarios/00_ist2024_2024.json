@@ -23,7 +23,7 @@
     "co2": {
       "emissions": 79288,
       "cost": 6.54,
-      "fulfilled": true
+      "fulfilled": false
     },
     "cost": {
       "production": 130000,
