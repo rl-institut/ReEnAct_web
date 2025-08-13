@@ -9,11 +9,11 @@
   <div class="flex justify-center">
     <div class="container px-8 py-16 flex gap-8">
       <div class="max-w-5xl flex-1">
-        <h1 class="text-slate-800 font-bold text-2xl pb-8">Energiebedarf</h1>
+        <h1 id="demand" class="text-slate-800 font-bold text-2xl pb-8">Energiebedarf</h1>
         <div class="py-4 border-b">
-          <h2 id="stromimport" class="text-slate-800 font-bold pb-2">Strom</h2>
+          <h2 id="demand-electricity" class="text-slate-800 font-bold pb-2">Strom</h2>
           <p class="text-slate-500 pb-1">
-            Für die Gemeinden des Amtsbereichs Peenetal/Loitz wurden  Verbrauchsdaten für das Jahr 2021 vom Netzbetreiber E.DIS als Basis genutzt. Daraus ergibt sich ein jährlicher Stromverbrauch von 15-16 Gigawattstunden (GWh). Dieser Wert beschreibt den Strombedarf aller Haushalte in der Region.
+            Für die Gemeinden des Amtsbereichs Peenetal/Loitz wurden Verbrauchsdaten für das Jahr 2021 vom Netzbetreiber E.DIS als Basis genutzt. Daraus ergibt sich ein jährlicher Stromverbrauch von 15-16 Gigawattstunden (GWh). Dieser Wert beschreibt den Strombedarf aller Haushalte in der Region.
           </p>
           <p class="text-slate-500 pb-1">
             Diese Verbrauchswerte wurden mit den Daten für ganz Mecklenburg-Vorpommern verglichen. In diesen Daten stecken zusätzlich:
@@ -43,19 +43,139 @@
           </ul>
           <p class="text-slate-500 pb-1">Damit wächst der Strombedarf deutlich über den heutigen Wert hinaus.</p>
         </div>
-        <div class="py-4">
+        <div class="py-4 border-b">
           <h2 id="demand-heat" class="text-slate-800 font-bold pb-2">Wärme</h2>
+          <p class="text-slate-500 pb-1">
+            Die Grundlage zur Ermittlung des zukünftigen Wärmebedarfs in der Region bildeten die Daten zu Gebäudebestand, -fläche und -höhe für die Gemeinden Loitz, Sassen-Trantow und Görmin. Zusätzlich wurden vorhandene Jahresverbrauchsdaten ausgewertet und mit simulierten Wärmeprofilen abgeglichen:
+          </p>
+          <ul class="list-disc list-inside text-slate-500 pb-1">
+            <li>
+              Für alle 4.092 Gebäude wurde der Wäremebedarf auf Basis der Gebäudefläche, Nutzungshöhe und typischer Heizperioden (6 Monate) berechnet.
+            </li>
+            <li>
+              Auf dieser Basis wurde ein typisches Wärmelastprofil simuliert, das den stündlichen Wärmebedarf im Jahresverlauf abbildet.
+            </li>
+            <li>
+              Die Verteilung des Wärmebedarfs nach Gemeinden und Energieträgern wurde ebenfalls erfasst. Dabei stammen große Anteile aktuell aus Gas und Öl, die hohe Treibhausgas-Emissionen verursachen.
+            </li>
+          </ul>
+          <p class="text-slate-500 pb-1">
+            Auf Basis der beschriebenen Methodik, der Gebäudedaten und der aktuellen Verbrauchswerte wurden für 2024 und 2045 die folgenden Werte für den jährlichen Wärmebedarf (thermische Energie) im Amtsbereich Peenetal/Loitz ermittelt:
+          </p>
+          <ul class="list-disc list-inside text-slate-500 pb-1">
+            <li>2024: 143.625 MWh</li>
+            <li>2045: 143.625 MWh</li>
+          </ul>
+          <p class="text-slate-500 pb-1">
+            Aufgrund erwarteter Effizienzsteigerungen wird angenommen, dass der Gesamtwärmebedarf trotz Bevölkerungs- und Strukturänderungen bis 2045 konstant bleibt. Der Energieträgermix ändert sich jedoch deutlich.
+            Langfristig wird ein wachsender Anteil des Wärmebedarfs durch Wärmepumpen gedeckt werden. Dafür wird zusätzliche elektrische Energie benötigt, die einen erheblichen Teil der heutigen fossilen Wärmeerzeugung ersetzt. Für die Jahre 2024 und 2045 wurden die folgenden Bedarfe an elektrischer Energie für die Wärmepumpen ermittelt:
+          </p>
+          <ul class="list-disc list-inside text-slate-500 pb-1">
+            <li>2024: 37.343 MWh</li>
+            <li>2045: 37.343 MWh</li>
+          </ul>
         </div>
-        <h1 class="text-slate-800 font-bold text-2xl pb-8">Energieerzeugung</h1>
+        <div class="py-4">
+          <h2 id="demand-mobility" class="text-slate-800 font-bold pb-2">Mobilität</h2>
+          <p class="text-slate-500 pb-1">
+            Abschätzung des Energiebedarfs für Mobilität in Loitz:
+            Um zu berechnen, wie viel Energie die Menschen in der Region Peenetal/Loitz für ihre Mobilität benötigen, wurde wie folgt vorgegangen:
+          </p>
+        </div>
+        <ul class="list-disc list-inside text-slate-500 pb-1">
+          <li>
+            <b>Ermittlung der Anzahl der Fahrzeuge:</b> Aus den Zulassungszahlen geht hervor, dass es in der Region etwa 5.500 Fahrzeuge gibt.
+          </li>
+          <li>
+            <b>Gefahrene Kilometer pro Jahr:</b> Studien zeigen, dass ein Auto in Deutschland im Durchschnitt etwa 13.600 km pro Jahr fährt – das entspricht ungefähr 30 km pro Tag.
+          </li>
+          <li>
+            <b>Bisheriger Kraftstoffverbrauch und Treibhausgas (THG)-Emissionen:</b> Mit den Zulassungsdaten (Benzin, Diesel, Hybrid, Elektro) und den durchschnittlichen Emissionen in CO₂-Äquivalenten (CO₂e) pro Kilometer (z. B. 231 g CO₂e/km für Diesel, CO₂e/km für Benzin) wurde der heutige jährliche Ausstoß an THGs berechnet. Für Loitz ergeben sich daraus rund 17.684 t CO₂e pro Jahr.
+          </li>
+          <li>
+            <b>Umrechnung in Energiebedarf:</b> Aus den gefahrenen Kilometern und dem Kraftstoffverbrauch lässt sich auch der gesamte Energieverbrauch des Verkehrssektors im Amtsbereich Peenetal/Loitz ableiten. Für 2024 ergibt sich ein Gesamtenergiebedarf von ca. 48.280 MWh pro Jahr.
+          </li>
+          <li>
+            <b>Blick in die Zukunft (2045):</b> In Zukunft werden viele Fahrzeuge auf Elektroantrieb umgestellt. Bei einem angenommenen Elektrifizierungsgrad von 90 % im Jahr 2045 sinken die lokalen THG-Emissionen deutlich, und der Energieverbrauch wird effizienter. Für den elektrischen Verkehr im Jahr 2045 wird ein Bedarf von etwa 7.650 MWh/Jahr erwartet.
+          </li>
+        </ul>
+        <br />
+        <h1 id="production" class="text-slate-800 font-bold text-2xl pb-8">Energieerzeugung</h1>
         <div class="py-4 border-b">
           <h2 id="production-goal" class="text-slate-800 font-bold pb-2">Ziellinie</h2>
+          <p class="text-slate-500 pb-1"></p>
+        </div>
+        <div class="py-4 border-b">
+          <h2 id="production-wind" class="text-slate-800 font-bold pb-2">Windenergie</h2>
+          <p class="text-slate-500 pb-1"></p>
+        </div>
+        <div class="py-4 border-b">
+          <h2 id="production-ground" class="text-slate-800 font-bold pb-2">PV-Freiflächen</h2>
+          <p class="text-slate-500 pb-1"></p>
+        </div>
+        <div class="py-4 border-b">
+          <h2 id="production-roof" class="text-slate-800 font-bold pb-2">PV-Dachanlagen></h2>
+          <p class="text-slate-500 pb-1"></p>
+        </div>
+        <div class="py-4 border-b">
+          <h2 id="production-agri" class="text-slate-800 font-bold pb-2">PV-Agri</h2>
+          <p class="text-slate-500 pb-1"></p>
+        </div>
+        <div class="py-4">
+          <h2 id="production-marsh" class="text-slate-800 font-bold pb-2">PV-Moor</h2>
+          <p class="text-slate-500 pb-1"></p>
+        </div>
+        <br />
+        <h1 id="marsh" class="text-slate-800 font-bold text-2xl pb-8">Moornutzung</h1>
+        <div class="py-4 border-b">
+          <h2 id="marsh-biomass" class="text-slate-800 font-bold pb-2">Biomasse Moor</h2>
+          <p class="text-slate-500 pb-1"></p>
+        </div>
+        <div class="py-4">
+          <h2 id="marsh-emissions" class="text-slate-800 font-bold pb-2">Treibhausgase Moor</h2>
+          <p class="text-slate-500 pb-1"></p>
+        </div>
+        <br />
+        <h1 id="biomass" class="text-slate-800 font-bold text-2xl pb-8">Sonstige Biomasse</h1>
+        <br />
+        <h1 id="bioenergy" class="text-slate-800 font-bold text-2xl pb-8">Biogasanlage und BHKW</h1>
+        <br />
+        <h1 id="hydrogen" class="text-slate-800 font-bold text-2xl pb-8">Wasserstoff</h1>
+        <div class="py-4 border-b">
+          <h2 id="hydrogen-electrolysis" class="text-slate-800 font-bold pb-2">Wasserstofferzeugung - Elektrolyse</h2>
+          <p class="text-slate-500 pb-1"></p>
+        </div>
+        <div class="py-4 border-b">
+          <h2 id="hydrogen-storage" class="text-slate-800 font-bold pb-2">Wasserstoffspeicherung</h2>
+          <p class="text-slate-500 pb-1"></p>
+        </div>
+        <div class="py-4">
+          <h2 id="hydrogen-export" class="text-slate-800 font-bold pb-2">Wasserstoffexport</h2>
+          <p class="text-slate-500 pb-1"></p>
+        </div>
+        <br />
+        <h1 id="battery" class="text-slate-800 font-bold text-2xl pb-8">Batteriespeicher</h1>
+        <br />
+        <h1 id="trade" class="text-slate-800 font-bold text-2xl pb-8">Stromimport und -export</h1>
+        <br />
+        <h1 id="results" class="text-slate-800 font-bold text-2xl pb-8">Ergebnisse</h1>
+        <div class="py-4 border-b">
+          <h2 id="results-climate" class="text-slate-800 font-bold pb-2">Klimaziele</h2>
+          <p class="text-slate-500 pb-1"></p>
+        </div>
+        <div class="py-4 border-b">
+          <h2 id="results-emissions" class="text-slate-800 font-bold pb-2">Treibhausgas-Emissionen</h2>
+          <p class="text-slate-500 pb-1"></p>
+        </div>
+        <div class="py-4">
+          <h2 id="results-financial" class="text-slate-800 font-bold pb-2">Kosten und Erlöse</h2>
+          <p class="text-slate-500 pb-1"></p>
         </div>
         <div class="py-4 border-b"></div>
         <div class="py-4 border-b"></div>
         <div class="py-4 border-b"></div>
         <div class="py-4 border-b"></div>
-        <div class="py-4 border-b"></div>
-        <h1 class="text-slate-800 font-bold text-2xl pb-8">Daten</h1>
+        <h1 class="text-slate-800 font-bold text-2xl pb-8">Daten - Müll</h1>
         <div class="py-4 border-b">
           <h2 id="stromimport" class="text-slate-800 font-bold pb-2">Stromimport und –export</h2>
           <p class="text-slate-500">
@@ -123,12 +243,92 @@
         <h3 class="text-slate-800 font-bold mb-4">Inhalt</h3>
         <ul class="space-y-2">
           <li>
-            <a href="#stromimport" class="text-blue-600 hover:underline">Stromimport
-            und –export</a>
+            <a href="#demand" class="text-blue-600 hover:underline">Energiebedarf</a>
+            <ul class="space-y-2 pl-4">
+              <li>
+                <a href="#demand-electricity" class="text-blue-600 hover:underline">Strom</a>
+              </li>
+              <li>
+                <a href="#demand-heat" class="text-blue-600 hover:underline">Wärme</a>
+              </li>
+              <li>
+                <a href="#demand-mobility" class="text-blue-600 hover:underline">Mobilität</a>
+              </li>
+            </ul>
           </li>
           <li>
-            <a href="#kosten" class="text-blue-600 hover:underline">Kosten und
-            Erlöse</a>
+            <a href="#production" class="text-blue-600 hover:underline">Energieerzeugung</a>
+            <ul class="space-y-2 pl-4">
+              <li>
+                <a href="#production-goal" class="text-blue-600 hover:underline">Ziellinie</a>
+              </li>
+              <li>
+                <a href="#production-wind" class="text-blue-600 hover:underline">Windenergie</a>
+              </li>
+              <li>
+                <a href="#production-ground" class="text-blue-600 hover:underline">PV-Freiflächen</a>
+              </li>
+              <li>
+                <a href="#production-roof" class="text-blue-600 hover:underline">PV-Dachanlagen</a>
+              </li>
+              <li>
+                <a href="#production-agri" class="text-blue-600 hover:underline">PV-Agri</a>
+              </li>
+              <li>
+                <a href="#production-marsh" class="text-blue-600 hover:underline">PV-Moor</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#marsh" class="text-blue-600 hover:underline">Moornutzung</a>
+            <ul class="space-y-2 pl-4">
+              <li>
+                <a href="#marsh-biomass" class="text-blue-600 hover:underline">Biomasse Moor</a>
+              </li>
+              <li>
+                <a href="#marsh-emissions" class="text-blue-600 hover:underline">Treibhausgase Moor</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#biomass" class="text-blue-600 hover:underline">Sonstige Biomasse</a>
+          </li>
+          <li>
+            <a href="#bioenergy" class="text-blue-600 hover:underline">Biogasanlage und BHKW</a>
+          </li>
+          <li>
+            <a href="#hydrogen" class="text-blue-600 hover:underline">Wasserstoff</a>
+            <ul class="space-y-2 pl-4">
+              <li>
+                <a href="#hydrogen-electrolysis" class="text-blue-600 hover:underline">Wasserstofferzeugung - Elektrolyseur</a>
+              </li>
+              <li>
+                <a href="#hydrogen-storage" class="text-blue-600 hover:underline">Wasserstoffspeicherung</a>
+              </li>
+              <li>
+                <a href="#hydrogen-export" class="text-blue-600 hover:underline">Wasserstoffexport</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#battery" class="text-blue-600 hover:underline">Batteriespeicher</a>
+          </li>
+          <li>
+            <a href="#trade" class="text-blue-600 hover:underline">Stromimport und -export</a>
+          </li>
+          <li>
+            <a href="#results" class="text-blue-600 hover:underline">Ergebnisse</a>
+            <ul class="space-y-2 pl-4">
+              <li>
+                <a href="#results-climate" class="text-blue-600 hover:underline">Klimaziele</a>
+              </li>
+              <li>
+                <a href="#results-emissions" class="text-blue-600 hover:underline">Treibhausgas-Emissionen</a>
+              </li>
+              <li>
+                <a href="#results-financial" class="text-blue-600 hover:underline">Kosten und Erlöse</a>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
