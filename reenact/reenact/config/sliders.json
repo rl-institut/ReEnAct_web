@@ -18,7 +18,8 @@
     "initial": 0,
     "unit": "km²",
     "category": "production",
-    "mark": 0
+    "mark": 0,
+    "info": "Durch die Wiedervernässung von Mooren können Treibhausgas-Emissionen reduziert werden. Der Grad der Wiedervernässung bestimmt außerdem das Potenzial für den Biomasse-Anbau und PV auf nassen Mooflächen."
   },
   "pv_ground": {
     "label": "PV - Freiflächen",
@@ -38,7 +39,8 @@
     "initial": 0,
     "unit": "MWp",
     "category": "production",
-    "mark": 0
+    "mark": 0,
+    "info": "Kann nur auf wiedervernässten Moorflächen installiert werden. Moor-PV steht dabei in Flächenkonkurrenz zur Biomassenutzung auf nassen Mooren."
   },
   "pv_roof": {
     "label": "PV - Dachanlagen",
@@ -68,7 +70,8 @@
     "initial": 0,
     "unit": "t",
     "category": "production",
-    "mark": 0
+    "mark": 0,
+    "info": "Nasswiesennutzung und Paludikultur kann nur auf wiedervernässten Moorflächen erfolgen. Die Biomassenutzung auf nassen Mooren steht in Flächenkonkurrenz mit Moor-PV."
   },
   "other_biomass": {
     "label": "Sonstige Biomasse",
