@@ -133,7 +133,57 @@
           <p class="text-slate-500 pb-1">
             Der Energieplaner zeigt das Windenergiepotenzial der Region in Abhängigkeit vom Abstand der Windräder zur nächsten Wohnbebauung (Szenarien: 1.000 m, 800 m, 400 m). Dabei gilt: Je kleiner der Abstand, desto mehr Fläche steht zur Verfügung – und desto mehr Energie kann erzeugt werden. Die ermittelten Erzeugungspotenziale je Abstandsszenario sind in folgender Tabelle dargestellt:
           </p>
-          <p class="text-slate-500 pb-1">Tabelle</p>
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200 mt-4">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th scope="col"
+                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Szenario
+                  </th>
+                  <th scope="col"
+                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Flächenbedarf
+                  </th>
+                  <th scope="col"
+                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Anzahl Windkraftanlagen
+                  </th>
+                  <th scope="col"
+                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Kapazität / installierte Leistung
+                  </th>
+                  <th scope="col"
+                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Energieerzeugungs-potenzial
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1000m Abstand</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0,1  Km²</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">3</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">12 MWp</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">35,7 GWh /a</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">800m Abstand</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0,1  Km²</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">3</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">12 MWp</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">35,7 GWh /a</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">400m Abstand</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">22,0 Km²</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">55</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">220,0 MWp</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">655,2 GWh /a</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <p class="text-slate-500 pb-1">
             Theoretische Maximalwerte können mit 400m Abständen von Windkraftanlagen zu Gebäuden erreicht werden, da mehr Fläche zur Verfügung steht. Die würde eine Anpassung der Abstandsregeln erfordern.
           </p>
@@ -199,7 +249,50 @@
           <p class="text-slate-500 pb-1">
             In untenstehender Tabelle ist die Berechnung der Erzeugungspotenziale für beispielhafte Flächennutzungen dargestellt:
           </p>
-          <p class="text-slate-500 pb-1">Tabelle</p>
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200 mt-4">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th scope="col"
+                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Szenario (Flächenbedarf)
+                  </th>
+                  <th scope="col"
+                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    verfügbare Fläche
+                  </th>
+                  <th scope="col"
+                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Kapazität / installierte Leistung
+                  </th>
+                  <th scope="col"
+                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Energieerzeugungs-potenzial
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">20%</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">12,1  Km²</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1.543 MWp</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1.640 GWh /a</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">50%</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">30,3 Km²</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">3.863 MWp</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">5.739  GWh/a</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">100%</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">60,7 Km²</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">7.739 MWp</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">8.198  GWh/a</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <p class="text-slate-500 pb-1">
             Die wirtschaftliche Bewertung erfolgt auf Grundlage der Stromgestehungskosten. Diese geben an, wie viel es im Durchschnitt kostet, eine Kilowattstunde Solarstrom über die gesamte Lebensdauer der Anlage zu erzeugen.
           </p>
@@ -257,7 +350,50 @@
           <p class="text-slate-500 pb-1">
             In untenstehender Tabelle ist die Berechnung der Erzeugungspotenziale für beispielhafte Flächennutzungen dargestellt.
           </p>
-          <p class="text-slate-500 pb-1">Tabelle</p>
+          <table class="min-w-full divide-y divide-gray-200 mt-4">
+            <tbody class="bg-white divide-y divide-gray-200">
+              <!-- Row 1 -->
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"></td>
+                <td colspan="6" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Dachflächenpotential</td>
+              </tr>
+              <!-- Row 2 -->
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Verfügbare Gesamtfläche</td>
+                <td colspan="6" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0,68 km²</td>
+              </tr>
+              <!-- Row 3 -->
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Nutzungsgrad der Fläche in %</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10%</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">20%</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">30%</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">50%</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">70%</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">100%</td>
+              </tr>
+              <!-- Row 4 -->
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">genutzte Fläche</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0,1 km²</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0,1 km²</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0,2 km²</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0,3 km²</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0,5 km²</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0,68 km²</td>
+              </tr>
+              <!-- Row 5 -->
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Energieerzeugungs-potential</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">6.26  GWh/a</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">12.52  GWh/a</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">18.78  GWh/a</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">31.29  GWh/a</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">43.81  GWh/a</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">62.59  GWh/a</td>
+              </tr>
+            </tbody>
+          </table>
           <p class="text-slate-500 pb-1">
             Die wirtschaftliche Bewertung  erfolgt auf Grundlage der Stromgestehungskosten. Diese geben an, wie viel es im Durchschnitt kostet, eine Kilowattstunde Solarstrom über die gesamte Lebensdauer der Anlage zu erzeugen.
           </p>
@@ -412,8 +548,53 @@
             Auf nassen Mooren kann die Biomasse (siehe Abschnitt Moornutzung) geerntet und weiterverarbeitet und als Ersatz für fossile Bau- oder Dämmstoffe (z. B. Styropor, Mineralwolle) verwendet werden. Die bei der Weiterverarbeitung anfallenden biogenen Reststoffe können für die Energieerzeugung genutzt werden. Im Energieplaner wird angenommen, dass die geerntete Paludibiomasse vorrangig stofflich genutzt wird und etwa 20 % biogene Reststoffe anfallen, die für die Energieerzeugung genutzt werden können.
           </p>
           <p class="text-slate-500 pb-1">Moorfläche im Ibitzgraben unterteilt nach Paludikultur-Eignungsklassen</p>
-          <p class="text-slate-500 pb-1">Tabelle</p>
-          <p class="text-slate-500 pb-1">Karte</p>
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200 mt-4">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th scope="col"
+                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Paludikultur Eignungsklasse
+                  </th>
+                  <th scope="col"
+                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Fläche [ha]
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Klasse 1, Eignung ohne Prüfauflage</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">391</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Klasse 2, Eignung mit Prüfauflage</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">366</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Klasse 3, Eignung nur Nasswiese mit Prüfungsauflage</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">58</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Nicht-Eignung</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Moor ohne Feldblock</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">264</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Summe</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1080</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <br />
+          <img src="{% static 'images/map_ibitz.png' %}"
+               alt="Ibitzgraben-Moormächtigkeit" />
+          <a href="{% url 'reenact:sources' %}#source-1"
+             class="block text-blue-600 hover:underline">Karte des Ibitzgrabens mit aktualisierten Moormächtigkeiten</a>
         </div>
         <div class="py-4">
           <h2 id="marsh-emissions" class="text-slate-800 font-bold pb-2">Treibhausgase Moor</h2>
@@ -457,7 +638,72 @@
         <p class="text-slate-500 pb-1">
           Werden alle Quellen addiert, ergibt sich für Loitz ein jährliches Biomasse-Energiepotenzial von ca. 118 GWh pro Jahr. In untenstehender Tabelle ist die Berechnung der Biomassepotenziale für beispielhafte Biomassenutzungen dargestellt:
         </p>
-        <p class="text-slate-500 pb-1">Tabelle</p>
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200 mt-4">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Biomasse-Aufkommen
+                </th>
+                <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Landkreis Vorpommern-Greifswald
+                </th>
+                <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Amtsbereich Peenetal/Loitz
+                </th>
+                <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Feuchtigkeit [%]
+                </th>
+                <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  GCV (Brennwert)
+                </th>
+                <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Energieertrag
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Wäler, Gras, Mähwiesen</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">22.000 T_FM</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">726 T_FM</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">50 %</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">21 MJ/Kg</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2.1 GWh</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">landwirtschaftliche Flächen</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">119.500 T_FM</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10.095 T_FM</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">45 %</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">18 MJ/Kg</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">27.8 GWh</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Abfall</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">350.500 T_FM</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">23.367 T_FM</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10 %</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">15 MJ/Kg</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">87.6 GWh</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Haushalte</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">35.407 T_FM</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">131 T_DM</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0 %</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">15 MJ/Kg</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.5 GWh</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <br />
         <h1 id="bioenergy" class="text-slate-800 font-bold text-2xl pb-8">Biogasanlage und BHKW</h1>
         <p class="text-slate-500 pb-1">
@@ -522,43 +768,31 @@
         <h1 id="hydrogen" class="text-slate-800 font-bold text-2xl pb-8">Wasserstoff</h1>
         <div class="py-4 border-b">
           <h2 id="hydrogen-electrolysis" class="text-slate-800 font-bold pb-2">Wasserstofferzeugung - Elektrolyse</h2>
-          <p class="text-slate-500 pb-1"></p>
-        </div>
-        <div class="py-4 border-b">
-          <h2 id="hydrogen-storage" class="text-slate-800 font-bold pb-2">Wasserstoffspeicherung</h2>
-          <p class="text-slate-500 pb-1"></p>
-        </div>
-        <div class="py-4">
-          <h2 id="hydrogen-export" class="text-slate-800 font-bold pb-2">Wasserstoffexport</h2>
-          <p class="text-slate-500 pb-1"></p>
-        </div>
-        <br />
-        <h1 id="battery" class="text-slate-800 font-bold text-2xl pb-8">Batteriespeicher</h1>
-        <br />
-        <h1 id="trade" class="text-slate-800 font-bold text-2xl pb-8">Stromimport und -export</h1>
-        <br />
-        <h1 id="results" class="text-slate-800 font-bold text-2xl pb-8">Ergebnisse</h1>
-        <div class="py-4 border-b">
-          <h2 id="results-climate" class="text-slate-800 font-bold pb-2">Klimaziele</h2>
-          <p class="text-slate-500 pb-1"></p>
-        </div>
-        <div class="py-4 border-b">
-          <h2 id="results-emissions" class="text-slate-800 font-bold pb-2">Treibhausgas-Emissionen</h2>
-          <p class="text-slate-500 pb-1"></p>
-        </div>
-        <div class="py-4">
-          <h2 id="results-financial" class="text-slate-800 font-bold pb-2">Kosten und Erlöse</h2>
-          <p class="text-slate-500 pb-1"></p>
-        </div>
-        <div class="py-4 border-b"></div>
-        <div class="py-4 border-b"></div>
-        <div class="py-4 border-b"></div>
-        <div class="py-4 border-b"></div>
-        <h1 class="text-slate-800 font-bold text-2xl pb-8">Daten</h1>
-        <div class="py-4 border-b">
-          <h2 id="stromimport" class="text-slate-800 font-bold pb-2">Stromimport und –export</h2>
-          <p class="text-slate-500">
-            Die Grundlage für sowohl die dynamischen Ex- als auch Import-Strompreise bietet eine Zeitreihe aus dem Projekt DEKADE-F-WAERME (Papadis, E. et. al. (2022). DEKADE-F-Wärme: Dekarbonisierung der Fernwärmeversorgung durch die Sektorenkopplung von Strom und Wärme und die Einbindung erneuerbarer Energien.) welche die Preise für das Jahr 2040 prognostiziert. Zur Verwendung als Import- respektive Export-Preiszeitreihe wurden bestimmte Anpassungen vorgenommen. Für den Import wurden negative Preise auf null Euro gesetzt; außerdem erfolgte darüber hinaus ein pauschaler Aufschlag von 36,35 €/MWh an Netzentgelt. Die Exportpreise wurden pauschal um 11,12 €/MWh erhöht, dies entspricht einem vorgeschlagenen Ansatz zur Refinanzierung von EE-Anlagen (Bundesministerium für Wirtschaft und Klimaschutz. (2024) Strommarktdesign der Zukunft. Optionen für ein sicheres, bezahlbares und nachhaltiges Stromsystem.). Die jeweiligen minimalen, maximalen sowie durchschnittlichen Strompreise der resultierenden Zeitreihen sind in der folgenden Tabelle dargestellt.
+          <p class="text-slate-500 pb-1">
+            Die Analyse des Wasserstofferzeugungspotenzials stützt sich auf folgende Berechnungsmethode:
+          </p>
+          <ul class="list-disc list-inside text-slate-500 pb-1">
+            <li>
+              <b>Ermittlung des Stromerzeugungspotenzials aus erneuerbaren Energien der Region:</b> potenzielle Jahresstrommengen aus Windenergie, Solarenergie und Biomasse (siehe einzelne Energieerzeuger)
+            </li>
+            <li>
+              <b>Berechnung der Strommenge für die Wasserstofferzeugung:</b> Annahme, dass 20 % des erzeugten Stroms nicht direkt ins Netz eingespeist werden, sondern für die Wasserstoffproduktion genutzt werden. (Der Rest des erzeugten Stroms wird weiterhin direkt genutzt.)
+            </li>
+            <li>
+              <b>Berechnung der Wasserstofferzeugung aus Strom (Elektrolyse):</b>
+              <ul class="list-disc list-inside text-slate-500 pb-1 pl-4">
+                <li>
+                  In einem Elektrolyseur wird mit Strom Wasser in Wasserstoff und Sauerstoff gespalten. Der Wirkungsgrad liegt bei etwa 60 %.
+                </li>
+                <li>
+                  Da für 1 kg Wasserstoff etwa 50–55 kWh Strom benötigt werden (je nach Effizienz), kann die Gesamtproduktion in Tonnen Wasserstoff pro Jahr berechnet werden.
+                </li>
+                <li>Ergebnis Gesamtpotenzial: 32,63 kt  grüner Wasserstoff pro Jahr</li>
+              </ul>
+            </li>
+          </ul>
+          <p class="text-slate-500 pb-1">
+            In untenstehender Tabelle ist die Berechnung der Erzeugungspotenziale für die Wasserstoffherstellung aus erneuerbaren Energien dargestellt:
           </p>
           <div class="overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-200 mt-4">
@@ -566,56 +800,235 @@
                 <tr>
                   <th scope="col"
                       class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Version
+                    Szenario
                   </th>
                   <th scope="col"
                       class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Minimal [€/MWh]
+                    Kapazität
                   </th>
                   <th scope="col"
                       class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Maximal [€/MWh]
+                    Energiepotential
                   </th>
                   <th scope="col"
                       class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Durchschnitt [€/MWh]
+                    Wasserstoffproduktionspotential
                   </th>
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
                 <tr>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">unverändert</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">-65,38</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">463,49</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">58,88</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Solar</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1547,85 MWp</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1639,57 GWh</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">29,81 kt/a</td>
                 </tr>
                 <tr>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Importpreis</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">35,36</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">498,85</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">94,35</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Wind</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">44 MWp</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">131,05 GWh</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2,38 kt/a</td>
                 </tr>
                 <tr>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Exportpreis</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">-54,26</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">474,61</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">70,00</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Biomasse</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">6994,08 T_FM</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">24,11 GWh</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">438,36 kt/a</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Summe</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1794,73 GWh</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">32,63 kt/a</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <img src="{% static 'images/Strompreis.png' %}" alt="Strompreise" />
-          <a href="{% url 'reenact:sources' %}#source-1"
-             class="block text-blue-600 hover:underline">Quelle: Renewable Energy Integration in Urban Areas</a>
+          <p class="text-slate-500 pb-1">
+            Die <b>wirtschaftliche Bewertung</b> erfolgt auf Grundlage der Wasserstoffgestehungskosten. Diese beschreiben die durchschnittlichen Kosten zur Herstellung von einem Kilogramm Wasserstoff über die gesamte Lebensdauer einer Produktionsanlage.
+          </p>
+          <p class="text-slate-500 pb-1">Eingangsgrößen für die Berechnung sind:</p>
+          <ul class="list-disc list-inside text-slate-500 pb-1">
+            <li>
+              <b>Investitions- und Betriebskosten:</b>
+              <ul class="list-disc list-inside text-slate-500 pb-1 pl-4">
+                <li>Investitionskosten: 1.100.000,00 € / MWp</li>
+                <li>
+                  Betriebs- und Wartungskosten: Laufende Instandhaltung, Versicherungen, Verwaltung, Pacht (fixe Betriebs- und Wartungskosten: 3% / Jahr)
+                </li>
+              </ul>
+            </li>
+            <li>
+              Die Stromkosten machen meist 70–80 % der Gesamtkosten der Wasserstoffgestehungskosten aus. D.h., je günstiger der Strom aus Sonne, Wind oder Biomasse ist, desto günstiger wird auch der Wasserstoff.
+            </li>
+            <li>
+              <b>Kapitalkosten (Zins & Tilgung):</b> Wie teuer ist das geliehene Geld zur Finanzierung der Anlage? (Durchschnittlicher Kapitalkostensatz (Eigen- und Fremdkapital): 7%
+            </li>
+            <li>
+              <b>Lebensdauer:</b> 12 Jahre bzw. 100.000 Betriebsstunden
+            </li>
+          </ul>
+          <p class="text-slate-500 pb-1">
+            Die Berechnungen auf Basis der aktuellen Strompreise ergeben durchschnittliche Wasserstoffgestehungskosten von 5,83 € pro Kilogramm.
+          </p>
         </div>
         <div class="py-4 border-b">
-          <h2 id="kosten" class="text-slate-800 font-bold pb-2">
-            Kosten und
-            Erlöse
-          </h2>
-          <p class="text-slate-500">
-            RLI – hier nicht die Kosten/ Erlöse der einzelnen Technologien (Wind, PV, etc.) sondern kurze Erklärung, wie die Gesamtwerte  entstehen/ berechnet werden (ESM und Postprocessing) Anmerkung MZ: was hier m. E. n. hingehört wären genau die Kosten der einzelnen Technologien (aus Datentabelle)
+          <h2 id="hydrogen-storage" class="text-slate-800 font-bold pb-2">Wasserstoffspeicherung</h2>
+          <p class="text-slate-500 pb-1">
+            Wasserstoffspeicher ermöglichen es, Energie über längere Zeiträume zu speichern. Wie groß ein Speicher werden soll, hängt immer vom konkreten Projekt und Bedarf vor Ort ab.
           </p>
+          <p class="text-slate-500 pb-1">Die Bewertung der Wasserstoffspeicherung basiert auf folgenden Daten und Annahmen:</p>
+          <p class="text-slate-500 pb-1">
+            <b>Kostenannahmen:</b> Die Investitionskosten für den Bau eines Speichers wurden mit etwa 13.500 € pro MW (installierte Leistung) angesetzt. Zusätzlich fallen jährlich ca. 2 % der Investitionskosten für Wartung und Betrieb an.
+          </p>
+          <p class="text-slate-500 pb-1">
+            <b>Lebensdauer und Verluste:</b> Speicheranlagen werden für eine Lebensdauer von rund 20 Jahren ausgelegt. Während der Speicherung entstehen allerdings im Laufe der Zeit Energieverluste auf – hier wurde ein Verlust von 45 % pro Zeitschritt berücksichtigt.
+          </p>
+        </div>
+        <div class="py-4">
+          <h2 id="hydrogen-export" class="text-slate-800 font-bold pb-2">Wasserstoffexport</h2>
+          <p class="text-slate-500 pb-1">
+            Die Berechnungen haben ergeben, dass in der Region Peenetal/Loitz durch Sonne und Wind deutlich mehr Wasserstoff erzeugt werden könnte als lokal verbraucht werden kann. Das heißt: Neben der zukünftigen Versorgung der eigenen Region bleiben erhebliche Mengen für den Export übrig. Diese Überschussmengen können verkauft werden – an andere Regionen oder Industrien.
+          </p>
+          <p class="text-slate-500 pb-1">
+            Die Erlösannahmen für Wasserstoff basieren auf aktuellen Marktdaten, wonach Wasserstoff nach Gewicht gehandelt wird und die Preise üblicherweise in Euro pro Kilogramm angegeben werden. Aktuell kostet ein Kilogramm Wasserstoff in 2025 etwa 12,85 €.
+          </p>
+        </div>
+        <br />
+        <h1 id="battery" class="text-slate-800 font-bold text-2xl pb-8">Batteriespeicher</h1>
+        <p class="text-slate-500 pb-1">
+          Die Stromerzeugung aus erneuerbaren Energien (vor allem Wind und Sonne) unterliegt starken Schwankungen. Batteriespeicher können Energieerzeugung- und bedarf ausbalancieren, zu einer stabilen Energieversorgung beitragen und den Anteil des vor Ort genutzten Stroms erhöhen. Durch Arbitrage können weitere Erlöse für die Region erwirtschaftet werden.
+        </p>
+        <p class="text-slate-500 pb-1">
+          Für die Region Peenetal/Loitz wurde von einer maximalen Batteriespeicherkapazität von 10.000 MWh und einer Speicherleistung von 282,5 MW ausgegangen.
+        </p>
+        <p class="text-slate-500 pb-1">Die Kosten von Batteriespeichern ergeben sich aus:</p>
+        <ul class="list-disc list-inside text-slate-500 pb-1">
+          <li>
+            <b>Investitionskosten:</b>
+            <ul class="list-disc list-inside text-slate-500 pb-1 pl-4">
+              <li>ca. 750 000 €/MWh Speicherkapazität</li>
+              <li>285 719 €/MW für die Wechselrichterleistung</li>
+            </ul>
+          </li>
+          <li>
+            <b>Lebensdauer:</b>
+            <ul class="list-disc list-inside text-slate-500 pb-1 pl-4">
+              <li>Speicher: ca. 15 Jahre</li>
+              <li>Wechselrichter: ca. 10 Jahre</li>
+            </ul>
+          </li>
+          <li>
+            <b>Betrieb:</b>
+            <ul class="list-disc list-inside text-slate-500 pb-1 pl-4">
+              <li>Fixe Kosten: 8 %/Jahr für Speicher, 2 %/Jahr für Wechselrichter</li>
+              <li>Variable Kosten: 20 €/MWh umgesetzte Energie</li>
+            </ul>
+          </li>
+          <li>
+            <b>Verluste:</b>
+            <ul class="list-disc list-inside text-slate-500 pb-1 pl-4">
+              <li>Rückspeisewirkungsgrad der Wechselrichter: 95 %</li>
+            </ul>
+          </li>
+        </ul>
+        <br />
+        <h1 id="trade" class="text-slate-800 font-bold text-2xl pb-8">Stromimport und -export</h1>
+        <p class="text-slate-500 pb-1">
+          Die Grundlage für sowohl die dynamischen Ex- als auch Import-Strompreise bietet eine Zeitreihe aus dem Projekt DEKADE-F-WAERME, welche die Preise für das Jahr 2045 prognostiziert. Zur Verwendung als Import- respektive Export-Preiszeitreihe wurden Anpassungen vorgenommen. Für den Import wurden negative Preise auf 0 € gesetzt. Darüber hinaus erfolgte  ein pauschaler Aufschlag von 35,36 €/MWh an Netzentgelt. Die Exportpreise wurden um 11,12 €/MWh erhöht, dies entspricht einem vorgeschlagenen Ansatz zur Refinanzierung von EE-Anlagen (Bundesministerium für Wirtschaft und Klimaschutz. (2024) Strommarktdesign der Zukunft. Optionen für ein sicheres, bezahlbares und nachhaltiges Stromsystem.) Dieser Aufschlag ist die Differenz aus dem Durchschnitt des dynamischen Strompreises, welcher 58,88 €/MWh beträgt, und dem anzulegenden Wert von 70 €/MWh (7 ct/KWh). Die jeweiligen minimalen, maximalen sowie durchschnittlichen Strompreise der resultierenden Zeitreihen sind in der folgenden Tabelle dargestellt.
+        </p>
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200 mt-4">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Version
+                </th>
+                <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Minimal [€/MWh]
+                </th>
+                <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Maximal [€/MWh]
+                </th>
+                <th scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Durchschnitt [€/MWh]
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">unverändert</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">-65,38</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">463,49</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">58,88</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Importpreis</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">35,36</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">498,85</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">94,35</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Exportpreis</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">-54,26</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">474,61</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">70,00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-slate-500 pb-1">
+          Der im Jahr 2024 importierte Strom hat einen THG-Emissions-Beiwert von 435 kg CO₂e /MWh.
+        </p>
+        <br />
+        <h1 id="results" class="text-slate-800 font-bold text-2xl pb-8">Ergebnisse</h1>
+        <div class="py-4 border-b">
+          <h2 id="results-climate" class="text-slate-800 font-bold pb-2">Klimaziele</h2>
+          <p class="text-slate-500 pb-1">
+            Die Erfüllung des Beitrags der Region zur Erreichung der Klimaziele wird für das Jahr 2045 anhand der Erfüllung des Erzeugungsziels (vgl. Abschnitt “Ziellinie”) sowie der entstehenden Treibhausgas-Emissionen gemessen, welche durch Ausbau von Erneuerbaren Energien und Moorwiedervernässung vermieden werden können (vgl. Abschnitt “Treibhausgas-Emissionen”). Der Ansatz zielt darauf ab, die Ausnutzung der klimabezogenen Handlungsspielräume der Region zu bewerten. Er misst also nicht, ob die Region im Jahr 2045 vollständig klimaneutral ist, sondern inwiefern dort zur Energiewende und zum Moorschutz in Verantwortung für die gesamtdeutschen Klimaziele beigetragen wird. Auf die Ermittlung der vermiedenen Emissionen wird im Abschnitt “Treibhausgas-Emissionen” eingegangen.
+          </p>
+        </div>
+        <div class="py-4 border-b">
+          <h2 id="results-emissions" class="text-slate-800 font-bold pb-2">Treibhausgas-Emissionen</h2>
+          <p class="text-slate-500 pb-1">
+            Für die Jahre 2024 und 2045 wurden verschiedene Ansätze zur Berechnung der Treibhausgas (THG)-Emissionen gewählt. Die Emissionen werden in t CO₂-Äquivalente (CO₂e) berechnet.
+          </p>
+          <p class="text-slate-500 pb-1">
+            Für das Jahr 2024 werden die tatsächlichen THG-Emissionen dargestellt, welche insgesamt durch den Energiebedarf der Region in den Sektoren Strom, Wärme und Mobilität sowie durch die Moore entstehen. Da die THG-Emissionen für die einzelnen Sektoren und die Moore separat ermittelt wurden, wird auf deren Ermittlung in den jeweiligen Abschnitten eingegangen.
+          </p>
+          <p class="text-slate-500 pb-1">
+            Für das Jahr 2045 werden die THG-Emissionen aufgrund des gewählten Ansatzes (vgl. Abschnitt “Klimaziele”) pauschal für die Differenz zwischen der Menge an regional erzeugtem und dem regional zu erzeugenden Strom zur Erreichung der Klimaziele (vgl. Abschnitt “Ziellinie”) ermittelt. Diese Differenz muss durch Strom aus dem vorgelagerten Netz gedeckt werden. Daher wird sie mit einem Wert von 354g CO₂e pro kWh verrechnet.
+          </p>
+          <p class="text-slate-500 pb-1">
+            Durch die Wiedervernässung der Moore können die THG-Emissionen durchschnittlich um 200 t CO₂e pro km² reduziert werden. Dieser Wert wurde für die Berechnung der vermeidbaren Emissionen durch Moorwiedervernässung für das Jahr 2045 veranschlagt. Die im Energieplaner für das Jahr 2045 dargestellten vermeidbaren Emissionen entsprechen der Summe der vermeidbaren Emissionen bzgl. Der Energieerzeugung und der Moore.
+          </p>
+        </div>
+        <div class="py-4">
+          <h2 id="results-financial" class="text-slate-800 font-bold pb-2">Kosten und Erlöse</h2>
+          <p class="text-slate-500 pb-1">
+            Im Energieplaner werden die CO₂-Kosten, der mittlere Strompreis, der Investitionsbedarf sowie die Erlöse für Strom- und H2-Export dargestellt. Nachfolgend wird kurz auf deren Ermittlung eingegangen:
+          </p>
+          <ul class="list-disc list-inside text-slate-500 pb-1">
+            <li>
+              CO₂-Kosten: Der Preis zur Berechnung der CO₂-Kosten für das Jahr 2024 entspricht 82,50 €/t. Für das Jahr 2045 wurde ein prognostizierter Wert von 275 €/t verwendet. Die Werte wurden mit den jeweils ermittelten entstandenen oder vermiedenen Emissionen verrechnet.
+            </li>
+            <li>
+              Mittlerer Strompreis: Der mittlere Strompreis wird für das Jahr 2045 auf Grundlage der Herkunft (regional erzeugt oder importiert) des vor Ort genutzten Stroms und der jeweiligen Menge an Strom berechnet. Dafür werden die Stromgestehungskosten der jeweiligen Erzeugungstechnologien (vgl. Unterabschnitte im Abschnitt “Energieerzeugung”) sowie der Preis für den Stromimport herangezogen (vgl. Abschnitt Stromimport und -export ).
+            </li>
+            <li>
+              Investitionsbedarf: Der Investitionsbedarf ergibt sich aus allen Kosten, welche sich für den Ausbau von Erneuerbaren Energien, Batteriespeicher und Elektrolyseure insgesamt ergeben. Sie bestehen aus den Kosten für Anschaffung, Betrieb und Finanzierung. Die dafür genutzten Werte sind den Abschnitten zu den jeweiligen Technologien zu entnehmen. Die im Energieplaner dargestellten Investitionskosten sind annualisiert.
+            </li>
+            <li>
+              Erlöse für Strom-Export: Da für das Jahr 2045 von dynamischen Strompreisen ausgegangen wird (vgl. Abschnitt “Stromimport und -export”), sind die Erlöse für den Strom-Export abhängig von Preis und Exportmenge zum Zeitpunkt des Exports. Im Durchschnitt ergibt sich ein Preis von 7ct/kWh.
+            </li>
+            <li>
+              Erlöse für H2-Export: Die Erlöse für den Wasserstoff-Export ergeben sich aus der Exportmenge und einem angenommenen Preis von 12,85 €/MWh beziehungsweise 0,43 €/kg.
+            </li>
+          </ul>
         </div>
       </div>
       <div class="w-64 py-16 border-l pl-8">
