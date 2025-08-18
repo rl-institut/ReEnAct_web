@@ -118,10 +118,10 @@
     "min": 0,
     "max": 100,
     "step": 1,
-    "initial": 100,
+    "initial": 90,
     "unit": "%",
     "category": "demand",
-    "mark": 100,
+    "mark": 90,
     "info": "Der Elektrifizierungsgrad gibt an, wie groß der Anteil an Elektroautos am regionalen PKW-Bestand ist."
   },
   "heat": {
