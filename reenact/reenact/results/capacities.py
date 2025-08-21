@@ -70,7 +70,7 @@ def get_chart_data_from_user_input(user_input: dict) -> dict:
         label = slider_config.label
         category = slider_config.category
         color = COLORS.get(label, "#000000")
-        value = float(user_input.get(key, slider_config.initial)) * 1e-3
+        value = float(user_input.get(key, slider_config.initial))
         value = calculate_energy_from_capacity(key, value)
 
         item = {"label": label, "value": value, "color": color}
@@ -83,6 +83,12 @@ def get_chart_data_from_user_input(user_input: dict) -> dict:
 
 def calculate_energy_from_capacity(technology: str, value: float) -> float:
     """Calculate energy for technologies using full load hours."""
+    if technology == "mobility":
+        # Calculate mobility energy from fossil energy in 2024 and full electric energy in 2040
+        electricity_factor = value / 100
+        return (
+            (1 - electricity_factor) * 48279.90 + electricity_factor * 7652.15
+        ) * 1e-3
     if technology in FULL_LOAD_HOURS:
-        return value * FULL_LOAD_HOURS[technology]
+        return value * FULL_LOAD_HOURS[technology] * 1e-3
     return value
