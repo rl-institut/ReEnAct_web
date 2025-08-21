@@ -81,4 +81,4 @@ SLIDER_MARKS = {
     for category, items in CATEGORIES.items()
 }
 
-SCENARIO_GOAL = 401.1
+SCENARIO_GOAL = 419.5

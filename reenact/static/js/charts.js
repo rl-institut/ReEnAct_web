@@ -9,7 +9,7 @@ document.querySelectorAll("[data-tab]").forEach(tab => tab.addEventListener("cli
   update_all_charts();
 }));
 
-const goal2024 = 401.1;
+const goal2024 = 419.5;
 
 const goalMarkLine = {
   symbol: 'none',
