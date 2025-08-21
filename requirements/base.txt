@@ -13,4 +13,4 @@ django-cotton==1.3.0  # https://github.com/wrabit/django-cotton
 
 # Oemof
 # ------------------------------------------------------------------------------
-django-oemof==1.1.1
+django-oemof==2.0.0
