@@ -9,6 +9,8 @@ document.querySelectorAll("[data-tab]").forEach(tab => tab.addEventListener("cli
   update_all_charts();
 }));
 
+const numberFormat = Intl.NumberFormat("de-DE", { maximumFractionDigits: 1 });
+
 const goal2024 = 419.5;
 
 const goalMarkLine = {
@@ -22,7 +24,7 @@ const goalMarkLine = {
     type: 'dashed'
   },
   label: {
-    formatter: 'Erzeugungsziel: {c} GWh',
+    formatter: function(parameters) {return `Erzeugungsziel: ${numberFormat.format(parameters.value)} GWh`;},
     position: 'middle'
   }
 };
@@ -180,8 +182,8 @@ function generate_main_chart(production, demand, targetLine=true) {
   seriesList.push(markLineSeriesElement);
 
   let xaxis_labels = [
-    `{bold|${totalProduction.toFixed(1)} GWh}\n{label|Jahreserzeugung}`,
-    `{bold|${totalDemand.toFixed(1)} GWh}\n{label|Jahresverbrauch}`
+    `{bold|${numberFormat.format(totalProduction)} GWh}\n{label|Jahreserzeugung}`,
+    `{bold|${numberFormat.format(totalDemand)} GWh}\n{label|Jahresverbrauch}`
   ];
 
   let tooltip_formatter = function(params) {
@@ -189,10 +191,10 @@ function generate_main_chart(production, demand, targetLine=true) {
     const demand_labels = demand.map(item => item.label);
     for (const item of params) {
       if (item.dataIndex === 0 && !demand_labels.includes(item.seriesName)) {
-        tip += `<tr><td>${item.marker} ${item.seriesName}:</td><td align='right'>${item.value} GWh</td></tr>`;
+        tip += `<tr><td>${item.marker} ${item.seriesName}:</td><td align='right'>${numberFormat.format(item.value)} GWh</td></tr>`;
       }
       if (item.dataIndex === 1 && demand_labels.includes(item.seriesName)) {
-        tip += `<tr><td>${item.marker} ${item.seriesName}:</td><td align='right'>${item.value} GWh</td></tr>`;
+        tip += `<tr><td>${item.marker} ${item.seriesName}:</td><td align='right'>${numberFormat.format(item.value)} GWh</td></tr>`;
       }
     }
     tip += "</table>";
@@ -244,10 +246,13 @@ function generate_main_chart(production, demand, targetLine=true) {
     yAxis: {
       type: 'value',
       splitLine: { show: true },
-      axisLabel: { show: true },
+      axisLabel: {
+        show: true,
+        formatter: function(value) {return numberFormat.format(value);}
+      },
       axisPointer: {
         label: {
-          formatter: "{value} GWh",
+          formatter: function(parameters) {return `${numberFormat.format(parameters.value)} GWh`;},
           backgroundColor: '#6a7985',
         }
       },
