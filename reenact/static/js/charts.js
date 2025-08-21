@@ -152,28 +152,33 @@ function generate_main_chart(production, demand, targetLine=true) {
     type: 'bar',
     stack: 'Production',
     data: [prod_item.value, 0],
-    itemStyle: { color: prod_item.color }
+    itemStyle: { color: prod_item.color },
+    barCategoryGap: '10%',
+    barWidth: '40%'
   }));
-  if (seriesList.length > 0) {
-    seriesList[0].barCategoryGap = '10%';
-    seriesList[0].barWidth = '40%';
-    if (targetLine) {
-      seriesList[0].markLine = goalMarkLine;
-    }
-  }
 
   let demandList = demand.map(dem_item => ({
     name: dem_item.label,
     type: 'bar',
     stack: 'Demand',
     data: [0, dem_item.value],
-    itemStyle: { color: dem_item.color }
+    itemStyle: { color: dem_item.color },
+    barGap: '-100%',
+    barWidth: '40%'
   }));
-  if (demandList.length > 0) {
-    demandList[0].barGap = '-100%';
-    demandList[0].barWidth = '40%';
-  }
+
+  const markLineSeriesElement = {
+      // 👇 dummy series for markLine
+      name: 'Threshold',
+      type: 'line',
+      data: [],  // no bars
+      silent: true,  // not interactive
+      barGap: '-100%',
+      barWidth: '0%',
+      markLine: goalMarkLine
+    };
   seriesList = seriesList.concat(demandList);
+  seriesList.push(markLineSeriesElement);
 
   let xaxis_labels = [
     `{bold|${totalProduction.toFixed(1)} GWh}\n{label|Jahreserzeugung}`,
