@@ -169,14 +169,13 @@ function generate_main_chart(production, demand, targetLine=true) {
 
   const markLineSeriesElement = {
       // 👇 dummy series for markLine
-      name: 'Threshold',
       type: 'line',
       data: [],  // no bars
       silent: true,  // not interactive
       barGap: '-100%',
       barWidth: '0%',
-      markLine: goalMarkLine
-    };
+      markLine: goalMarkLine,
+  };
   seriesList = seriesList.concat(demandList);
   seriesList.push(markLineSeriesElement);
 
