@@ -56,7 +56,22 @@
   <!-- Box 1: Klimaziele -->
   <div class="relative overflow-visible flex-1 bg-white border-t-2 {% if results.climate.fulfilled and results.co2.fulfilled %}border-green-300{% else %}border-yellow-300{% endif %} rounded-md shadow-md p-4 min-w-[40%] 2xl:w-[40%]">
     <div class="flex items-center justify-between mb-2">
-      <p class="text-slate-500 text-sm tracking-[0.0175rem]">KLIMAZIELE</p>
+      <p class="flex gap-2 items-center text-slate-500 text-sm tracking-[0.0175rem]">
+        <span>KLIMAZIELE</span>
+        <span class="relative group">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke-width="1.5"
+               stroke="currentColor"
+               class="size-4 cursor-pointer">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+          </svg>
+          <span class="absolute left-7 top-0 mb-1 bg-slate-800 text-white text-xs normal-case px-3 py-1 w-[22rem] rounded shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-normal z-50">
+            Damit die Klimaziele Deutschlands erreicht werden können, muss die Region ihren Beitrag zur Treibhausgasreduktion leisten. Dazu muss sie u.a. Erneuerbare Energien ausbauen (entsprechend des Erzeugungsziels) und ihre Moore wiedervernässen.
+          </span>
+        </span>
+      </p>
       {% if results.climate.fulfilled and results.co2.fulfilled %}
         <span class="bg-green-300 text-green-900 text-sm font-bold px-2 py-0.5 rounded tracking-[-0.0175rem]">Erreicht</span>
       {% else %}
