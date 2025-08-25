@@ -82,7 +82,7 @@ class MainView(TemplateView):
                 parameters,
             )
 
-        context["scenarios"] = settings.SCENARIOS
+        context["scenarios"] = settings.SCENARIOS[1:]
 
         context["potentials_status_quo"] = potentials.add_wetland_potential(
             potentials.get_potentials_from_scenario_data(
@@ -91,11 +91,19 @@ class MainView(TemplateView):
         )
 
         # Prepare result boxes for statusquo, scenario and myplan
-        # at startup statusquo = scenario = myplan
+        # at startup statusquo = myplan
         # if simulation_id is given myplan diverges
-        context.update(capacities.get_chart_data_from_scenario(0))
+        context["charts"] = [
+            capacities.get_chart_data_from_scenario(0),  # Base scenario
+            capacities.get_chart_data_from_scenario(1),  # first scenario
+            my_plan_capacities,
+        ]
+
         statusquo_box = boxes.get_result_boxes_from_scenario_data(SCENARIOS[0])
-        context["results"] = [statusquo_box, statusquo_box]
+        context["results"] = [
+            statusquo_box,
+            boxes.get_result_boxes_from_scenario_data(SCENARIOS[1]),
+        ]
 
         # Get production and demand for status quo and my plan
         if simulation_id is None:
@@ -110,8 +118,6 @@ class MainView(TemplateView):
                 my_plan_potentials,
             ),
         )
-        context["production_my_plan"] = my_plan_capacities["production"]
-        context["demand_my_plan"] = my_plan_capacities["demand"]
         context["slider_dependencies"] = settings.SLIDER_DEPENDENCIES
         context["slider_marks"] = settings.SLIDER_MARKS
         context["my_plan_oemof_scenario"] = settings.MYPLAN_OEMOF_SCENARIO

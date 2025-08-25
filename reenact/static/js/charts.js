@@ -1,7 +1,4 @@
-const production = JSON.parse(document.getElementById("production").textContent);
-const demand = JSON.parse(document.getElementById("demand").textContent);
-const production_my_plan = JSON.parse(document.getElementById("production_my_plan").textContent);
-const demand_my_plan = JSON.parse(document.getElementById("demand_my_plan").textContent);
+const chart_data = JSON.parse(document.getElementById("charts").textContent);
 const my_plan_potentials = document.getElementById("my_plan_results").getElementsByClassName("potentials")[0];
 
 // Resize charts when switching tabs
@@ -29,12 +26,9 @@ const goalMarkLine = {
   }
 };
 
-const productionDemandChartOptions = generate_main_chart(production, demand, false);
-const productionDemandChartMyPlanOptions = generate_main_chart(production_my_plan, demand_my_plan);
-
-create_chart("statusquo-chart", productionDemandChartOptions);
-create_chart("scenarios-chart", productionDemandChartOptions);
-create_chart("myplan-chart", productionDemandChartMyPlanOptions);
+create_chart("statusquo-chart", generate_main_chart(chart_data[0].production, chart_data[0].demand, false));
+create_chart("scenarios-chart", generate_main_chart(chart_data[1].production, chart_data[1].demand));
+create_chart("myplan-chart", generate_main_chart(chart_data[2].production, chart_data[2].demand));
 
 function getResponsiveLayout() {
   const width = window.innerWidth;
