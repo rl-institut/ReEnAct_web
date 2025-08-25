@@ -7,8 +7,13 @@ from reenact.reenact.results import capacities, scenario
 from . import settings, hooks
 from .forms import CapacitiesForm
 from .results import boxes, potentials
-from .settings import SCENARIOS, MYPLAN_OEMOF_SCENARIO
-
+from .settings import (
+    SCENARIOS,
+    MYPLAN_OEMOF_SCENARIO,
+    FULL_LOAD_HOURS,
+    SLIDER_DATA,
+    LABEL_TO_SLIDER,
+)
 
 PRODUCTION = [
     {"label": "Windenergie", "value": 204.5, "color": "#8dd3c7"},
@@ -176,3 +181,19 @@ def scenario_chart(request, scenario_id: int) -> JsonResponse | HttpResponse:
     return JsonResponse(
         capacities.get_chart_data_from_oemof_simulation(simulation_id),
     )
+
+
+def get_sliders_from_scenario(request, scenario_id: int) -> JsonResponse:
+    """Return slider values for given scenario ID."""
+
+    slider_values = {slider: 0 for slider in SLIDER_DATA}
+    for slider, value in (
+        SCENARIOS[scenario_id]["production"] | SCENARIOS[scenario_id]["demand"]
+    ).items():
+        if slider not in LABEL_TO_SLIDER:
+            continue
+        slider_name = LABEL_TO_SLIDER[slider]
+        if slider_name not in FULL_LOAD_HOURS:
+            continue
+        slider_values[slider_name] = round(value * 1000 / FULL_LOAD_HOURS[slider_name])
+    return JsonResponse(slider_values)
