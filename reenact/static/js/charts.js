@@ -9,7 +9,9 @@ document.querySelectorAll("[data-tab]").forEach(tab => tab.addEventListener("cli
   update_all_charts();
 }));
 
-const goal2024 = 401.1;
+const numberFormat = Intl.NumberFormat("de-DE", { maximumFractionDigits: 1 });
+
+const goal2024 = 419.5;
 
 const goalMarkLine = {
   symbol: 'none',
@@ -22,7 +24,7 @@ const goalMarkLine = {
     type: 'dashed'
   },
   label: {
-    formatter: 'Erzeugungsziel: {c} GWh',
+    formatter: function(parameters) {return `Erzeugungsziel: ${numberFormat.format(parameters.value)} GWh`;},
     position: 'middle'
   }
 };
@@ -152,32 +154,36 @@ function generate_main_chart(production, demand, targetLine=true) {
     type: 'bar',
     stack: 'Production',
     data: [prod_item.value, 0],
-    itemStyle: { color: prod_item.color }
+    itemStyle: { color: prod_item.color },
+    barCategoryGap: '10%',
+    barWidth: '40%'
   }));
-  if (seriesList.length > 0) {
-    seriesList[0].barCategoryGap = '10%';
-    seriesList[0].barWidth = '40%';
-    if (targetLine) {
-      seriesList[0].markLine = goalMarkLine;
-    }
-  }
 
   let demandList = demand.map(dem_item => ({
     name: dem_item.label,
     type: 'bar',
     stack: 'Demand',
     data: [0, dem_item.value],
-    itemStyle: { color: dem_item.color }
+    itemStyle: { color: dem_item.color },
+    barGap: '-100%',
+    barWidth: '40%'
   }));
-  if (demandList.length > 0) {
-    demandList[0].barGap = '-100%';
-    demandList[0].barWidth = '40%';
-  }
+
+  const markLineSeriesElement = {
+      // 👇 dummy series for markLine
+      type: 'line',
+      data: [],  // no bars
+      silent: true,  // not interactive
+      barGap: '-100%',
+      barWidth: '0%',
+      markLine: goalMarkLine,
+  };
   seriesList = seriesList.concat(demandList);
+  seriesList.push(markLineSeriesElement);
 
   let xaxis_labels = [
-    `{bold|${totalProduction.toFixed(1)} GWh}\n{label|Jahreserzeugung}`,
-    `{bold|${totalDemand.toFixed(1)} GWh}\n{label|Jahresverbrauch}`
+    `{bold|${numberFormat.format(totalProduction)} GWh}\n{label|Jahreserzeugung}`,
+    `{bold|${numberFormat.format(totalDemand)} GWh}\n{label|Jahresverbrauch}`
   ];
 
   let tooltip_formatter = function(params) {
@@ -185,10 +191,10 @@ function generate_main_chart(production, demand, targetLine=true) {
     const demand_labels = demand.map(item => item.label);
     for (const item of params) {
       if (item.dataIndex === 0 && !demand_labels.includes(item.seriesName)) {
-        tip += `<tr><td>${item.marker} ${item.seriesName}:</td><td align='right'>${item.value} GWh</td></tr>`;
+        tip += `<tr><td>${item.marker} ${item.seriesName}:</td><td align='right'>${numberFormat.format(item.value)} GWh</td></tr>`;
       }
       if (item.dataIndex === 1 && demand_labels.includes(item.seriesName)) {
-        tip += `<tr><td>${item.marker} ${item.seriesName}:</td><td align='right'>${item.value} GWh</td></tr>`;
+        tip += `<tr><td>${item.marker} ${item.seriesName}:</td><td align='right'>${numberFormat.format(item.value)} GWh</td></tr>`;
       }
     }
     tip += "</table>";
@@ -240,10 +246,13 @@ function generate_main_chart(production, demand, targetLine=true) {
     yAxis: {
       type: 'value',
       splitLine: { show: true },
-      axisLabel: { show: true },
+      axisLabel: {
+        show: true,
+        formatter: function(value) {return numberFormat.format(value);}
+      },
       axisPointer: {
         label: {
-          formatter: "{value} GWh",
+          formatter: function(parameters) {return `${numberFormat.format(parameters.value)} GWh`;},
           backgroundColor: '#6a7985',
         }
       },

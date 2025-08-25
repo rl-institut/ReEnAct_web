@@ -71,7 +71,6 @@ class MainView(TemplateView):
             parameters = hooks.set_up_oemof_components_from_user_input(
                 "",
                 initial_capacities,
-                None,
             )
             simulation_id = scenario.get_simulation_results(
                 MYPLAN_OEMOF_SCENARIO,

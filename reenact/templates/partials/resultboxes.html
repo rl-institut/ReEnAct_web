@@ -151,9 +151,9 @@
           </span>
         {% endif %}
         <span class="flex items-center gap-1">
-          <span class="text-xl font-bold text-slate-800 tracking-tight">{{ results.co2.emissions }} t</span>
+          <span class="text-xl font-bold text-slate-800 tracking-tight">{{ results.co2.emissions|floatformat:"1g" }} t</span>
           <span class="text-sm font-bold text-slate-800">/</span>
-          <span class="text-xl font-bold text-slate-800 tracking-tight">{{ results.co2.cost }} Mio. €</span>
+          <span class="text-xl font-bold text-slate-800 tracking-tight">{{ results.co2.cost|floatformat:"1g" }} Mio. €</span>
         </span>
       </div>
       <p class="flex items-center gap-2 text-slate-500 text-sm pl-6">
@@ -178,7 +178,7 @@
   <div class="min-w-[180px] flex-shrink-0 bg-white border-t-2 rounded-md shadow-md p-4 2xl:w-[25%]">
     <p class="text-slate-500 text-sm tracking-[0.0175rem] mb-4">KOSTEN</p>
     <div class="mb-4">
-      <span class="text-xl font-bold text-slate-800 tracking-[-0.03rem]">{{ results.cost.production }} €/kWh</span>
+      <span class="text-xl font-bold text-slate-800 tracking-[-0.03rem]">{{ results.cost.production|floatformat:"1g" }} €/kWh</span>
       <p class="flex items-center gap-2 text-slate-500 text-sm">
         <span>Mittlerer Strompreis</span>
         <span class="relative group">
@@ -197,7 +197,7 @@
       </p>
     </div>
     <div>
-      <span class="text-xl font-bold text-slate-800 tracking-[-0.03rem]">{{ results.cost.invest }} Mio. €</span>
+      <span class="text-xl font-bold text-slate-800 tracking-[-0.03rem]">{{ results.cost.invest|floatformat:"1g" }} Mio. €</span>
       <p class="flex items-center gap-2 text-slate-500 text-sm">
         <span>Investitionsbedarf</span>
         <span class="relative group">
@@ -220,7 +220,7 @@
   <div class="min-w-[180px] flex-shrink-0 bg-white border-t-2 rounded-md shadow-md p-4 2xl:w-[25%]">
     <p class="text-slate-500 text-sm tracking-[0.0175rem] mb-4">ERLÖSE</p>
     <div class="mb-4">
-      <span class="text-xl font-bold text-slate-800 tracking-[-0.03rem]">{{ results.revenue.power }} Mio. €</span>
+      <span class="text-xl font-bold text-slate-800 tracking-[-0.03rem]">{{ results.revenue.power|floatformat:"1g" }} Mio. €</span>
       <p class="flex items-center gap-2 text-slate-500 text-sm">
         <span>Stromexport</span>
         <span class="relative group">
@@ -239,7 +239,7 @@
       </p>
     </div>
     <div>
-      <span class="text-xl font-bold text-slate-800 tracking-[-0.03rem]">{{ results.revenue.hydrogen }} Mio. €</span>
+      <span class="text-xl font-bold text-slate-800 tracking-[-0.03rem]">{{ results.revenue.hydrogen|floatformat:"1g" }} Mio. €</span>
       <p class="flex items-center gap-2 text-slate-500 text-sm">
         <span>H₂-Export</span>
         <span class="relative group">

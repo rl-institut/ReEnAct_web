@@ -20,7 +20,7 @@ def get_simulation_results_from_request(
 
     To get results, setup hooks are applied.
     """
-    parameters = hooks.set_up_oemof_components_from_user_input("", request.GET, None)
+    parameters = hooks.set_up_oemof_components_from_user_input("", request.GET)
     return get_simulation_results(scenario, parameters)
 
 

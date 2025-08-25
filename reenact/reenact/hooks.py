@@ -3,7 +3,6 @@
 import logging
 import oemof
 import pyomo.environ as po
-from django.http import HttpRequest
 
 from .forms import CapacitiesForm
 from oemof.solph._plumbing import sequence
@@ -17,7 +16,6 @@ EMISSION_CONSTRAINT = 20000000.0
 def set_up_oemof_components_from_user_input(
     scenario: str,
     data: dict,
-    request: HttpRequest,
 ):
     """Set up capacities for volatiles, potentials and load demand amounts from user inputs."""
 
@@ -48,89 +46,91 @@ def set_up_oemof_components_from_user_input(
     return parameters
 
 
-def model_co2_tracking(scenario, om, request):
-    if "emissions" not in dir(om):
+def model_co2_tracking(scenario, data, model):
+    if "emissions" not in dir(model):
         flows = {}
-        for i, o in om.flows:
-            if hasattr(om.flows[i, o], "emission_factor"):
-                flows[(i, o)] = om.flows[i, o]
+        for i, o in model.flows:
+            if hasattr(model.flows[i, o], "emission_factor"):
+                flows[(i, o)] = model.flows[i, o]
 
         invest_flows = {}
-        for i, o in om.flows:
-            if hasattr(om.flows[i, o].investment, "emission_factor"):
-                invest_flows[(i, o)] = om.flows[i, o].investment
+        for i, o in model.flows:
+            if hasattr(model.flows[i, o].investment, "emission_factor"):
+                invest_flows[(i, o)] = model.flows[i, o].investment
 
         invest_storage = {}
-        for k in om.es.groups:
+        for k in model.es.groups:
             if (
-                om.es.groups[k]
+                model.es.groups[k]
                 is oemof.solph.components._generic_storage.GenericStorage  # noqa: SLF001
             ):
-                if hasattr(om.es.groups[k].investment, "emission_factor"):
-                    invest_storage[k] = om.es.groups[k].investment
+                if hasattr(model.es.groups[k].investment, "emission_factor"):
+                    invest_storage[k] = model.es.groups[k].investment
 
-        om.emissions = po.Expression(
+        model.emissions = po.Expression(
             expr=sum(
-                om.flow[inflow, outflow, p, t]
-                * om.timeincrement[t]
+                model.flow[inflow, outflow, p, t]
+                * model.timeincrement[t]
                 * sequence(flows[inflow, outflow].emission_factor)[t]
                 for inflow, outflow in flows
-                for p, t in om.TIMEINDEX
+                for p, t in model.TIMEINDEX
             )
             + sum(
-                om.InvestmentFlowBlock.invest[inflow, outflow, p]
+                model.InvestmentFlowBlock.invest[inflow, outflow, p]
                 * invest_flows[inflow, outflow].emission_factor
                 for inflow, outflow in invest_flows
-                for p in om.PERIODS
+                for p in model.PERIODS
             )
             + sum(
-                om.GenericInvestmentStorageBlock.invest[om.es.groups[bat], p]
+                model.GenericInvestmentStorageBlock.invest[model.es.groups[bat], p]
                 * invest_storage[bat].emission_factor
                 for bat in invest_storage
-                for p in om.PERIODS
+                for p in model.PERIODS
             ),
         )
-    return om
+    return model
 
 
-def model_co2_limit(scenario, om, request):
-    if "emissions" in dir(om):
-        om.emission_constraint = po.Constraint(expr=om.emissions <= EMISSION_CONSTRAINT)
+def model_co2_limit(scenario, data, model):
+    if "emissions" in dir(model):
+        model.emission_constraint = po.Constraint(
+            expr=model.emissions <= EMISSION_CONSTRAINT,
+        )
     else:
         logger.warning("Emission tracking needed for emission limit.")
-    return om
+    return model
 
 
-def model_co2_cost(scenario, om, request):
-    if "emissions" in dir(om):
-        om.objective.set_value(
-            expr=om.objective.expr + (0.0 * om.emissions),
+def model_co2_cost(scenario, data, model):
+    if "emissions" in dir(model):
+        model.objective.set_value(
+            expr=model.objective.expr + (0.0 * model.emissions),
         )  # ToDo: cost als variable
     else:
         logger.warning("Emission tracking needed for emission limit.")
-    return om
+    return model
 
 
-def model_prod_goal(scenario, om, request):
+def model_prod_goal(scenario, data, model):
     """ """
     flows = {}
-    for i, o in om.flows:
+    for i, o in model.flows:
         if str(o) == "el" and "battery" not in str(i) and "import" not in str(i):
-            flows[(i, o)] = om.flows[i, o]
+            flows[(i, o)] = model.flows[i, o]
 
-    om.el_prod = po.Expression(
+    model.el_prod = po.Expression(
         expr=sum(
-            om.flow[inflow, outflow, p, t] * om.timeincrement[t]
+            model.flow[inflow, outflow, p, t] * model.timeincrement[t]
             for inflow, outflow in flows
-            for p, t in om.TIMEINDEX
+            for p, t in model.TIMEINDEX
         ),
     )
 
-    om.el_prod_goal = po.Constraint(expr=om.el_prod >= 0.0)
+    model.el_prod_goal = po.Constraint(expr=model.el_prod >= 0.0)
 
-    return om
+    return model
 
 
-def store_emission(scenario: str, meta_results, model):
-    meta_results["emissions"] = model.emissions()
-    return meta_results
+def store_emission(scenario: str, data, meta, model):
+    meta["emissions"] = model.emissions()
+    return meta
