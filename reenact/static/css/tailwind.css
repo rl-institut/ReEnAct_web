@@ -684,8 +684,8 @@ video {
   top: 2rem;
 }
 
-.top-\[-3rem\] {
-  top: -3rem;
+.top-\[-2rem\] {
+  top: -2rem;
 }
 
 .top-\[5rem\] {
@@ -1789,6 +1789,10 @@ video {
 }
 
 @media (min-width: 1280px) {
+  .xl\:top-\[-3rem\] {
+    top: -3rem;
+  }
+
   .xl\:mt-16 {
     margin-top: 4rem;
   }
