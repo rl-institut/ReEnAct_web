@@ -26,7 +26,9 @@ def co2_ems(inp, outp):
     cost = 0.0
 
     production_goal = 401100  # in MWh # TODO: dynamisieren
-    marsh_dry = 0  # in ha # TODO: dynamisieren: mit User-Input für Widervernaessung verknuepfen
+    marsh_dry = (
+        0  # in ha # TODO: dynamisieren: mit User-Input für Widervernaessung verknuepfen
+    )
     mt_co2_ems = 20  # in t_CO2/ha # TODO: dynamisieren
     produced = prod(inp, outp)
     co2_index = 0.20088  # in t_CO2/MWh # TODO: dynamisieren
@@ -122,6 +124,50 @@ def invest(inp, outp):
             inv_c += tot
 
     return inv_c
+
+
+def fixed_invest(inp, outp):
+    """
+    Sums up installation cost for the chosen capacity of the technologies that can be set by the user.
+    """
+    f_inv = 0.0
+    components = [
+        "wind",
+        "pv_ground",
+        "pv_marsh",
+        "pv_roof",
+        "pv_agri",
+        "SB-backpressure",
+        "electrolyser",
+    ]
+
+    for c in components:
+        print(
+            f"{c}: {inp[(c, 'None')]['scalars']['capacity'] * inp[(c, 'None')]['scalars']['capacity_cost']}"
+        )
+        f_inv += (
+            inp[(c, "None")]["scalars"]["capacity"]
+            * inp[(c, "None")]["scalars"]["capacity_cost"]
+        )
+
+    storages = [
+        "battery",
+    ]
+
+    for s in storages:
+        print(
+            f"{s}: {inp[(s, 'None')]['scalars']['capacity'] * inp[(s, 'None')]['scalars']['capacity_cost']} {inp[(s, 'None')]['scalars']['storage_capacity'] * inp[(s, 'None')]['scalars']['storage_capacity_cost']}"
+        )
+        f_inv += (
+            inp[(s, "None")]["scalars"]["capacity"]
+            * inp[(s, "None")]["scalars"]["capacity_cost"]
+        )
+        f_inv += (
+            inp[(s, "None")]["scalars"]["storage_capacity"]
+            * inp[(s, "None")]["scalars"]["storage_capacity_cost"]
+        )
+
+    return f_inv
 
 
 def el_revenue(inp, outp):
