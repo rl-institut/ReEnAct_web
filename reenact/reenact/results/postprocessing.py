@@ -26,7 +26,9 @@ def co2_ems(inp, outp):
     cost = 0.0
 
     production_goal = 401100  # in MWh # TODO: dynamisieren
-    marsh_dry = 0  # in ha # TODO: dynamisieren: mit User-Input für Widervernaessung verknuepfen
+    marsh_dry = (
+        0  # in ha # TODO: dynamisieren: mit User-Input für Widervernaessung verknuepfen
+    )
     mt_co2_ems = 20  # in t_CO2/ha # TODO: dynamisieren
     produced = prod(inp, outp)
     co2_index = 0.20088  # in t_CO2/MWh # TODO: dynamisieren
@@ -104,6 +106,73 @@ def electricity_price(inp, outp):  # noqa: C901
         kwh_p = 0.1 * costs / fil
 
     return round(kwh_p, 2)
+
+
+def electricity_price_new(inp, outp):
+    """
+    Calculates electricity generation cost (kindof).
+    No investment optimization.
+    """
+    energy = 0.0
+    costs = 0.0
+
+    components = [
+        "wind",
+        "pv_ground",
+        "pv_marsh",
+        "pv_roof",
+        "pv_agri",
+        "SB-backpressure",
+    ]
+    storages = [
+        "battery",
+    ]
+
+    # local production (investment costs, variable costs, energy output)
+    for c in components:
+        costs += (
+            inp[(c, "None")]["scalars"]["capacity"]
+            * inp[(c, "None")]["scalars"]["capacity_cost"]
+        )
+        component_energy = outp[(c, "el")]["sequences"]["flow"].sum()
+        costs += inp[(c, "None")]["scalars"]["marginal_cost"] * component_energy
+        energy += component_energy
+
+    # electricity import
+    import_energy = outp[("EL-import", "el")]["sequences"]["flow"].sum()
+    if "variable_costs" in inp[("EL-import", "el")]["scalars"]:
+        costs += inp[("EL-import", "el")]["scalars"]["variable_costs"] * import_energy
+    elif "variable_costs" in inp[("EL-import", "el")]["sequences"]:
+        costs += (
+            inp[("EL-import", "el")]["sequences"]["variable_costs"]
+            * outp[("EL-import", "el")]["sequences"]["flow"]
+        ).sum()
+
+    # battery storage (2x investment costs, 2x variable costs)
+    for s in storages:
+        costs += (
+            inp[(s, "None")]["scalars"]["capacity"]
+            * inp[(s, "None")]["scalars"]["capacity_cost"]
+        )
+        costs += (
+            inp[(s, "None")]["scalars"]["storage_capacity"]
+            * inp[(s, "None")]["scalars"]["storage_capacity_cost"]
+        )
+        costs += (
+            inp[(s, "el")]["scalars"]["variable_costs"]
+            * outp[(s, "el")]["sequences"]["flow"].sum()
+        )
+        costs += (
+            inp[("el", s)]["scalars"]["variable_costs"]
+            * outp[("el", s)]["sequences"]["flow"].sum()
+        )
+
+    if energy > 0.0:
+        kwh_p = 0.1 * costs / energy
+    else:
+        kwh_p = 9999.99
+
+    return kwh_p
 
 
 def invest(inp, outp):
