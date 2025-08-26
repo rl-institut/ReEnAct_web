@@ -55,7 +55,7 @@ def electricity_price(inp, outp):  # noqa: C901
         ("pv_roof", "el"),
         ("wind", "el"),
         ("SB-backpressure", "el"),
-        ("EL-import", "el"),
+        ("EL-import", "elec"),
         ("el_sale", "elec"),
         ("BM-gassifier", "bg"),
         ("battery", "None"),
