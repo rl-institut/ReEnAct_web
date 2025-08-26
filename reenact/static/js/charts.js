@@ -28,7 +28,11 @@ const goalMarkLine = {
 
 create_chart("statusquo-chart", generate_main_chart(chart_data[0].production, chart_data[0].demand, false));
 create_chart("scenarios-chart", generate_main_chart(chart_data[1].production, chart_data[1].demand));
-create_chart("myplan-chart", generate_main_chart(chart_data[2].production, chart_data[2].demand));
+create_chart("simulated-scenarios-chart", generate_main_chart(chart_data[2].production, chart_data[2].demand));
+create_chart("myplan-chart", generate_main_chart(chart_data[3].production, chart_data[3].demand));
+if (chart_data.length > 4) {
+  create_chart("simulated-myplan-chart", generate_main_chart(chart_data[4].production, chart_data[4].demand));
+}
 
 function getResponsiveLayout() {
   const width = window.innerWidth;
@@ -103,7 +107,7 @@ function reload_chart(div_id) {
 function update_chart(div_id, parameters={}) {
     // Update chart data from form input. Chart options calculated in backend.
     const params = new URLSearchParams(parameters).toString();
-    fetch(`chart/${div_id}?${params}`).then(
+    fetch(`chart/?${params}`).then(
         response => response.json()
     ).then(data => {
         create_chart(div_id, generate_main_chart(data.production, data.demand));

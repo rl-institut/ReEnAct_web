@@ -9,7 +9,7 @@ const capacityForm = document.getElementById("capacityForm");
 const myplanSimulationBtn = document.getElementById("myplanSimulationBtn");
 const myplanSpinner = document.getElementById("myplanSpinner");
 const myplanChartSection = document.getElementById("myplan-chart");
-const planChartInputOutput = document.getElementById("plan-chart-input-output");
+const planChartInputOutput = document.getElementById("simulated-myplan-chart");
 const componentBox = document.querySelector("#my_plan_results .boxes");
 
 const msgUpdate = "Die Ergebnisse sind nicht mehr aktuell. Bitte starten Sie die Berechnung neu.";
@@ -83,6 +83,7 @@ function showResults(simulationId) {
   myplanSimulationBtn.querySelector(".calculate-button-text").innerText = "Neu berechnen";
   document.querySelectorAll(".myplanUpdateMsg").forEach(element => element.classList.add("hidden"));
   update_result_boxes(simulationId);
+  update_chart("simulated-myplan-chart", {simulation_id: simulationId});
 }
 
 function update_result_boxes(simulationId) {

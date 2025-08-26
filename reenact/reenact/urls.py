@@ -38,9 +38,15 @@ urlpatterns = [
         name="sources",
     ),
     path("", views.MainView.as_view(), name="index"),
-    path("chart/<str:chart_name>/", views.chart, name="chart"),
+    path("chart/", views.chart, name="chart"),
     path("potentials/", views.PotentialsView.as_view(), name="potentials"),
     path("boxes/", views.ResultBoxView.as_view(), name="boxes"),
     path("scenario/<int:scenario_id>/", views.scenario_chart, name="scenario"),
+    path(
+        "simulated_scenario/<int:scenario_id>/",
+        views.scenario_chart,
+        {"simulated": True},
+        name="scenario",
+    ),
     path("sliders/<int:scenario_id>/", views.get_sliders_from_scenario, name="sliders"),
 ]

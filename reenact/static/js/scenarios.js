@@ -16,12 +16,13 @@ function updateScenario(title, description, button, scenarioId) {
     document.getElementById("scenarioDescription").textContent = description;
 
     loadScenarioChart(scenarioId);
+    loadScenarioChart(scenarioId, true);
     updateScenarioPotentials(scenarioId);
     updateScenarioResultBoxes(scenarioId);
 }
 
-function loadScenarioChart(scenarioId) {
-  const request = window.location.origin + '/scenario/' + scenarioId;
+function loadScenarioChart(scenarioId, simulated=false) {
+  const request = `${window.location.origin}/${simulated ? "simulated_" : ""}scenario/${scenarioId}`;
   fetch(
     request,
     {
@@ -35,7 +36,11 @@ function loadScenarioChart(scenarioId) {
       response.json().then(
         data => {
           const options = generate_main_chart(data.production, data.demand);
-          create_chart("scenarios-chart", options);
+          let chart_div = "scenarios-chart";
+          if (simulated) {
+            chart_div = "simulated-scenarios-chart";
+          }
+          create_chart(chart_div, options);
         }
       );
     }

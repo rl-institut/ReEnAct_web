@@ -96,8 +96,15 @@ class MainView(TemplateView):
         context["charts"] = [
             capacities.get_chart_data_from_scenario(0),  # Base scenario
             capacities.get_chart_data_from_scenario(1),  # first scenario
-            my_plan_capacities,
+            capacities.get_chart_data_from_oemof_simulation(
+                scenario.get_simulation_results_from_scenario(1),
+            ),  # simulated scenario capacities
+            my_plan_capacities,  # My plan capacities
         ]
+        if simulation_id is not None:
+            context["charts"].append(
+                capacities.get_chart_data_from_oemof_simulation(simulation_id),
+            )  # simulated myplan capacities
 
         statusquo_box = boxes.get_result_boxes_from_scenario_data(SCENARIOS[0])
         context["results"] = [
@@ -124,9 +131,9 @@ class MainView(TemplateView):
         return context
 
 
-def chart(request, chart_name: str) -> JsonResponse:
-    if "simulationId" in request.GET:
-        simulation_id = request.GET["simulationId"]
+def chart(request) -> JsonResponse:
+    if "simulation_id" in request.GET:
+        simulation_id = request.GET["simulation_id"]
         return JsonResponse(
             capacities.get_chart_data_from_oemof_simulation(simulation_id),
         )
@@ -168,22 +175,22 @@ class ResultBoxView(TemplateView):
         return {"results": results}
 
 
-def scenario_chart(request, scenario_id: int) -> JsonResponse | HttpResponse:
+def scenario_chart(
+    request,
+    scenario_id: int,
+    *,
+    simulated: bool = False,
+) -> JsonResponse | HttpResponse:
     """Return echart options as JSON."""
     if request.method != "GET":
         return HttpResponse(status=405)  # wrong method
 
-    simulation_id = None
-    if settings.USE_SCENARIOS_FROM_SIMULATION:
-        simulation_id = scenario.get_simulation_results(
-            SCENARIOS[scenario_id].get("oemof_scenario", ""),
-            {},
-        )
-
-    if simulation_id is None:
+    if not simulated:
         return JsonResponse(
             capacities.get_chart_data_from_scenario(scenario_id),
         )
+
+    simulation_id = scenario.get_simulation_results_from_scenario(scenario_id)
     return JsonResponse(
         capacities.get_chart_data_from_oemof_simulation(simulation_id),
     )
