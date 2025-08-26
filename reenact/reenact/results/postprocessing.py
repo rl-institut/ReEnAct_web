@@ -26,9 +26,7 @@ def co2_ems(inp, outp):
     cost = 0.0
 
     production_goal = 401100  # in MWh # TODO: dynamisieren
-    marsh_dry = (
-        0  # in ha # TODO: dynamisieren: mit User-Input für Widervernaessung verknuepfen
-    )
+    marsh_dry = 0  # in ha # TODO: dynamisieren: mit User-Input für Widervernaessung verknuepfen
     mt_co2_ems = 20  # in t_CO2/ha # TODO: dynamisieren
     produced = prod(inp, outp)
     co2_index = 0.20088  # in t_CO2/MWh # TODO: dynamisieren
@@ -55,7 +53,7 @@ def electricity_price(inp, outp):  # noqa: C901
         ("pv_roof", "el"),
         ("wind", "el"),
         ("SB-backpressure", "el"),
-        ("EL-import", "elec"),
+        ("EL-import", "el"),
         ("el_sale", "elec"),
         ("BM-gassifier", "bg"),
         ("battery", "None"),
