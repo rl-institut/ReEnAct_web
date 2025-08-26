@@ -193,6 +193,44 @@ def invest(inp, outp):
     return inv_c
 
 
+def fixed_invest(inp, outp):
+    """
+    Sums up installation cost for the chosen capacity of the technologies that can be set by the user.
+    """
+    f_inv = 0.0
+    components = [
+        "wind",
+        "pv_ground",
+        "pv_marsh",
+        "pv_roof",
+        "pv_agri",
+        "SB-backpressure",
+        "electrolyser",
+    ]
+
+    for c in components:
+        f_inv += (
+            inp[(c, "None")]["scalars"]["capacity"]
+            * inp[(c, "None")]["scalars"]["capacity_cost"]
+        )
+
+    storages = [
+        "battery",
+    ]
+
+    for s in storages:
+        f_inv += (
+            inp[(s, "None")]["scalars"]["capacity"]
+            * inp[(s, "None")]["scalars"]["capacity_cost"]
+        )
+        f_inv += (
+            inp[(s, "None")]["scalars"]["storage_capacity"]
+            * inp[(s, "None")]["scalars"]["storage_capacity_cost"]
+        )
+
+    return f_inv
+
+
 def el_revenue(inp, outp):
     """
     Revenue from selling electricity.
