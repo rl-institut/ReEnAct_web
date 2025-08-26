@@ -142,9 +142,6 @@ def fixed_invest(inp, outp):
     ]
 
     for c in components:
-        print(
-            f"{c}: {inp[(c, 'None')]['scalars']['capacity'] * inp[(c, 'None')]['scalars']['capacity_cost']}"
-        )
         f_inv += (
             inp[(c, "None")]["scalars"]["capacity"]
             * inp[(c, "None")]["scalars"]["capacity_cost"]
@@ -155,9 +152,6 @@ def fixed_invest(inp, outp):
     ]
 
     for s in storages:
-        print(
-            f"{s}: {inp[(s, 'None')]['scalars']['capacity'] * inp[(s, 'None')]['scalars']['capacity_cost']} {inp[(s, 'None')]['scalars']['storage_capacity'] * inp[(s, 'None')]['scalars']['storage_capacity_cost']}"
-        )
         f_inv += (
             inp[(s, "None")]["scalars"]["capacity"]
             * inp[(s, "None")]["scalars"]["capacity_cost"]
