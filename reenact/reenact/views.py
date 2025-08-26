@@ -93,16 +93,20 @@ class MainView(TemplateView):
         # Prepare result boxes for statusquo, scenario and myplan
         # at startup statusquo = myplan
         # if simulation_id is given myplan diverges
-        context["charts"] = [
-            capacities.get_chart_data_from_scenario(0),  # Base scenario
-            capacities.get_chart_data_from_scenario(1),  # first scenario
-            capacities.get_chart_data_from_oemof_simulation(
-                scenario.get_simulation_results_from_scenario(1),
-            ),  # simulated scenario capacities
-            my_plan_capacities,  # My plan capacities
-        ]
+        context["charts"] = {
+            "base": capacities.get_chart_data_from_scenario(0),
+            "scenario": capacities.get_chart_data_from_scenario(1),
+            "myplan": my_plan_capacities,
+        }
+        scenario_simulation_id = scenario.get_simulation_results_from_scenario(1)
+        if scenario_simulation_id is not None:
+            context["charts"]["simulated_scenario"] = (
+                capacities.get_chart_data_from_oemof_simulation(
+                    scenario_simulation_id,
+                ),
+            )
         if simulation_id is not None:
-            context["charts"].append(
+            context["charts"]["simulated_myplan"] = (
                 capacities.get_chart_data_from_oemof_simulation(simulation_id),
             )  # simulated myplan capacities
 

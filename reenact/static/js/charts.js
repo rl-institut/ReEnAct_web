@@ -26,12 +26,14 @@ const goalMarkLine = {
   }
 };
 
-create_chart("statusquo-chart", generate_main_chart(chart_data[0].production, chart_data[0].demand, false));
-create_chart("scenarios-chart", generate_main_chart(chart_data[1].production, chart_data[1].demand));
-create_chart("simulated-scenarios-chart", generate_main_chart(chart_data[2].production, chart_data[2].demand));
-create_chart("myplan-chart", generate_main_chart(chart_data[3].production, chart_data[3].demand));
-if (chart_data.length > 4) {
-  create_chart("simulated-myplan-chart", generate_main_chart(chart_data[4].production, chart_data[4].demand));
+create_chart("statusquo-chart", generate_main_chart(chart_data.base.production, chart_data.base.demand, false));
+create_chart("scenarios-chart", generate_main_chart(chart_data.scenario.production, chart_data.scenario.demand));
+create_chart("myplan-chart", generate_main_chart(chart_data.myplan.production, chart_data.myplan.demand));
+if ("simulated_scenario" in chart_data) {
+  create_chart("simulated-scenarios-chart", generate_main_chart(chart_data.simulated_scenario.production, chart_data.simulated_scenario.demand));
+}
+if ("simulated_myplan" in chart_data) {
+  create_chart("simulated-myplan-chart", generate_main_chart(chart_data.simulated_myplan.production, chart_data.simulated_myplan.demand));
 }
 
 function getResponsiveLayout() {
