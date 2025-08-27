@@ -96,7 +96,7 @@
   "battery": {
     "label": "Batteriespeicher",
     "min": 0,
-    "max": 10000.0,
+    "max": 282.5,
     "step": 1,
     "initial": 0.38,
     "unit": "MWh",
