@@ -26,7 +26,9 @@ def co2_ems(inp, outp):
     cost = 0.0
 
     production_goal = 401100  # in MWh # TODO: dynamisieren
-    marsh_dry = 0  # in ha # TODO: dynamisieren: mit User-Input für Widervernaessung verknuepfen
+    marsh_dry = (
+        0  # in ha # TODO: dynamisieren: mit User-Input für Widervernaessung verknuepfen
+    )
     mt_co2_ems = 20  # in t_CO2/ha # TODO: dynamisieren
     produced = prod(inp, outp)
     co2_index = 0.20088  # in t_CO2/MWh # TODO: dynamisieren
@@ -137,14 +139,26 @@ def electricity_price_new(inp, outp):
         energy += component_energy
 
     # electricity import
-    import_energy = outp[("EL-import", "el")]["sequences"]["flow"].sum()
-    if "variable_costs" in inp[("EL-import", "el")]["scalars"]:
-        costs += inp[("EL-import", "el")]["scalars"]["variable_costs"] * import_energy
-    elif "variable_costs" in inp[("EL-import", "el")]["sequences"]:
+    import_energy = outp[("EL-import", "elec")]["sequences"]["flow"].sum()
+    if "variable_costs" in inp[("EL-import", "elec")]["scalars"]:
+        costs += inp[("EL-import", "elec")]["scalars"]["variable_costs"] * import_energy
+    elif "variable_costs" in inp[("EL-import", "elec")]["sequences"]:
         costs += (
-            inp[("EL-import", "el")]["sequences"]["variable_costs"]
-            * outp[("EL-import", "el")]["sequences"]["flow"]
+            inp[("EL-import", "elec")]["sequences"]["variable_costs"]
+            * outp[("EL-import", "elec")]["sequences"]["flow"]
         ).sum()
+
+    # Unsure: cost for using the fallback electricity option
+    costs += (
+        inp[("EL-fallback", "None")]["scalars"]["marginal_cost"]
+        * outp[("EL-fallback", "el")]["sequences"]["flow"].sum()
+    )
+
+    # grid fee between (production) electricity bus and consumer electricity bus
+    costs += (
+        inp[("el_sale", "None")]["scalars"]["marginal_cost"]
+        * outp[("el_sale", "elec")]["sequences"]["flow"].sum()
+    )
 
     # battery storage (2x investment costs, 2x variable costs)
     for s in storages:
