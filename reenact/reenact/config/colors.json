@@ -15,8 +15,7 @@
     "PV - Moor": "#FFD700",
     "Biomasse Moor": "#FFD700",
     "Biogasanlage": "#8FBC8F",
-    "BHKW Paludi BM": "#D2B48C",
-    "BHKW Nasswiesen BM": "#DEB887",
+    "BHKW Biomasse": "#D2B48C",
     "Sonstige Biomasse": "#F5DEB3",
     "Strom": "#64748b",
     "Wärme": "#cbd5e1",
@@ -24,5 +23,8 @@
     "Photovoltaik - Gesamt": "#eeee6c",
     "Wiedervernässung Moore": "#D2B4CC",
     "Elektrolyseur": "#64748b",
-    "Batteriespeicher": "#f1f5f9"
+    "Batteriespeicher": "#f1f5f9",
+    "Strom-Import": "#64748b",
+    "Strom-Export": "#64748b",
+    "Abregelung": "#84748b"
 }

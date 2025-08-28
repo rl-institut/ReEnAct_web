@@ -1,19 +1,15 @@
-from django_oemof.results import get_results
-from oemof.tabular.postprocessing import calculations, core
+from django_oemof import models
 
+from reenact.reenact.results import postprocessing
 from reenact.reenact.settings import (
-    CATEGORIES,
     COLORS,
     CONFIG,
     FULL_LOAD_HOURS,
-    SCENARIOS,
-    SLIDER_DATA,
     SLIDERS,
 )
 
 
-def get_chart_data_from_scenario(scenario_id):
-    scenario_data = SCENARIOS[scenario_id]
+def get_chart_data_from_scenario(scenario_data):
     production = [
         {"label": key, "value": value, "color": COLORS.get(key, "#000000")}
         for key, value in scenario_data["production"].items()
@@ -26,40 +22,10 @@ def get_chart_data_from_scenario(scenario_id):
 
 
 def get_chart_data_from_oemof_simulation(simulation_id):
-    results = get_results(
-        simulation_id,
-        {
-            "production": core.ParametrizedCalculation(
-                calculations.AggregatedFlows,
-                parameters={"from_nodes": CATEGORIES["production"]},
-            ),
-            "demand": core.ParametrizedCalculation(
-                calculations.AggregatedFlows,
-                parameters={"to_nodes": CATEGORIES["demand"]},
-            ),
-        },
-    )
-    chart_data = {
-        "production": [
-            {
-                "label": SLIDER_DATA[index[0]]["label"],
-                "color": COLORS.get(SLIDER_DATA[index[0]]["label"], "#000000"),
-                "value": value * 1e-3,  # in GWh
-            }
-            for index, value in results["production"].items()
-            if index[0] in SLIDER_DATA
-        ],
-        "demand": [
-            {
-                "label": SLIDER_DATA[index[1]]["label"],
-                "color": COLORS.get(SLIDER_DATA[index[1]]["label"], "#000000"),
-                "value": value * 1e-3,  # in GWh
-            }
-            for index, value in results["demand"].items()
-            if index[1] in SLIDER_DATA
-        ],
-    }
-    return chart_data
+    sim = models.Simulation.objects.get(id=simulation_id)
+    results = sim.dataset.restore_results()
+    production, demand = postprocessing.gcdfos(*results)
+    return get_chart_data_from_scenario({"production": production, "demand": demand})
 
 
 def get_chart_data_from_user_input(user_input: dict) -> dict:

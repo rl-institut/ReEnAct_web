@@ -94,8 +94,8 @@ class MainView(TemplateView):
         # at startup statusquo = myplan
         # if simulation_id is given myplan diverges
         context["charts"] = {
-            "base": capacities.get_chart_data_from_scenario(0),
-            "scenario": capacities.get_chart_data_from_scenario(1),
+            "base": capacities.get_chart_data_from_scenario(SCENARIOS[0]),
+            "scenario": capacities.get_chart_data_from_scenario(SCENARIOS[1]),
             "myplan": my_plan_capacities,
         }
         scenario_simulation_id = scenario.get_simulation_results_from_scenario(1)
@@ -191,7 +191,7 @@ def scenario_chart(
 
     if not simulated:
         return JsonResponse(
-            capacities.get_chart_data_from_scenario(scenario_id),
+            capacities.get_chart_data_from_scenario(SCENARIOS[scenario_id]),
         )
 
     simulation_id = scenario.get_simulation_results_from_scenario(scenario_id)

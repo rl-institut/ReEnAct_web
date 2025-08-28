@@ -295,16 +295,16 @@ def gcdfos(inp, outp):
         ("pv_roof", "el"),
         ("wind", "el"),
         ("SB-backpressure", "el"),
-        ("EL-import", "el"),
+        ("EL-import", "elec"),
     ]
     pc_map = {
-        "wind": "Windkraft",
+        "wind": "Wind",
         "EL-import": "Strom-Import",
-        "pv_ground": "PV Freiflächen",
-        "pv_agri": "PV Agri",
-        "pv_marsh": "PV Moor",
-        "pv_roof": "PV Dach",
-        "SB-backpressure": "Biomasse-BHKW",
+        "pv_ground": "PV - Freiflächen",
+        "pv_agri": "PV - Agri",
+        "pv_marsh": "PV - Moor",
+        "pv_roof": "PV - Dachanlagen",
+        "SB-backpressure": "BHKW Biomasse",
         "BG-backpressure": "Biogasanlage",
     }
     # demand components
@@ -318,17 +318,17 @@ def gcdfos(inp, outp):
     ]
     dc_map = {
         "EL-excess": "Abregelung",
-        "EL-heating": "HH-Wärmeerzeugung",
-        "electrolyser": "Elektrolyse",
-        "electricity": "HH-Strombedarf",
+        "EL-heating": "HH-Wärme",
+        "electrolyser": "Elektrolyseur",
+        "electricity": "HH-Strom",
         "EL-export": "Strom-Export",
         "mobility": "Mobilität",
     }
 
     for k in pc:
-        production[pc_map[k[0]]] = round(outp[k]["sequences"]["flow"].sum(), 2)
+        production[pc_map[k[0]]] = round(outp[k]["sequences"]["flow"].sum() * 1e-3, 2)
 
     for k in dc:
-        demand[dc_map[k[1]]] = round(outp[k]["sequences"]["flow"].sum(), 2)
+        demand[dc_map[k[1]]] = round(outp[k]["sequences"]["flow"].sum() * 1e-3, 2)
 
     return production, demand
