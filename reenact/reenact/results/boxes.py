@@ -63,7 +63,11 @@ def get_result_boxes_from_oemof_simulation(simulation_id: int) -> dict:
     inputs, outputs = sim.dataset.restore_results()
 
     prod_goal_achieved = round(postprocessing.prod(inputs, outputs) / 4011, 2)
-    co2_amount, co2_cost = postprocessing.co2_ems(inputs, outputs)
+    co2_amount, co2_cost = postprocessing.co2_ems(
+        inputs,
+        outputs,
+        sim.parameters["marsh"],
+    )
     kwh_cost = postprocessing.electricity_price_new(inputs, outputs)
     inv_cost = postprocessing.fixed_invest(inputs, outputs)
     el_rev = postprocessing.el_revenue(inputs, outputs)
