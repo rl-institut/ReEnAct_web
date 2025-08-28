@@ -7,7 +7,7 @@
       <div class="flex flex-col">
         <div class="flex items-center space-x-2">
           <span class="flex items-center gap-1">
-            <span class="text-xl font-bold text-slate-800 tracking-tight">{{ results.co2.emissions }} t</span>
+            <span class="text-xl font-bold text-slate-800 tracking-tight">{{ results.co2.emissions|floatformat:"1g" }} t</span>
           </span>
         </div>
         <p class="flex items-center gap-2 text-slate-500 text-sm">
@@ -30,7 +30,7 @@
       <div class="flex flex-col">
         <div class="flex items-center space-x-2">
           <span class="flex items-center gap-1">
-            <span class="text-xl font-bold text-slate-800 tracking-tight">{{ results.co2.cost }} Mio. €</span>
+            <span class="text-xl font-bold text-slate-800 tracking-tight">{{ results.co2.cost|floatformat:"1g" }} Mio. €</span>
           </span>
         </div>
         <p class="flex items-center gap-2 text-slate-500 text-sm">
