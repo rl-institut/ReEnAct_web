@@ -4,6 +4,7 @@ import logging
 import oemof
 import pyomo.environ as po
 
+from .settings import CONFIG
 from .forms import CapacitiesForm
 from oemof.solph._plumbing import sequence
 
@@ -25,14 +26,26 @@ def set_up_oemof_components_from_user_input(
         raise RuntimeError(capacity_form.errors)
     capacities = capacity_form.cleaned_data
 
+    electricity_factor = capacities["mobility"] / 100
+    mobility_demand = (
+        (1 - electricity_factor) * CONFIG["mobility_demand"]["fossile"]
+        + electricity_factor * CONFIG["mobility_demand"]["electric"]
+    ) * 1e-3
     parameters = {
         "wind": {"capacity": capacities["wind"], "expandable": False},
         "pv_ground": {"capacity": capacities["pv_ground"], "expandable": False},
         "pv_roof": {"capacity": capacities["pv_roof"], "expandable": False},
         "pv_agri": {"capacity": capacities["pv_agri"], "expandable": False},
         "pv_marsh": {"capacity": capacities["pv_marsh"], "expandable": False},
-        "other_biomass": {"capacity": capacities["other_biomass"] / 1000},
-        "SB-depot": {"capacity": capacities["biomass_marsh"] / 1000},
+        "SB-depot": {"capacity": capacities["other_biomass"] / 1000},
+        "BM-depot": {"capacity": capacities["biomass_marsh"] / 1000},
+        "other_biomass": {
+            "capacity": (
+                capacities["other_biomass"] * CONFIG["other_biomass"]["sb"]
+                + capacities["biomass_marsh"] * CONFIG["other_biomass"]["sm"]
+            )
+            / 1000,
+        },
         "electrolyser": {"capacity": capacities["electrolyzer"], "expandable": False},
         "battery": {
             "capacity": capacities["battery"],
@@ -41,7 +54,7 @@ def set_up_oemof_components_from_user_input(
         },
         "electricity": {"amount": capacities["electricity"]},
         "heat": {"amount": capacities["heat"]},
-        "mobility": {"amount": capacities["mobility"]},
+        "mobility": {"amount": mobility_demand},
     }
     return parameters
 

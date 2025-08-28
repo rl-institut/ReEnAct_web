@@ -1,0 +1,10 @@
+
+# Factor to multiply "Sonstige Biomasse" and "Biomasse Moor" to get "Sonstige Biomasse"
+other_biomass:
+  sb: 4.2
+  sm: 4.03
+
+# Factors to define electricity demand for mobility depending on electricity share
+mobility_demand:
+  fossile: 48279.90
+  electric: 7652.15

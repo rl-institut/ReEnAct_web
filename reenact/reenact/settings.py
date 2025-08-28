@@ -6,11 +6,17 @@ import pathlib
 from dataclasses import dataclass
 from json import JSONDecodeError
 
+import yaml
+
 APP_DIR = pathlib.Path(__file__).parent
 CONFIG_DIR = APP_DIR / "config"
 SCENARIO_DIR = APP_DIR / "scenarios"
 
 MYPLAN_OEMOF_SCENARIO = "scenario_es"
+
+
+with (CONFIG_DIR / "config.yaml").open("r", encoding="utf-8") as f:
+    CONFIG = yaml.safe_load(f)
 
 
 @dataclass

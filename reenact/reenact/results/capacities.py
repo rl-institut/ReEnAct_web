@@ -4,10 +4,11 @@ from oemof.tabular.postprocessing import calculations, core
 from reenact.reenact.settings import (
     CATEGORIES,
     COLORS,
+    CONFIG,
     FULL_LOAD_HOURS,
     SCENARIOS,
-    SLIDERS,
     SLIDER_DATA,
+    SLIDERS,
 )
 
 
@@ -87,7 +88,8 @@ def calculate_energy_from_capacity(technology: str, value: float) -> float:
         # Calculate mobility energy from fossil energy in 2024 and full electric energy in 2040
         electricity_factor = value / 100
         return (
-            (1 - electricity_factor) * 48279.90 + electricity_factor * 7652.15
+            (1 - electricity_factor) * CONFIG["mobility_demand"]["fossile"]
+            + electricity_factor * CONFIG["mobility_demand"]["electric"]
         ) * 1e-3
     if technology in FULL_LOAD_HOURS:
         return value * FULL_LOAD_HOURS[technology] * 1e-3
