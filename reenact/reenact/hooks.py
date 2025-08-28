@@ -37,8 +37,6 @@ def set_up_oemof_components_from_user_input(
         "pv_roof": {"capacity": capacities["pv_roof"], "expandable": False},
         "pv_agri": {"capacity": capacities["pv_agri"], "expandable": False},
         "pv_marsh": {"capacity": capacities["pv_marsh"], "expandable": False},
-        "SB-depot": {"capacity": capacities["other_biomass"] / 1000},
-        "BM-depot": {"capacity": capacities["biomass_marsh"] / 1000},
         "other_biomass": {
             "capacity": (
                 capacities["other_biomass"] * CONFIG["other_biomass"]["sb"]
