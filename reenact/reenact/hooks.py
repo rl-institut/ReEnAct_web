@@ -55,6 +55,7 @@ def set_up_oemof_components_from_user_input(
         "electricity": {"amount": capacities["electricity"]},
         "heat": {"amount": capacities["heat"]},
         "mobility": {"amount": mobility_demand},
+        "marsh": capacities["marsh"],
     }
     return parameters
 

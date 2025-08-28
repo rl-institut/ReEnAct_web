@@ -18,7 +18,7 @@ def prod(inp, outp):
     return prod
 
 
-def co2_ems(inp, outp):
+def co2_ems(inp, outp, marsh):
     """
     Aggregate CO2 emissions and calculate its cost.
     """
@@ -179,11 +179,7 @@ def electricity_price_new(inp, outp):
             * outp[("el", s)]["sequences"]["flow"].sum()
         )
 
-    if energy > 0.0:
-        kwh_p = 0.1 * costs / energy
-    else:
-        kwh_p = 9999.99
-
+    kwh_p = 0.1 * costs / energy if energy > 0.0 else 9999.99
     return kwh_p
 
 
