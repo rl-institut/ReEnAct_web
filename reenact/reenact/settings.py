@@ -37,6 +37,14 @@ with (CONFIG_DIR / "sliders.json").open("r", encoding="utf-8") as f:
     SLIDER_DATA = json.load(f)
 SLIDERS = [SliderConfig(name=name, **values) for name, values in SLIDER_DATA.items()]
 LABEL_TO_SLIDER = {config["label"]: name for name, config in SLIDER_DATA.items()}
+SLIDERS_ON_RIGHT_SIDE = [
+    "marsh",
+    "pv_marsh",
+    "pv_agri",
+    "other_biomass",
+    "battery",
+    "mobility",
+]
 
 with (CONFIG_DIR / "categories.json").open("r", encoding="utf-8") as f:
     CATEGORIES = json.load(f)

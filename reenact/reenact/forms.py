@@ -4,7 +4,13 @@ from collections import defaultdict
 
 from django.forms import FloatField, Form, NumberInput
 
-from .settings import CATEGORIES, SLIDER_DEPENDENCIES, SLIDERS, SliderConfig
+from .settings import (
+    CATEGORIES,
+    SLIDER_DEPENDENCIES,
+    SLIDERS,
+    SliderConfig,
+    SLIDERS_ON_RIGHT_SIDE,
+)
 
 
 def get_max_value(slider: SliderConfig, data: dict | None) -> int | float:
@@ -62,5 +68,7 @@ class CapacitiesForm(Form):
         self.categories = dict(
             self.categories,
         )  # This must be done in order to loop over defaultdict in template
+
+        self.sliders_on_right_side = SLIDERS_ON_RIGHT_SIDE
 
         super().__init__(data, **kwargs)
