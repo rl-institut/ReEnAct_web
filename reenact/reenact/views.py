@@ -107,8 +107,8 @@ class MainView(TemplateView):
             )
         if simulation_id is not None:
             context["charts"]["simulated_myplan"] = (
-                capacities.get_chart_data_from_oemof_simulation(simulation_id),
-            )  # simulated myplan capacities
+                capacities.get_chart_data_from_oemof_simulation(simulation_id)
+            )
 
         statusquo_box = boxes.get_result_boxes_from_scenario_data(SCENARIOS[0])
         context["results"] = [
