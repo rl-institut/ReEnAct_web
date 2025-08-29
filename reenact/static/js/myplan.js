@@ -66,7 +66,22 @@ async function startMyPlan(oemof_scenario) {
 
 async function checkResults() {
   if (currentTask === null) return;
-  const simulationId = await checkSimulation(currentTask);
+  let simulationId = null;
+  try {
+    simulationId = await checkSimulation(currentTask);
+  } catch(error) {
+    // Show error message to users
+    console.error(error.message);
+    // Reactivate the simulation button
+    capacitiesChangedSimulation();
+    const failedScenario = document.getElementById("invalid_scenario");
+    failedScenario.textContent = "Simulation fehlgeschlagen.";
+    failedScenario.classList.remove("opacity-0");
+    setTimeout(() => {
+      failedScenario.classList.add("opacity-0");
+    }, 2000);
+    return;
+  }
   if (simulationId === null) {
     setTimeout(checkResults, SIMULATION_CHECK_TIME);
   } else {
