@@ -1,9 +1,9 @@
 {
-  "wind": 2549.16,
-  "pv_ground": 1165.08,
-  "pv_roof": 876,
+  "wind": 3955.19,
+  "pv_ground": 1170.75,
+  "pv_roof": 876.0,
   "pv_agri": 788.4,
-  "pv_marsh": 800,
+  "pv_marsh": 788.4,
   "other_biomass": 1.05,
   "marsh": 0.0,
   "biomass_marsh": 1.0075,
