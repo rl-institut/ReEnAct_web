@@ -25,14 +25,12 @@ def co2_ems(inp, outp, marsh):
     tons = 0.0
     cost = 0.0
 
-    production_goal = 401100  # in MWh # TODO: dynamisieren
-    marsh_dry = (
-        0  # in ha # TODO: dynamisieren: mit User-Input für Widervernaessung verknuepfen
-    )
-    mt_co2_ems = 20  # in t_CO2/ha # TODO: dynamisieren
+    production_goal = 419500  # in MWh
+    marsh_dry = 8.15 - 100 * marsh  # in ha
+    mt_co2_ems = 20  # in t_CO2/ha
     produced = prod(inp, outp)
-    co2_index = 0.20088  # in t_CO2/MWh # TODO: dynamisieren
-    co2_price = 275.0  # in €/t_CO2 # TODO: dynamisieren
+    co2_index = 0.20088  # in t_CO2/MWh
+    co2_price = 275.0  # in €/t_CO2
 
     tons = (marsh_dry * mt_co2_ems) + max(0, (production_goal - produced)) * co2_index
     cost = tons * co2_price
