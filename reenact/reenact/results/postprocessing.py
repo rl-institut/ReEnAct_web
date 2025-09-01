@@ -26,7 +26,7 @@ def co2_ems(inp, outp, marsh):
     cost = 0.0
 
     production_goal = 419500  # in MWh
-    marsh_dry = 8.15 - 100 * marsh  # in ha
+    marsh_dry = 815 - 100 * marsh  # in ha
     mt_co2_ems = 20  # in t_CO2/ha
     produced = prod(inp, outp)
     co2_index = 0.20088  # in t_CO2/MWh
