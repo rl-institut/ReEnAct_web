@@ -644,6 +644,10 @@ video {
   left: 1.75rem;
 }
 
+.left-\[45\%\] {
+  left: 45%;
+}
+
 .right-0 {
   right: 0px;
 }
