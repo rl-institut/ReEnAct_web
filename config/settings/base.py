@@ -272,14 +272,13 @@ STATICFILES_FINDERS += ["compressor.finders.CompressorFinder"]
 # Your stuff...
 # ------------------------------------------------------------------------------
 
-MAP_ENGINE_CENTER_AT_STARTUP = [10.407237624103573, 51.22757621251938]
-MAP_ENGINE_ZOOM_AT_STARTUP = 5.546712433728557
+MAP_ENGINE_CENTER_AT_STARTUP = [13.2, 54]
+MAP_ENGINE_ZOOM_AT_STARTUP = 10.8
 MAP_ENGINE_MAX_BOUNDS: [[-2.54, 46.35], [23.93, 55.87]]
 MAP_ENGINE_LAYERS_AT_STARTUP = [
     "municipality",
     "municipalityline",
     "municipalitylabel",
-    "fauna_flora_habitat",
 ]
 
 MAP_ENGINE_API_MVTS = {
@@ -307,7 +306,70 @@ MAP_ENGINE_API_MVTS = {
             minzoom=8,
         ),
     ],
-    "static": [setup.MVTAPI("fauna_flora_habitat", "reenact", "FaunaFloraHabitat")],
+    "static": [
+        setup.MVTAPI("agricultural_area", "reenact", "AgriculturalArea"),
+        setup.MVTAPI("bird_protection_area", "reenact", "BirdProtectionArea"),
+        setup.MVTAPI("cadastral_parcels", "reenact", "CadastralParcels"),
+        setup.MVTAPI("fauna_flora_habitat", "reenact", "FaunaFloraHabitatArea"),
+        setup.MVTAPI("forest", "reenact", "Forest"),
+        setup.MVTAPI("forest_protected", "reenact", "ForestProtected"),
+        setup.MVTAPI("generator_biomass", "reenact", "GeneratorBiomass"),
+        setup.MVTAPI("generator_pv_ground", "reenact", "GeneratorPvGround"),
+        setup.MVTAPI("generator_pv_roof", "reenact", "GeneratorPvRoof"),
+        setup.MVTAPI("generator_wind_15a", "reenact", "GeneratorWind15a"),
+        setup.MVTAPI("generator_wind_25a", "reenact", "GeneratorWind25a"),
+        setup.MVTAPI("generator_wind", "reenact", "GeneratorWind"),
+        setup.MVTAPI("grassland", "reenact", "Grassland"),
+        setup.MVTAPI("landscape_protection_area", "reenact", "LandscapeProtectionArea"),
+        setup.MVTAPI("meadow", "reenact", "Meadow"),
+        setup.MVTAPI("natural_parks", "reenact", "NaturalParks"),
+        setup.MVTAPI("nature_conservation_area", "reenact", "NatureConservationArea"),
+        setup.MVTAPI("organic_soils", "reenact", "OrganicSoils"),
+        setup.MVTAPI(
+            "potentialarea_paludiculture_Klasse_1",
+            "reenact",
+            "PotentialareaPaludicultureKlasse1",
+        ),
+        setup.MVTAPI(
+            "potentialarea_paludiculture_Klasse_2",
+            "reenact",
+            "PotentialareaPaludicultureKlasse2",
+        ),
+        setup.MVTAPI(
+            "potentialarea_paludiculture_Klasse_3",
+            "reenact",
+            "PotentialareaPaludicultureKlasse3",
+        ),
+        setup.MVTAPI(
+            "potentialarea_paludiculture_Moor_ohne_Feldblock",
+            "reenact",
+            "PotentialareaPaludicultureMoorOhneFeldblock",
+        ),
+        setup.MVTAPI(
+            "potentialarea_paludiculture_Nicht-Eignung",
+            "reenact",
+            "PotentialareaPaludicultureNichtEignung",
+        ),
+        setup.MVTAPI("potentialarea_pv_ground", "reenact", "PotentialareaPvGround"),
+        setup.MVTAPI("potentialarea_pv_roof", "reenact", "PotentialareaPvRoof"),
+        setup.MVTAPI("potentialarea_wind_1000m", "reenact", "PotentialareaWind1000m"),
+        setup.MVTAPI("potentialarea_wind_400m", "reenact", "PotentialareaWind400m"),
+        setup.MVTAPI("potentialarea_wind_600m", "reenact", "PotentialareaWind600m"),
+        setup.MVTAPI("potentialarea_wind_800m", "reenact", "PotentialareaWind800m"),
+        setup.MVTAPI(
+            "potentialarea_wind_rpg_2024_draft",
+            "reenact",
+            "PotentialareaWindRpg2024Draft",
+        ),
+        setup.MVTAPI("power_grid", "reenact", "PowerGrid"),
+        setup.MVTAPI("protected_landscape_parts", "reenact", "ProtectedLandscapeParts"),
+        setup.MVTAPI("roof_generator_pv_roof", "reenact", "RoofGeneratorPvRoof"),
+        setup.MVTAPI(
+            "water_and_drinking_water_protection_area",
+            "reenact",
+            "WaterAndDrinkingWaterProtectionArea",
+        ),
+    ],
 }
 
 MAP_ENGINE_STYLES_FOLDER = "reenact/reenact/config/"

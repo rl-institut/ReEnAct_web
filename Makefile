@@ -8,7 +8,7 @@ migrate:
 	python manage.py migrate
 
 makemigrations:
-	python manage.oy makemigrations
+	python manage.py makemigrations
 
 load_regions:
 	python manage.py shell --command="from scripts import data_processing; data_processing.load_regions()"

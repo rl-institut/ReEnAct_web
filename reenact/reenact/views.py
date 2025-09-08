@@ -15,6 +15,8 @@ from .settings import (
     FULL_LOAD_HOURS,
     SLIDER_DATA,
     LABEL_TO_SLIDER,
+    LAYERS_BY_CATEGORY,
+    LAYERS_BY_NAME,
 )
 
 PRODUCTION = [
@@ -172,10 +174,32 @@ class MapView(TemplateView, MapEngineMixin):
 
     def get_context_data(self, **kwargs) -> dict:
         context = super().get_context_data(**kwargs)
-        context["mapengine_legend"] = Legend.from_layer_names(
-            "Legende",
-            [LegendItem("fauna_flora_habitat", tooltip="test")],
+        context["mapengine_legend"] = Legend(
+            {
+                category: [
+                    LegendItem(
+                        layer["name"].removesuffix(".gpkg"),
+                        layer["title"],
+                        color=layer["color"],
+                        tooltip=layer["tooltip"],
+                    )
+                    for layer in layers
+                    if layer["title"] != "Gemeinden"
+                ]
+                for category, layers in LAYERS_BY_CATEGORY.items()
+            },
         )
+        for layer in context["mapengine_layers"]:
+            if layer["id"] not in LAYERS_BY_NAME:
+                continue
+            color_field = (
+                "fill-color"
+                if "fill-color" in layer["paint"]
+                else "circle-color"
+                if "circle-color" in layer["paint"]
+                else "line-color"
+            )
+            layer["paint"][color_field] = LAYERS_BY_NAME[layer["id"]]["color"]
         return context
 
 

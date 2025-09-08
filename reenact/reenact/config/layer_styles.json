@@ -810,5 +810,192 @@
     "paint": {
       "fill-color": "#2196F3"
     }
+  },
+  "agricultural_area": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#A1D99B"
+    }
+  },
+  "bird_protection_area": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#74C476"
+    }
+  },
+  "cadastral_parcels": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#9E9E9E"
+    }
+  },
+  "forest_protected": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#2E7D32"
+    }
+  },
+  "generator_biomass": {
+    "type": "circle",
+    "paint": {
+      "circle-color": "#2E7D32",
+      "circle-radius": 4
+    }
+  },
+  "generator_pv_ground": {
+    "type": "circle",
+    "paint": {
+      "circle-color": "#FFC107",
+      "circle-radius": 4
+    }
+  },
+  "generator_pv_roof": {
+    "type": "circle",
+    "paint": {
+      "circle-color": "#FFD54F",
+      "circle-radius": 4
+    }
+  },
+  "generator_wind_15a": {
+    "type": "circle",
+    "paint": {
+      "circle-color": "#64B5F6",
+      "circle-radius": 4
+    }
+  },
+  "generator_wind_25a": {
+    "type": "circle",
+    "paint": {
+      "circle-color": "#1E88E5",
+      "circle-radius": 4
+    }
+  },
+  "generator_wind": {
+    "type": "circle",
+    "paint": {
+      "circle-color": "#1976D2",
+      "circle-radius": 4
+    }
+  },
+  "grassland": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#8BC34A"
+    }
+  },
+  "meadow": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#AED581"
+    }
+  },
+  "natural_parks": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#AEAA81"
+    }
+  },
+  "organic_soils": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#EEAA81"
+    }
+  },
+  "potentialarea_paludiculture_Klasse_1": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#8E24AA"
+    }
+  },
+  "potentialarea_paludiculture_Klasse_2": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#CE93D8"
+    }
+  },
+  "potentialarea_paludiculture_Klasse_3": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#E1BEE7"
+    }
+  },
+  "potentialarea_paludiculture_Moor_ohne_Feldblock": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#6D4C41"
+    }
+  },
+  "potentialarea_paludiculture_Nicht-Eignung": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#B0BEC5"
+    }
+  },
+  "potentialarea_pv_ground": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#FFEE58"
+    }
+  },
+  "potentialarea_pv_roof": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#FFF176"
+    }
+  },
+  "potentialarea_wind_1000m": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#90CAF9"
+    }
+  },
+  "potentialarea_wind_400m": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#64B5F6"
+    }
+  },
+  "potentialarea_wind_600m": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#42A5F5"
+    }
+  },
+  "potentialarea_wind_800m": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#2196F3"
+    }
+  },
+  "potentialarea_wind_rpg_2024_draft": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#1565C0"
+    }
+  },
+  "power_grid": {
+    "type": "line",
+    "paint": {
+      "line-color": "#424242",
+      "line-width": 1.5
+    }
+  },
+  "protected_landscape_parts": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#66BB6A"
+    }
+  },
+  "roof_generator_pv_roof": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#FFE082"
+    }
+  },
+  "water_and_drinking_water_protection_area": {
+    "type": "fill",
+    "paint": {
+      "fill-color": "#64B5F6"
+    }
   }
 }

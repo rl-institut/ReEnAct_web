@@ -23,8 +23,13 @@ REGIONS = [
     models.Municipality,
 ]
 
+# Get all classes defined in models module
 MODELS = [
-    models.FaunaFloraHabitat,
+    getattr(models, attr_name)
+    for attr_name in dir(models)
+    if isinstance(getattr(models, attr_name), type)
+    and issubclass(getattr(models, attr_name), Model)
+    and attr_name not in ("Model", "Municipality", "StaticRegionModel")
 ]
 
 
@@ -137,4 +142,4 @@ def prerun_initial_myplan_scenario():
 
 
 if __name__ == "__main__":
-    prerun_initial_myplan_scenario()
+    load_data()

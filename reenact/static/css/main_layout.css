@@ -69,3 +69,7 @@
 .potential svg {
   position:relative;
 }
+
+#mapengine-legend {
+  max-width: initial;
+}

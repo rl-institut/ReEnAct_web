@@ -76,8 +76,8 @@ class RelatedModelLayerMapping(LayerMapping):
                     or self.make_multi(ltype, model_field)
                 ):
                     error_msg = (
-                        "Invalid mapping geometry; model has {fld_name}{'(dim=3)' if coord_dim == 3 else ''}, "
-                        "layer geometry type is {ltype}."
+                        f"Invalid mapping geometry; model has {fld_name}{'(dim=3)' if coord_dim == 3 else ''}, "
+                        f"layer geometry type is {ltype}."
                     )
                     raise LayerMapError(error_msg)
 
