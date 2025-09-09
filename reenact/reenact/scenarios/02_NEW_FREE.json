@@ -1,20 +1,20 @@
 {"name": "Zubau",
 "title": "Zubau",
-"description": "Erneuerbare-Energien-Anlagen werden unter Verfolgung der Klimaziele bis zum Erzeugungsziel der Region von 401,1 GWh ausgebaut. Dabei werden aktuelle Erzeugungsanlagen nach Ablauf der Lebensdauer baugleich ersetzt. Der Energiebedarf der Region sinkt aufgrund einer vollständigen Elektrifizierung im Wärme- und Verkehrssektor.",
+"description": "Erneuerbare-Energien-Anlagen werden unter Verfolgung der Klimaziele bis zum Erzeugungsziel der Region von 419,5 GWh ausgebaut. Dabei werden aktuelle Erzeugungsanlagen nach Ablauf der Lebensdauer baugleich ersetzt. Der Energiebedarf der Region sinkt aufgrund einer vollständigen Elektrifizierung im Wärme- und Verkehrssektor.",
 "production": {
-        "Wind": 152.66,
-        "PV - Freiflächen": 246.57,
-        "PV - Dachanlagen": 0.73,
+        "Wind": 392.99,
+        "PV - Freiflächen": 13.81,
+        "PV - Dachanlagen": 0.54,
         "PV - Moor": 0.0,
         "PV - Agri": 0.0,
-        "Biomasse Moor": 1.14,
-        "Sonstige Biomasse": 0.0
+        "Biomasse Moor": 0.79,
+        "Sonstige Biomasse": 11.36
     },
-    "demand": {"Strom": 15.84, "Wärme": 37.34, "Mobilität": 7.65},
+    "demand": {"Strom": 15.8, "Wärme": 37.3, "Mobilität": 7.7},
     "potentials": {
-        "Wind": {"percentage": 20.36, "area": 28.16},
-        "PV - Freiflächen": {"percentage": 8.27, "area": 2.95},
-        "PV - Dachanlagen": {"percentage": 1.05, "area": 0.0078},
+        "Wind": {"percentage": 38.56, "area": 53.35},
+        "PV - Freiflächen": {"percentage": 0.46, "area": 0.17},
+        "PV - Dachanlagen": {"percentage": 1.05, "area": 0.01},
         "PV - Agri": {"percentage": 0.0, "area": 0.0}
     },
     "boxes": {
@@ -29,12 +29,12 @@
         "fulfilled": true
       },
       "cost": {
-        "production": 5.64,
-        "invest": 17.87
+        "production": 4.44,
+        "invest": 16.07
       },
       "revenue": {
-        "power": 15.62,
-        "hydrogen": 0
+        "power": 23.60,
+        "hydrogen": 15.80
       }
     }
 }

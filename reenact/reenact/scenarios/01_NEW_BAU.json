@@ -2,38 +2,38 @@
 "title": "Kein Zubau",
 "description": "Die regionale Energieerzeugung bleibt unverändert, da aktuelle Erzeugungsanlagen nach Ablauf der Lebensdauer baugleich ersetzt werden. Der Energiebedarf der Region sinkt aufgrund einer vollständigen Elektrifizierung im Wärme- und Verkehrssektor.",
 "production": {
-        "Wind": 103.80,
-        "PV - Freiflächen": 13.75,
+        "Wind": 160.23,
+        "PV - Freiflächen": 13.81,
         "PV - Dachanlagen": 0.54,
         "PV - Moor": 0.0,
         "PV - Agri": 0.0,
         "Biomasse Moor": 0.0,
-        "Sonstige Biomasse": 0.0
+        "Sonstige Biomasse": 5.58
     },
-    "demand": {"Strom": 15.84, "Wärme": 37.34, "Mobilität": 7.65},
+    "demand": {"Strom": 15.8, "Wärme": 37.3, "Mobilität": 7.7},
     "potentials": {
         "Wind": {"percentage": 15.72, "area": 21.75},
-        "PV - Freiflächen": {"percentage": 0.46, "area": 0.1652},
-        "PV - Dachanlagen": {"percentage": 1.05, "area": 0.0078},
+        "PV - Freiflächen": {"percentage": 0.46, "area": 0.17},
+        "PV - Dachanlagen": {"percentage": 1.05, "area": 0.01},
         "PV - Agri": {"percentage": 0.0, "area": 0.0}
     },
     "boxes": {
       "climate": {
-        "percentage": 33.31,
+        "percentage": 42.95,
         "total": 419.5,
         "fulfilled": false
       },
       "co2": {
-        "emissions": 70036,
-        "cost": 19.26,
+        "emissions": 64376,
+        "cost": 17.70,
         "fulfilled": false
       },
       "cost": {
-        "production": 7.13,
-        "invest": 6.22
+        "production": 4.37,
+        "invest": 6.56
       },
       "revenue": {
-        "power": 6.98,
+        "power": 1.79,
         "hydrogen": 0.0
       }
     }
