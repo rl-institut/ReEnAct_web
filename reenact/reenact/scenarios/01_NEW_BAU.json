@@ -29,11 +29,11 @@
         "fulfilled": false
       },
       "cost": {
-        "production": 4.37,
+        "production": 8.04,
         "invest": 6.56
       },
       "revenue": {
-        "power": 1.79,
+        "power": 9.71,
         "hydrogen": 0.0
       }
     }
