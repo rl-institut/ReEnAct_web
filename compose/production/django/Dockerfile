@@ -53,6 +53,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   gcc g++ \
   # Needed for oemof.tabular
   git \
+  # Needed for GDAL
+  binutils libproj-dev gdal-bin \
   # CBC-Solver
   coinor-cbc coinor-libcbc-dev \
   # cleaning up unused files
