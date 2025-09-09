@@ -62,7 +62,7 @@ def get_result_boxes_from_oemof_simulation(simulation_id: int) -> dict:
     sim = models.Simulation.objects.get(id=simulation_id)
     inputs, outputs = sim.dataset.restore_results()
 
-    prod_goal_achieved = round(postprocessing.prod(inputs, outputs) / 4011, 2)
+    prod_goal_achieved = round(postprocessing.prod(inputs, outputs) / 4195, 2)
     co2_amount, co2_cost = postprocessing.co2_ems(
         inputs,
         outputs,
