@@ -6,6 +6,7 @@ from reenact.reenact.settings import (
     CONFIG,
     FULL_LOAD_HOURS,
     SLIDERS,
+    ELECTRICITY_CHART_LABELS,
 )
 
 
@@ -17,6 +18,26 @@ def get_chart_data_from_scenario(scenario_data):
     demand = [
         {"label": key, "value": value, "color": COLORS.get(key, "#000000")}
         for key, value in scenario_data["demand"].items()
+    ]
+    return {"production": production, "demand": demand}
+
+
+def get_electricity_chart_data_from_scenario(scenario_data):
+    production = [
+        {
+            "label": ELECTRICITY_CHART_LABELS[key],
+            "value": value,
+            "color": COLORS.get(ELECTRICITY_CHART_LABELS[key], "#000000"),
+        }
+        for key, value in scenario_data["el_in"].items()
+    ]
+    demand = [
+        {
+            "label": ELECTRICITY_CHART_LABELS[key],
+            "value": value,
+            "color": COLORS.get(ELECTRICITY_CHART_LABELS[key], "#000000"),
+        }
+        for key, value in scenario_data["el_out"].items()
     ]
     return {"production": production, "demand": demand}
 

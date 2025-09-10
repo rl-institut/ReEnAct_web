@@ -1,40 +1,76 @@
-{"name": "Kein Zubau",
-"title": "Kein Zubau",
-"description": "Die regionale Energieerzeugung bleibt unverändert, da aktuelle Erzeugungsanlagen nach Ablauf der Lebensdauer baugleich ersetzt werden. Der Energiebedarf der Region sinkt aufgrund einer vollständigen Elektrifizierung im Wärme- und Verkehrssektor.",
-"production": {
-        "Wind": 160.23,
-        "PV - Freiflächen": 13.81,
-        "PV - Dachanlagen": 0.54,
-        "PV - Moor": 0.0,
-        "PV - Agri": 0.0,
-        "Biomasse Moor": 0.0,
-        "Sonstige Biomasse": 5.58
+{
+  "name":"Kein Zubau",
+  "title":"Kein Zubau",
+  "description":"Die regionale Energieerzeugung bleibt unverändert, da aktuelle Erzeugungsanlagen nach Ablauf der Lebensdauer baugleich ersetzt werden. Der Energiebedarf der Region sinkt aufgrund einer vollständigen Elektrifizierung im Wärme- und Verkehrssektor.",
+  "production":{
+    "Wind":160.23,
+    "PV - Freiflächen":13.81,
+    "PV - Dachanlagen":0.54,
+    "PV - Moor":0.0,
+    "PV - Agri":0.0,
+    "Biomasse Moor":0.0,
+    "Sonstige Biomasse":5.58
+  },
+  "demand":{
+    "Strom":15.8,
+    "Wärme":37.3,
+    "Mobilität":7.7
+  },
+  "el_in":{
+    "wind":160.23,
+    "pv_ground":13.81,
+    "pv_roof":0.54,
+    "pv_agri":0.0,
+    "pv_marsh":0.0,
+    "SB-backpressure":5.58,
+    "battery_in":0.12,
+    "EL-import":61.2
+  },
+  "el_out":{
+    "electricity":15.8,
+    "EL-heating":37.3,
+    "mobility":7.7,
+    "electrolyser":0.0,
+    "EL-export":179.1,
+    "EL-excess":1.06,
+    "battery_out":0.13
+  },
+  "potentials":{
+    "Wind":{
+      "percentage":15.72,
+      "area":21.75
     },
-    "demand": {"Strom": 15.8, "Wärme": 37.3, "Mobilität": 7.7},
-    "potentials": {
-        "Wind": {"percentage": 15.72, "area": 21.75},
-        "PV - Freiflächen": {"percentage": 0.46, "area": 0.17},
-        "PV - Dachanlagen": {"percentage": 1.05, "area": 0.01},
-        "PV - Agri": {"percentage": 0.0, "area": 0.0}
+    "PV - Freiflächen":{
+      "percentage":0.46,
+      "area":0.17
     },
-    "boxes": {
-      "climate": {
-        "percentage": 42.95,
-        "total": 419.5,
-        "fulfilled": false
-      },
-      "co2": {
-        "emissions": 64376,
-        "cost": 17.70,
-        "fulfilled": false
-      },
-      "cost": {
-        "production": 8.04,
-        "invest": 6.56
-      },
-      "revenue": {
-        "power": 9.71,
-        "hydrogen": 0.0
-      }
+    "PV - Dachanlagen":{
+      "percentage":1.05,
+      "area":0.01
+    },
+    "PV - Agri":{
+      "percentage":0.0,
+      "area":0.0
     }
+  },
+  "boxes":{
+    "climate":{
+      "percentage":42.95,
+      "total":419.5,
+      "fulfilled":false
+    },
+    "co2":{
+      "emissions":64376,
+      "cost":17.70,
+      "fulfilled":false
+    },
+    "cost":{
+      "production":8.04,
+      "invest":6.56
+    },
+    "revenue":{
+      "power":9.71,
+      "hydrogen":0.0
+    }
+  }
 }

@@ -1,3 +1,6 @@
+from reenact.reenact.settings import ELECTRICITY_CHART_LABELS
+
+
 def prod(inp, outp):
     """
     Sum up local electricity production.
@@ -295,16 +298,7 @@ def gcdfos(inp, outp):
         ("SB-backpressure", "el"),
         ("EL-import", "elec"),
     ]
-    pc_map = {
-        "wind": "Wind",
-        "EL-import": "Strom-Import",
-        "pv_ground": "PV - Freiflächen",
-        "pv_agri": "PV - Agri",
-        "pv_marsh": "PV - Moor",
-        "pv_roof": "PV - Dachanlagen",
-        "SB-backpressure": "BHKW Biomasse",
-        "BG-backpressure": "Biogasanlage",
-    }
+
     # demand components
     dc = [
         ("elec", "EL-heating"),
@@ -314,19 +308,17 @@ def gcdfos(inp, outp):
         ("el", "EL-export"),
         ("el", "EL-excess"),
     ]
-    dc_map = {
-        "EL-excess": "Abregelung",
-        "EL-heating": "HH-Wärme",
-        "electrolyser": "Elektrolyseur",
-        "electricity": "HH-Strom",
-        "EL-export": "Strom-Export",
-        "mobility": "Mobilität",
-    }
 
     for k in pc:
-        production[pc_map[k[0]]] = round(outp[k]["sequences"]["flow"].sum() * 1e-3, 2)
+        production[ELECTRICITY_CHART_LABELS[k[0]]] = round(
+            outp[k]["sequences"]["flow"].sum() * 1e-3,
+            2,
+        )
 
     for k in dc:
-        demand[dc_map[k[1]]] = round(outp[k]["sequences"]["flow"].sum() * 1e-3, 2)
+        demand[ELECTRICITY_CHART_LABELS[k[1]]] = round(
+            outp[k]["sequences"]["flow"].sum() * 1e-3,
+            2,
+        )
 
     return production, demand

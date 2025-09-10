@@ -10,8 +10,6 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from django.http import HttpRequest
 
-from reenact.reenact.settings import SCENARIOS
-
 
 def get_simulation_results_from_request(
     scenario: str,
@@ -24,13 +22,6 @@ def get_simulation_results_from_request(
     """
     parameters = hooks.set_up_oemof_components_from_user_input("", request.GET)
     return get_simulation_results(scenario, parameters)
-
-
-def get_simulation_results_from_scenario(scenario_id: int) -> int | None:
-    """Return simulation ID for a given ReEnAct scenario."""
-    oemof_scenario = SCENARIOS[scenario_id].get("oemof_scenario", "scenario_es")
-    parameters = {}  # TODO: Must be adapted to scenario data
-    return get_simulation_results(oemof_scenario, parameters)
 
 
 def get_simulation_results(scenario: str, parameters: dict) -> int | None:

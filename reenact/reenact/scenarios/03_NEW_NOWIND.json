@@ -1,40 +1,76 @@
-{"name": "Zubau ohne Wind",
-"title": "Zubau ohne Wind",
-"description": "Erneuerbare-Energien-Anlagen werden unter Verfolgung der Klimaziele bis zum Erzeugungsziel der Region von 419,5 GWh ausgebaut. Dabei werden aktuelle Photovoltaik-Anlagen nach Ablauf der Lebensdauer baugleich ersetzt. Vorhandene Windkraftanlagen werden nach Ablauf der Lebensdauer zurückgebaut und die Installation weiterer Windkraftanlagen ausgeschlossen. Der Energiebedarf der Region sinkt aufgrund einer vollständigen Elektrifizierung im Wärme- und Verkehrssektor.",
-"production": {
-        "Wind": 0.0,
-        "PV - Freiflächen": 406.81,
-        "PV - Dachanlagen": 0.54,
-        "PV - Moor": 0.0,
-        "PV - Agri": 0.0,
-        "Biomasse Moor": 0.79,
-        "Sonstige Biomasse": 11.36
+{
+  "name":"Zubau ohne Wind",
+  "title":"Zubau ohne Wind",
+  "description":"Erneuerbare-Energien-Anlagen werden unter Verfolgung der Klimaziele bis zum Erzeugungsziel der Region von 419,5 GWh ausgebaut. Dabei werden aktuelle Photovoltaik-Anlagen nach Ablauf der Lebensdauer baugleich ersetzt. Vorhandene Windkraftanlagen werden nach Ablauf der Lebensdauer zurückgebaut und die Installation weiterer Windkraftanlagen ausgeschlossen. Der Energiebedarf der Region sinkt aufgrund einer vollständigen Elektrifizierung im Wärme- und Verkehrssektor.",
+  "production":{
+    "Wind":0.0,
+    "PV - Freiflächen":406.81,
+    "PV - Dachanlagen":0.54,
+    "PV - Moor":0.0,
+    "PV - Agri":0.0,
+    "Biomasse Moor":0.79,
+    "Sonstige Biomasse":11.36
+  },
+  "demand":{
+    "Strom":15.8,
+    "Wärme":37.3,
+    "Mobilität":7.7
+  },
+  "el_in":{
+    "wind":0.0,
+    "pv_ground":406.81,
+    "pv_roof":0.54,
+    "pv_agri":0.0,
+    "pv_marsh":0.0,
+    "SB-backpressure":12.15,
+    "battery_in":0.0,
+    "EL-import":129.5
+  },
+  "el_out":{
+    "electricity":15.8,
+    "EL-heating":37.3,
+    "mobility":7.7,
+    "electrolyser":68.31,
+    "EL-export":411.59,
+    "EL-excess":7.91,
+    "battery_out":0.0
+  },
+  "potentials":{
+    "Wind":{
+      "percentage":0.0,
+      "area":0.0
     },
-    "demand": {"Strom": 15.8, "Wärme": 37.3, "Mobilität": 7.7},
-    "potentials": {
-        "Wind": {"percentage": 0.0, "area": 0.0},
-        "PV - Freiflächen": {"percentage": 13.6, "area": 4.86},
-        "PV - Dachanlagen": {"percentage": 1.05, "area": 0.01},
-        "PV - Agri": {"percentage": 0.0, "area": 0.0}
+    "PV - Freiflächen":{
+      "percentage":13.6,
+      "area":4.86
     },
-    "boxes": {
-      "climate": {
-        "percentage": 100,
-        "total": 419.5,
-        "fulfilled": true
-      },
-      "co2": {
-        "emissions": 0,
-        "cost": 0,
-        "fulfilled": true
-      },
-      "cost": {
-        "production": 7.54,
-        "invest": 19.33
-      },
-      "revenue": {
-        "power": 14.83,
-        "hydrogen": 15.80
-      }
+    "PV - Dachanlagen":{
+      "percentage":1.05,
+      "area":0.01
+    },
+    "PV - Agri":{
+      "percentage":0.0,
+      "area":0.0
     }
+  },
+  "boxes":{
+    "climate":{
+      "percentage":100,
+      "total":419.5,
+      "fulfilled":true
+    },
+    "co2":{
+      "emissions":0,
+      "cost":0,
+      "fulfilled":true
+    },
+    "cost":{
+      "production":7.54,
+      "invest":19.33
+    },
+    "revenue":{
+      "power":14.83,
+      "hydrogen":15.80
+    }
+  }
 }

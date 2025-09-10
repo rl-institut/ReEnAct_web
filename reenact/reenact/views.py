@@ -102,13 +102,9 @@ class MainView(TemplateView):
             "scenario": capacities.get_chart_data_from_scenario(SCENARIOS[1]),
             "myplan": my_plan_capacities,
         }
-        scenario_simulation_id = scenario.get_simulation_results_from_scenario(1)
-        if scenario_simulation_id is not None:
-            context["charts"]["simulated_scenario"] = (
-                capacities.get_chart_data_from_oemof_simulation(
-                    scenario_simulation_id,
-                ),
-            )
+        context["charts"]["simulated_scenario"] = (
+            capacities.get_electricity_chart_data_from_scenario(SCENARIOS[1])
+        )
         if simulation_id is not None:
             context["charts"]["simulated_myplan"] = (
                 capacities.get_chart_data_from_oemof_simulation(simulation_id)
@@ -234,9 +230,9 @@ def scenario_chart(
             capacities.get_chart_data_from_scenario(SCENARIOS[scenario_id]),
         )
 
-    simulation_id = scenario.get_simulation_results_from_scenario(scenario_id)
+    scenario_data = SCENARIOS[scenario_id]
     return JsonResponse(
-        capacities.get_chart_data_from_oemof_simulation(simulation_id),
+        capacities.get_electricity_chart_data_from_scenario(scenario_data),
     )
 
 

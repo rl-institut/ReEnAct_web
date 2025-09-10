@@ -61,6 +61,9 @@ with (CONFIG_DIR / "colors.json").open("r", encoding="utf-8") as f:
 with (CONFIG_DIR / "marsh_dependencies.json").open("r", encoding="utf-8") as f:
     SLIDER_DEPENDENCIES = json.load(f)
 
+with (CONFIG_DIR / "electricity_chart_labels.json").open("r", encoding="utf-8") as f:
+    ELECTRICITY_CHART_LABELS = json.load(f)
+
 
 SCENARIOS = []
 for filename in sorted(SCENARIO_DIR.iterdir()):
