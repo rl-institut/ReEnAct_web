@@ -163,7 +163,17 @@ def get_geodata_config_by_category() -> dict[str, list[dict[str, Any]]]:
     return by_category
 
 
+CATEGORY_ORDER = (
+    "Grenzen",
+    "Erneuerbare Energien",
+    "EE-Potenziale",
+    "Natur und Schutzgebiete",
+    "Siedlung und Infrastruktur",
+)
 LAYERS_BY_CATEGORY = get_geodata_config_by_category()
+LAYERS_BY_CATEGORY = dict(
+    sorted(LAYERS_BY_CATEGORY.items(), key=lambda x: CATEGORY_ORDER.index(x[0])),
+)
 LAYERS_BY_NAME = {
     layer["name"].removesuffix(".gpkg"): layer
     for category, layers in LAYERS_BY_CATEGORY.items()
