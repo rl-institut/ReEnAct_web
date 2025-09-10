@@ -5,25 +5,26 @@
   "production": {
     "Wind": 93.29,
     "PV - Freiflächen": 12.03,
-    "PV - Dachanlagen": 2.51
+    "PV - Dachanlagen": 2.51,
+    "Biogasanlage": 4.00
   },
   "oemof_scenario": "es6",
-  "demand": {"Strom": 15.84, "Wärme": 143.63, "Mobilität": 48.33},
+  "demand": {"Strom": 15.84, "Wärme": 143.63, "Mobilität": 48.28},
   "potentials": {
-    "Wind": {"percentage": 28.47, "area": 20.68},
-    "PV - Freiflächen": {"percentage": 5.7, "area": 0.17},
-    "PV - Dachanlagen": {"percentage": 1.04, "area": 0.0078},
+    "Wind": {"percentage": 15.72, "area": 21.75},
+    "PV - Freiflächen": {"percentage": 0.46, "area": 0.17},
+    "PV - Dachanlagen": {"percentage": 1.05, "area": 0.01},
     "PV - Agri": {"percentage": 0.0, "area": 0.0}
   },
   "boxes": {
     "climate": {
-      "percentage": 78,
+      "percentage": 26.7,
       "total": 419.5,
       "fulfilled": false
     },
     "co2": {
-      "emissions": 79288,
-      "cost": 6.54,
+      "emissions": 150136.45,
+      "cost": 12.39,
       "fulfilled": false
     },
     "cost": {
