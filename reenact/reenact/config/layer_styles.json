@@ -839,42 +839,54 @@
     "type": "circle",
     "paint": {
       "circle-color": "#2E7D32",
-      "circle-radius": 4
+      "circle-radius": 4,
+      "circle-stroke-color": "#505050",
+      "circle-stroke-width": 1
     }
   },
   "generator_pv_ground": {
     "type": "circle",
     "paint": {
       "circle-color": "#FFC107",
-      "circle-radius": 4
+      "circle-radius": 4,
+      "circle-stroke-color": "#505050",
+      "circle-stroke-width": 1
     }
   },
   "generator_pv_roof": {
     "type": "circle",
     "paint": {
       "circle-color": "#FFD54F",
-      "circle-radius": 4
+      "circle-radius": 4,
+      "circle-stroke-color": "#505050",
+      "circle-stroke-width": 1
     }
   },
   "generator_wind_15a": {
     "type": "circle",
     "paint": {
       "circle-color": "#64B5F6",
-      "circle-radius": 4
+      "circle-radius": 4,
+      "circle-stroke-color": "#505050",
+      "circle-stroke-width": 1
     }
   },
   "generator_wind_25a": {
     "type": "circle",
     "paint": {
       "circle-color": "#1E88E5",
-      "circle-radius": 4
+      "circle-radius": 4,
+      "circle-stroke-color": "#505050",
+      "circle-stroke-width": 1
     }
   },
   "generator_wind": {
     "type": "circle",
     "paint": {
       "circle-color": "#1976D2",
-      "circle-radius": 4
+      "circle-radius": 4,
+      "circle-stroke-color": "#505050",
+      "circle-stroke-width": 1
     }
   },
   "grassland": {
