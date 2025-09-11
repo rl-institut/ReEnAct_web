@@ -9,6 +9,7 @@
   "BG-backpressure":"Biogasanlage",
   "EL-excess":"Abregelung",
   "EL-heating":"HH-Wärme",
+  "heat":"HH-Wärme",
   "electrolyser":"Elektrolyseur",
   "electricity":"HH-Strom",
   "EL-export":"Strom-Export",
