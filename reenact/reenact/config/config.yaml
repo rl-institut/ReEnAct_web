@@ -4,6 +4,12 @@ other_biomass:
   sb: 4.2
   sm: 4.03
 
+# Factor to multiply "Sonstige Biomasse" and "Biomasse Moor" to get capacity of "SB-backpressure"
+SB-backpressure:
+  base: 0.64
+  sb: 0.169485
+  sm: 0.16262489
+
 # Factors to define electricity demand for mobility depending on electricity share
 mobility_demand:
   fossile: 48279.90
