@@ -7,7 +7,7 @@
     "initial": 40.72,
     "unit": "MW",
     "category": "production",
-    "mark": 41,
+    "marks": [41, 51, 175],
     "info": "Das Potential ist abhängig vom Abstand der Windenergieanlagen zur Wohnbebauung. Bei 1000m und 800m Abstand beträgt das Potential 50.72 MW, bei 600m 174.72 MW und 400m 258.72 MW."
   },
   "marsh": {
@@ -18,7 +18,7 @@
     "initial": 0,
     "unit": "km²",
     "category": "production",
-    "mark": 0,
+    "marks": [0],
     "info": "Durch die Wiedervernässung von Mooren können Treibhausgas-Emissionen reduziert werden. Der Grad der Wiedervernässung bestimmt außerdem das Potenzial für den Biomasse-Anbau und PV auf nassen Mooflächen."
   },
   "pv_ground": {
@@ -29,7 +29,7 @@
     "initial": 11.08,
     "unit": "MWp",
     "category": "production",
-    "mark": 12
+    "marks": [12]
   },
   "pv_marsh": {
     "label": "PV - Moor",
@@ -39,7 +39,7 @@
     "initial": 0,
     "unit": "MWp",
     "category": "production",
-    "mark": 0,
+    "marks": [0],
     "info": "Kann nur auf wiedervernässten Moorflächen installiert werden. Moor-PV steht dabei in Flächenkonkurrenz zur Biomassenutzung auf nassen Mooren."
   },
   "pv_roof": {
@@ -50,7 +50,7 @@
     "initial": 0.6,
     "unit": "MWp",
     "category": "production",
-    "mark": 1
+    "marks": [1]
   },
   "pv_agri": {
     "label": "PV - Agri",
@@ -60,7 +60,7 @@
     "initial": 0,
     "unit": "MWp",
     "category": "production",
-    "mark": 0
+    "marks": [0]
   },
   "biomass_marsh": {
     "label": "Biomasse Moor",
@@ -70,7 +70,7 @@
     "initial": 0,
     "unit": "t",
     "category": "production",
-    "mark": 0,
+    "marks": [0],
     "info": "Nasswiesennutzung und Paludikultur kann nur auf wiedervernässten Moorflächen erfolgen. Die Biomassenutzung auf nassen Mooren steht in Flächenkonkurrenz mit Moor-PV."
   },
   "other_biomass": {
@@ -81,7 +81,7 @@
     "initial": 0,
     "unit": "t",
     "category": "production",
-    "mark": 0
+    "marks": [0]
   },
   "electrolyzer": {
     "label": "Elektrolyseur",
@@ -91,7 +91,7 @@
     "initial": 0,
     "unit": "MW",
     "category": "demand",
-    "mark": 0
+    "marks": [0]
   },
   "battery": {
     "label": "Batteriespeicher",
@@ -101,7 +101,7 @@
     "initial": 0.38,
     "unit": "MWh",
     "category": "demand",
-    "mark": 0
+    "marks": [0]
   },
   "electricity": {
     "label": "Strom",
@@ -111,7 +111,7 @@
     "initial": 15.84,
     "unit": "GWh",
     "category": "demand",
-    "mark": 16
+    "marks": [16]
   },
   "mobility": {
     "label": "Mobilität",
@@ -121,7 +121,7 @@
     "initial": 90,
     "unit": "%",
     "category": "demand",
-    "mark": 90,
+    "marks": [90],
     "info": "Der Elektrifizierungsgrad gibt an, wie groß der Anteil an Elektroautos am regionalen PKW-Bestand ist."
   },
   "heat": {
@@ -132,6 +132,6 @@
     "initial": 37.34,
     "unit": "GWh",
     "category": "demand",
-    "mark": 37
+    "marks": [37]
   }
 }

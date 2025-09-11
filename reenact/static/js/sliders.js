@@ -126,12 +126,14 @@ function updateSliderMarks() {
   for (const category in sliderMarks) {
     for (const mark of sliderMarks[category]) {
       const sliderName = mark[0];
-      const sliderValue = mark[1];
+      const sliderValues = mark[1];
       let slider = $(`#id_${sliderName}`).data("ionRangeSlider");
       slider.update({
         // jshint ignore:start
         onUpdate: function (data) {
-          addMark(data, category, sliderValue);
+          for (const sliderValue of sliderValues) {
+            addMark(data, category, sliderValue);
+          }
         },
         // jshint ignore:end
       });

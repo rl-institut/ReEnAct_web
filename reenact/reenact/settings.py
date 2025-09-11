@@ -32,9 +32,12 @@ class SliderConfig:
     step: int | float
     initial: int | float
     unit: str
-    mark: int | float | None = None
+    marks: list[int | float] | None = None
     category: str | None = None
     info: str | None = None
+
+    def __post_init__(self):
+        self.marks = self.marks or []
 
 
 with (CONFIG_DIR / "sliders.json").open("r", encoding="utf-8") as f:
@@ -94,11 +97,7 @@ with (CONFIG_DIR / "potential_areas.json").open("r", encoding="utf-8") as f:
     POTENTIAL_AREAS = json.load(f)
 
 SLIDER_MARKS = {
-    category: [
-        [item, SLIDER_DATA[item]["mark"]]
-        for item in items
-        if SLIDER_DATA[item].get("mark", None) is not None
-    ]
+    category: [[item, SLIDER_DATA[item]["marks"]] for item in items]
     for category, items in CATEGORIES.items()
 }
 
