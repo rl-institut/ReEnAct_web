@@ -12,9 +12,9 @@
     "Sonstige Biomasse":11.36
   },
   "demand":{
-    "Strom":15.8,
-    "Wärme":37.3,
-    "Mobilität":7.7
+    "Strom":15.84,
+    "Wärme":37.34,
+    "Mobilität":6.885
   },
   "el_in":{
     "wind":392.99,
@@ -24,12 +24,12 @@
     "pv_marsh":0.0,
     "SB-backpressure":12.15,
     "battery_in":0.0,
-    "EL-import":129.5
+    "EL-import":128.37
   },
   "el_out":{
-    "electricity":15.8,
-    "EL-heating":37.3,
-    "mobility":7.7,
+    "electricity":15.84,
+    "EL-heating":37.34,
+    "mobility":6.885,
     "electrolyser":68.31,
     "EL-export":417.29,
     "EL-excess":2.21,
@@ -65,7 +65,7 @@
       "fulfilled":true
     },
     "cost":{
-      "production":7.51,
+      "production":7.48,
       "invest":16.07
     },
     "revenue":{
