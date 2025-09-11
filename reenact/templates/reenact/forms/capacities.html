@@ -27,8 +27,6 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
                   </svg>
                   <span class="absolute {% if field.name in form.sliders_on_right_side %}right-0{% endif %} bg-slate-800 w-[22rem] text-white text-xs normal-case px-3 py-1 rounded shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 whitespace-normal z-50">
-                    {{ field.name }}
-                    {{ sliders_on_right_side }}
                     {{ field.help_text|safe }}
                   </span>
                 </span>
