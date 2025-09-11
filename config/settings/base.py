@@ -309,7 +309,6 @@ MAP_ENGINE_API_MVTS = {
     "static": [
         setup.MVTAPI("agricultural_area", "reenact", "AgriculturalArea"),
         setup.MVTAPI("bird_protection_area", "reenact", "BirdProtectionArea"),
-        setup.MVTAPI("cadastral_parcels", "reenact", "CadastralParcels"),
         setup.MVTAPI("fauna_flora_habitat", "reenact", "FaunaFloraHabitatArea"),
         setup.MVTAPI("forest", "reenact", "Forest"),
         setup.MVTAPI("forest_protected", "reenact", "ForestProtected"),
@@ -373,3 +372,24 @@ MAP_ENGINE_API_MVTS = {
 }
 
 MAP_ENGINE_STYLES_FOLDER = "reenact/reenact/config/"
+
+MAP_ENGINE_SOURCES = [
+    setup.MapSource(
+        name="flurstuecke",
+        type="raster",
+        tiles=[
+            "https://isk.geobasis-bb.de/ows/alkis_wms"
+            "?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.3.0&request=GetMap&crs=EPSG:3857&"
+            "styles=SW&width=768&height=768&transparent=true&layers=adv_alkis_flurstuecke",
+        ],
+    ),
+]
+
+MAP_ENGINE_LAYERS = [
+    setup.MapLayer(
+        id="cadastral_parcels",
+        source="flurstuecke",
+        style={"type": "raster"},
+        minzoom=14,
+    ),
+]

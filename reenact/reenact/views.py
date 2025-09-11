@@ -189,6 +189,8 @@ class MapView(TemplateView, MapEngineMixin):
         for layer in context["mapengine_layers"]:
             if layer["id"] not in LAYERS_BY_NAME:
                 continue
+            if layer["id"] == "cadastral_parcels":
+                continue
             color_field = (
                 "fill-color"
                 if "fill-color" in layer["paint"]
