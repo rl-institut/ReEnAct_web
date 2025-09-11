@@ -43,6 +43,11 @@ def set_up_oemof_components_from_user_input(
                 + capacities["biomass_marsh"] * CONFIG["other_biomass"]["sm"]
             ),
         },
+        "SB-backpressure": {
+            "capacity": CONFIG["SB-backpressure"]["base"]
+            + capacities["other_biomass"] * CONFIG["SB-backpressure"]["sb"] / 1000
+            + capacities["biomass_marsh"] * CONFIG["SB-backpressure"]["sm"] / 1000,
+        },
         "electrolyser": {"capacity": capacities["electrolyzer"], "expandable": False},
         "battery": {
             "capacity": capacities["battery"],
