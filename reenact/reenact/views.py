@@ -14,6 +14,7 @@ from .settings import (
     MYPLAN_OEMOF_SCENARIO,
     FULL_LOAD_HOURS,
     SLIDER_DATA,
+    SLIDER_DEPENDENCIES,
     LABEL_TO_SLIDER,
     LAYERS_BY_CATEGORY,
     LAYERS_BY_NAME,
@@ -249,4 +250,11 @@ def get_sliders_from_scenario(request, scenario_id: int) -> JsonResponse:
         if slider_name not in FULL_LOAD_HOURS:
             continue
         slider_values[slider_name] = round(value * 1000 / FULL_LOAD_HOURS[slider_name])
+    if "Biomasse Moor" in SCENARIOS[scenario_id]["production"]:
+        slider_values["marsh"] = (
+            SCENARIOS[scenario_id]["production"]["Biomasse Moor"]
+            * 1000
+            / FULL_LOAD_HOURS["biomass_marsh"]
+            / SLIDER_DEPENDENCIES["densities"]["biomass_marsh"]
+        )
     return JsonResponse(slider_values)
