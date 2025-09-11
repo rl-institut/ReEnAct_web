@@ -301,7 +301,7 @@ def gcdfos(inp, outp):
 
     # demand components
     dc = [
-        ("elec", "EL-heating"),
+        ("elec", "heat"),
         ("elec", "electricity"),
         ("elec", "electrolyser"),
         ("elec", "mobility"),
@@ -320,5 +320,11 @@ def gcdfos(inp, outp):
             outp[k]["sequences"]["flow"].sum() * 1e-3,
             2,
         )
+
+    demand["Speicherverluste"] = round(
+        outp[("el", "battery")]["sequences"]["flow"].sum() * 1e-3
+        - outp[("battery", "el")]["sequences"]["flow"].sum() * 1e-3,
+        2,
+    )
 
     return production, demand
