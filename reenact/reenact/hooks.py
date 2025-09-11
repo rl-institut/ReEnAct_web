@@ -37,12 +37,11 @@ def set_up_oemof_components_from_user_input(
         "pv_roof": {"capacity": capacities["pv_roof"], "expandable": False},
         "pv_agri": {"capacity": capacities["pv_agri"], "expandable": False},
         "pv_marsh": {"capacity": capacities["pv_marsh"], "expandable": False},
-        "other_biomass": {
-            "capacity": (
+        "bio-new": {
+            "amount": (
                 capacities["other_biomass"] * CONFIG["other_biomass"]["sb"]
                 + capacities["biomass_marsh"] * CONFIG["other_biomass"]["sm"]
-            )
-            / 1000,
+            ),
         },
         "electrolyser": {"capacity": capacities["electrolyzer"], "expandable": False},
         "battery": {
