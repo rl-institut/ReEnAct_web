@@ -27,10 +27,7 @@ def set_up_oemof_components_from_user_input(
     capacities = capacity_form.cleaned_data
 
     electricity_factor = capacities["mobility"] / 100
-    mobility_demand = (
-        (1 - electricity_factor) * CONFIG["mobility_demand"]["fossile"]
-        + electricity_factor * CONFIG["mobility_demand"]["electric"]
-    ) * 1e-3
+    mobility_demand = electricity_factor * CONFIG["mobility_demand"]["electric"] * 1e-3
     parameters = {
         "wind": {"capacity": capacities["wind"], "expandable": False},
         "pv_ground": {"capacity": capacities["pv_ground"], "expandable": False},
