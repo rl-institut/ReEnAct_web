@@ -375,12 +375,12 @@ MAP_ENGINE_STYLES_FOLDER = "reenact/reenact/config/"
 
 MAP_ENGINE_SOURCES = [
     setup.MapSource(
-        name="flurstuecke",
+        name="mv_flurstuecke",
         type="raster",
         tiles=[
-            "https://isk.geobasis-bb.de/ows/alkis_wms"
+            "https://www.geodaten-mv.de/dienste/inspire_cp_alkis_view"
             "?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.3.0&request=GetMap&crs=EPSG:3857&"
-            "styles=SW&width=768&height=768&transparent=true&layers=adv_alkis_flurstuecke",
+            "styles=CP.CadastralParcel.Default&width=768&height=768&transparent=true&layers=CP.CadastralParcel",
         ],
     ),
 ]
@@ -388,7 +388,7 @@ MAP_ENGINE_SOURCES = [
 MAP_ENGINE_LAYERS = [
     setup.MapLayer(
         id="cadastral_parcels",
-        source="flurstuecke",
+        source="mv_flurstuecke",
         style={"type": "raster"},
         minzoom=14,
     ),
