@@ -237,7 +237,7 @@ def fixed_invest(inp, outp):
             * inp[(s, "None")]["scalars"]["storage_capacity_cost"]
         )
 
-    return f_inv
+    return f_inv / 1e6
 
 
 def el_revenue(inp, outp):
@@ -257,7 +257,7 @@ def el_revenue(inp, outp):
             * outp[("el", "EL-export")]["sequences"]["flow"]
         )
 
-    return round(abs(el_rev.sum()), 2)
+    return round(abs(el_rev.sum() / 1e6), 2)
 
 
 def hy_revenue(inp, outp):
@@ -277,7 +277,7 @@ def hy_revenue(inp, outp):
             * outp[("hy", "HY-export")]["sequences"]["flow"]
         )
 
-    return round(abs(hy_rev.sum()), 2)
+    return round(abs(hy_rev.sum() / 1e6), 2)
 
 
 def gcdfos(inp, outp):
