@@ -38,7 +38,7 @@ def co2_ems(inp, outp, marsh):
     tons = (marsh_dry * mt_co2_ems) + max(0, (production_goal - produced)) * co2_index
     cost = tons * co2_price
 
-    return tons, cost
+    return tons / 1e3, cost
 
 
 def electricity_price(inp, outp):  # noqa: C901
