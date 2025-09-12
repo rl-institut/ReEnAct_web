@@ -60,12 +60,12 @@
       "fulfilled":false
     },
     "co2":{
-      "emissions":64.38,
-      "cost":17.70,
+      "emissions":64.85,
+      "cost":17.83,
       "fulfilled":false
     },
     "cost":{
-      "production":8.06,
+      "production":6.00,
       "invest":6.28
     },
     "revenue":{

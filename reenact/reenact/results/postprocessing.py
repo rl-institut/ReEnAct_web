@@ -141,6 +141,7 @@ def electricity_price_new(inp, outp):
 
     # electricity import
     import_energy = outp[("EL-import", "elec")]["sequences"]["flow"].sum()
+    energy += import_energy
     if "variable_costs" in inp[("EL-import", "elec")]["scalars"]:
         costs += inp[("EL-import", "elec")]["scalars"]["variable_costs"] * import_energy
     elif "variable_costs" in inp[("EL-import", "elec")]["sequences"]:
