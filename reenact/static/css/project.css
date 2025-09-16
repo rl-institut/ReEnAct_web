@@ -155,6 +155,11 @@ h2 {
   top: -6px;
 }
 
+.showcase__mark_distance {
+  position: relative;
+  top: -8px;
+}
+
 .showcase__mark_production:before {
   content: '';
   display: inline-block;
@@ -178,6 +183,18 @@ h2 {
   left: 0;
   right: 0;
   transform-origin: center;
+}
+
+.showcase__mark_distance:before {
+  content: '';
+  display: inline-block;
+  background-color: #a1a1aa;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 4px;
+  height: 0.75rem;
+  margin: 0 auto;
 }
 
 #production-slider-icon {

@@ -131,8 +131,15 @@ function updateSliderMarks() {
       slider.update({
         // jshint ignore:start
         onUpdate: function (data) {
+          let i = 0;
           for (const sliderValue of sliderValues) {
-            addMark(data, category, sliderValue);
+            if (i > 0) {
+              // Add a different marker (greyed out) after the first marker
+              addMark(data, "distance", sliderValue);
+            } else {
+              addMark(data, category, sliderValue);
+            }
+            i += 1;
           }
         },
         // jshint ignore:end
