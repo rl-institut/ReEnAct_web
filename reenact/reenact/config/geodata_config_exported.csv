@@ -27,10 +27,10 @@ potentialarea_wind_600m.gpkg;Potenzialflächen Windenergie (600m Siedlungsabstan
 potentialarea_wind_400m.gpkg;Potenzialflächen Windenergie (400m Siedlungsabstand);EE-Potenziale;1.0;;#6A89CC;;;
 cadastral_parcels.gpkg;Flurstücke;Grenzen;2.0;;#232323;;;
 organic_soils.gpkg;Organische Böden;Natur und Schutzgebiete;13.0;;#a08146;;;
-potentialarea_paludiculture_Klasse_1.gpkg;Paludikultur Eignungskulisse;EE-Potenziale;8.0;;#74b374;;;
-potentialarea_paludiculture_Klasse_2.gpkg;Paludikultur Eignungskulisse;EE-Potenziale;8.0;;#e6e600;;;
-potentialarea_paludiculture_Klasse_3.gpkg;Paludikultur Eignungskulisse;EE-Potenziale;8.0;;#ffaa00;;;
-potentialarea_paludiculture_Nicht-Eignung.gpkg;Paludikultur Eignungskulisse;EE-Potenziale;8.0;;#e60000;;;
-potentialarea_paludiculture_Moor_ohne_Feldblock.gpkg;Paludikultur Eignungskulisse;EE-Potenziale;8.0;;#b4b4b4;;;
+potentialarea_paludiculture_Klasse_1.gpkg;Paludikultur Eignung Klasse 1;EE-Potenziale;8.0;;#74b374;;;
+potentialarea_paludiculture_Klasse_2.gpkg;Paludikultur Eignung Klasse 2;EE-Potenziale;8.0;;#e6e600;;;
+potentialarea_paludiculture_Klasse_3.gpkg;Paludikultur Eignung Klasse 3;EE-Potenziale;8.0;;#ffaa00;;;
+potentialarea_paludiculture_Nicht-Eignung.gpkg;Paludikultur Nicht-Eignung;EE-Potenziale;8.0;;#e60000;;;
+potentialarea_paludiculture_Moor_ohne_Feldblock.gpkg;Paludikultur Moor ohne Feldblock;EE-Potenziale;8.0;;#b4b4b4;;;
 power_grid.gpkg;Stromleitungen;Siedlung und Infrastruktur;1.0;;#252525;;;
 municipalities.gpkg;Gemeinden;Grenzen;1.0;;#faae1d;;;ALWAYS DISPLAYED
