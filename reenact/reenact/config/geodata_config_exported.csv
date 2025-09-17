@@ -25,6 +25,7 @@ potentialarea_wind_1000m.gpkg;Potenzialflächen Windenergie (1000m Siedlungsabst
 potentialarea_wind_800m.gpkg;Potenzialflächen Windenergie (800m Siedlungsabstand);EE-Potenziale;3.0;;#6A89CC;;;
 potentialarea_wind_600m.gpkg;Potenzialflächen Windenergie (600m Siedlungsabstand);EE-Potenziale;2.0;;#6A89CC;;;
 potentialarea_wind_400m.gpkg;Potenzialflächen Windenergie (400m Siedlungsabstand);EE-Potenziale;1.0;;#6A89CC;;;
+cadastral_parcels.gpkg;Flurstücke;Grenzen;2.0;;#232323;;;
 organic_soils.gpkg;Organische Böden;Natur und Schutzgebiete;13.0;;#a08146;;;
 potentialarea_paludiculture_Klasse_1.gpkg;Paludikultur Eignung Klasse 1;EE-Potenziale;8.0;;#74b374;;;
 potentialarea_paludiculture_Klasse_2.gpkg;Paludikultur Eignung Klasse 2;EE-Potenziale;8.0;;#e6e600;;;
