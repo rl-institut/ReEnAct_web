@@ -259,4 +259,7 @@ def get_sliders_from_scenario(request, scenario_id: int) -> JsonResponse:
             / FULL_LOAD_HOURS["biomass_marsh"]
             / SLIDER_DEPENDENCIES["densities"]["biomass_marsh"]
         )
+    # Update sliders with fixed values from sceanrio config:
+    for slider_name, value in SCENARIOS[scenario_id].get("myplan_sliders", {}).items():
+        slider_values[slider_name] = value  # noqa: PERF403
     return JsonResponse(slider_values)

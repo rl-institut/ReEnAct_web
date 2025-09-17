@@ -72,5 +72,8 @@
       "power":14.83,
       "hydrogen":15.80
     }
+  },
+  "myplan_sliders": {
+    "electrolyzer": 4.75
   }
 }
