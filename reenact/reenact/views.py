@@ -181,7 +181,8 @@ class MapView(TemplateView, MapEngineMixin):
                         tooltip=layer["tooltip"],
                     )
                     for layer in layers
-                    if layer["title"] != "Gemeinden"
+                    if layer["title"]
+                    not in ["Gemeinden", "Windvorranggebiete 2024 (Entwurf)"]
                 ]
                 for category, layers in LAYERS_BY_CATEGORY.items()
             },
@@ -189,7 +190,7 @@ class MapView(TemplateView, MapEngineMixin):
         for layer in context["mapengine_layers"]:
             if layer["id"] not in LAYERS_BY_NAME:
                 continue
-            if layer["id"] in ["cadastral_parcels", "potentialarea_wind_rpg_2024_draft"]:
+            if layer["id"] in ["cadastral_parcels"]:
                 continue
             color_field = (
                 "fill-color"
