@@ -1,7 +1,7 @@
 {
   "name":"Zubau",
   "title":"Zubau",
-  "description":"Erneuerbare-Energien-Anlagen werden unter Verfolgung der Klimaziele bis zum Erzeugungsziel der Region von 419,5 GWh ausgebaut. Dabei werden aktuelle Erzeugungsanlagen nach Ablauf der Lebensdauer baugleich ersetzt. Der Energiebedarf der Region sinkt aufgrund einer vollständigen Elektrifizierung im Wärme- und Verkehrssektor.",
+  "description":"Erneuerbare-Energien-Anlagen werden unter Verfolgung der Klimaziele bis zum Erzeugungsziel der Region von 419,5 GWh ausgebaut. Dabei werden aktuelle Erzeugungsanlagen nach Ablauf der Lebensdauer überwiegend baugleich ersetzt. Die Biogasanlage wird gegen ein Blockheizkraftwerk (BHKW) ausgetauscht. Der Energiebedarf der Region sinkt aufgrund einer fast vollständigen Elektrifizierung im Wärme- und Verkehrssektor. Trockengelegte Moorflächen werden wiedervernässt.",
   "production":{
     "Wind":392.99,
     "PV - Freiflächen":13.81,

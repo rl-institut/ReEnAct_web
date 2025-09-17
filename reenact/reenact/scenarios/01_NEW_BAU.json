@@ -1,7 +1,7 @@
 {
   "name":"Kein Zubau",
   "title":"Kein Zubau",
-  "description":"Die regionale Energieerzeugung bleibt unverändert, da aktuelle Erzeugungsanlagen nach Ablauf der Lebensdauer baugleich ersetzt werden. Der Energiebedarf der Region sinkt aufgrund einer vollständigen Elektrifizierung im Wärme- und Verkehrssektor.",
+  "description":"Aktuelle Erzeugungsanlagen werden nach Ablauf der Lebensdauer baugleich ersetzt. Der Energiebedarf der Region sinkt aufgrund einer fast vollständigen Elektrifizierung im Wärme- und Verkehrssektor. Trockengelegte Moorflächen werden nicht wiedervernässt.",
   "production":{
     "Wind":160.23,
     "PV - Freiflächen":13.81,
