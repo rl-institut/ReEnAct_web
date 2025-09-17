@@ -189,7 +189,7 @@ class MapView(TemplateView, MapEngineMixin):
         for layer in context["mapengine_layers"]:
             if layer["id"] not in LAYERS_BY_NAME:
                 continue
-            if layer["id"] == "cadastral_parcels":
+            if layer["id"] in ["cadastral_parcels", "potentialarea_wind_rpg_2024_draft"]:
                 continue
             color_field = (
                 "fill-color"
