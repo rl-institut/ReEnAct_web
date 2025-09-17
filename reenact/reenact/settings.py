@@ -16,7 +16,7 @@ CONFIG_DIR = APP_DIR / "config"
 SCENARIO_DIR = APP_DIR / "scenarios"
 
 MYPLAN_OEMOF_SCENARIO = "scenario_es"
-LAYER_CONFIG = DATA_DIR / "geodata" / "geodata_config_exported.csv"
+LAYER_CONFIG = CONFIG_DIR / "geodata_config_exported.csv"
 
 
 with (CONFIG_DIR / "config.yaml").open("r", encoding="utf-8") as f:

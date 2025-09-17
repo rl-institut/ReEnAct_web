@@ -1,0 +1,36 @@
+file_renamed;title;category;layer_in_category_order;tooltip_text;color;source;license;comments
+potentialarea_pv_roof.gpkg;Dachflächen für PV;EE-Potenziale;7.0;;#F8D637;;;
+roof_generator_pv_roof.gpkg;Aufdach-PV (Dächer);Erneuerbare Energien;5.0;;#C19800;;;
+generator_biomass.gpkg;Biomasse;Erneuerbare Energien;7.0;;#52C41A;;;
+agricultural_area.gpkg;Landwirtschaftliche Flächen;Natur und Schutzgebiete;10.0;;#ddcd8e;;;landuse not of interest
+forest.gpkg;Wälder;Natur und Schutzgebiete;9.0;;#004529;;;
+grassland.gpkg;Grasland;Natur und Schutzgebiete;11.0;;#cadf8e;;;landuse not of interest
+generator_pv_ground.gpkg;Freiflächen-PV;Erneuerbare Energien;4.0;;#EFAD25;;;
+meadow.gpkg;Wiesen;Natur und Schutzgebiete;12.0;;#8edd9a;;;landuse not of interest
+potentialarea_wind_rpg_2024_draft.gpkg;Windvorranggebiete 2024 (Entwurf);EE-Potenziale;5.0;;#92b0f0;;;
+generator_pv_roof.gpkg;Aufdach-PV;Erneuerbare Energien;6.0;;#ffd660;;;
+generator_wind.gpkg;Windenergieanlagen;Erneuerbare Energien;1.0;;#7a9ce7;;;
+generator_wind_15a.gpkg;Windenergieanlagen > 15 Jahre;Erneuerbare Energien;2.0;;#6A89CC;;;Turbines >15a
+generator_wind_25a.gpkg;Windenergieanlagen > 25 Jahre;Erneuerbare Energien;3.0;;#526ba2;;;Turbines >25a
+water_and_drinking_water_protection_area.gpkg;Wasserschutzgebiete;Natur und Schutzgebiete;8.0;;#2171B5;;;Gewässer und TWSG
+forest_protected.gpkg;Naturwälder;Natur und Schutzgebiete;4.0;;#004529;;;
+bird_protection_area.gpkg;Vogelschutzgebiete;Natur und Schutzgebiete;3.0;;#41ab5d;;;
+fauna_flora_habitat.gpkg;FFH-Gebiete;Natur und Schutzgebiete;2.0;;#78C679;;;
+protected_landscape_parts.gpkg;Gesch. Landschaftsbestandteile;Natur und Schutzgebiete;7.0;;#115e5f;;;
+natural_parks.gpkg;Naturparke;Natur und Schutzgebiete;5.0;;#115F2B;;;
+landscape_protection_area.gpkg;Landschaftsschutzgebiete;Natur und Schutzgebiete;6.0;;#006837;;;
+nature_conservation_area.gpkg;Naturschutzgebiete;Natur und Schutzgebiete;1.0;;#ADDD8E;;;
+potentialarea_pv_ground.gpkg;Potenzialflächen Freiflächen-PV;EE-Potenziale;6.0;;#F8D637;;;360 m2 min. size
+potentialarea_wind_1000m.gpkg;Potenzialflächen Windenergie (1000m Siedlungsabstand);EE-Potenziale;4.0;;#6A89CC;;;
+potentialarea_wind_800m.gpkg;Potenzialflächen Windenergie (800m Siedlungsabstand);EE-Potenziale;3.0;;#6A89CC;;;
+potentialarea_wind_600m.gpkg;Potenzialflächen Windenergie (600m Siedlungsabstand);EE-Potenziale;2.0;;#6A89CC;;;
+potentialarea_wind_400m.gpkg;Potenzialflächen Windenergie (400m Siedlungsabstand);EE-Potenziale;1.0;;#6A89CC;;;
+cadastral_parcels.gpkg;Flurstücke;Grenzen;2.0;;#232323;;;
+organic_soils.gpkg;Organische Böden;Natur und Schutzgebiete;13.0;;#a08146;;;
+potentialarea_paludiculture_Klasse_1.gpkg;Paludikultur Eignungskulisse;EE-Potenziale;8.0;;#74b374;;;
+potentialarea_paludiculture_Klasse_2.gpkg;Paludikultur Eignungskulisse;EE-Potenziale;8.0;;#e6e600;;;
+potentialarea_paludiculture_Klasse_3.gpkg;Paludikultur Eignungskulisse;EE-Potenziale;8.0;;#ffaa00;;;
+potentialarea_paludiculture_Nicht-Eignung.gpkg;Paludikultur Eignungskulisse;EE-Potenziale;8.0;;#e60000;;;
+potentialarea_paludiculture_Moor_ohne_Feldblock.gpkg;Paludikultur Eignungskulisse;EE-Potenziale;8.0;;#b4b4b4;;;
+power_grid.gpkg;Stromleitungen;Siedlung und Infrastruktur;1.0;;#252525;;;
+municipalities.gpkg;Gemeinden;Grenzen;1.0;;#faae1d;;;ALWAYS DISPLAYED
