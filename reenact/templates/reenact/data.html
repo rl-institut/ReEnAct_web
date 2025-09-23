@@ -43,7 +43,7 @@
           </ul>
           <p class="text-slate-500 pb-1">Damit wächst der Strombedarf deutlich über den heutigen Wert hinaus.</p>
           <p class="text-slate-500 pb-1">
-            Die THG-Emissionen für 2024 werden laut dem Unternehmen e-dis in Loitz voraussichtlich 435 kg CO2 pro MWh Strom betragen.
+            Die THG-Emissionen für 2021 haben laut dem Unternehmen e-dis in Loitz voraussichtlich 435 kg CO2 pro MWh Strom betragen.
           </p>
         </div>
         <div class="py-4 border-b">
@@ -125,10 +125,13 @@
           <ul class="list-disc list-inside text-slate-500 pb-1 pl-4">
             <li>
               Ermittlung der durchschnittlichen Windgeschwindigkeit in der Region: <a href="https://globalwindatlas.info/en"
-    class="text-blue-600 hover:underline mt-2">9m/s</a>
+    class="text-blue-600 hover:underline mt-2">8m/s</a>
             </li>
             <li>
               Ermittlung verfügbarer Flächen für die Windkraftanlagen bei verschiedenen Abstandsregeln und unter Berücksichtigung von Schutzgebieten
+            </li>
+            <li>
+              Gemäß dem Bundesbaugesetz (BauGB) müssen Windkraftanlagen in ländlichen Gebieten einen in den Landesgesetzen festgelegten Abstand zu Wohngebieten einhalten, der maximal 1.000 m betragen darf. Dementsprechend wurde um jedes Gebäude ein Kreis mit einem Radius von 400, 800 oder 1000 m um jedes Gebäude gezogen, wobei bestehende Gebäudeeinstellungen berücksichtigt und unter Verwendung von GIS-Daten Naturschutzgebiete berücksichtigt wurden, was zu den drei Windszenarien führte, die unter dem für jede Windkraftanlage zulässigen Abstand aufgeführt sind.
             </li>
             <li>
               Ermittlung der Anzahl und Leistung von geeigneten Windkraftanlagen je verfügbare Fläche (Kapazität je Szenario 400m, 800m, 1000m Abstand)
@@ -192,6 +195,9 @@
             </table>
           </div>
           <p class="text-slate-500 pb-1">
+            Obwohl die Szenarien für 1000 m und 800 m unterschiedliche Entfernungen aufweisen, führen sie aufgrund der technischen Einschränkungen seitens der Windkraftanlagen, die einen bestimmten Abstand (5 x Rotordurchmesser) zwischen ihnen benötigen, zu derselben Anzahl von Turbinen. Dies zeigt, dass die aktuellen Gesetze in Zukunft möglicherweise geändert werden müssen.
+          </p>
+          <p class="text-slate-500 pb-1">
             Theoretische Maximalwerte können mit 400m Abständen von Windkraftanlagen zu Gebäuden erreicht werden, da mehr Fläche zur Verfügung steht. Die würde eine Anpassung der Abstandsregeln erfordern.
           </p>
           <p class="text-slate-500 pb-1">
@@ -248,7 +254,7 @@
     class="text-blue-600 hover:underline mt-2">1050kWh Strom pro Jahr</a>.
             </li>
             <li>
-              Ermittlung verfügbarer Flächen für die PV-Stromerzeugung bei Berücksichtigung von Schutzgebieten, wobei Annahmen über die Installationsfläche einschließlich Einzäunung und Nebenflächen berücksichtigt wurden (1 kWp = 15m2)
+              Ermittlung verfügbarer Flächen für die PV-Stromerzeugung bei Berücksichtigung von Schutzgebieten, wobei Annahmen über die Installationsfläche einschließlich Einzäunung und Nebenflächen berücksichtigt wurden (1 kWp = 7m2)
             </li>
             <li>Ermittlung der Leistung von PV-Freiflächenanlagen je verfügbare Fläche</li>
             <li>
@@ -334,7 +340,7 @@
             <li>
               <b>Jährlicher Energieertrag:</b>
               <ul class="list-disc list-inside text-slate-500 pb-1 pl-8">
-                <li>Standortabhängig: abhängig von jährlichen Sonnenstunden, Installationshöhe und Ausrichtung</li>
+                <li>Standortabhängig: abhängig von jährlichen Sonnenstunden, Ausrichtung und Dachabdeckungsgrad</li>
                 <li>Leistungsabhängig (die installierte Leistung ist im Energieplaner frei einstellbar)</li>
               </ul>
             </li>
@@ -348,7 +354,7 @@
           <ul class="list-disc list-inside text-slate-500 pb-1 pl-4">
             <li>
               <b>Ermittlung des Solarpotenzials der Region: </b>Eine PV-Anlage mit 1kWp installierter Leistung erzeugt in Loitz im Durchschnitt etwa <a href="https://eosolar.dlr.de/#/home"
-    class="text-blue-600 hover:underline mt-2">1050kWh Strom pro Jahr</a>. (Anpassung Dach-PV: 876 h/a)
+    class="text-blue-600 hover:underline mt-2">876,0 kWh Strom pro Jahr</a>.
             </li>
             <li>
               <b>Bestimmung der gesamten Dachflächen: </b>Mit Hilfe von Geodaten (Luftbildern und Karten) wurde abgeschätzt, wie viel Dachfläche in der Region Peenetal/Loitz theoretisch für Solaranlagen geeignet wäre. (Ergebnis: ca. 0,68 km² nutzbare Dachfläche).
@@ -461,16 +467,16 @@
           <ul class="list-disc list-inside text-slate-500 pb-1 pl-4">
             <li>
               <b>Ermittlung des Solarpotenzials der Region:</b> Eine PV-Anlage mit 1 kWp installierter Leistung erzeugt in Loitz im Durchschnitt etwa <a href="https://eosolar.dlr.de/#/home"
-    class="text-blue-600 hover:underline mt-2">1050 kWh Strom pro Jahr</a>. (Anpassung Agri-PV: 788,4 h/a)
+    class="text-blue-600 hover:underline mt-2">788,4 kWh Strom pro Jahr</a>.
             </li>
             <li>
               <b>Ermittlung verfügbarer landwirtschaftlicher Flächen</b> (auf der Basis von Geodaten), die für die kombinierte Nutzung von PV und Landwirtschaft in Frage kommen: Für die Berechnung wurde eine Fläche von 5,72 km² angenommen.
             </li>
             <li>
-              <b>Ermittlung der Leistung von Agri-PV-Anlagen je verfügbare Fläche:</b> Auf 1 Hektar (0,01 km²) lassen sich ca. 1,4 MWp PV-Module installieren. Daraus ergeben sich 858 MWp Gesamtleistung.
+              <b>Ermittlung der Leistung von Agri-PV-Anlagen je verfügbare Fläche:</b> Auf 1 Hektar (0,01 km²) lassen sich ca. 0,6 MWp PV-Module installieren. Daraus ergeben sich 858 MWp Gesamtleistung.
             </li>
             <li>
-              <b>Ermittlung des potenziellen Energieertrags</b>, der auf den jeweils verfügbaren Flächen pro Jahr bei dem vorhandenen Solarpotenzial erreicht werden kann (Ergebnis: maximal mögliches jährliches Strompotenzial: ca. 900 GWh bei einer Flächennutzung von 5,72 km²). Die Ertragszeitreihen werden unter Annahme der jährlichen Sonnenstunden berechnet und hängen vom Standort, der Installationshöhe und der Ausrichtung ab.
+              <b>Ermittlung des potenziellen Energieertrags</b>, der auf den jeweils verfügbaren Flächen pro Jahr bei dem vorhandenen Solarpotenzial erreicht werden kann (Ergebnis: maximal mögliches jährliches Strompotenzial: ca. 270,6 GWh bei einer Flächennutzung von 5,72 km²). Die Ertragszeitreihen werden unter Annahme der jährlichen Sonnenstunden berechnet und hängen vom Standort, der Installationshöhe und der Ausrichtung ab.
             </li>
           </ul>
           <p class="text-slate-500 pb-1">
@@ -523,7 +529,7 @@
           </p>
           <ul class="list-disc list-inside text-slate-500 pb-1 pl-4">
             <li>
-              <b>Ermittlung des Solarpotenzials der Region:</b> Eine PV-Anlage mit 1 kWp installierter Leistung erzeugt in Loitz im Durchschnitt etwa 1050 kWh Strom pro Jahr. (Anpassung Moor-PV: 788,4 h/a)
+              <b>Ermittlung des Solarpotenzials der Region:</b> Eine PV-Anlage mit 1 kWp installierter Leistung erzeugt in Loitz im Durchschnitt etwa 788,4 kWh Strom pro Jahr.
             </li>
             <li>
               <b>Bestimmung geeigneter Flächen:</b> Alle Flächen mit Paludikultur-Eignung (außer Paludikultur-Eignungsklasse 3), insgesamt 757 ha, sind grundsätzlich auch für PV geeignet (s. Tabelle “Moorfläche im Ibitzgraben unterteilt nach Paludikultur-Eignungsklassen” in Abschnitt “Biomasse-Moor”)
@@ -532,7 +538,7 @@
               <b>Annahme einer technischen Lösung:</b> Bei der Wiedervernässung von Moorflächen sollte eine ganzjährige, großflächige Überflutung möglichst vermieden werden, weil sonst große Mengen des klimawirksamen Gases Methan ausgestoßen werden. Dementsprechend können dort keine schwimmenden Anlagen gebaut werden. Stattdessen werden erhöhte PV-Anlagen geplant (mit ca. 2,1 m Höhe), jedoch mit speziellen Fundamenten, die den weichen Boden schonen.
             </li>
             <li>
-              <b>Ermittlung der Leistung von Moor-PV-Anlagen je verfügbare Fläche:</b> Je Hektar Fläche kann – je nach Bauweise / Flächennutzungseffizienz – zwischen 0,25 und 0,6 MWp installiert werden. Bei 757 Hektar ergibt das ein Potenzial von etwa 189,25 MWp bis zu 454,2 MWp.
+              <b>Ermittlung der Leistung von Moor-PV-Anlagen je verfügbare Fläche:</b> Je Hektar Fläche kann – je nach Bauweise / Flächennutzungseffizienz – 0,25 MWp installiert werden. Bei 757 Hektar ergibt das ein Potenzial von etwa 189,25 MWp.
             </li>
             <li>
               <b>Ermittlung des potenziellen Energieertrags</b>, der auf den jeweils verfügbaren Flächen pro Jahr bei dem vorhandenen Solarpotenzial erreicht werden kann:
@@ -569,7 +575,7 @@
     class="text-blue-600 hover:underline mt-2">20 Jahre</a>
             </li>
             <li>
-              <b>Jährlicher Energieertrag:</b> max. 149 GWh
+              <b>Jährlicher Energieertrag:</b>
               <ul class="list-disc list-inside text-slate-500 pb-1 pl-8">
                 <li>Standortabhängig: abhängig von jährlichen Sonnenstunden, Ausrichtung und  Anordnung der Module</li>
                 <li>Leistungsabhängig (die installierte Leistung ist im Energieplaner frei einstellbar)</li>
@@ -785,13 +791,7 @@
           <li>
             Berechnung der benötigten Leistung einer Biogasanlage zur Erzeugung von 41,44 GWh Strom/Jahr:
             <ul class="list-disc list-inside text-slate-500 pb-1 pl-8">
-              <li>
-                Biogasanlagen können sehr konstant betrieben werden, daher wird für die Volllaststunden meist ein Wert von rund <a href="https://docs.google.com/viewerng/viewer?url=https://www.ise.fraunhofer.de/content/dam/ise/en/documents/publications/studies/EN2024_ISE_Study_Levelized_Cost_of_Electricity_Renewable_Energy_Technologies.pdf"
-    class="text-blue-600 hover:underline mt-2">8.000 h/a</a> angesetzt:
-              </li>
-              <li>
-                Ergebnis: Eine Biogasanlage mit ca. 5 MW elektrischer Leistung könnte das gesamte theoretische Biomassepotenzial der Region Loitz nutzen. (41 GWh ÷ 8.000 h ≈ 5 MW elektrische Leistung)
-              </li>
+              <li>Biogasanlagen können sehr konstant betrieben werden.</li>
             </ul>
           </li>
         </ul>
@@ -827,7 +827,7 @@
     class="text-blue-600 hover:underline mt-2">25 Jahre</a>
           </li>
           <li>
-            <b>Jährlicher Energieertrag:</b> max. 41,44 GWh / Jahr
+            <b>Jährlicher Energieertrag:</b>
             <ul class="list-disc list-inside text-slate-500 pb-1 pl-8">
               <li>Abhängig von der verfügbaren Biomasse (im Energieplaner frei einstellbar)</li>
             </ul>
@@ -937,9 +937,6 @@
               <b>Lebensdauer:</b> nach Ergebnissen eines früheren Projekts mit dem Titel Power H2 12 Jahre bzw. 100.000 Betriebsstunden
             </li>
           </ul>
-          <p class="text-slate-500 pb-1">
-            Die Berechnungen auf Basis der aktuellen Strompreise ergeben durchschnittliche Wasserstoffgestehungskosten von 5,83 € pro Kilogramm.
-          </p>
         </div>
         <div class="py-4 border-b">
           <h2 id="hydrogen-storage" class="text-slate-800 font-bold pb-2">Wasserstoffspeicherung</h2>
@@ -970,7 +967,7 @@
           Die Stromerzeugung aus erneuerbaren Energien (vor allem Wind und Sonne) unterliegt starken Schwankungen. Batteriespeicher können Energieerzeugung- und bedarf ausbalancieren, zu einer stabilen Energieversorgung beitragen und den Anteil des vor Ort genutzten Stroms erhöhen. Durch Arbitrage können weitere Erlöse für die Region erwirtschaftet werden.
         </p>
         <p class="text-slate-500 pb-1">
-          Für die Region Peenetal/Loitz wurde von einer maximalen Batteriespeicherkapazität von 10.000 MWh und einer Speicherleistung von 282,5 MW ausgegangen.
+          Für die Region Peenetal/Loitz wurde von einer maximalen Batteriespeicherkapazität von 282,5 MW ausgegangen.
         </p>
         <p class="text-slate-500 pb-1">Die Kosten von Batteriespeichern ergeben sich aus:</p>
         <ul class="list-disc list-inside text-slate-500 pb-1 pl-4">
@@ -981,10 +978,6 @@
                 ca. <a href="https://docs.google.com/viewerng/viewer?url=https://www.ise.fraunhofer.de/content/dam/ise/en/documents/publications/studies/EN2024_ISE_Study_Levelized_Cost_of_Electricity_Renewable_Energy_Technologies.pdf"
     class="text-blue-600 hover:underline mt-2">750 000 €/MWh</a> Speicherkapazität
               </li>
-              <li>
-                <a href="https://ens.dk/en/analyses-and-statistics/technology-data-energy-storage"
-                   class="text-blue-600 hover:underline mt-2">285 719 €/MW</a> für die Wechselrichterleistung
-              </li>
             </ul>
           </li>
           <li>
@@ -994,10 +987,6 @@
                 Speicher: ca. <a href="https://docs.google.com/viewerng/viewer?url=https://www.ise.fraunhofer.de/content/dam/ise/en/documents/publications/studies/EN2024_ISE_Study_Levelized_Cost_of_Electricity_Renewable_Energy_Technologies.pdf"
     class="text-blue-600 hover:underline mt-2">15 Jahre</a>
               </li>
-              <li>
-                Wechselrichter: ca. <a href="https://ens.dk/en/analyses-and-statistics/technology-data-energy-storage"
-    class="text-blue-600 hover:underline mt-2">10 Jahre</a>
-              </li>
             </ul>
           </li>
           <li>
@@ -1005,20 +994,7 @@
             <ul class="list-disc list-inside text-slate-500 pb-1 pl-8">
               <li>
                 <a href="https://docs.google.com/viewerng/viewer?url=https://www.ise.fraunhofer.de/content/dam/ise/en/documents/publications/studies/EN2024_ISE_Study_Levelized_Cost_of_Electricity_Renewable_Energy_Technologies.pdf"
-                   class="text-blue-600 hover:underline mt-2">Fixe Kosten: 8 %/Jahr für Speicher, 2 %/Jahr für Wechselrichter</a>
-              </li>
-              <li>
-                <a href="https://ens.dk/en/analyses-and-statistics/technology-data-energy-storage"
-                   class="text-blue-600 hover:underline mt-2">Variable Kosten: 20 €/MWh</a> umgesetzte Energie
-              </li>
-            </ul>
-          </li>
-          <li>
-            <b>Verluste:</b>
-            <ul class="list-disc list-inside text-slate-500 pb-1 pl-8">
-              <li>
-                Rückspeisewirkungsgrad der Wechselrichter: <a href="https://docs.google.com/viewerng/viewer?url=https://www.ise.fraunhofer.de/content/dam/ise/en/documents/publications/studies/EN2024_ISE_Study_Levelized_Cost_of_Electricity_Renewable_Energy_Technologies.pdf"
-    class="text-blue-600 hover:underline mt-2">95 %</a>
+                   class="text-blue-600 hover:underline mt-2">Fixe Kosten: 8 %/Jahr</a>
               </li>
             </ul>
           </li>
