@@ -30,13 +30,16 @@ def calculate_potentials_from_request(request_or_data) -> list:
 
         potential_data = settings.SLIDER_DATA[pot]
         percentage = (value / potential_data["max"]) * 100
+        label = potential_data["label"]
+        label = "Sonstige Biomasse (BHKW)" if label == "Sonstige Biomasse" else label
+        label = "Biomasse Moor (BHKW)" if label == "Biomasse Moor" else label
         potentials.append(
             {
-                "title": potential_data["label"],
+                "title": label,
                 "percentage": round(min(100, percentage)),
                 "value": round(calculate_area_from_capacity(pot, value), 1),
                 "unit": "km²",
-                "color": settings.COLORS[potential_data["label"]],
+                "color": settings.COLORS[label],
                 "stroke_dashoffset": circle_view(percentage),
             },
         )

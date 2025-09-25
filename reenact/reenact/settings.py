@@ -44,6 +44,8 @@ with (CONFIG_DIR / "sliders.json").open("r", encoding="utf-8") as f:
     SLIDER_DATA = json.load(f)
 SLIDERS = [SliderConfig(name=name, **values) for name, values in SLIDER_DATA.items()]
 LABEL_TO_SLIDER = {config["label"]: name for name, config in SLIDER_DATA.items()}
+LABEL_TO_SLIDER["Sonstige Biomasse (BHKW)"] = "other_biomass"
+LABEL_TO_SLIDER["Biomasse Moor (BHKW)"] = "biomass_marsh"
 SLIDERS_ON_RIGHT_SIDE = [
     "marsh",
     "pv_marsh",
