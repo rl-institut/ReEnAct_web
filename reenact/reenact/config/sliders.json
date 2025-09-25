@@ -105,7 +105,7 @@
   },
   "electricity": {
     "label": "Strom",
-    "min": 10,
+    "min": 0,
     "max": 30,
     "step": 1,
     "initial": 15.84,
@@ -126,7 +126,7 @@
   },
   "heat": {
     "label": "Wärme",
-    "min": 15,
+    "min": 0,
     "max": 70,
     "step": 1,
     "initial": 37.34,
