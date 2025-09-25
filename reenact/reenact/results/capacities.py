@@ -56,6 +56,8 @@ def get_chart_data_from_user_input(user_input: dict) -> dict:
     for slider_config in SLIDERS:
         key = slider_config.name
         label = slider_config.label
+        label = "Sonstige Biomasse (BHKW)" if label == "Sonstige Biomasse" else label
+        label = "Biomasse Moor (BHKW)" if label == "Biomasse Moor" else label
         category = slider_config.category
         color = COLORS.get(label, "#000000")
         value = float(user_input.get(key, slider_config.initial))
