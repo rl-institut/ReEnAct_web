@@ -166,7 +166,7 @@ def get_geodata_config_by_category() -> dict[str, list[dict[str, Any]]]:
 
 CATEGORY_ORDER = (
     "Grenzen",
-    "Erneuerbare Energien",
+    "Erneuerbare Energien heute",
     "EE-Potenziale",
     "Natur und Schutzgebiete",
     "Siedlung und Infrastruktur",
