@@ -186,6 +186,7 @@ class MapView(TemplateView, MapEngineMixin):
                 ]
                 for category, layers in LAYERS_BY_CATEGORY.items()
             },
+            html_in_tooltips=True,
         )
         for layer in context["mapengine_layers"]:
             if layer["id"] not in LAYERS_BY_NAME:
