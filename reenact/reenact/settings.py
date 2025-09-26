@@ -152,7 +152,7 @@ def get_geodata_config_by_category() -> dict[str, list[dict[str, Any]]]:
                 "tooltip": (
                     (
                         row.get("tooltip_text")
-                        + "<br><br><i>"
+                        + "<br><br><i>Daten: "
                         + row.get("source")
                         + "</i>"
                     ) or ""
