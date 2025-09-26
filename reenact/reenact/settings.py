@@ -149,7 +149,14 @@ def get_geodata_config_by_category() -> dict[str, list[dict[str, Any]]]:
                 "name": (row.get("file_renamed") or "").strip(),
                 "title": (row.get("title") or "").strip(),
                 "color": (row.get("color") or "").strip(),
-                "tooltip": (row.get("tooltip_text") or "").strip(),
+                "tooltip": (
+                    (
+                        row.get("tooltip_text")
+                        + "<br><br><i>"
+                        + row.get("source")
+                        + "</i>"
+                    ) or ""
+                ).strip(),
                 "_order": order_val,  # temporary key for sorting
             }
             by_category.setdefault(category, []).append(item)
