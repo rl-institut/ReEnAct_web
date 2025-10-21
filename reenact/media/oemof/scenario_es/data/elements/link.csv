@@ -1,0 +1,2 @@
+name,type,from_bus,to_bus,from_to_capacity,to_from_capacity,loss,capacity_cost,marginal_cost,expandable
+el_sale,link,el,elec,inf,inf,0.0,0.0,35.36,True

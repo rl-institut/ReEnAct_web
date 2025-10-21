@@ -1,0 +1,4 @@
+name,type,bus,carrier,tech,profile,capacity,capacity_potential,marginal_cost,capacity_cost,capacity_minimum,expandable,output_parameters
+SB-depot,dispatchable,sb,biomass,import,,0.0,inf,0.0,0.0,0.0,False,"{""full_load_time_max"":1000}"
+BM-depot,dispatchable,bm,biomass,import,,0.0,inf,0.0,0.0,0.0,False,"{""full_load_time_max"":1000}"
+other_biomass,dispatchable,bv,biomass,import,,10.87648,inf,0.0,0.0,0.0,False,"{""full_load_time_max"":1000}"
