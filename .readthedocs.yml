@@ -11,10 +11,9 @@ build:
     python: '3.12'
 
 # Build documentation in the docs/ directory with Sphinx
-sphinx:
-  configuration: docs/conf.py
+mkdocs:
+  configuration: mkdocs.yaml
 
-# Python requirements required to build your docs
 python:
-  install:
-    - requirements: requirements/local.txt
+   install:
+   - requirements: docs/requirements.txt
