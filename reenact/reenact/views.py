@@ -1,3 +1,5 @@
+"""Module for rendering HTML pages and API endpoints."""
+
 from __future__ import annotations
 
 from django.http import HttpResponse, JsonResponse
@@ -36,6 +38,8 @@ DEMAND = [
 
 
 class MainView(TemplateView):
+    """Render HTML for main page."""
+
     template_name = "reenact/index.html"
 
     def get_context_data(self, **kwargs):

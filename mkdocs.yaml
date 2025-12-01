@@ -13,6 +13,16 @@ nav:
       - Model Structure: esm_structure.md
       - Installation and Setup: esm_setup.md
       - Usage: esm_usage.md
+  - API Documentation:
+      - Applikation: api/apps.md
+      - Datapackage: api/datapackage.md
+      - Forms: api/forms.md
+      - Hooks: api/hooks.md
+      - Managers: api/managers.md
+      - Models: api/models.md
+      - Settings: api/settings.md
+      - Urls: api/urls.md
+      - Views: api/views.md
 
 
 plugins:
@@ -20,6 +30,9 @@ plugins:
       lang:
         - en
         - de
+  - gen-files:
+      scripts:
+        - docs/api_docs.py
   - mkdocstrings:
       default_handler: python
       handlers:

@@ -1,3 +1,5 @@
+"""Module containing the URL patterns for the reenact app."""
+
 from django.urls import path
 from django.views.generic.base import TemplateView
 

@@ -1,3 +1,5 @@
+"""Module to get and aggregate data from oemof datapackages."""
+
 import json
 
 import pandas as pd
