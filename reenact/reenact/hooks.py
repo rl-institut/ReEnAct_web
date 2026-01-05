@@ -60,6 +60,7 @@ def set_up_oemof_components_from_user_input(
 
 
 def model_co2_tracking(scenario, data, model):
+    """Hook to track CO2 emissions of components."""
     if "emissions" not in dir(model):
         flows = {}
         for i, o in model.flows:
@@ -105,6 +106,7 @@ def model_co2_tracking(scenario, data, model):
 
 
 def model_co2_limit(scenario, data, model):
+    """Hook to limit CO2 emissions via constraint."""
     if "emissions" in dir(model):
         model.emission_constraint = po.Constraint(
             expr=model.emissions <= EMISSION_CONSTRAINT,
@@ -115,6 +117,7 @@ def model_co2_limit(scenario, data, model):
 
 
 def model_co2_cost(scenario, data, model):
+    """Hook to add CO2 emissions to objective function."""
     if "emissions" in dir(model):
         model.objective.set_value(
             expr=model.objective.expr + (0.0 * model.emissions),
@@ -125,7 +128,7 @@ def model_co2_cost(scenario, data, model):
 
 
 def model_prod_goal(scenario, data, model):
-    """ """
+    """Hook to add production goal constraint."""
     flows = {}
     for i, o in model.flows:
         if str(o) == "el" and "battery" not in str(i) and "import" not in str(i):
@@ -145,5 +148,6 @@ def model_prod_goal(scenario, data, model):
 
 
 def store_emission(scenario: str, data, meta, model):
+    """Hook to store emission results in simulation at DB as metadata."""
     meta["emissions"] = model.emissions()
     return meta

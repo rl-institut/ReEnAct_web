@@ -1,3 +1,5 @@
+"""Module containing global settings."""
+
 from __future__ import annotations
 
 import os
@@ -25,6 +27,8 @@ with (CONFIG_DIR / "config.yaml").open("r", encoding="utf-8") as f:
 
 @dataclass
 class SliderConfig:
+    """Dataclass for slider configuration."""
+
     name: str
     label: str
     min: int | float
@@ -155,7 +159,8 @@ def get_geodata_config_by_category() -> dict[str, list[dict[str, Any]]]:
                         + "<br><br><i>Daten: "
                         + row.get("source")
                         + "</i>"
-                    ) or ""
+                    )
+                    or ""
                 ).strip(),
                 "_order": order_val,  # temporary key for sorting
             }

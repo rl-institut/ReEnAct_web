@@ -1,4 +1,4 @@
-"""Managers for MVT."""
+"""Module holds module managers for MVT layers in mapengine."""
 
 from django.contrib.gis.db import models
 from django_mapengine.managers import MVTManager

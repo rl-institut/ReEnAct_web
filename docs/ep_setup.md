@@ -1,12 +1,3 @@
-# ReEnAct
-
-Regionale Energiewende aktiv gestalten
-
-Hier geht es zur [Dokumentation](https://reenact.readthedocs.io/de/latest/) des Projekts ReEnAct.
-
-[![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter)](https://github.com/cookiecutter/cookiecutter-django/)
-[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-
 License: MIT
 
 ## Settings
@@ -29,12 +20,12 @@ or for production (requires manual creation of `.envs/.production/.django`):
 
 1. Clone repo, setup virtual environment and install dependencies
 
-first:
+first: 
 ```shell
 git clone git@github.com:rl-institut/ReEnAct_web.git
 cd ReEnAct_web
 ```
-then set up your virtualenvironment with virtualenv (works well with python version 3.12) and then install dependencies with uv (should be faster):
+then set up your virtualenvironment with virtualenv (works well with python version 3.12) and then install dependencies with uv (should be faster): 
 ```shell
 virtualenv reenact_venv
 source reenact_venv/bin/activate
@@ -195,9 +186,3 @@ The following details how to deploy this application.
 ### Docker
 
 See detailed [cookiecutter-django Docker documentation](http://cookiecutter-django.readthedocs.io/en/latest/deployment-with-docker.html).
-
-### Credits
-
-Icons from [Heroicons](https://heroicons.com)
-© Tailwind Labs, MIT License
-https://github.com/tailwindlabs/heroicons

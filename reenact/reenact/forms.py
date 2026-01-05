@@ -1,3 +1,5 @@
+"""Forms for ReEnAct dashboard."""
+
 from __future__ import annotations
 
 from collections import defaultdict
@@ -30,6 +32,8 @@ def get_max_value(slider: SliderConfig, data: dict | None) -> int | float:
 
 
 class CapacitiesForm(Form):
+    """Form to create sliders from configuration for capacities used in MyPlan."""
+
     template_name_div = "reenact/forms/capacities.html"
 
     def __init__(self, data=None, **kwargs):

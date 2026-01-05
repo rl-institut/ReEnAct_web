@@ -1,3 +1,5 @@
+"""Oemof simulation hooks are registered when application is ready."""
+
 from django.apps import AppConfig
 
 
@@ -6,7 +8,7 @@ class ReenactConfig(AppConfig):
     name = "reenact.reenact"
 
     def ready(self) -> None:
-        """Content in here is run when app is ready."""
+        """Register hooks."""
         # pylint: disable=C0415
         from django_oemof import hooks
 
