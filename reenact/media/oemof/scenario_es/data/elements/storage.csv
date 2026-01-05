@@ -1,0 +1,4 @@
+name,type,bus,carrier,tech,storage_capacity,capacity,capacity_cost,storage_capacity_cost,storage_capacity_potential,capacity_potential,expandable,marginal_cost,efficiency,input_parameters,output_parameters
+battery,storage,el,lithium,battery,0.38,0.38,40416.83,126048.468,282.5,282.5,True,20.0,0.95,{},{}
+TH-storage-home,storage,th,water,tank,3.0,10000.0,0.0,0.0,inf,inf,False,0.0,1.0,{},{}
+BG-storage-bga,storage,bg,biogas,gastank,10.0,10000.0,0.0,0.0,inf,inf,False,0.0,1.0,{},{}

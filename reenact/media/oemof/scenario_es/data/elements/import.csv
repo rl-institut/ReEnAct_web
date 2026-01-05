@@ -1,0 +1,2 @@
+name,type,bus,carrier,tech,profile,capacity,capacity_potential,marginal_cost,capacity_cost,capacity_minimum,expandable,output_parameters
+EL-import,dispatchable,elec,electriciy,import,,40.0,inf,import-profile,0.0,0.0,False,{"custom_attributes": {"emission_factor": 0.435}}

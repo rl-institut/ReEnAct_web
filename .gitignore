@@ -272,7 +272,6 @@ tags
 dump.rdb
 
 ### Project template
-reenact/media/
 
 .pytest_cache/
 .ipython/
@@ -284,3 +283,4 @@ reenact/media/
 /reenact/reenact/data/
 /.retl.yaml
 /reenact/data/
+/reenact/media/oemof/scenario_es/data/sequences/marginal_cost_profile.csv

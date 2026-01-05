@@ -1,0 +1,4 @@
+name,type,bus,amount,profile,marginal_utility,input_parameters
+electricity,load,elec,27.94000,demand_el,0.0,{}
+heat,load,th,107.7052464,demand_th,0.0,{}
+mobility,load,elec,7.652006,demand_bev,0.0,{}

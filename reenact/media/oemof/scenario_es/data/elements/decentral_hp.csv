@@ -1,0 +1,2 @@
+name,type,from_bus,to_bus,carrier,tech,capacity,efficiency,marginal_cost,carrier_cost,capacity_cost,expandable,capacity_potential,capacity_minimum,input_parameters,output_parameters
+EL-heating,conversion,elec,th,electricity,hp,100000.0,heat-pump,0.0,0.0,0.00,False,inf,0.0,{},{}
