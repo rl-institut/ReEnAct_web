@@ -23,6 +23,12 @@ nav:
       - Settings: api/settings.md
       - Urls: api/urls.md
       - Views: api/views.md
+      - Results:
+        - Scenario: api/scenario.md
+        - Potentials: api/potentials.md
+        - Postprocessing: api/postprocessing.md
+        - Capacities: api/capacities.md
+        - Boxes: api/boxes.md
 
 
 plugins:
