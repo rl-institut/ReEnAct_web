@@ -16,7 +16,16 @@ from .settings import (
 
 
 def get_max_value(slider: SliderConfig, data: dict | None) -> int | float:
-    """Get max value for slider based on marsh value in data dict."""
+    """
+    Get max value for slider based on marsh value in data dict.
+
+    Args:
+        slider: The slider configuration object.
+        data: Data dictionary containing marsh value.
+
+    Returns:
+        int | float: The calculated maximum value for the slider.
+    """
     if (
         data is None
         or slider.name not in SLIDER_DEPENDENCIES["densities"]
@@ -32,11 +41,23 @@ def get_max_value(slider: SliderConfig, data: dict | None) -> int | float:
 
 
 class CapacitiesForm(Form):
-    """Form to create sliders from configuration for capacities used in MyPlan."""
+    """
+    Form to create sliders from configuration for capacities used in MyPlan.
+
+    Attributes:
+        template_name_div (str): Path to the template used for rendering the form.
+    """
 
     template_name_div = "reenact/forms/capacities.html"
 
     def __init__(self, data=None, **kwargs):
+        """
+        Initialize the form and dynamically create fields based on SLIDERS configuration.
+
+        Args:
+            data: Data to bind to the form.
+            **kwargs: Additional keyword arguments for Form initialization.
+        """
         self.categories = defaultdict(list)
 
         for slider in SLIDERS:

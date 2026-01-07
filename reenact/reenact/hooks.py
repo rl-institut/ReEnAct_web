@@ -18,7 +18,19 @@ def set_up_oemof_components_from_user_input(
     scenario: str,
     data: dict,
 ):
-    """Set up capacities for volatiles, potentials and load demand amounts from user inputs."""
+    """
+    Set up capacities for volatiles, potentials and load demand amounts from user inputs.
+
+    Args:
+        scenario: The name of the oemof scenario.
+        data: Dictionary containing user input data.
+
+    Returns:
+        dict: A dictionary of parameters for the oemof simulation.
+
+    Raises:
+        RuntimeError: If the capacity form is not valid.
+    """
 
     # Extract user input
     capacity_form = CapacitiesForm(data=data)
@@ -60,7 +72,17 @@ def set_up_oemof_components_from_user_input(
 
 
 def model_co2_tracking(scenario, data, model):
-    """Hook to track CO2 emissions of components."""
+    """
+    Hook to track CO2 emissions of components.
+
+    Args:
+        scenario: The oemof scenario name.
+        data: Scenario data.
+        model: The oemof solph model.
+
+    Returns:
+        oemof.solph.Model: The model with added emission expressions.
+    """
     if "emissions" not in dir(model):
         flows = {}
         for i, o in model.flows:
@@ -106,7 +128,17 @@ def model_co2_tracking(scenario, data, model):
 
 
 def model_co2_limit(scenario, data, model):
-    """Hook to limit CO2 emissions via constraint."""
+    """
+    Hook to limit CO2 emissions via constraint.
+
+    Args:
+        scenario: The oemof scenario name.
+        data: Scenario data.
+        model: The oemof solph model.
+
+    Returns:
+        oemof.solph.Model: The model with added emission constraint.
+    """
     if "emissions" in dir(model):
         model.emission_constraint = po.Constraint(
             expr=model.emissions <= EMISSION_CONSTRAINT,
@@ -117,7 +149,17 @@ def model_co2_limit(scenario, data, model):
 
 
 def model_co2_cost(scenario, data, model):
-    """Hook to add CO2 emissions to objective function."""
+    """
+    Hook to add CO2 emissions to objective function.
+
+    Args:
+        scenario: The oemof scenario name.
+        data: Scenario data.
+        model: The oemof solph model.
+
+    Returns:
+        oemof.solph.Model: The model with updated objective function.
+    """
     if "emissions" in dir(model):
         model.objective.set_value(
             expr=model.objective.expr + (0.0 * model.emissions),
@@ -128,7 +170,17 @@ def model_co2_cost(scenario, data, model):
 
 
 def model_prod_goal(scenario, data, model):
-    """Hook to add production goal constraint."""
+    """
+    Hook to add production goal constraint.
+
+    Args:
+        scenario: The oemof scenario name.
+        data: Scenario data.
+        model: The oemof solph model.
+
+    Returns:
+        oemof.solph.Model: The model with added production goal constraint.
+    """
     flows = {}
     for i, o in model.flows:
         if str(o) == "el" and "battery" not in str(i) and "import" not in str(i):
@@ -148,6 +200,17 @@ def model_prod_goal(scenario, data, model):
 
 
 def store_emission(scenario: str, data, meta, model):
-    """Hook to store emission results in simulation at DB as metadata."""
+    """
+    Hook to store emission results in simulation at DB as metadata.
+
+    Args:
+        scenario: The oemof scenario name.
+        data: Scenario data.
+        meta: Metadata dictionary.
+        model: The oemof solph model.
+
+    Returns:
+        dict: Updated metadata dictionary.
+    """
     meta["emissions"] = model.emissions()
     return meta

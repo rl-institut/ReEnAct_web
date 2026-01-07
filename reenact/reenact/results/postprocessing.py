@@ -4,6 +4,13 @@ from reenact.reenact.settings import ELECTRICITY_CHART_LABELS
 def prod(inp, outp):
     """
     Sum up local electricity production.
+
+    Args:
+        inp: Input results from oemof simulation.
+        outp: Output results from oemof simulation.
+
+    Returns:
+        float: Total local electricity production.
     """
     prod = 0.0
 
@@ -24,6 +31,14 @@ def prod(inp, outp):
 def co2_ems(inp, outp, marsh):
     """
     Aggregate CO2 emissions and calculate its cost.
+
+    Args:
+        inp: Input results from oemof simulation.
+        outp: Output results from oemof simulation.
+        marsh: Marsh parameter value.
+
+    Returns:
+        tuple[float, float]: A tuple containing (tons of CO2 / 1000, total CO2 cost).
     """
     tons = 0.0
     cost = 0.0
@@ -43,7 +58,14 @@ def co2_ems(inp, outp, marsh):
 
 def electricity_price(inp, outp):  # noqa: C901
     """
-    Calculates electricity generation cost (kindof).
+    Calculates electricity generation cost.
+
+    Args:
+        inp: Input results from oemof simulation.
+        outp: Output results from oemof simulation.
+
+    Returns:
+        float: Calculated electricity price.
     """
     kwh_p = 0.0
 
@@ -111,8 +133,14 @@ def electricity_price(inp, outp):  # noqa: C901
 
 def electricity_price_new(inp, outp):
     """
-    Calculates electricity generation cost (kindof).
-    No investment optimization.
+    Calculates electricity generation cost without investment optimization.
+
+    Args:
+        inp: Input results from oemof simulation.
+        outp: Output results from oemof simulation.
+
+    Returns:
+        float: Calculated electricity price.
     """
     energy = 0.0
     costs = 0.0
@@ -188,9 +216,15 @@ def electricity_price_new(inp, outp):
 def invest(inp, outp):
     """
     Sums up all annualized investments.
+
+    Args:
+        inp: Input results from oemof simulation.
+        outp: Output results from oemof simulation.
+
+    Returns:
+        float: Total annualized investments.
     """
     inv_c = 0.0
-
     for k, v in outp.items():
         if "invest" in v["scalars"] and v["scalars"]["invest"] > 0.0:
             tot = 0.0
@@ -205,7 +239,14 @@ def invest(inp, outp):
 
 def fixed_invest(inp, outp):
     """
-    Sums up installation cost for the chosen capacity of the technologies that can be set by the user.
+    Sums up installation cost for the technologies that can be set by the user.
+
+    Args:
+        inp: Input results from oemof simulation.
+        outp: Output results from oemof simulation.
+
+    Returns:
+        float: Total installation cost in millions.
     """
     f_inv = 0.0
     components = [
@@ -244,6 +285,13 @@ def fixed_invest(inp, outp):
 def el_revenue(inp, outp):
     """
     Revenue from selling electricity.
+
+    Args:
+        inp: Input results from oemof simulation.
+        outp: Output results from oemof simulation.
+
+    Returns:
+        float: Total electricity revenue in millions.
     """
     el_rev = 0.0
 
@@ -264,6 +312,13 @@ def el_revenue(inp, outp):
 def hy_revenue(inp, outp):
     """
     Revenue from selling hydrogen.
+
+    Args:
+        inp: Input results from oemof simulation.
+        outp: Output results from oemof simulation.
+
+    Returns:
+        float: Total hydrogen revenue in millions.
     """
     hy_rev = 0.0
 
@@ -283,7 +338,16 @@ def hy_revenue(inp, outp):
 
 def gcdfos(inp, outp):
     """
-    get chart data from oemof simulation
+    Get Chart Data From Oemof Simulation.
+
+    Aggregates flows into production and demand categories for chart display.
+
+    Args:
+        inp: Input results from oemof simulation.
+        outp: Output results from oemof simulation.
+
+    Returns:
+        tuple[dict, dict]: A tuple containing (production dictionary, demand dictionary).
     """
     production = {}
     demand = {}

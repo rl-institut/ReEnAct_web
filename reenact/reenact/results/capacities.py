@@ -11,6 +11,15 @@ from reenact.reenact.settings import (
 
 
 def get_chart_data_from_scenario(scenario_data):
+    """
+    Get production and demand chart data from scenario data.
+
+    Args:
+        scenario_data: Dictionary containing production and demand data.
+
+    Returns:
+        dict: A dictionary with 'production' and 'demand' lists of items (label, value, color).
+    """
     production = [
         {"label": key, "value": value, "color": COLORS.get(key, "#000000")}
         for key, value in scenario_data["production"].items()
@@ -23,6 +32,15 @@ def get_chart_data_from_scenario(scenario_data):
 
 
 def get_electricity_chart_data_from_scenario(scenario_data):
+    """
+    Get electricity in/out chart data from scenario data.
+
+    Args:
+        scenario_data: Dictionary containing el_in and el_out data.
+
+    Returns:
+        dict: A dictionary with 'production' and 'demand' lists of items.
+    """
     production = [
         {
             "label": ELECTRICITY_CHART_LABELS[key],
@@ -43,6 +61,15 @@ def get_electricity_chart_data_from_scenario(scenario_data):
 
 
 def get_chart_data_from_oemof_simulation(simulation_id):
+    """
+    Get chart data from an oemof simulation result.
+
+    Args:
+        simulation_id: ID of the simulation.
+
+    Returns:
+        dict: Chart data dictionary.
+    """
     sim = models.Simulation.objects.get(id=simulation_id)
     results = sim.dataset.restore_results()
     production, demand = postprocessing.gcdfos(*results)
@@ -50,6 +77,15 @@ def get_chart_data_from_oemof_simulation(simulation_id):
 
 
 def get_chart_data_from_user_input(user_input: dict) -> dict:
+    """
+    Calculate chart data based on user input from sliders.
+
+    Args:
+        user_input: Dictionary containing slider values.
+
+    Returns:
+        dict: Calculated chart data dictionary.
+    """
     production = []
     demand = []
 
@@ -72,7 +108,16 @@ def get_chart_data_from_user_input(user_input: dict) -> dict:
 
 
 def calculate_energy_from_capacity(technology: str, value: float) -> float:
-    """Calculate energy for technologies using full load hours."""
+    """
+    Calculate energy for technologies using full load hours.
+
+    Args:
+        technology: The name of the technology.
+        value: The capacity or slider value.
+
+    Returns:
+        float: Calculated energy.
+    """
     if technology == "mobility":
         # Calculate mobility energy from fossil energy in 2024 and full electric energy in 2040
         electricity_factor = value / 100

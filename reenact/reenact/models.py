@@ -5,7 +5,13 @@ from .managers import RegionMVTManager, StaticMVTManager, LabelMVTManager
 
 
 class Municipality(models.Model):
-    """Model for region level municipality."""
+    """
+    Model for region level municipality.
+
+    Attributes:
+        geom (MultiPolygonField): Geometry of the municipality.
+        name (CharField): Name of the municipality.
+    """
 
     geom = models.MultiPolygonField(srid=4326)
     name = models.CharField(max_length=50, unique=True)
@@ -23,12 +29,22 @@ class Municipality(models.Model):
         verbose_name_plural = "Municipalities"
 
     def __str__(self) -> str:
-        """Return string representation of the model."""
+        """
+        Return string representation of the model.
+
+        Returns:
+            str: Name of the municipality.
+        """
         return self.name
 
 
 class StaticRegionModel(models.Model):
-    """Base class for static region models."""
+    """
+    Base class for static region models.
+
+    Attributes:
+        geom (MultiPolygonField): Geometry of the region.
+    """
 
     geom = models.MultiPolygonField(srid=4326)
 

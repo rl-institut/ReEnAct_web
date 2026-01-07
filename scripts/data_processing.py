@@ -38,7 +38,12 @@ logger.setLevel(logging.INFO)
 
 
 def load_regions(regions: list[Model] | None = None, *, verbose: bool = True) -> None:
-    """Load region geopackages into region models."""
+    """Load region geopackages into region models.
+
+    Args:
+        regions: List of models to load data for. Defaults to REGIONS.
+        verbose: If True, print verbose output. Defaults to True.
+    """
     regions = regions or REGIONS
     for region in regions:
         if region.objects.exists():
@@ -69,7 +74,11 @@ def load_regions(regions: list[Model] | None = None, *, verbose: bool = True) ->
 
 
 def load_data(models: list[Model] | None = None) -> None:
-    """Load geopackage-based data into models."""
+    """Load geopackage-based data into models.
+
+    Args:
+        models: List of models to load data for. Defaults to MODELS.
+    """
     models = models or MODELS
     for model in models:
         if model.objects.exists():
@@ -100,13 +109,18 @@ def load_data(models: list[Model] | None = None) -> None:
 
 
 def empty_data(models: list[Model] | None = None) -> None:
-    """Delete all data from given models."""
+    """Delete all data from given models.
+
+    Args:
+        models: List of models to empty. Defaults to MODELS.
+    """
     models = models or MODELS
     for model in models:
         model.objects.all().delete()
 
 
 def prerun_all_scenarios():
+    """Run all scenarios found in SCENARIO_DIR."""
     for scenario_file in SCENARIO_DIR.iterdir():
         if scenario_file.suffix != ".json":
             continue
@@ -129,6 +143,7 @@ def prerun_all_scenarios():
 
 
 def prerun_initial_myplan_scenario():
+    """Run simulation for initial myplan scenario."""
     logger.info("Run simulation for initial myplan scenario.")
     parameters = {slider.name: slider.initial for slider in SLIDERS}
     parameters = hooks.set_up_oemof_components_from_user_input("", parameters, None)

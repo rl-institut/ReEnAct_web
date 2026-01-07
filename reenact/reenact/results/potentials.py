@@ -9,6 +9,15 @@ WETLAND_RELATED_POTENTIALS = ("biomass_marsh", "pv_marsh")
 
 
 def circle_view(arc_percentage):
+    """
+    Calculate stroke dashoffset for a circular progress bar.
+
+    Args:
+        arc_percentage: The percentage of the arc to be filled.
+
+    Returns:
+        str: The calculated stroke-dashoffset as a string.
+    """
     radius = 27
     stroke = 2 * math.pi * radius
     stroke_dashoffset = stroke * (1 - arc_percentage / 100)
@@ -16,6 +25,16 @@ def circle_view(arc_percentage):
 
 
 def calculate_potentials_from_request(request_or_data) -> list:
+    """
+    Calculate potentials based on data from an HTTP request or a data dictionary.
+
+    Args:
+        request_or_data: Either a Django request object or a dictionary containing potential data.
+
+    Returns:
+        list: A list of dictionaries, each containing potential data
+              (title, percentage, value, unit, color, stroke_dashoffset).
+    """
     query_data = (
         request_or_data.GET if hasattr(request_or_data, "GET") else request_or_data
     )
@@ -47,6 +66,15 @@ def calculate_potentials_from_request(request_or_data) -> list:
 
 
 def get_potentials_from_scenario_data(scenario_data: dict) -> list:
+    """
+    Extract potentials from scenario data dictionary.
+
+    Args:
+        scenario_data: Dictionary containing scenario information.
+
+    Returns:
+        list: A list of dictionaries, each containing potential data.
+    """
     if "potentials" not in scenario_data:
         return []
 
@@ -66,7 +94,15 @@ def get_potentials_from_scenario_data(scenario_data: dict) -> list:
 
 
 def add_wetland_potential(potentials: list[dict]) -> list[dict]:
-    """Calculate wetland potentials from usage of paludiculture, PV marsh and wet meadows."""
+    """
+    Calculate wetland potentials from usage of paludiculture, PV marsh and wet meadows.
+
+    Args:
+        potentials: List of already calculated potentials.
+
+    Returns:
+        list[dict]: Updated list of potentials including Moorbewirtschaftung.
+    """
     area_wetland = 0
     indexes_wetland = []
     for i, potential in enumerate(potentials):
@@ -92,7 +128,16 @@ def add_wetland_potential(potentials: list[dict]) -> list[dict]:
 
 
 def calculate_area_from_capacity(technology: str, value: float) -> float:
-    """Calculate energy for technologies using full load hours."""
+    """
+    Calculate area for technologies using capacity factors.
+
+    Args:
+        technology: The name of the technology/potential area.
+        value: The capacity value.
+
+    Returns:
+        float: The calculated area in km².
+    """
     if technology in POTENTIAL_AREAS:
         return value * POTENTIAL_AREAS[technology]
     return value

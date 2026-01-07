@@ -43,6 +43,15 @@ class MainView(TemplateView):
     template_name = "reenact/index.html"
 
     def get_context_data(self, **kwargs):
+        """
+        Get context data for main page.
+
+        Args:
+            **kwargs: Additional keyword arguments.
+
+        Returns:
+            dict: Context data for rendering the main page.
+        """
         context = super().get_context_data(**kwargs)
         context["slider_colors"] = {
             slider_config.name: settings.COLORS.get(slider_config.label, "blue")
@@ -141,6 +150,15 @@ class MainView(TemplateView):
 
 
 def chart(request) -> JsonResponse:
+    """
+    Return chart data as JSON from simulation or user input.
+
+    Args:
+        request: The HTTP request object.
+
+    Returns:
+        JsonResponse: Chart data in JSON format.
+    """
     if "simulation_id" in request.GET:
         simulation_id = request.GET["simulation_id"]
         return JsonResponse(
@@ -155,6 +173,15 @@ class PotentialsView(TemplateView):
     template_name = "partials/potentials.html"
 
     def get_context_data(self, **kwargs):
+        """
+        Get context data for potentials.
+
+        Args:
+            **kwargs: Additional keyword arguments.
+
+        Returns:
+            dict: Context data containing potentials.
+        """
         if "scenario" in self.request.GET:
             scenario_id = int(self.request.GET["scenario"])
             current_potentials = potentials.get_potentials_from_scenario_data(
@@ -174,6 +201,15 @@ class MapView(TemplateView, MapEngineMixin):
     template_name = "reenact/map.html"
 
     def get_context_data(self, **kwargs) -> dict:
+        """
+        Get context data for map and update layer colors.
+
+        Args:
+            **kwargs: Additional keyword arguments.
+
+        Returns:
+            dict: Context data for rendering the map.
+        """
         context = super().get_context_data(**kwargs)
         context["mapengine_legend"] = Legend(
             {
@@ -214,6 +250,15 @@ class ResultBoxView(TemplateView):
     template_name = "partials/resultboxes.html"
 
     def get_context_data(self, **kwargs):
+        """
+        Get context data for result boxes.
+
+        Args:
+            **kwargs: Additional keyword arguments.
+
+        Returns:
+            dict: Context data containing results.
+        """
         if "simulation_id" in self.request.GET:
             simulation_id = int(self.request.GET["simulation_id"])
             results = boxes.get_result_boxes_from_oemof_simulation(simulation_id)
@@ -230,7 +275,17 @@ def scenario_chart(
     *,
     simulated: bool = False,
 ) -> JsonResponse | HttpResponse:
-    """Return echart options as JSON."""
+    """
+    Return echart options as JSON.
+
+    Args:
+        request: The HTTP request object.
+        scenario_id: The ID of the scenario.
+        simulated: If True, return simulated electricity chart data. Defaults to False.
+
+    Returns:
+        JsonResponse | HttpResponse: Echart options in JSON format or 405 error.
+    """
     if request.method != "GET":
         return HttpResponse(status=405)  # wrong method
 
@@ -246,8 +301,16 @@ def scenario_chart(
 
 
 def get_sliders_from_scenario(request, scenario_id: int) -> JsonResponse:
-    """Return slider values for given scenario ID."""
+    """
+    Return slider values for given scenario ID.
 
+    Args:
+        request: The HTTP request object.
+        scenario_id: The ID of the scenario.
+
+    Returns:
+        JsonResponse: Slider values in JSON format.
+    """
     slider_values = {slider: 0 for slider in SLIDER_DATA}
     for slider, value in (
         SCENARIOS[scenario_id]["production"] | SCENARIOS[scenario_id]["demand"]

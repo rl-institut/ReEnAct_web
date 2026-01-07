@@ -6,10 +6,28 @@ from django_oemof import models
 
 
 def set_slider(slider):
+    """
+    Calculate slider position.
+
+    Args:
+        slider: Raw slider value.
+
+    Returns:
+        float: Calculated slider position.
+    """
     return 29.86 + slider * (97.83 / 100)
 
 
 def thousand_dot(value):
+    """
+    Format a number with thousand dots.
+
+    Args:
+        value: The value to format.
+
+    Returns:
+        str: Formatted string with thousand dots.
+    """
     try:
         number = int(value)
         return f"{number:,}".replace(",", ".")
@@ -28,14 +46,12 @@ def get_result_boxes_from_scenario_data(
     boxes. Fields such as "value1", "value2", and "slider" are transformed using the
     respective helper functions to ensure consistency or apply specific formatting.
 
-    Parameters:
-    scenario_data: dict
-        A dictionary containing the scenario data, which should include the "boxes"
-        key for processing.
+    Args:
+        scenario_data: A dictionary containing the scenario data, which should
+            include the "boxes" key for processing.
 
     Returns:
-    dict[str, float | int | bool]
-        A dictionary representing the processed boxes.
+        dict[str, float | int | bool]: A dictionary representing the processed boxes.
     """
     if "boxes" not in scenario_data:
         return {}
@@ -51,13 +67,11 @@ def get_result_boxes_from_oemof_simulation(simulation_id: int) -> dict:
     calculating CO2 emissions and costs, determining the electricity price, assessing investment needs, and evaluating
     revenues from electricity and hydrogen exports.
 
-    Parameters:
-    simulation_id: int
-        The unique ID for the specific simulation to fetch results for.
+    Args:
+        simulation_id: The unique ID for the specific simulation to fetch results for.
 
     Returns:
-    dict
-        Holding results for climate, CO2 emissions, cost, and revenue.
+        dict: Holding results for climate, CO2 emissions, cost, and revenue.
     """
     sim = models.Simulation.objects.get(id=simulation_id)
     inputs, outputs = sim.dataset.restore_results()
