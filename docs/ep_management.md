@@ -1,11 +1,21 @@
 
 ### Change/Add Scenarios
 
-All Scenarios are located in the `reenact/reenact/scenarios` folder. Every scenario contains some basic information 
-like _name_, _description_ and _production_ as well as _demand_. To make use of predefined colors, change or use the 
-technology labels listed in `reenact/reenact/config/colors.json`. The first tab (_2024_) only shows a single scenario as 
-baseline - the status quo today. When it comes to KPIs, only greenhouse gas emissions and costs are shown. Scenarios in the
-second tab (_Szeanrien 2045_) contain more KPIs as well as a complete electricity balance.
+All Scenarios are located in the `reenact/reenact/scenarios` folder. 
+Scenario with ID _00_ is reserved for status quo scenario, which is only shown on the tab _2024_.
+All scenarios starting from ID _01_ are shown on the tab _Szenarien 2045_.
+Every scenario contains some basic information like _name_, _title_ and _description_. 
+Additionally, every scenario contains static data to build related charts:
+- data from _production_ and _demand_ are used in chart _Energiebilanz (einfach)_,
+- data from _el_in_ and _el_out_ are used in chart _Strom-Bilanz (vollständig)_,
+- data from _potentials_ is used to generate _Genutzte Energieerzeugungsflächen_ and
+- data from _boxes_ is used to show values in _Klimaziele_, _Kosten_ and _Erlöse_.
+
+To make use of predefined colors, change or use the technology labels listed in `reenact/reenact/config/colors.json`. 
+
+The first tab (_2024_) only shows a single scenario as baseline - the status quo today. 
+When it comes to KPIs, only greenhouse gas emissions and costs are shown. 
+Scenarios in the second tab (_Szeanrien 2045_) contain more KPIs as well as a complete electricity balance.
 
 
 ### Change Slider Properties
