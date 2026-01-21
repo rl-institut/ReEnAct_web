@@ -366,7 +366,7 @@ def gcdfos(inp, outp):
 
     # demand components
     dc = [
-        ("elec", "EL-heating"),
+        ("elec", "heat"),
         ("elec", "electricity"),
         ("elec", "electrolyser"),
         ("elec", "mobility"),
