@@ -145,6 +145,71 @@
             }
         },
         {
+            "path": "data/elements/commodity.csv",
+            "profile": "tabular-data-resource",
+            "name": "commodity",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "type",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "bus",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "carrier",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "tech",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "amount",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "marginal_cost",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "output_parameters",
+                        "type": "object",
+                        "format": "default"
+                    }
+                ],
+                "missingValues": [
+                    ""
+                ],
+                "primaryKey": "name",
+                "foreignKeys": [
+                    {
+                        "fields": "bus",
+                        "reference": {
+                            "resource": "bus",
+                            "fields": "name"
+                        }
+                    }
+                ]
+            }
+        },
+        {
             "path": "data/elements/conversion.csv",
             "profile": "tabular-data-resource",
             "name": "conversion",
@@ -1118,6 +1183,11 @@
                         "name": "demand_bev",
                         "type": "number",
                         "format": "default"
+                    },
+                    {
+                        "name": "demand_hp",
+                        "type": "number",
+                        "format": "default"
                     }
                 ],
                 "missingValues": [
@@ -1170,12 +1240,27 @@
                         "format": "default"
                     },
                     {
-                        "name": "pv-profile",
+                        "name": "wind",
                         "type": "number",
                         "format": "default"
                     },
                     {
-                        "name": "wind-profile",
+                        "name": "pv_ground",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "pv_roof",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "pv_agri",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "pv_marsh",
                         "type": "number",
                         "format": "default"
                     }

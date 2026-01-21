@@ -2,4 +2,4 @@ name,type,from_bus,to_bus,carrier,tech,capacity,efficiency,marginal_cost,carrier
 BM-gassifier,conversion,bm,bg,biomass,gassifier,10000.0,0.3,4.0,0.0,0.0,False,inf,0.0,{},{}
 BV-variableA,conversion,bv,sb,biomass,variablizer,10000.0,1.0,0.0,0.0,0.0,False,inf,0.0,{},{}
 BV-variableB,conversion,bv,bm,biomass,variablizer,10000.0,1.0,0.0,0.0,0.0,False,inf,0.0,{},{}
-electrolyser,conversion,elec,hy,electricity,electrolyzer,0.0,0.6,0.0,0.0,130000,True,inf,0.0,{},{}
+electrolyser,conversion,elec,hy,electricity,electrolyzer,4.75,0.6,0.0,0.0,130000,False,4.75,0.0,{},{}

@@ -1,0 +1,2 @@
+name,type,bus,carrier,tech,amount,marginal_cost,output_parameters
+bio-new,commodity,bv,biomass,stockpile,0.0,0.0,{}

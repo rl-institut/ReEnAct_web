@@ -1,4 +1,4 @@
 name,type,bus,marginal_cost,capacity,capacity_potential,capacity_cost,capacity_minimum,expandable,input_parameters
 EL-excess,excess,el,0.0,10000000.0,inf,0.0,0.0,False,{}
 TH-excess,excess,th,0.0,10000000.0,inf,0.0,0.0,False,{}
-HY-export,excess,hy,-12.85,10000000.0,inf,0.0,0.0,False,{}
+HY-export,excess,hy,-385.5,10000000.0,inf,0.0,0.0,False,{}

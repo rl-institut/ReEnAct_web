@@ -1,2 +1,2 @@
 name,type,bus,marginal_cost,capacity,capacity_potential,capacity_cost,capacity_minimum,expandable,input_parameters
-EL-export,excess,el,export-profile,100.0,inf,0.0,0.0,False,{}
+EL-export,excess,el,export-profile,10000.0,inf,0.0,0.0,False,{}
