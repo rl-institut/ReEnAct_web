@@ -6,6 +6,7 @@
   ReEnAct
 {% endblock title %}
 {% block content %}
+  {% include 'reenact/banner.html' %}
   <div class="grid grid-cols-1 gap-2 xl:gap-3 px-6 py-2 xl:py-4">
     <div>
       <div>
@@ -85,4 +86,5 @@
   <script src="{% static 'js/scenarios.js' %}"></script>
   <script src="{% static 'js/myplan.js' %}"></script>
   <script src="{% static 'django_oemof/js/simulation.js' %}"></script>
+  <script src="{% static 'js/project.js' %}"></script>
 {% endblock javascript_inline %}
