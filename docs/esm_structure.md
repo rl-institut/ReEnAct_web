@@ -2,6 +2,9 @@ _The current energy system looks like this:_
 
 ![full energy system model](img/full_es8.png?raw=true "Energy System")
 
+Data for all components and feedin and demand inputs for simulating the energy system using oemof.solph can be found within the 
+`ReEnAct_web` repository at [reenact/media/oemof/scenario_es](https://github.com/rl-institut/ReEnAct_web/tree/dev/reenact/media/oemof/scenario_es) 
+
 
 ### Energy carriers - `Bus name` (in ES Model)
 
