@@ -57,6 +57,7 @@ class MainView(TemplateView):
             slider_config.name: settings.COLORS.get(slider_config.label, "blue")
             for slider_config in settings.SLIDERS
         }
+        context["show_banner"] = True
         context["capacities"] = CapacitiesForm(self.request.GET)
         if context["capacities"].is_valid():
             # Load potentials and capacity chart from user input
@@ -75,6 +76,8 @@ class MainView(TemplateView):
                 context["invalid_scenario_msg"] = (
                     "Die Ergebnisse des Scenarios müssen neu berechnet werden."
                 )
+            # Deactivate banner, as this currently leads to visual blurs
+            context["show_banner"] = False
         else:
             # User input is not valid, thus default my-plan scenario gets loaded
             if len(self.request.GET) != 0:

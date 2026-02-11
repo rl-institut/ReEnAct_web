@@ -6,7 +6,9 @@
   ReEnAct
 {% endblock title %}
 {% block content %}
-  {% include 'reenact/banner.html' %}
+  {% if show_banner %}
+    {% include 'reenact/banner.html' %}
+  {% endif %}
   <div class="grid grid-cols-1 gap-2 xl:gap-3 px-6 py-2 xl:py-4">
     <div>
       <div>
