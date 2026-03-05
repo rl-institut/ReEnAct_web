@@ -1,0 +1,79 @@
+{
+  "name":"Zielszenario",
+  "title":"Zielszenario aus dem Energierat",
+  "description":"Ende September 2025 traten 11 interessierte BürgerInnen in Loitz zusammen, um sich Gedanken über die Entwicklung des lokalen Energiesystems zu machen - auch unter Berücksichtigung der deutschen Energiepolitik und des globalen Klimawandels. Am Ende dieses (\"Energierat\" genannten) Formats entwickelten die Teilnehmenden dieses Zielszenario unter Berücksichtigung bestimmter Prämissen. Das energetische Erzeugungsziel der Region von 419,5 GWh wird in diesem Szenario übertroffen und durch den Verkauf von Wasserstoff und überschüssigem Strom werden Gewinne für die Region erwirtschaftet. Photovoltaik soll priorisiert als Aufdach- und Agri-Anlagen ausgebaut werden. Wiedervernässte Moore sollen nur testweise für Photovoltaik genutzt werden, ansonsten eher für Paludikultur und zur Förderung von Biodiversität. Der Zubau von Windenergie soll unter Einhaltung bestehender Abstandregelungen erfolgen. Der Energiebedarf der Region sinkt aufgrund einer fast vollständigen Elektrifizierung im Wärme- und Verkehrssektor. Trockengelegte Moorflächen werden wiedervernässt.",
+  "production":{
+    "Wind":279.4,
+    "PV - Freiflächen":122.9,
+    "PV - Dachanlagen":26.3,
+    "PV - Moor":1.6,
+    "PV - Agri":80.4,
+    "Biomasse Moor (BHKW)":0.3,
+    "Sonstige Biomasse (BHKW)":5.3
+  },
+  "demand":{
+    "Strom":15.84,
+    "Wärme":37.34,
+    "Mobilität":11.7
+  },
+  "el_in":{
+    "wind":279.4,
+    "pv_ground":122.9,
+    "pv_roof":26.3,
+    "pv_agri":80.4,
+    "pv_marsh":1.6,
+    "SB-backpressure":5.6,
+    "battery_in":0.0,
+    "EL-import":110.2
+  },
+  "el_out":{
+    "electricity":16.0,
+    "EL-heating":37.0,
+    "mobility":6.9,
+    "electrolyser":50.3,
+    "EL-export":509.6,
+    "EL-excess":5.7,
+    "battery_out":0.9
+  },
+  "potentials":{
+    "Wind":{
+      "percentage":27.0,
+      "area":37.9
+    },
+    "PV - Freiflächen":{
+      "percentage":4.0,
+      "area":1.5
+    },
+    "PV - Dachanlagen":{
+      "percentage":51.0,
+      "area":0.4
+    },
+    "PV - Agri":{
+      "percentage":12.0,
+      "area":1.4
+    }
+  },
+  "boxes":{
+    "climate":{
+      "percentage":123.05,
+      "total":419.5,
+      "fulfilled":true
+    },
+    "co2":{
+      "emissions":0,
+      "cost":0,
+      "fulfilled":true
+    },
+    "cost":{
+      "production":7.9,
+      "invest":36.2
+    },
+    "revenue":{
+      "power":24.7,
+      "hydrogen":11.6
+    }
+  },
+  "myplan_sliders": {
+    "electrolyzer": 3.5
+  }
+}
