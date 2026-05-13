@@ -70,33 +70,5 @@ function updateScenarioResultBoxes(scenarioId) {
 function adaptScenarioSliders() {
   const scenarioId = document.querySelector(".scenario-button.selected").innerText.split(":")[0];
   const request = window.location.origin + '/sliders/' + scenarioId;
-  fetch(
-    request,
-    {
-        method: 'GET',
-        mode: 'cors',
-        headers: new Headers({'Accept': 'application/json', 'Content-Type':'text/plain',}),
-        credentials: 'same-origin',
-    }
-  ).then(
-    response => {
-      response.json().then(
-        data => {
-          for (const slider_name in data) {
-            const value = data[slider_name];
-            const slider = $(`#id_${slider_name}`).data('ionRangeSlider');
-            slider.update({from: value});
-          }
-          capacitiesChanged();
-          updateColors();
-          openTab('myplan');
-          update_all_charts();
-        }
-      );
-    }
-  ).catch (
-    error => {
-      console.log(error);
-    }
-  );
+  window.location.href = request;
 }

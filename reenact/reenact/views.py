@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from django.http import HttpResponse, JsonResponse
+from django.shortcuts import redirect, reverse
 from django.views.generic.base import TemplateView
 from django_mapengine.views import MapEngineMixin
 from django_mapengine.legend import Legend, LegendItem
@@ -303,7 +304,7 @@ def scenario_chart(
     )
 
 
-def get_sliders_from_scenario(request, scenario_id: int) -> JsonResponse:
+def get_sliders_from_scenario(request, scenario_id: int) -> HttpResponse:
     """
     Return slider values for given scenario ID.
 
@@ -312,7 +313,7 @@ def get_sliders_from_scenario(request, scenario_id: int) -> JsonResponse:
         scenario_id: The ID of the scenario.
 
     Returns:
-        JsonResponse: Slider values in JSON format.
+        HTTPResponse: Load main view which redirects to myplan if slider values are set.
     """
     slider_values = {slider: 0 for slider in SLIDER_DATA}
     for slider, value in (
@@ -334,4 +335,6 @@ def get_sliders_from_scenario(request, scenario_id: int) -> JsonResponse:
     # Update sliders with fixed values from sceanrio config:
     for slider_name, value in SCENARIOS[scenario_id].get("myplan_sliders", {}).items():
         slider_values[slider_name] = value  # noqa: PERF403
-    return JsonResponse(slider_values)
+    return redirect(
+        f"{reverse('reenact:index')}?{'&'.join([f'{k}={v}' for k, v in slider_values.items()])}",
+    )

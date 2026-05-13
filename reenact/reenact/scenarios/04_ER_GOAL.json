@@ -1,6 +1,6 @@
 {
-  "name":"Zielszenario",
-  "title":"Zielszenario aus dem Energierat",
+  "name":"Empfehlung des Energierats",
+  "title":"Empfehlung des Energierats",
   "description":"Ende September 2025 traten 11 interessierte BürgerInnen in Loitz zusammen, um sich Gedanken über die Entwicklung des lokalen Energiesystems zu machen - auch unter Berücksichtigung der deutschen Energiepolitik und des globalen Klimawandels. Am Ende dieses (\"Energierat\" genannten) Formats entwickelten die Teilnehmenden dieses Zielszenario unter Berücksichtigung bestimmter Prämissen. Das energetische Erzeugungsziel der Region von 419,5 GWh wird in diesem Szenario übertroffen und durch den Verkauf von Wasserstoff und überschüssigem Strom werden Gewinne für die Region erwirtschaftet. Photovoltaik soll priorisiert als Aufdach- und Agri-Anlagen ausgebaut werden. Wiedervernässte Moore sollen nur testweise für Photovoltaik genutzt werden, ansonsten eher für Paludikultur und zur Förderung von Biodiversität. Der Zubau von Windenergie soll unter Einhaltung bestehender Abstandregelungen erfolgen. Der Energiebedarf der Region sinkt aufgrund einer fast vollständigen Elektrifizierung im Wärme- und Verkehrssektor. Trockengelegte Moorflächen werden wiedervernässt.",
   "production":{
     "Wind":279.4,
@@ -74,6 +74,12 @@
     }
   },
   "myplan_sliders": {
-    "electrolyzer": 3.5
+    "electrolyzer": 3.5,
+    "marsh": 8.15,
+    "pv_marsh": 2,
+    "battery": 28,
+    "biomass_marsh": 320,
+    "other_biomass": 5020,
+    "mobility": 90
   }
 }
