@@ -74,6 +74,7 @@
     }
   },
   "myplan_sliders": {
+    "marsh": 8.15,
     "electrolyzer": 4.75
   }
 }
