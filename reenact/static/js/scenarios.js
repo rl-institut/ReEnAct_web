@@ -14,6 +14,8 @@ function updateScenario(title, description, button, scenarioId) {
     // Titel & Beschreibung aktualisieren
     document.getElementById("scenarioTitle").textContent = title;
     document.getElementById("scenarioDescription").textContent = description;
+    document.getElementById("scenarioERLink").hidden = scenarioId !== "4";
+    console.log(scenarioId)
 
     loadScenarioChart(scenarioId);
     loadScenarioChart(scenarioId, true);
