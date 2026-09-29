@@ -75,6 +75,7 @@
   },
   "myplan_sliders": {
     "marsh": 8.15,
-    "electrolyzer": 4.75
+    "electrolyzer": 4.75,
+    "biomass_marsh": 782
   }
 }
